@@ -1,9 +1,11 @@
 const { ErrorHandler } = require('../../utils/ErrorHandler');
-const { Types, Content } = require('../models/Content');
+const Content = require('../models/Content');
+
 // Content route
 // /content
 
 // GET /?page=[]&limit=[]
+// default limit: 10
 // Get contents with pagintation
 exports.getContents = (req, res, next) => {
   const page = Number(req.query.page);
@@ -17,6 +19,7 @@ exports.getContents = (req, res, next) => {
       res.send(contents);
     })
     .catch((error) => {
+      console.log(error);
       next(error);
     });
 };

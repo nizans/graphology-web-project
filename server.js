@@ -14,7 +14,7 @@ const adminRoutes = require('./api/routes/admin');
 app.use('/admin', adminRoutes);
 
 const contentRoutes = require('./api/routes/contents');
-app.use('/contents', contentRoutes);
+app.use('/content', contentRoutes);
 
 const bookRoutes = require('./api/routes/book');
 app.use('/book', bookRoutes);

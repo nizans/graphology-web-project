@@ -6,6 +6,7 @@ const port = process.env.PORT || 4000;
 const mongoOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 };
 
 mongoose
