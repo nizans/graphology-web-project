@@ -1,19 +1,19 @@
 const ContentService = require('./content.service');
 
-// POST /article
-exports.postArticle = async (req, res, next) => {
+exports.postContent = async (req, res, next) => {
   const body = req.body;
+  console.log(body);
   if (req.file) body.filename = req.file.filename;
   try {
-    res.status(201).send(await ContentService.create(body));
+    const s = await ContentService.create(body);
+
+    res.status(201).send(s);
   } catch (error) {
     next(error);
   }
 };
 
-//GET /article
-// GET ALL ARITICLE
-exports.getAllArticles = async (req, res, next) => {
+exports.getAllContents = async (req, res, next) => {
   try {
     res.send(await ContentService.getAll());
   } catch (error) {
@@ -21,7 +21,7 @@ exports.getAllArticles = async (req, res, next) => {
   }
 };
 
-exports.deleteArticle = async (req, res, next) => {
+exports.deleteContent = async (req, res, next) => {
   const id = req.params.id;
   try {
     res.status(204).send(await ContentService.delete(id));

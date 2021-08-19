@@ -4,7 +4,7 @@ const contentController = require('./content.controller');
 const uploadFile = require('../../middleware/uploadFile');
 
 // /articles
-router.post('/', uploadFile, contentController.postArticle);
-router.get('/', contentController.getAllArticles);
-router.delete('/:id', contentController.deleteArticle);
+router.post('/', uploadFile, contentController.postContent);
+router.get('/', contentController.getAllContents);
+router.delete('/:id', contentController.deleteContent);
 module.exports = router;

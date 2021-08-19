@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
-const slug = require('mongoose-slug-generator');
-mongoose.plugin(slug);
+const { isURL } = require('validator');
 
 const videoSchema = new mongoose.Schema({
-  title: { type: String, required: [true, 'Title is required'] },
-  url: { type: String, required: [true, 'Source URL is required'] },
-  description: { type: String, required: [true, 'Description is required'] },
+  title: { type: String, required: [true, 'Video title is required'] },
+  url: { type: String, required: [true, 'Video URL is required'], validate: [isURL, 'Invalid video URL'] },
+  description: { type: String, required: [true, 'Video description is required'] },
   uploadDate: { type: Date, default: Date.now() },
 });
 

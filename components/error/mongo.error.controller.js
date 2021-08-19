@@ -5,10 +5,10 @@ const handleDuplicateKeyError = (err, res) => {
   const field = Object.keys(err.keyValue);
   const statusCode = 409;
   const error = `${field} already exists, must be unique`;
-  return new ErrorHandle(statusCode, { messages: error, fields: field });
+  return new ErrorHandle(statusCode, { messages: error, fields: field }, err);
 };
 
-const handleValidationError = (err, res) => {
+const handleValidationError = err => {
   let errors = Object.values(err.errors).map(el => el.message);
   let fields = Object.values(err.errors).map(el => el.path);
   let statusCode = 400;

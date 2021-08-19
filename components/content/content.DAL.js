@@ -13,20 +13,23 @@ class ContentDAL {
   async getById(id) {
     try {
       return await Content.findById(id);
-    } catch (error) {}
+    } catch (error) {
+      throw error;
+    }
   }
 
   async getAll() {
     try {
       return await Content.find();
-    } catch (error) {}
+    } catch (error) {
+      throw error;
+    }
   }
 
   async delete(id) {
     try {
       const result = await Content.findByIdAndDelete(id);
       console.log(result);
-      if (!result) throw new ErrorHandler({ statusCode: 404, message: 'Content not found' });
       return `Content ${id} deleted`;
     } catch (error) {
       throw error;
@@ -35,8 +38,8 @@ class ContentDAL {
 
   async update(id, data) {
     try {
-      return await Content.findByIdAndUpdate(id, data);
       console.log(`Content ${id} updated`);
+      return await Content.findByIdAndUpdate(id, data);
     } catch (error) {
       throw error;
     }
