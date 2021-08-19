@@ -1,30 +1,25 @@
-const { ErrorHandler } = require('../../utils/ErrorHandler');
 const Content = require('./content.model');
 
 class ContentDAL {
   async add(data) {
-    console.log(data);
     try {
       const content = new Content(data);
       return await content.save();
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
+
   async getById(id) {
     try {
       return await Content.findById(id);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
+
   async getAll() {
     try {
       return await Content.find();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   async delete(id) {

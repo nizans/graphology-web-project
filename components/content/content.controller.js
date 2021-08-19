@@ -1,4 +1,3 @@
-const { ErrorHandler } = require('../../utils/ErrorHandler');
 const ContentService = require('./content.service');
 
 // POST /article

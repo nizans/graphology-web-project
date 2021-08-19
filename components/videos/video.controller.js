@@ -1,4 +1,3 @@
-const { ErrorHandler } = require('../../utils/ErrorHandler');
 const VideoService = require('./video.service');
 const videoDAL = require('./video.DAL');
 

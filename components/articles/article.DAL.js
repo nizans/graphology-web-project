@@ -1,9 +1,7 @@
-const { ErrorHandler } = require('../../utils/ErrorHandler');
 const Article = require('./article.model');
 
 class ArticleDAL {
   async add(data) {
-    console.log(data);
     try {
       const article = new Article({
         title: data.title,
@@ -15,7 +13,6 @@ class ArticleDAL {
       const newArticle = await article.save();
       return newArticle;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -24,7 +21,7 @@ class ArticleDAL {
       const article = await Article.findById(id);
       console.log(article);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
   async getAll() {
@@ -32,7 +29,7 @@ class ArticleDAL {
       const all = await Article.find();
       return all;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -54,7 +51,6 @@ class ArticleDAL {
       return updatedArticle;
     } catch (error) {
       throw error;
-      console.log(error);
     }
   }
 }

@@ -2,7 +2,7 @@ const express = require('express'),
   app = express(),
   cors = require('cors'),
   morgan = require('morgan'),
-  { handleError } = require('./utils/ErrorHandler');
+  handleError = require('./utils/handleError');
 
 // Middlewares
 app.use(morgan('dev'));
