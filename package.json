@@ -20,6 +20,13 @@
     "mongoose": "^5.12.13",
     "mongoose-slug-generator": "^1.0.4",
     "morgan": "^1.10.0",
+    "multer": "^1.4.3",
     "validator": "^13.6.0"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "printWidth": 120,
+    "singleQuote": true,
+    "jsxBracketSameLine": true
   }
 }
