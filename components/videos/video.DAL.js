@@ -1,8 +1,8 @@
 const Video = require('./video.model');
+const ErrorHandle = require('../error/error.model');
 
 class VideoDal {
   async add(data) {
-    console.log(data);
     try {
       const video = new Video({
         title: data.title,
@@ -19,7 +19,6 @@ class VideoDal {
   async getById(id) {
     try {
       const video = await Video.findById(id);
-      console.log(video);
     } catch (error) {
       throw error;
     }
@@ -34,10 +33,29 @@ class VideoDal {
     }
   }
 
+  async getPagination(page, limit) {
+    try {
+      const count = await Video.count();
+      const data = {
+        pages: Math.round(count / limit),
+        page: page,
+      };
+      if (data.page > data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
+      const videos = await Video.find()
+        .limit(limit)
+        .skip(page * limit)
+        .sort('-uploadDate');
+      data.payload = videos;
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async delete(id) {
     try {
       const result = await Video.findByIdAndDelete(id);
-      console.log(result);
+
       if (!result) throw new ErrorHandler({ statusCode: 404, message: 'Video not found' });
       return `Video ${id} deleted`;
     } catch (error) {

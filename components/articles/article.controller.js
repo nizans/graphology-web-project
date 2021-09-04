@@ -21,6 +21,16 @@ exports.getAllArticles = async (req, res, next) => {
   }
 };
 
+exports.getArticlesPagination = async (req, res, next) => {
+  const page = req.query.page;
+
+  try {
+    res.send(await ArticleService.getPagination(page));
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.deleteArticle = async (req, res, next) => {
   const id = req.params.id;
   try {

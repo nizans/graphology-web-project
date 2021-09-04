@@ -1,5 +1,5 @@
 const VideoDal = require('./video.DAL');
-
+const VIDEOS_PER_PAGE = 10;
 class VideoService {
   async create(data) {
     return await VideoDal.add(data);
@@ -14,7 +14,10 @@ class VideoService {
     return await VideoDal.getById(id);
   }
   async getAll() {
-    return await videoDal.getAll();
+    return await VideoDal.getAll();
+  }
+  async getPagination(page = 1) {
+    return VideoDal.getPagination(page, VIDEOS_PER_PAGE);
   }
 }
 

@@ -1,10 +1,30 @@
 const Content = require('./content.model');
+const ErrorHandle = require('../error/error.model');
 
 class ContentDAL {
   async add(data) {
     try {
       const content = new Content(data);
       return await content.save();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getPagination(page, limit) {
+    try {
+      const count = await Content.count();
+      const data = {
+        pages: Math.round(count / limit),
+        page: page,
+      };
+      if (data.page > data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
+      const contents = await Content.find()
+        .limit(limit)
+        .skip(page * limit)
+        .sort('-uploadDate');
+      data.payload = contents;
+      return data;
     } catch (error) {
       throw error;
     }
@@ -29,7 +49,7 @@ class ContentDAL {
   async delete(id) {
     try {
       const result = await Content.findByIdAndDelete(id);
-      console.log(result);
+
       return `Content ${id} deleted`;
     } catch (error) {
       throw error;

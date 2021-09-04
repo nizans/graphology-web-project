@@ -1,3 +1,4 @@
+const ErrorHandle = require('../error/error.model');
 const Article = require('./article.model');
 
 class ArticleDAL {
@@ -16,18 +17,39 @@ class ArticleDAL {
       throw error;
     }
   }
+
   async getById(id) {
     try {
       const article = await Article.findById(id);
-      console.log(article);
+
     } catch (error) {
       throw error;
     }
   }
+
   async getAll() {
     try {
-      const all = await Article.find();
-      return all;
+      const allArticles = await Article.find();
+      return allArticles;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getPagination(page, limit) {
+    try {
+      const count = await Article.count();
+      const data = {
+        pages: Math.round(count / limit),
+        page: page,
+      };
+      if (data.page > data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
+      const articles = await Article.find()
+        .limit(limit)
+        .skip(page * limit)
+        .sort('-uploadDate');
+      data.payload = articles;
+      return data;
     } catch (error) {
       throw error;
     }
@@ -36,8 +58,8 @@ class ArticleDAL {
   async delete(id) {
     try {
       const result = await Article.findByIdAndDelete(id);
-      console.log(result);
-      if (!result) throw new ErrorHandler({ statusCode: 404, message: 'article not found' });
+
+      if (!result) throw new ErrorHandle(404, 'Article not found');
       return `Article ${id} deleted`;
     } catch (error) {
       throw error;

@@ -1,5 +1,5 @@
 const ContentDal = require('./content.DAL');
-
+const CONTENTS_PER_PAGE = 10;
 class ContentService {
   async create(data) {
     return ContentDal.add(data);
@@ -15,6 +15,10 @@ class ContentService {
 
   async getAll() {
     return ContentDal.getAll();
+  }
+
+  async getPagination(page = 1) {
+    return ContentDal.getPagination(page, CONTENTS_PER_PAGE);
   }
 
   async getById(id) {

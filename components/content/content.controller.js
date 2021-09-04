@@ -2,7 +2,7 @@ const ContentService = require('./content.service');
 
 exports.postContent = async (req, res, next) => {
   const body = req.body;
-  console.log(body);
+
   if (req.file) body.filename = req.file.filename;
   try {
     const s = await ContentService.create(body);
@@ -16,6 +16,16 @@ exports.postContent = async (req, res, next) => {
 exports.getAllContents = async (req, res, next) => {
   try {
     res.send(await ContentService.getAll());
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getContentsPagination = async (req, res, next) => {
+  const page = req.query.page;
+
+  try {
+    res.send(await ContentService.getPagination(page));
   } catch (error) {
     next(error);
   }
