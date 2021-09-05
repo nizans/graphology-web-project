@@ -34,4 +34,6 @@ module.exports = err => {
   if (err.name === 'CastError') {
     return handleCastError(err);
   }
+
+  return new ErrorHandle(500, 'Unknown error occurred on the server.', err);
 };

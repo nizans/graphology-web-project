@@ -4,7 +4,7 @@ const videoDAL = require('./video.DAL');
 exports.postVideo = async (req, res, next) => {
   const body = req.body;
   try {
-    res.status(201).send(await videoDAL.add(body));
+    res.status(201).send(await VideoService.create(body));
   } catch (error) {
     next(error);
   }
@@ -19,10 +19,24 @@ exports.getAllVideos = async (req, res, next) => {
 };
 
 exports.getVideosPagination = async (req, res, next) => {
-  const page = req.query.page;
+  let { page, limit, sortby } = req.query;
+  page = parseInt(page);
+  limit = parseInt(limit);
+  if (!sortby) sortby = undefined;
+  if (Number.isNaN(page)) page = undefined;
+  if (Number.isNaN(limit)) limit = undefined;
+  try {
+    res.send(await VideoService.getPagination(page, limit, sortby));
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getLatestVideos = async (req, res, next) => {
+  const limit = parseInt(req.query.limit);
 
   try {
-    res.send(await VideoService.getPagination(page));
+    res.send(await VideoService.getLatestVideos(limit || 5));
   } catch (error) {
     next(error);
   }

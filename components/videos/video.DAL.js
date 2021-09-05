@@ -4,11 +4,7 @@ const ErrorHandle = require('../error/error.model');
 class VideoDal {
   async add(data) {
     try {
-      const video = new Video({
-        title: data.title,
-        url: data.url,
-        description: data.description,
-      });
+      const video = new Video(data);
       const newVideo = await video.save();
       return newVideo;
     } catch (error) {
@@ -33,20 +29,30 @@ class VideoDal {
     }
   }
 
-  async getPagination(page, limit) {
+  async getLatest(numOfVideos) {
+    try {
+      const latestVids = await Video.find().sort('-uploadDate').limit(numOfVideos);
+      return latestVids;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getPagination(page, limit, sortby) {
     try {
       const count = await Video.countDocuments();
       const data = {
         pages: Math.ceil(count / limit),
         page: page,
       };
+      console.log(data);
       if (data.page >= data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
       const videos = await Video.find()
         .limit(limit)
         .skip(page * limit)
-        .sort('-uploadDate');
+        .sort(sortby);
+      data.sorted = sortby;
       data.payload = videos;
-
       return data;
     } catch (error) {
       throw error;

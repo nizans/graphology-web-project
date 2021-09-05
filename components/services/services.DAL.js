@@ -25,7 +25,9 @@ class ServiceDAL {
 
   async getAll() {
     try {
-      return await Service.find();
+      const data = {};
+      data.payload = await Service.find();
+      return data;
     } catch (error) {
       throw error;
     }
