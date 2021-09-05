@@ -17,7 +17,7 @@ class ContentService {
     return ContentDal.getAll();
   }
 
-  async getPagination(page = 1) {
+  async getPagination(page = 0) {
     return ContentDal.getPagination(page, CONTENTS_PER_PAGE);
   }
 

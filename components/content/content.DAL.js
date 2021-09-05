@@ -13,12 +13,12 @@ class ContentDAL {
 
   async getPagination(page, limit) {
     try {
-      const count = await Content.count();
+      const count = await Content.countDocuments();
       const data = {
-        pages: Math.round(count / limit),
+        pages: Math.ceil(count / limit),
         page: page,
       };
-      if (data.page > data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
+      if (data.page >= data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
       const contents = await Content.find()
         .limit(limit)
         .skip(page * limit)
@@ -32,7 +32,11 @@ class ContentDAL {
 
   async getById(id) {
     try {
-      return await Content.findById(id);
+      const content = await Content.findById(id);
+      if (!content) {
+        console.log('no content');
+      }
+      return content;
     } catch (error) {
       throw error;
     }

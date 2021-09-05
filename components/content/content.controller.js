@@ -21,6 +21,15 @@ exports.getAllContents = async (req, res, next) => {
   }
 };
 
+exports.getContentById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    res.send(await ContentService.getById(id));
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.getContentsPagination = async (req, res, next) => {
   const page = req.query.page;
 

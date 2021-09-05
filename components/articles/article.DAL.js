@@ -7,7 +7,7 @@ class ArticleDAL {
       const article = new Article({
         title: data.title,
         source: { from: data.sourceFrom, url: data.sourceURL },
-        image: data.filename,
+        image: data.filename || data.image,
         text: data.text,
         publishDate: data.publishDate,
       });
@@ -21,7 +21,6 @@ class ArticleDAL {
   async getById(id) {
     try {
       const article = await Article.findById(id);
-
     } catch (error) {
       throw error;
     }
@@ -40,10 +39,10 @@ class ArticleDAL {
     try {
       const count = await Article.count();
       const data = {
-        pages: Math.round(count / limit),
+        pages: Math.ceil(count / limit),
         page: page,
       };
-      if (data.page > data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
+      if (data.page >= data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
       const articles = await Article.find()
         .limit(limit)
         .skip(page * limit)

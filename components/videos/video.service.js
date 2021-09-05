@@ -16,7 +16,7 @@ class VideoService {
   async getAll() {
     return await VideoDal.getAll();
   }
-  async getPagination(page = 1) {
+  async getPagination(page = 0) {
     return VideoDal.getPagination(page, VIDEOS_PER_PAGE);
   }
 }

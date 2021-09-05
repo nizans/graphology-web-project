@@ -19,7 +19,7 @@ class ArticleService {
     return ArticleDAL.getAll();
   }
 
-  async getPagination(page = 1) {
+  async getPagination(page = 0) {
     return ArticleDAL.getPagination(page, ARTICLES_PER_PAGE);
   }
 

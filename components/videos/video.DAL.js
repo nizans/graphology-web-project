@@ -35,17 +35,18 @@ class VideoDal {
 
   async getPagination(page, limit) {
     try {
-      const count = await Video.count();
+      const count = await Video.countDocuments();
       const data = {
-        pages: Math.round(count / limit),
+        pages: Math.ceil(count / limit),
         page: page,
       };
-      if (data.page > data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
+      if (data.page >= data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
       const videos = await Video.find()
         .limit(limit)
         .skip(page * limit)
         .sort('-uploadDate');
       data.payload = videos;
+
       return data;
     } catch (error) {
       throw error;

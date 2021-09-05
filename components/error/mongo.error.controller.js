@@ -20,11 +20,18 @@ const handleValidationError = err => {
   }
 };
 
+const handleCastError = err => {
+  return new ErrorHandle(400, err.message, err);
+};
+
 module.exports = err => {
   if (err instanceof mongoose.Error.ValidationError) {
     return handleValidationError(err);
   }
   if (err.code && err.code == 11000) {
     return handleDuplicateKeyError(err);
+  }
+  if (err.name === 'CastError') {
+    return handleCastError(err);
   }
 };
