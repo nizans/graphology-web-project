@@ -1,37 +1,17 @@
 const getVideoThumbnail = require('../../utils/getVideoThumbnail');
-const VideoDal = require('./video.DAL');
-const VIDEOS_PER_PAGE = 10;
-const SORT_BY = `-uploadDate`;
-class VideoService {
+const Service = require('../../base/Service');
+const ErrorHandle = require('../error/error.model');
+const VideoDAL = require('./video.DAL');
+class VideoService extends Service {
+  constructor() {
+    super(VideoDAL);
+  }
   async create(data) {
+    console.log(data);
     let thumbnailURL;
-    try {
-      thumbnailURL = await getVideoThumbnail(data.url);
-    } catch (error) {
-      console.log('Unable to get thumbnail');
-    }
-    console.log(thumbnailURL);
+    thumbnailURL = await getVideoThumbnail(data.url);
     data.thumbnail = thumbnailURL;
-    return await VideoDal.add(data);
-  }
-  async delete(id) {
-    return await VideoDal.delete(id);
-  }
-  async update(id) {
-    return await VideoDal.update(id);
-  }
-  async getById(id) {
-    return await VideoDal.getById(id);
-  }
-  async getAll() {
-    return await VideoDal.getAll();
-  }
-  async getPagination(page = 0, limit = VIDEOS_PER_PAGE, sortby = SORT_BY) {
-    return await VideoDal.getPagination(page, limit, sortby);
-  }
-
-  async getLatestVideos(numOfVideos = VIDEOS_PER_PAGE) {
-    return await VideoDal.getLatest(numOfVideos);
+    await super.create(data);
   }
 }
 

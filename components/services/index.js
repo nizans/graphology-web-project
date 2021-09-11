@@ -1,11 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const serviceController = require('./services.controller');
-const uploadFile = require('../../middleware/uploadFile');
+const ServiceController = require('./service.controller');
+const ComponentRouter = require('../../base/ComponentRouter');
 
-// /articles
-router.post('/', uploadFile, serviceController.postService);
-router.get('/', serviceController.getAllServices);
-router.get('/:id', serviceController.getServiceById);
-router.delete('/:id', serviceController.deleteService);
-module.exports = router;
+class ServiceRouter extends ComponentRouter {
+  constructor() {
+    super(ServiceController);
+    super.initRoutes();
+  }
+}
+module.exports = new ServiceRouter().router;

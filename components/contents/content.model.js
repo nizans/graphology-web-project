@@ -3,7 +3,12 @@ const mongoose = require('mongoose');
 const contentSchema = new mongoose.Schema({
   title: { type: String, required: [true, 'Title is required'] },
   subtitle: String,
-  image: String,
+  images: [
+    {
+      full: { type: String, required: [true, 'Images required'] },
+      thumb: { type: String, required: [true, 'Images required'] },
+    },
+  ],
   text: { type: String, required: [true, 'Text is required'] },
   uploadDate: { type: Date, default: Date.now() },
   publishDate: Date,

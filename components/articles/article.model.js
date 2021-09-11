@@ -2,13 +2,16 @@ const mongoose = require('mongoose');
 
 const articleSchema = new mongoose.Schema({
   title: { type: String, required: [true, 'Title is required'] },
-  source: {
-    from: { type: String, required: [true, 'Source from is required'] },
-    url: { type: String, required: [true, 'Source URL is required'] },
-  },
-  image: { type: String },
+  sourceFrom: { type: String, required: [true, 'Source from is required'] },
+  sourceURL: { type: String, required: [true, 'Source URL is required'] },
+  images: [
+    {
+      full: { type: String, required: [true, 'Images required'] },
+      thumb: { type: String, required: [true, 'Images required'] },
+    },
+  ],
   text: { type: String, required: [true, 'Text is required'] },
-  publishDate: { type: Date, required: [true, 'Publish Date is required'] },
+  publishDate: { type: Date, default: Date.now() },
   uploadDate: { type: Date, default: Date.now() },
 });
 

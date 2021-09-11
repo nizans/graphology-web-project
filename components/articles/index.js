@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const articleController = require('./article.controller');
-const uploadFile = require('../../middleware/uploadFile');
+const ComponentRouter = require('../../base/ComponentRouter');
+const ArticleController = require('./article.controller');
 
-// /articles
-router.get('/', articleController.getArticlesPagination);
-router.post('/', uploadFile, articleController.postArticle);
-router.delete('/:id', articleController.deleteArticle);
-module.exports = router;
+class ArticleRouter extends ComponentRouter {
+  constructor() {
+    super(ArticleController);
+  }
+}
+
+module.exports = new ArticleRouter().router;

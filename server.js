@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Components routes
-app.use(require('./routes'));
+app.use('/api', require('./routes'));
 
 app.use((err, req, res, next) => {
   handleError(err, res);
