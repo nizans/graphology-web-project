@@ -1,3 +1,5 @@
+const handleError = require('../components/error/handleError');
+
 class Controller {
   constructor(Service) {
     this.Service = Service;
@@ -5,7 +7,7 @@ class Controller {
 
   async post(req, res, next) {
     try {
-      res.status(201).send(await this.Service.create(req.body));
+      res.status(201).json(await this.Service.create(req.body));
     } catch (error) {
       next(error);
     }
@@ -13,7 +15,7 @@ class Controller {
 
   async get(req, res, next) {
     try {
-      res.send(await this.Service.get(req.query));
+      res.json(await this.Service.get(req.query));
     } catch (error) {
       next(error);
     }
@@ -22,7 +24,7 @@ class Controller {
   async getById(req, res, next) {
     const id = req.params.id;
     try {
-      res.send(await this.Service.getById(id));
+      res.status(200).json(await this.Service.getById(id));
     } catch (error) {
       next(error);
     }
@@ -31,7 +33,8 @@ class Controller {
   async delete(req, res, next) {
     const id = req.params.id;
     try {
-      res.status(204).send(await this.Service.delete(id));
+      res.set('Content-Type', 'application/json');
+      res.status(200).json(await this.Service.delete(id));
     } catch (error) {
       next(error);
     }
@@ -40,7 +43,7 @@ class Controller {
   async update(req, res, next) {
     const id = req.params.id;
     try {
-      res.status(204).send(await this.Service.update(id));
+      res.status(204).json(await this.Service.update(id));
     } catch (error) {
       next(error);
     }

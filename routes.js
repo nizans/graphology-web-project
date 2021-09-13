@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const admin = require('./components/admin/index');
+router.use('/admin', admin);
+
 const articles = require('./components/articles/index');
 router.use('/articles', articles);
 
@@ -15,4 +18,5 @@ router.use('/services', services);
 
 const books = require('./components/books/index');
 router.use('/books', books);
+
 module.exports = router;

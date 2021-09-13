@@ -1,5 +1,16 @@
 const ErrorHandle = require('../components/error/error.model');
 
+const createMongoSearchQuery = searchString => {
+  //   return { $text: { $search: searchString } };
+  return {
+    $or: [
+      { title: { $regex: searchString, $options: 'i' } },
+      { text: { $regex: searchString, $options: 'i' } },
+      { description: { $regex: searchString, $options: 'i' } },
+    ],
+  };
+};
+
 class DAL {
   constructor(Model, name) {
     this.Model = Model;
@@ -16,14 +27,28 @@ class DAL {
     return result;
   }
 
-  async get(page, limit, sortby, find) {
-    const count = await this.Model.countDocuments();
+  async count(find) {
+    return await this.Model.aggregate([{ $match: find }, { $count: 'found_items' }]);
+  }
+
+  async get(page, limit, sortby, find = {}) {
     const data = {
-      pages: Math.ceil(count / limit),
       page: page,
-      total_items: count,
       sorted_by: sortby,
     };
+
+    if (find) {
+      find = createMongoSearchQuery(find);
+      const res = await this.count(find);
+      if (res.length === 0) throw new ErrorHandle(404, 'Search did not found anything');
+      const count = res[0]?.found_items;
+      data.pages = Math.ceil(count / limit);
+    } else {
+      const count = await this.Model.countDocuments();
+      data.pages = Math.ceil(count / limit);
+      data.found_items = count;
+    }
+
     if (data.page > data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
     const items = await this.Model.find(find)
       .limit(limit)
@@ -34,9 +59,9 @@ class DAL {
   }
 
   async delete(id) {
-    const result = await this.Model.findByIdAndDelete(id).select('_id title');
+    const result = await this.Model.findByIdAndRemove(id).select('_id title');
     if (!result) throw new ErrorHandle(404, `${this.name} with ID: ${id} does not exists}`);
-    return JSON.stringify(result);
+    return result;
   }
 
   async update(id, data) {

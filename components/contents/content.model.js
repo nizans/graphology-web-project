@@ -14,4 +14,6 @@ const contentSchema = new mongoose.Schema({
   publishDate: Date,
 });
 
+contentSchema.index({ title: 'text', text: 'text' }, { name: 'text index', weights: { title: 10, text: 5 } });
+
 module.exports = mongoose.model('Content', contentSchema);

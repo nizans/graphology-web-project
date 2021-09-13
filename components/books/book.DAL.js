@@ -3,7 +3,7 @@ const Book = require('./book.model');
 
 class BookDAL extends DAL {
   constructor() {
-    super(Book);
+    super(Book, 'Book');
   }
 }
 

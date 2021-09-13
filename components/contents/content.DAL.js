@@ -4,7 +4,7 @@ const DAL = require('../../base/DAL');
 
 class ContentDAL extends DAL {
   constructor() {
-    super(Content);
+    super(Content, 'Content');
   }
 }
 

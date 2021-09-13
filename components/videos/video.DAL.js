@@ -4,7 +4,7 @@ const DAL = require('../../base/DAL');
 
 class VideoDAL extends DAL {
   constructor() {
-    super(Video);
+    super(Video, 'Video');
   }
 }
 

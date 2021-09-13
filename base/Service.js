@@ -1,4 +1,5 @@
 const { isValidObjectId } = require('mongoose');
+const ErrorHandle = require('../components/error/error.model');
 const isPositiveInteger = require('../utils/helpers');
 
 class Service {
@@ -6,7 +7,6 @@ class Service {
     this.DAL = DAL;
     this.defaultSort = '-uploadDate';
     this.defaultLimit = 10;
-    this.defaultFind = {};
   }
 
   async create(data) {
@@ -28,9 +28,9 @@ class Service {
       page: isPositiveInteger(queryParams.page) ? Number(queryParams.page) : 0,
       limit: isPositiveInteger(queryParams.limit) ? Number(queryParams.limit) : this.defaultLimit,
       sortby: queryParams.sortby ? queryParams.sortby : this.defaultSort,
-      find: queryParams.find ? queryParams.find : this.defaultFind,
+      find: queryParams.find ? queryParams.find : null,
     };
-    return await this.DAL.get(params.page, params.limit, params.sortby);
+    return await this.DAL.get(params.page, params.limit, params.sortby, params.find);
   }
 
   async getById(id) {

@@ -15,4 +15,6 @@ const articleSchema = new mongoose.Schema({
   uploadDate: { type: Date, default: Date.now() },
 });
 
+articleSchema.index({ title: 'text', text: 'text' }, { name: 'text index', weights: { title: 10, text: 5 } });
+
 module.exports = mongoose.model('Article', articleSchema);

@@ -10,17 +10,15 @@ const adminSchema = new mongoose.Schema({
     unique: [true, 'Email already in use'],
     validate: [isEmail, 'Invalid email address'],
   },
-  password: { type: String, require: [true, 'Password required'] },
+  password: { type: String, require: [true, 'Password required'], minLength: 6, maxLength: 20 },
+  name: String,
 });
 
 adminSchema.pre('save', function (next) {
   var admin = this;
-
   if (!admin.isModified('password')) return next();
-
   bcrypt.genSalt(SALT, function (err, salt) {
     if (err) throw err;
-
     bcrypt.hash(admin.password, salt, function (err, hash) {
       if (err) throw err;
       admin.password = hash;
@@ -29,6 +27,8 @@ adminSchema.pre('save', function (next) {
   });
 });
 
-adminSchema.methods.validatePassword = async function validatePassword(pass) {
+adminSchema.methods.validatePassword = async function (pass) {
   return await bcrypt.compare(pass, this.password);
 };
+
+module.exports = mongoose.model('Admin', adminSchema);

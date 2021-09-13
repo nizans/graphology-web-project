@@ -1,19 +1,13 @@
 const express = require('express');
+const { authenticate } = require('../middleware/auth');
 
 const uploadImages = require('../middleware/uploadImages');
-
-// // /articles
-// router.post('/', uploadImages, serviceController.postService);
-// router.get('/', serviceController.getAllServices);
-// router.get('/:id', serviceController.getServiceById);
-// router.delete('/:id', serviceController.deleteService);
-// module.exports = router;
 
 class ComponentRouter {
   constructor(Controller) {
     this.Controller = Controller;
     this.router = express.Router();
-    this.initRoutes()
+    this.initRoutes();
   }
 
   initPost() {

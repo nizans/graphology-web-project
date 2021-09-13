@@ -9,4 +9,9 @@ const videoSchema = new mongoose.Schema({
   thumbnail: String,
 });
 
+videoSchema.index(
+  { title: 'text', description: 'text' },
+  { name: 'text index', weights: { title: 10, description: 5 } }
+);
+
 module.exports = mongoose.model('Video', videoSchema);
