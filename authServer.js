@@ -1,4 +1,5 @@
 const adminService = require('./components/admin/admin.service');
+const { PAGE_NOT_FOUND } = require('./components/error/error.constants');
 const ErrorHandle = require('./components/error/error.model');
 const { authenticate } = require('./middleware/auth');
 const { verifyToken } = require('./utils/jwtHelpers');
@@ -10,17 +11,18 @@ const express = require('express'),
   handleError = require('./components/error/handleError');
 
 // Middlewares
+app.use(morgan('-------------authServer------------------\n[:date[web]]'));
 app.use(morgan('dev'));
+app.use(morgan('-----------------------------------------'));
 app.use(cors());
 app.use(express.json());
-
-let rt = [];
 
 const router = express.Router();
 
 router.post('/login', async function (req, res, next) {
   try {
     const result = await adminService.login(req.body);
+
     res.send(result);
   } catch (error) {
     next(error);
@@ -29,6 +31,9 @@ router.post('/login', async function (req, res, next) {
 
 router.options('/authenticate', authenticate);
 
+router.use('*', (req, res, next) => {
+  next(PAGE_NOT_FOUND);
+});
 app.use('/auth', router);
 
 // app.post('/refresh', (req, res, next) => {

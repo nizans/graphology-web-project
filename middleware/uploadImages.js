@@ -1,12 +1,12 @@
 const multer = require('multer');
 const imageResizer = require('../utils/imageResizer');
-
+const generateUniqueID = require('../utils/generateUniqueID');
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, './public/images');
   },
   filename: function (req, file, callback) {
-    const uniqueSuffix = Date.now();
+    const uniqueSuffix = generateUniqueID(2, '-');
     callback(null, uniqueSuffix + '_' + file.originalname);
   },
 });
@@ -19,7 +19,7 @@ const fileFilter = async (req, file, callback) => {
 
 let uploadImage = multer({ storage: storage, fileFilter: fileFilter });
 
-const addImagesToBody = (req, res, next) => {
+const addImagePrefix = (req, res, next) => {
   if (req.files) {
     const images = req.files.map(img => {
       return { full: '/images/' + img.filename, thumb: '/thumbs/' + img.filename };
@@ -29,4 +29,4 @@ const addImagesToBody = (req, res, next) => {
   next();
 };
 
-module.exports = [uploadImage.array('image'), imageResizer, addImagesToBody];
+module.exports = [uploadImage.array('image'), imageResizer, addImagePrefix];

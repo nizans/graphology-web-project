@@ -8,6 +8,7 @@ class AdminService extends Service {
   }
   async login(data) {
     const { email, password } = data;
+
     const admin = await this.DAL.login(email, password);
     return { tokens: signJWT(admin.toJSON()), admin };
   }

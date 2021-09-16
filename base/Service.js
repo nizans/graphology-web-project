@@ -1,6 +1,12 @@
 const { isValidObjectId } = require('mongoose');
+const { NO_RESULTS, INVALID_MONGO_ID } = require('../components/error/error.constants');
 const ErrorHandle = require('../components/error/error.model');
 const isPositiveInteger = require('../utils/helpers');
+
+const IMAGE_PREFIX = {
+  full: '/images/',
+  thumb: '/thumbs/',
+};
 
 class Service {
   constructor(DAL) {
@@ -14,12 +20,12 @@ class Service {
   }
 
   async delete(id) {
-    if (!isValidObjectId(id)) throw new ErrorHandle(404, `${id} is not a valid ID`);
+    if (!isValidObjectId(id)) throw INVALID_MONGO_ID(id);
     return await this.DAL.delete(id);
   }
 
   async update(id) {
-    if (!isValidObjectId(id)) throw new ErrorHandle(404, `${id} is not a valid ID`);
+    if (!isValidObjectId(id)) throw INVALID_MONGO_ID(id);
     return await this.DAL.update(id);
   }
 
@@ -30,12 +36,15 @@ class Service {
       sortby: queryParams.sortby ? queryParams.sortby : this.defaultSort,
       find: queryParams.find ? queryParams.find : null,
     };
-    return await this.DAL.get(params.page, params.limit, params.sortby, params.find);
+    const result = await this.DAL.get(params.page, params.limit, params.sortby, params.find);
+    if (result.payload.length === 0) throw NO_RESULTS;
+    return result;
   }
 
   async getById(id) {
-    if (!isValidObjectId(id)) throw new ErrorHandle(404, `${id} is not a valid ID`);
-    return await this.DAL.getById(id);
+    if (!isValidObjectId(id)) throw INVALID_MONGO_ID(id);
+    const result = await this.DAL.getById(id);
+    return result;
   }
 }
 

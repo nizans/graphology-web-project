@@ -13,7 +13,7 @@ const handleValidationError = err => {
   let fields = Object.values(err.errors).map(el => el.path);
   let statusCode = 400;
   if (errors.length > 1) {
-    const formattedErrors = errors.join('');
+    const formattedErrors = errors;
     return new ErrorHandle(statusCode, { messages: formattedErrors, fields: fields }, err);
   } else {
     return new ErrorHandle(statusCode, { messages: errors, fields: fields }, err);

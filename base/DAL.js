@@ -1,4 +1,4 @@
-const { NO_SEARCH_RESULT, PAGE_NOT_FOUND } = require('../components/error/error.constants');
+const { NO_SEARCH_RESULT, PAGE_NOT_FOUND, ITEM_NOT_EXISTS } = require('../components/error/error.constants');
 const ErrorHandle = require('../components/error/error.model');
 
 const createMongoSearchQuery = searchString => {
@@ -23,7 +23,7 @@ class DAL {
 
   async getById(id) {
     const result = await this.Model.findById(id);
-    if (!result) throw new ErrorHandle(404, `${this.name} with ID: ${id} does not exists}`);
+    if (!result) throw ITEM_NOT_EXISTS;
     return result;
   }
 
@@ -60,13 +60,13 @@ class DAL {
 
   async delete(id) {
     const result = await this.Model.findByIdAndRemove(id).select('_id title');
-    if (!result) throw new ErrorHandle(404, `${this.name} with ID: ${id} does not exists}`);
+    if (!result) throw ITEM_NOT_EXISTS;
     return result;
   }
 
   async update(id, data) {
     const result = await this.Model.findByIdAndUpdate(id, data);
-    if (!result) throw new ErrorHandle(404, `${this.name} with ID: ${id} does not exists}`);
+    if (!result) throw ITEM_NOT_EXISTS;
     return result;
   }
 }
