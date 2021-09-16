@@ -11,7 +11,7 @@ class ComponentRouter {
   }
 
   initPost() {
-    this.router.post('/', uploadImages, this.Controller.post.bind(this.Controller));
+    this.router.post('/', authenticate, uploadImages, this.Controller.post.bind(this.Controller));
   }
   initGet() {
     this.router.get('/', this.Controller.get.bind(this.Controller));
@@ -20,10 +20,10 @@ class ComponentRouter {
     this.router.get('/:id', this.Controller.getById.bind(this.Controller));
   }
   initDelete() {
-    this.router.delete('/:id', this.Controller.delete.bind(this.Controller));
+    this.router.delete('/:id', authenticate, this.Controller.delete.bind(this.Controller));
   }
   initUpdate() {
-    this.router.put('/:id', this.Controller.update.bind(this.Controller));
+    this.router.put('/:id', authenticate, this.Controller.update.bind(this.Controller));
   }
 
   initRoutes() {

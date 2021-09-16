@@ -3,13 +3,10 @@ const ErrorHandle = require('./error.model');
 
 const handleError = (err, res) => {
   if (!(err instanceof ErrorHandle)) err = errorController(err);
-  const { statusCode, message, originalError } = err;
+  const { statusCode, message, originalError, clientMessage } = err;
   if (originalError) console.log(originalError);
-  res.status(statusCode).json({
-    status: 'error',
-    statusCode,
-    message,
-  });
+  const responsePayload = clientMessage || message;
+  res.headers = res.status(statusCode).json({ message: responsePayload });
 };
 
 module.exports = handleError;

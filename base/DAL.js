@@ -1,7 +1,7 @@
+const { NO_SEARCH_RESULT, PAGE_NOT_FOUND } = require('../components/error/error.constants');
 const ErrorHandle = require('../components/error/error.model');
 
 const createMongoSearchQuery = searchString => {
-  //   return { $text: { $search: searchString } };
   return {
     $or: [
       { title: { $regex: searchString, $options: 'i' } },
@@ -40,7 +40,7 @@ class DAL {
     if (find) {
       find = createMongoSearchQuery(find);
       const res = await this.count(find);
-      if (res.length === 0) throw new ErrorHandle(404, 'Search did not found anything');
+      if (res.length === 0) throw NO_SEARCH_RESULT;
       const count = res[0]?.found_items;
       data.pages = Math.ceil(count / limit);
     } else {
@@ -49,7 +49,7 @@ class DAL {
       data.found_items = count;
     }
 
-    if (data.page > data.pages) throw new ErrorHandle(404, 'The requested page does not exists');
+    if (data.page > data.pages) throw PAGE_NOT_FOUND;
     const items = await this.Model.find(find)
       .limit(limit)
       .skip(page * limit)

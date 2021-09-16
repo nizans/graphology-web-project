@@ -9,7 +9,8 @@ class AdminService extends Service {
   async login(data) {
     const { email, password } = data;
     const admin = await this.DAL.login(email, password);
-    return { token: await signJWT({ payload: admin.toJSON() }), user: admin };
+    return { tokens: signJWT(admin.toJSON()), admin };
   }
 }
+
 module.exports = new AdminService();

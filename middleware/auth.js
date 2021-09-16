@@ -4,15 +4,10 @@ const { verifyToken } = require('../utils/jwtHelpers');
 
 exports.authenticate = async (req, res, next) => {
   try {
-    const bearerHeader = req.headers['authorization'];
-    if (!bearerHeader) throw new ErrorHandle(403, 'Access denied');
-    else {
-      const bearer = bearerHeader.split(' ');
-      const token = bearer[1];
-      req.token = await verifyToken(token);
-      console.log(token);
-      next();
-    }
+    const token = req.headers['authorization']?.split(' ')[1];
+    if (!token) throw new ErrorHandle(401, 'No token');
+    req.token = await verifyToken(token);
+    next();
   } catch (error) {
     handleError(error, res);
   }
