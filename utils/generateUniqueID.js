@@ -4,6 +4,6 @@ const generateUniqueID = (length = 4, seperator = '-') => {
       .toString(16)
       .substring(1)
   ).join(seperator));
-    
 };
 
+module.exports = generateUniqueID;

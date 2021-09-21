@@ -1,6 +1,7 @@
 const { isValidObjectId } = require('mongoose');
 const { NO_RESULTS, INVALID_MONGO_ID } = require('../components/error/error.constants');
 const ErrorHandle = require('../components/error/error.model');
+const deleteImages = require('../utils/deleteImages');
 const isPositiveInteger = require('../utils/helpers');
 
 const IMAGE_PREFIX = {
@@ -21,7 +22,9 @@ class Service {
 
   async delete(id) {
     if (!isValidObjectId(id)) throw INVALID_MONGO_ID(id);
-    return await this.DAL.delete(id);
+    const result = await this.DAL.delete(id);
+    if (result.images) deleteImages(result.images);
+    return result;
   }
 
   async update(id) {

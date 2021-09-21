@@ -7,6 +7,7 @@ class Controller {
 
   async post(req, res, next) {
     try {
+      console.log(req.body);
       res.status(201).json(await this.Service.create(req.body));
     } catch (error) {
       next(error);

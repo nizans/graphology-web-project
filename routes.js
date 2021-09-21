@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { PAGE_NOT_FOUND } = require('./components/error/error.constants');
 const admin = require('./components/admin/index');
-router.use('/admin', admin);
+router.use('/admins', admin);
 
 const articles = require('./components/articles/index');
 router.use('/articles', articles);
@@ -20,7 +20,6 @@ const books = require('./components/books/index');
 router.use('/books', books);
 
 const contact = require('./components/contact/index');
-
 router.use('/contact', contact);
 
 router.use('*', (req, res, next) => {

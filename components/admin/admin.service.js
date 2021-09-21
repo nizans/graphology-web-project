@@ -1,16 +1,25 @@
 const Service = require('../../base/Service');
-const { signJWT } = require('../../utils/jwtHelpers');
+const { signJWT, verifyRefreshToken: verifyToken } = require('../../utils/jwtHelpers');
+const refreshTokenDAL = require('../refreshTokens/refreshToken.DAL');
 const AdminDAL = require('./admin.DAL');
 
 class AdminService extends Service {
   constructor() {
     super(AdminDAL);
   }
+
   async login(data) {
     const { email, password } = data;
-
     const admin = await this.DAL.login(email, password);
-    return { tokens: signJWT(admin.toJSON()), admin };
+    const tokens = signJWT(admin.toJSON());
+    await refreshTokenDAL.setRefreshToken(email, tokens.refreshToken);
+    return { refreshToken: tokens.refreshToken, accessToken: tokens.accessToken, email: admin.email, name: admin.name };
+  }
+
+  async logout(data) {
+    const { email } = data;
+    const result = await refreshTokenDAL.removeAllEmailTokens(email);
+    return result;
   }
 }
 

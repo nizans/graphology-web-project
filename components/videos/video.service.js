@@ -7,7 +7,6 @@ class VideoService extends Service {
     super(VideoDAL);
   }
   async create(data) {
-    console.log(data);
     let thumbnailURL;
     thumbnailURL = await getVideoThumbnail(data.url);
     data.thumbnail = thumbnailURL;

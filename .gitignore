@@ -1,4 +1,3 @@
 .env
 /node_modules
-/public/images/*
-/public/thumbs/*
+/public
