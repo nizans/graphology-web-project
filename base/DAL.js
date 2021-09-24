@@ -1,5 +1,4 @@
 const { NO_SEARCH_RESULT, PAGE_NOT_FOUND, ITEM_NOT_EXISTS } = require('../components/error/error.constants');
-const ErrorHandle = require('../components/error/error.model');
 
 const createMongoSearchQuery = searchString => {
   return {

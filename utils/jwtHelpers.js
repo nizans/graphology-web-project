@@ -1,12 +1,11 @@
 const jwt = require('jsonwebtoken');
-const ErrorHandle = require('../components/error/error.model');
 require('dotenv').config();
 
 const accessKey = process.env.JWT_ACCESS_KEY;
 const refreshKey = process.env.JWT_REFRESH_KEY;
 
-const TOKEN_EXPIRATION = '15m';
-const REFRESH_TOKEN_EXPIRATION = '3d';
+const TOKEN_EXPIRATION = process.env.ACCESS_TOKEN_EXPIRATION || '15m';
+const REFRESH_TOKEN_EXPIRATION = process.env.REFRESH_TOKEN_EXPIRATION || '3d';
 
 exports.signJWT = (payload, withRefresh = true) => {
   const accessToken = jwt.sign(payload, accessKey, { expiresIn: TOKEN_EXPIRATION });

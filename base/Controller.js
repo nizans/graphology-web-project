@@ -1,4 +1,3 @@
-const handleError = require('../components/error/handleError');
 
 class Controller {
   constructor(Service) {

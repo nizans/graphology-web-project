@@ -1,5 +1,5 @@
 const Service = require('../../base/Service');
-const { signJWT, verifyRefreshToken: verifyToken } = require('../../utils/jwtHelpers');
+const { signJWT } = require('../../utils/jwtHelpers');
 const refreshTokenDAL = require('../refreshTokens/refreshToken.DAL');
 const AdminDAL = require('./admin.DAL');
 

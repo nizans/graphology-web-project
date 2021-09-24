@@ -1,6 +1,5 @@
 const DAL = require('../../base/DAL');
 const { LOGIN_INVALID_EMAIL, LOGIN_INCORRECT_PASS, EMAIL_ALREADY_EXISTS } = require('../error/error.constants');
-const ErrorHandle = require('../error/error.model');
 const adminModel = require('./admin.model');
 
 class AdminDal extends DAL {

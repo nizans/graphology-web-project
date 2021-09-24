@@ -1,13 +1,7 @@
 const { isValidObjectId } = require('mongoose');
 const { NO_RESULTS, INVALID_MONGO_ID } = require('../components/error/error.constants');
-const ErrorHandle = require('../components/error/error.model');
 const deleteImages = require('../utils/deleteImages');
 const isPositiveInteger = require('../utils/helpers');
-
-const IMAGE_PREFIX = {
-  full: '/images/',
-  thumb: '/thumbs/',
-};
 
 class Service {
   constructor(DAL) {
