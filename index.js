@@ -1,5 +1,4 @@
 const app = require('./server');
-const authApp = require('./authServer');
 const connection = require('./mongoConnection');
 require('dotenv').config();
 
@@ -11,6 +10,3 @@ app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
 
-authApp.listen(authServerPort, () => {
-  console.log(`Auth Server listening at http://localhost:${authServerPort}`);
-});
