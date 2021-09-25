@@ -1,4 +1,4 @@
-import { SORT_BY } from 'ApiRequest';
+import { SORT_BY } from 'lib/ApiRequest';
 import LoadingSection from 'components/UI/LoadingSection';
 import Underline from 'components/UI/Underline';
 import { contentsApiCRUDRequests } from 'features/couch';

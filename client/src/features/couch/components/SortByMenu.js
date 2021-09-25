@@ -1,4 +1,4 @@
-import { SORT_BY } from 'ApiRequest';
+import { SORT_BY } from 'lib/ApiRequest';
 import DropDownMenu from 'components/UI/DropDownMenu';
 import React from 'react';
 import { useLocation } from 'react-router';

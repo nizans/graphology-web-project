@@ -1,6 +1,6 @@
 // import { BASE_URL } from 'config/constants';
 
-import ApiCRUDRequests from 'ApiRequest';
+import ApiCRUDRequests from 'lib/ApiRequest';
 
 // const VIDEOS_URL = new URL(BASE_URL + '/api/videos');
 // const requests = {

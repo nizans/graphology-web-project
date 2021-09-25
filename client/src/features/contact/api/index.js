@@ -1,4 +1,4 @@
-import { ApiRequests } from 'ApiRequest';
+import { ApiRequests } from 'lib/ApiRequest';
 
 const CONTACT_QUERY = 'contact';
 class ContactApiRequests extends ApiRequests {

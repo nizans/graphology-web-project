@@ -1,4 +1,4 @@
-import ApiCRUDRequests from 'ApiRequest';
+import ApiCRUDRequests from 'lib/ApiRequest';
 // import { BASE_URL } from 'config/constants';
 
 // const CONTENTS_URL = new URL(BASE_URL + '/api/contents');

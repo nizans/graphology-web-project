@@ -1,4 +1,4 @@
-import { ApiRequests } from 'ApiRequest';
+import { ApiRequests } from 'lib/ApiRequest';
 import { articlesApiCRUDRequests } from 'features/articles';
 import { booksApiCRUDRequests } from 'features/books';
 import { contentsApiCRUDRequests } from 'features/couch';

@@ -1,4 +1,4 @@
-import ApiCRUDRequests from 'ApiRequest';
+import ApiCRUDRequests from 'lib/ApiRequest';
 // import { BASE_URL } from 'config/constants';
 // import { CONTACT_URL } from 'features/contact/api';
 

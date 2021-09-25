@@ -1,4 +1,4 @@
-import ApiCRUDRequests from 'ApiRequest';
+import ApiCRUDRequests from 'lib/ApiRequest';
 const ARTICLES_QUERY = 'articles';
 
 class ArticlesApiCRUDRequests extends ApiCRUDRequests {

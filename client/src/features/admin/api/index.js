@@ -1,4 +1,4 @@
-import ApiCRUDRequests, { ApiRequests } from 'ApiRequest';
+import ApiCRUDRequests, { ApiRequests } from 'lib/ApiRequest';
 
 const AUTH_QUERY = 'auth';
 const ADMIN_QUERY = 'admins';

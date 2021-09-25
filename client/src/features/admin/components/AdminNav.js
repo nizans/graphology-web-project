@@ -76,7 +76,6 @@ const AdminNav = () => {
               <NavLink activeClassName="font-bold" className="_text-xl px-4" to={`${path}/view/admins`}>
                 {strings.admins}
               </NavLink>
-
               <LoadingButton
                 isLoading={isLoggingOutLoading}
                 value={strings.logout}
@@ -85,8 +84,8 @@ const AdminNav = () => {
                 className="button p-0 _text-xl px-4">
                 {strings.logout}
               </LoadingButton>
-
-              {process.env.NODE_ENV === 'development' && (
+              <div>
+                <label>Random Data: </label>
                 <ul className="flex justify-between">
                   <li>
                     <button onClick={postA}>10 Articles</button>
@@ -98,7 +97,7 @@ const AdminNav = () => {
                     <button onClick={postB}>10 Books</button>
                   </li>
                 </ul>
-              )}
+              </div>
             </nav>
           </div>
         </div>
