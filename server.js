@@ -20,7 +20,8 @@ app.use(
 app.use(express.json());
 
 // Static
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public', 'images')));
+app.use(express.static(path.join(__dirname, 'public', 'thumbs')));
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 // Components routes
