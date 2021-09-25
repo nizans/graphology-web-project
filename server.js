@@ -21,15 +21,15 @@ app.use(express.json());
 
 // Static
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public', 'dist'))); // PRODUCTION
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 // Components routes
 app.use('/api', require('./routes/routes'));
 //app.use('/auth', require('./components/auth'));
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'dist', 'index.html'));
-}); // PRODUCTION
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 app.use((err, req, res, next) => {
   handleError(err, res);
