@@ -1,7 +1,6 @@
 import { AuthContext } from 'context/authContext';
 import { adminApiCRUDRequests } from 'features/admin';
-import React from 'react';
-import { useContext } from 'react/cjs/react.development';
+import React, { useContext } from 'react';
 import Table from './Table';
 
 const strings = {
@@ -26,10 +25,12 @@ const AdminsTable = () => {
       <td>{admin.name}</td>
       <td>{admin.email}</td>
       <td className="flex items-center">
-        <span
-          style={{ borderRadius: '2rem', border: '1px solid' }}
-          className="h-4 w-4 inline-block bg-green-500 ml-2"></span>
-        {user.email === admin.email ? strings.connected : ''}
+        {user.email === admin.email && (
+          <span
+            style={{ borderRadius: '2rem', border: '1px solid' }}
+            className="h-4 w-4 inline-block bg-green-500 ml-2"></span>
+        )}
+        {user.email === admin.email && strings.connected}
       </td>
     </>
   );

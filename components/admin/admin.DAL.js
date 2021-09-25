@@ -11,7 +11,7 @@ class AdminDal extends DAL {
     const admin = await this.Model.findOne({ email });
     if (!admin) throw LOGIN_INVALID_EMAIL;
     if (!(await admin.validatePassword(password))) throw LOGIN_INCORRECT_PASS;
-    return await this.Model.findOne({ email }).select('name email');
+    return await this.Model.findOne({ email }).select('name email _id');
   }
 
   async add(data) {
