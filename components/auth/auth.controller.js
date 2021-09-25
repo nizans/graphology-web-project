@@ -2,6 +2,7 @@ const authCookieSettings = require('../../config/authCookieSettings');
 const { protectRoute } = require('../../middleware/protectRoute');
 const { replaceAccessToken } = require('../../middleware/replaceAccessToken');
 const ErrorHandle = require('../error/error.model');
+const handleError = require('../error/handleError');
 const authService = require('./auth.service');
 
 class AuthController {
@@ -46,10 +47,14 @@ class AuthController {
   }
 
   async #refresh(req, res, next) {
-    const refreshToken = req.body.refreshToken;
-    if (!refreshToken) throw new ErrorHandle(401, 'No refresh token');
-    req.admin = await authService.refresh(refreshToken);
-    next();
+    try {
+      const refreshToken = req.body.refreshToken;
+      if (!refreshToken) throw new ErrorHandle(401, 'No refresh token');
+      req.admin = await authService.refresh(refreshToken);
+      next();
+    } catch (error) {
+      handleError(error, res);
+    }
   }
 }
 

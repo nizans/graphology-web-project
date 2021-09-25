@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Section from 'components/common/Section';
-import { useContext } from 'react/cjs/react.development';
 import { SectionHeightContext } from 'context/sectionHeightContext';
 
 import ContactForm from './ContactForm';

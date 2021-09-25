@@ -1,12 +1,10 @@
 import ApiCRUDRequests, { ApiRequests } from 'ApiRequest';
-import { AUTH_URL } from 'config/constants';
 
 const AUTH_QUERY = 'auth';
 const ADMIN_QUERY = 'admins';
 class AuthAPIRequests extends ApiRequests {
   constructor() {
     super(AUTH_QUERY);
-    this.baseUrl = new URL(AUTH_URL + '/' + this.query);
 
     this.login = {
       query: [this.query, 'login'],

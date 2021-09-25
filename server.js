@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public', 'dist'))); // PRODUCTION
 
 // Components routes
-app.use('/api', require('./routes'));
-app.use('/auth', require('./components/auth'));
+app.use('/api', require('./routes/routes'));
+//app.use('/auth', require('./components/auth'));
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dist', 'index.html'));

@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
+const { MONGO_CONN_STRING } = require('./config/constants');
 
 module.exports = async function connection() {
   try {
-    await mongoose.connect(process.env.DB_CONN_STRING, {
+    await mongoose.connect(MONGO_CONN_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
     mongoose.connection.on('error', err => {
-      console.log('Mongoose Error');
       console.log(err);
+      console.log('Mongoose connection error.');
     });
-    console.log('Mongo Connected');
+    console.log('Mongo connected!');
   } catch (err) {
-    console.err(err);
-    console.log('Connection to Mongo faild.');
+    console.log(err);
+    console.log('Mongoose connection error.');
   }
 };
