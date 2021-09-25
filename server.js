@@ -5,6 +5,17 @@ const cors = require('cors');
 const morgan = require('morgan');
 const handleError = require('./components/error/handleError');
 const cookieParser = require('cookie-parser');
+const fs = require('fs');
+
+if (!fs.existsSync('./public')) {
+  fs.mkdirSync('./public');
+}
+if (!fs.existsSync('./public/images')) {
+  fs.mkdirSync('./public/images', { recursive: true });
+}
+if (!fs.existsSync('./public/thumbs')) {
+  fs.mkdirSync('./public/thumbs', { recursive: true });
+}
 
 // Middlewares
 app.use(morgan('dev'));
@@ -25,7 +36,6 @@ app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 // Components routes
 app.use('/api', require('./routes/routes'));
-
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
