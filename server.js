@@ -30,14 +30,14 @@ app.use(
 );
 
 app.use(express.json());
-app.use('/static', express.static(path.join(__dirname, 'public', 'build', 'static')));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', require('./routes/api.routes'));
 
 app.get('*', (req, res, next) => {
   if (req.url.split('/')[1] === 'images' || req.url.split('/')[1] === 'thumbs') next();
-  else res.sendFile(path.join(__dirname, 'public', 'build', 'index.html'));
+  else res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 app.use((err, req, res, next) => {
