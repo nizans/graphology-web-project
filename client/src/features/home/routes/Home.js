@@ -2,8 +2,7 @@ import Section from 'components/common/Section';
 import { SectionHeightContext } from 'context/sectionHeightContext';
 import useDimensions from 'hooks/useDimensions';
 import React, { useContext } from 'react';
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
+
 import ContactUs from '../components/ContantUs/ContactUs';
 import Expertise from '../components/Expertise/Expertise';
 import Michal from '../components/Michal/Michal';
@@ -36,7 +35,7 @@ export const Home = () => {
       <Section minHeight={windowHeight - headerHeight} className="flex flex-col justify-around mb-16">
         <Recommendations />
       </Section>
-      <Section minHeight={windowHeight - headerHeight} className="flex flex-col justify-evenly mb-16">
+      <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
         <Radio />
       </Section>
       <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
