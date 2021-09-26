@@ -28,19 +28,16 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
+
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Static
-app.use('/public/images', express.static(path.join(__dirname, 'public', 'images')));
-app.use('/public/thumbs', express.static(path.join(__dirname, 'public', 'thumbs')));
+app.use('/api', require('./routes/api.routes'));
 
-app.use(express.static(path.join(__dirname, 'client', 'build')));
-
-// Components routes
-app.use('/api', require('./routes/routes'));
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+app.get((req, res, next) => {
+  if (!req.url.split('/')[1] === 'images' && !req.url.split('/')[1] === 'thumbs')
+    res.sendFile(path.resolve(__dirname, 'public', 'build', 'index.html'));
+  next();
 });
 
 app.use((err, req, res, next) => {

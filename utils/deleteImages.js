@@ -13,7 +13,6 @@ module.exports = deleteImages = async arrayOfImagesObjects => {
         console.log(img.thumb + ' deleted');
       } catch (error) {
         console.error(error);
-        throw error;
       }
     });
   }
