@@ -1,4 +1,3 @@
-import { ApiRequests } from 'lib/ApiRequest';
 import { articlesApiCRUDRequests } from 'features/articles';
 import { booksApiCRUDRequests } from 'features/books';
 import { contentsApiCRUDRequests } from 'features/couch';
@@ -87,7 +86,6 @@ export const usePostRandomArticles = (n = 10) => {
 };
 
 export const usePostRandomContents = (n = 10) => {
-  const apiReq = new ApiRequests('contens');
   const { mutate } = useMutateData(contentsApiCRUDRequests.create);
   const post = async () => {
     for (let i = 0; i < n; i++) {
@@ -99,7 +97,6 @@ export const usePostRandomContents = (n = 10) => {
 };
 
 export const usePostRandomBooks = (n = 10) => {
-  const apiReq = new ApiRequests('books');
   const { mutate } = useMutateData(booksApiCRUDRequests.create);
   const post = async () => {
     for (let i = 0; i < n; i++) {

@@ -1,7 +1,7 @@
 import FormField from 'components/UI/FormField';
 import LoadingButton from 'components/UI/LoadingButton';
 import Spinner from 'components/UI/Spinner';
-import { contactApiRequests, CONTACT_API } from 'features/contact/api';
+import { contactApiRequests } from 'features/contact/api';
 import { ErrorMessage, useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
 import React from 'react';

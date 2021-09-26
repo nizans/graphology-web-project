@@ -19,10 +19,12 @@ const Radio = () => {
   const handleReady = () => {
     setIsReady(true);
   };
+
   useEffect(() => {
     if (isFirstRender.current) setFirstRender(true);
     else setFirstRender(false);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     setIsReady(false);
   }, [videoUrl]);

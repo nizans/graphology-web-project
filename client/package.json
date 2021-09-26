@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
-    "build": "npm run watch:css && react-scripts build",
+    "build": "cross-env BUILD_PATH=../public/build npm run watch:css && react-scripts build",
     "analyze": "source-map-explorer ../public/build/static/js/*.js'",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "source-map-explorer": "^2.5.2"
   },
   "prettier": {

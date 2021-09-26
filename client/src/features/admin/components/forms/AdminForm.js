@@ -1,5 +1,4 @@
 import ErrorMessage from 'components/UI/ErrorMessage';
-import ErrorSection from 'components/UI/ErrorSection';
 import FormField from 'components/UI/FormField';
 import LoadingButton from 'components/UI/LoadingButton';
 import { adminApiCRUDRequests } from 'features/admin';
@@ -20,10 +19,11 @@ const strings = {
   minLength: 'סיסמא חייבת להכיל לפחות 6 תווים',
   passwordMustMatch: 'סיסמא לא תואמת',
   passwordPlaceHolder: 'סיסמא',
+  success: 'תודה, הפרטים התקבלו בהצלחה!',
 };
 
 const AdminForm = () => {
-  const { mutate, isLoading, error } = useMutateData(adminApiCRUDRequests.create);
+  const { mutate, isLoading, error, isSuccess } = useMutateData(adminApiCRUDRequests.create);
 
   const initialValues = {
     name: '',
@@ -46,6 +46,7 @@ const AdminForm = () => {
       mutate({ body: JSON.stringify(values) });
     },
   });
+  if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
 
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col justify-evenly h-full m-auto w-1/2 ">
@@ -55,6 +56,11 @@ const AdminForm = () => {
       <FormField formik={formik} type="password" htmlFor="validatePassword" placeholder={strings.validatePassword} />
       <div className="mr-auto">
         <LoadingButton isLoading={isLoading} />
+        {error && (
+          <label>
+            <ErrorMessage error={error} />
+          </label>
+        )}
       </div>
       {error && (
         <div className="mx-auto">

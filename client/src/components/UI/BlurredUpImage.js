@@ -1,9 +1,9 @@
 import Modal from 'components/common/Modal';
+import ExpandIcon from 'components/UI/ExpandIcon';
 import useModal from 'hooks/useModal';
 import useProgressiveImg from 'hooks/useProgressiveImg';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Magnifier from 'react-magnifier';
-import ExpandIcon from 'components/UI/ExpandIcon';
 
 const BlurredUpImage = props => {
   const { wrapperClassName, tinySrc, imageSrc, withModal = true, width = '100%', height = '' } = props;

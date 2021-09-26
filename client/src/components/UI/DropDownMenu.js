@@ -20,10 +20,10 @@ const DropDownMenu = ({
   useEffect(() => {
     if (title && isFirstRender) !values.includes(title) && values.unshift(title);
     if (valsArray.includes(title) && !isFirstRender) {
-      const arr = valsArray.filter(v => v != title);
+      const arr = valsArray.filter(v => v !== title);
       setValsArray(arr);
     }
-  }, [title, valsArray]);
+  }, [title, valsArray, isFirstRender]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleItemClick = val => {
     setValsArray([val, ...valsArray.filter(i => i !== val)]);

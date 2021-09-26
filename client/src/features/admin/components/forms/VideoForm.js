@@ -1,10 +1,12 @@
 import ResponsivePlayer from 'components/common/ResponsivePlayer';
 import TextEditor from 'components/common/TextEditor';
+import ErrorMessage from 'components/UI/ErrorMessage';
 import FormField from 'components/UI/FormField';
+import LoadingButton from 'components/UI/LoadingButton';
 import { videosApiCRUDRequests } from 'features/videos/api';
 import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Yup from 'yup';
 
 const strings = {
@@ -15,11 +17,16 @@ const strings = {
   required: 'שדה דרוש',
   urlInvalid: 'הלינק אינו תקין',
   send: 'שלח',
+  update: 'עדכן שירות',
+  success: 'תודה, הפרטים התקבלו בהצלחה!',
 };
 
 const VideoForm = ({ data: item }) => {
-  const { mutate, isLoading, error } = useMutateData(videosApiCRUDRequests.create);
-
+  const { mutate, isLoading, error, isSuccess } = useMutateData(videosApiCRUDRequests.create);
+  useEffect(() => {
+    console.log(error);
+    console.log(isSuccess);
+  }, [error, isSuccess]);
   const initialValues = {
     title: item?.title || '',
     description: item?.description || '',
@@ -39,6 +46,7 @@ const VideoForm = ({ data: item }) => {
     },
   });
 
+  if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
   return (
     <form
       onSubmit={formik.handleSubmit}
@@ -56,9 +64,12 @@ const VideoForm = ({ data: item }) => {
           />
         </div>
         <FormField formik={formik} className="_text-xl w-full" htmlFor="url" placeholder={strings.url} />
-        <button className="button mr-auto" type="submit" style={{ width: 'fit-content' }}>
-          {strings.send}
-        </button>
+        <LoadingButton isLoading={isLoading} value={item ? strings.update : strings.send} />
+        {error && (
+          <label>
+            <ErrorMessage error={error} />
+          </label>
+        )}
       </div>
       <div className="w-full pr-6">
         <ResponsivePlayer url={!formik.errors.url && formik.values.url} />

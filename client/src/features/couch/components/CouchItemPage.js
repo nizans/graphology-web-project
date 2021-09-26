@@ -26,7 +26,7 @@ const CouchItemPage = () => {
     if (item) {
       setTitle(item._id, item.title);
     }
-  }, [item]);
+  }, [item, setTitle]);
 
   const handleDelete = () => {
     mutate({ uri: id });

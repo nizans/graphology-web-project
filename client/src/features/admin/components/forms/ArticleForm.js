@@ -1,6 +1,8 @@
 import ImageUploadInput from 'components/common/ImageUploadInput';
 import TextEditor from 'components/common/TextEditor';
+import ErrorMessage from 'components/UI/ErrorMessage';
 import FormField from 'components/UI/FormField';
+import LoadingButton from 'components/UI/LoadingButton';
 import { articlesApiCRUDRequests } from 'features/articles';
 import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
@@ -24,7 +26,7 @@ const strings = {
 };
 
 const ArticleForm = ({ data: item }) => {
-  const mutation = useMutateData(articlesApiCRUDRequests.create);
+  const { mutate, isLoading, error, isSuccess } = useMutateData(articlesApiCRUDRequests.create);
 
   const [images, setImages] = useState([]);
 
@@ -33,6 +35,8 @@ const ArticleForm = ({ data: item }) => {
     sourceFrom: item?.sourceFrom || '',
     sourceURL: item?.sourceURL || '',
     publishDate: item?.publishDate || '',
+    success: 'תודה, הפרטים התקבלו בהצלחה!',
+
     text: item?.text || '',
   };
 
@@ -50,10 +54,11 @@ const ArticleForm = ({ data: item }) => {
     validationSchema: validation,
     onSubmit: values => {
       const formData = createFormData(values, images);
-      mutation.mutate({ body: formData });
+      mutate({ body: formData });
     },
     enableReinitialize: true,
   });
+  if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
 
   return (
     <form onSubmit={formik.handleSubmit} className="flex h-full justify-between w-full">
@@ -63,9 +68,12 @@ const ArticleForm = ({ data: item }) => {
         <FormField formik={formik} htmlFor="sourceURL" placeholder={strings.sourceURL} />
         <FormField formik={formik} topLabel={strings.publishDate} htmlFor="publishDate" type="date" />
         <ImageUploadInput images={images} onImageChange={setImages} />
-        <button className="button" type="submit" style={{ width: 'fit-content' }}>
-          {item ? strings.update : strings.send}
-        </button>
+        <LoadingButton isLoading={isLoading} value={item ? strings.update : strings.send} />
+        {error && (
+          <label>
+            <ErrorMessage error={error} />
+          </label>
+        )}
       </div>
       <div className="flex flex-col w-full">
         <TextEditor

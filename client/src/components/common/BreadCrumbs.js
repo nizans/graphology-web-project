@@ -10,7 +10,7 @@ const BreadCrumbs = () => {
   const { setBreadCrumbHeight } = useContext(SectionHeightContext);
   useEffect(() => {
     if (breadCrumbDimension) setBreadCrumbHeight(breadCrumbDimension.height);
-  }, [breadCrumbDimension]);
+  }, [breadCrumbDimension]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const breadCrumbsTitleCTX = useContext(BreadCrumbsTitleContext);
   const translate = {

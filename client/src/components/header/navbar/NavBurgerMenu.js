@@ -1,4 +1,3 @@
-import Underline from 'components/UI/Underline';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavPhoneNumber from './NavPhoneNumber';

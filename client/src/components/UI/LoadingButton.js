@@ -4,7 +4,7 @@ import Spinner from './Spinner';
 const strings = { loading: 'טוען', send: 'שלח' };
 
 const LoadingButton = props => {
-  const { isLoading, value = '', ...rest } = props;
+  const { isLoading, value = strings.send, ...rest } = props;
   return (
     <button type="submit" className="button  relative" {...rest}>
       <span>{isLoading ? strings.loading : value || strings.send}</span>

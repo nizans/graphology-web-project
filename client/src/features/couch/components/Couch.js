@@ -1,6 +1,5 @@
 import Pagintation from 'components/common/Pagintation';
 import Section from 'components/common/Section';
-import DropDownMenu from 'components/UI/DropDownMenu';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
 import SearchInput from 'components/UI/SearchInput';
@@ -8,7 +7,7 @@ import Underline from 'components/UI/Underline';
 import useDimensions from 'hooks/useDimensions';
 import useQueryParams from 'hooks/useQueryParams';
 import { useFetchData } from 'lib/reactQuery';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { contentsApiCRUDRequests } from '..';
 import CouchItem from './CouchItem';
 import SortByMenu from './SortByMenu';

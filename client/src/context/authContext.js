@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
   } = useMutateData(authAPIRequests.login);
   const { mutateAsync: refreshRequest } = useMutateData(authAPIRequests.refresh);
   const { mutateAsync: logoutRequest, isLoading: isLoggingOutLoading } = useMutateData(authAPIRequests.logout);
-  const { mutateAsync: renewRequest, error: renewError } = useMutateData(authAPIRequests.renew);
+  const { mutateAsync: renewRequest } = useMutateData(authAPIRequests.renew);
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState();
   const [refreshToken, setRefreshToken, clearRefreshToken] = useLocalStorage('refreshToken', false);
@@ -91,7 +91,7 @@ export const AuthContextProvider = ({ children }) => {
         renew();
       }
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <AuthContext.Provider

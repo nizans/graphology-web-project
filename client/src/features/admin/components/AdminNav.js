@@ -44,11 +44,11 @@ const AdminNav = () => {
 
   useEffect(() => {
     if (headerDimension) setHeaderHeight(headerDimension.height);
-  }, [headerDimension]);
+  }, [headerDimension, setHeaderHeight]);
 
   useEffect(() => {
     setTitle(viewPage ? strings.viewTitle : strings.addtitle(location.pathname.split('/')[3]));
-  }, [viewPage]);
+  }, [viewPage, location.pathname]);
 
   const handleLogout = async () => {
     logout();

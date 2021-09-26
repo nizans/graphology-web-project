@@ -1,18 +1,18 @@
 import ImageBox from 'components/common/ImageBox';
 import Section from 'components/common/Section';
-import Underline from 'components/UI/Underline';
-import { BreadCrumbsTitleContext } from 'context/breadCrumbsTitleContext';
-import parse from 'html-react-parser';
-import React, { useContext, useEffect } from 'react';
-import { Redirect, useHistory, useParams } from 'react-router';
-import { useFetchData, useMutateData } from 'lib/reactQuery';
-import { toDate } from 'utils/toDate';
-import { articlesApiCRUDRequests } from '..';
+import ButtonsCell from 'components/UI/ButtonsCell';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
-import useWindowDimensions from 'hooks/useWindowDimensions';
-import ButtonsCell from 'components/UI/ButtonsCell';
+import Underline from 'components/UI/Underline';
 import { AuthContext } from 'context/authContext';
+import { BreadCrumbsTitleContext } from 'context/breadCrumbsTitleContext';
+import useWindowDimensions from 'hooks/useWindowDimensions';
+import parse from 'html-react-parser';
+import { useFetchData, useMutateData } from 'lib/reactQuery';
+import React, { useContext, useEffect } from 'react';
+import { Redirect, useParams } from 'react-router';
+import { toDate } from 'utils/toDate';
+import { articlesApiCRUDRequests } from '..';
 
 const strings = { articleFrom: 'כתבה מתוך: ', publishedAt: 'פורסם בתאריך: ', originalLink: 'לכתבה המקורית' };
 
@@ -26,7 +26,7 @@ const ArticlePage = () => {
 
   useEffect(() => {
     if (!isLoading && item) setTitle(item._id, item.title);
-  }, [item]);
+  }, [item, isLoading, setTitle]);
 
   const handleDelete = () => {
     mutate({ uri: id });

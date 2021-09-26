@@ -50,7 +50,7 @@ const sliderSettings = {
 };
 
 const SuggestionContainer = ({ setVideoUrl }) => {
-  const { data, isLoading, error } = useFetchData(videosApiCRUDRequests.read(null, { page: 0, limit: 5 }));
+  const { data } = useFetchData(videosApiCRUDRequests.read(null, { page: 0, limit: 5 }));
   const [currentVideo, setCurrentVideo] = useState();
 
   const { width } = useWindowDimensions();

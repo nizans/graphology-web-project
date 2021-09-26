@@ -14,7 +14,7 @@ import OrderBookForm from './OrderBookForm';
 
 const OrderBook = () => {
   const { setTitle } = useContext(BreadCrumbsTitleContext);
-  const { windowWidth, headerHeight, breadCrumbHeight, footerHeight } = useContext(SectionHeightContext);
+  const { windowWidth } = useContext(SectionHeightContext);
   const { id } = useParams();
   const { data: book, isLoading, error } = useFetchData(booksApiCRUDRequests.read(id));
   const { mutate, isLoading: isMutating, isSuccess: isDeleteSuccess } = useMutateData(booksApiCRUDRequests.delete);
@@ -22,7 +22,7 @@ const OrderBook = () => {
 
   useEffect(() => {
     if (book) setTitle(book._id, book.title);
-  }, [book]);
+  }, [book, setTitle]);
 
   const handleDelete = () => {
     mutate({ uri: id });

@@ -4,7 +4,6 @@ import useWindowDimensions from 'hooks/useWindowDimensions';
 import { useFetchData } from 'lib/reactQuery';
 import React, { useEffect } from 'react';
 import Slider from 'react-slick';
-import { useState } from 'react/cjs/react.development';
 import BriefCase from '../../../../assets/icons/experise_breifcase.svg';
 import OpenBook from '../../../../assets/icons/experise_openbook.svg';
 import Speech from '../../../../assets/icons/expertise_speech.svg';

@@ -1,8 +1,7 @@
 import React from 'react';
-import { NavLink, useRouteMatch, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const Pagintation = ({ pages, page }) => {
-  const { path } = useRouteMatch();
   const currenctQueryParams = new URLSearchParams(useLocation().search);
 
   const setQueryParams = (name, value) => {

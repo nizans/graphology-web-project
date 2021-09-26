@@ -30,7 +30,7 @@ const TableItemImage = ({
 
   useEffect(() => {
     forceUpdate();
-  }, [imageSrc, thumbSrc]);
+  }, [imageSrc, thumbSrc]); // eslint-disable-line react-hooks/exhaustive-deps
   const getImageSrc = () => {
     if (Array.isArray(image) && image.length >= 1) {
       setImageSrc(image[0].full);

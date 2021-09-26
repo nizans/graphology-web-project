@@ -1,6 +1,4 @@
-import { AuthContext } from 'context/authContext';
-import { useContext } from 'react';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 const defualtQuerySetttings = {
   staleTime: 1000 * 60 * 15,
   retry: false,

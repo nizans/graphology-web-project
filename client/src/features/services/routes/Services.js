@@ -1,6 +1,5 @@
 import Section from 'components/common/Section';
 import ErrorSection from 'components/UI/ErrorSection';
-import LoadingSection from 'components/UI/LoadingSection';
 import Spinner from 'components/UI/Spinner';
 import Underline from 'components/UI/Underline';
 import { SectionHeightContext } from 'context/sectionHeightContext';

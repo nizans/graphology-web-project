@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import BookShelf from '../components/Shelf/BookShelf';
 import Section from 'components/common/Section';
-import Expertise from '../components/Expertise/Expertise';
-import Recommendations from '../components/Recommendations/Recommendations';
-import Radio from '../components/Radio/Radio';
-import OnTheCouch from '../components/OnTheCouch/OnTheCouch';
-import Michal from '../components/Michal/Michal';
 import { SectionHeightContext } from 'context/sectionHeightContext';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import ContactUs from '../components/ContantUs/ContactUs';
 import useDimensions from 'hooks/useDimensions';
+import React, { useContext } from 'react';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import ContactUs from '../components/ContantUs/ContactUs';
+import Expertise from '../components/Expertise/Expertise';
+import Michal from '../components/Michal/Michal';
+import OnTheCouch from '../components/OnTheCouch/OnTheCouch';
+import Radio from '../components/Radio/Radio';
+import Recommendations from '../components/Recommendations/Recommendations';
+import BookShelf from '../components/Shelf/BookShelf';
 
 export const Home = () => {
   const [michalRef, michalDim] = useDimensions();

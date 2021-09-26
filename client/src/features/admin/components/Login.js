@@ -1,15 +1,11 @@
-import React from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import FormField from 'components/UI/FormField';
-import { NavLink } from 'react-router-dom';
-import Spinner from 'components/UI/Spinner';
-import { useContext } from 'react';
-import { AuthContext } from 'context/authContext';
-import { useEffect } from 'react';
-import { useHistory } from 'react-router';
 import ErrorMessage from 'components/UI/ErrorMessage';
+import FormField from 'components/UI/FormField';
 import LoadingButton from 'components/UI/LoadingButton';
+import { AuthContext } from 'context/authContext';
+import { useFormik } from 'formik';
+import React, { useContext, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import * as Yup from 'yup';
 const strings = {
   required: 'שדה דרוש',
   invalidEmail: 'כתובת אימייל לא תקינה',
@@ -24,9 +20,8 @@ const strings = {
 
 const Login = () => {
   const { login, loginError, isLoginLoading, isLoginSuccess, resetLoginRequestState } = useContext(AuthContext);
-  useEffect(() => () => resetLoginRequestState(), []);
+  useEffect(() => () => resetLoginRequestState(), []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  
   const formik = useFormik({
     initialValues: {
       email: '',

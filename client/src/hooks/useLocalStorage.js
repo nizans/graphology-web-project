@@ -36,11 +36,11 @@ const useLocalStorage = (key, initialValue) => {
     return () => {
       window.addEventListener('storage', onLocalStorageChange);
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  //check if same value after storage event 
+  //check if same value after storage event
   const onLocalStorageChange = e => {
-    if (e.key == key) {
+    if (e.key === key) {
       if (storedValue !== storage.get(key)) {
         setStoredValue(initialValue);
       }

@@ -1,5 +1,7 @@
 import ImageUploadInput from 'components/common/ImageUploadInput';
 import TextEditor from 'components/common/TextEditor';
+import ErrorMessage from 'components/UI/ErrorMessage';
+import LoadingButton from 'components/UI/LoadingButton';
 import FormField from 'components/UI/FormField';
 import { contentsApiCRUDRequests } from 'features/couch';
 import { useFormik } from 'formik';
@@ -13,15 +15,16 @@ const strings = {
   subtitle: 'תת כותרת',
   publishDate: 'תאריך פרסום',
   send: 'העלה מאמר',
-  update: 'העלה מאמר',
+  update: 'עדכן מאמר',
   text: 'תוכן המאמר',
   textPlaceholder: 'כתוב פה את תוכן המאמר',
   notext: 'לא הוכנס טסט',
   required: 'שדה דרוש',
+  success: 'תודה, הפרטים התקבלו בהצלחה!',
 };
 
 const CouchForm = ({ data: item }) => {
-  const { mutate, isLoading, error } = useMutateData(contentsApiCRUDRequests.create);
+  const { mutate, isLoading, error, isSuccess } = useMutateData(contentsApiCRUDRequests.create);
   const [images, setImages] = useState(item?.images.map(img => img.full) || []);
 
   const initialValues = {
@@ -47,6 +50,8 @@ const CouchForm = ({ data: item }) => {
     },
     enableReinitialize: true,
   });
+
+  if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
   return (
     <form onSubmit={formik.handleSubmit} className="flex h-full justify-between w-full">
       <div className="flex flex-col justify-evenly items-center">
@@ -68,9 +73,12 @@ const CouchForm = ({ data: item }) => {
         </div>
         <FormField formik={formik} topLabel={strings.publishDate} htmlFor="publishDate" type="date" />
         <ImageUploadInput onImageChange={setImages} images={images} />
-        <button className="button" type="submit" style={{ width: 'fit-content' }}>
-          {item ? strings.update : strings.send}
-        </button>
+        <LoadingButton isLoading={isLoading} value={item ? strings.update : strings.send} />
+        {error && (
+          <label>
+            <ErrorMessage error={error} />
+          </label>
+        )}
       </div>
       <div className="flex flex-col w-full">
         <TextEditor

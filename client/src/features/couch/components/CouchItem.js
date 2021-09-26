@@ -4,12 +4,13 @@ import { SectionHeightContext } from 'context/sectionHeightContext';
 import useDimensions from 'hooks/useDimensions';
 import useDomParser from 'hooks/useDomParser';
 import truncate from 'lodash.truncate';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useRouteMatch } from 'react-router-dom';
+
 const CouchItem = ({ data: item }) => {
   const { path } = useRouteMatch();
   const [parsedText] = useDomParser(item.text, 'text/html');
-  const { windowWidth, windowHeight, headerHeight, footerHeight, breadCrumbHeight } = useContext(SectionHeightContext);
+  const { windowWidth } = useContext(SectionHeightContext);
   const [ref, dim] = useDimensions();
   const imgSrc = (item.images[0] && item.images[0] && { full: item.images[0].full, thumb: item.images[0].thumb }) || {
     full: 'https://via.placeholder.com/150',

@@ -10,7 +10,7 @@ class VideoService extends Service {
     let thumbnailURL;
     thumbnailURL = await getVideoThumbnail(data.url);
     data.thumbnail = thumbnailURL;
-    await super.create(data);
+    return await super.create(data);
   }
 }
 
