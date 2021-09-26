@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "@tinymce/tinymce-react": "^3.12.6",
     "autoprefixer": "^10.3.5",
+    "cross-env": "^7.0.3",
     "formik": "^2.2.9",
     "html-react-parser": "^1.2.8",
     "lodash.truncate": "^4.4.2",
@@ -55,7 +56,6 @@
     ]
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "source-map-explorer": "^2.5.2"
   },
   "prettier": {
