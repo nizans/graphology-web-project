@@ -11,7 +11,7 @@ function randomDate(start = new Date(2012, 0, 1), end = new Date()) {
 const urlToObject = async imgSrc => {
   const response = await fetch(imgSrc);
   const blob = await response.blob();
-  const file = new File([blob], 'randomImage + ' + (Math.random() * 100).toString() + '.jpg', { type: blob.type });
+  const file = new File([blob], 'randomImage' + '.jpg', { type: blob.type });
   return file;
 };
 

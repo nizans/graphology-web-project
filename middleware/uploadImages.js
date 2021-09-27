@@ -2,6 +2,8 @@ const multer = require('multer');
 const imageResizer = require('../utils/imageResizer');
 const generateUniqueID = require('../utils/generateUniqueID');
 const { IMAGE_PATH_PREFIX, THUMBS_PATH_PREFIX } = require('../config/constants');
+const uploadToS3 = require('./uploadToS3');
+const deleteTempImages = require('./deleteTempImages');
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, './public/images');
@@ -30,4 +32,8 @@ const addImagePrefix = (req, res, next) => {
   next();
 };
 
-module.exports = [uploadImage.array('image'), imageResizer, addImagePrefix];
+/**
+ *  Upload images to public folder -> create local thumb for each image -> add path prefix to each file
+ *  -> upload to s3 bucket -> delete local files -> next()
+ */
+module.exports = [uploadImage.array('image'), imageResizer, addImagePrefix, uploadToS3, deleteTempImages];

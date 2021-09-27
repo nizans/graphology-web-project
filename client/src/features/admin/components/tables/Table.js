@@ -26,9 +26,7 @@ const Table = ({ type, generateCell, headers, apiRequests }) => {
   const handleDeleteItem = id => {
     mutate({ uri: id });
   };
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
   return (
     <>
       <div className="w-full my-2 flex justify-between">

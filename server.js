@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const handleError = require('./components/error/handleError');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
+const { getFileStream } = require('./lib/s3');
 
 if (!fs.existsSync('./public')) {
   fs.mkdirSync('./public');
@@ -31,7 +32,26 @@ app.use(
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client', 'build')));
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/images/:name', (req, res, next) => {
+  try {
+    const name = req.params.name;
+    const readStream = getFileStream('images/' + name);
+    readStream.pipe(res);
+  } catch (error) {
+    next(error);
+  }
+});
+app.get('/thumbs/:name', (req, res, next) => {
+  try {
+    const name = req.params.name;
+    const readStream = getFileStream('thumbs/' + name);
+    readStream.pipe(res);
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.use('/api', require('./routes/api.routes'));
 

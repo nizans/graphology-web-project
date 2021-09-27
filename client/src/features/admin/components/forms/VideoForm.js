@@ -6,7 +6,7 @@ import LoadingButton from 'components/UI/LoadingButton';
 import { videosApiCRUDRequests } from 'features/videos/api';
 import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as Yup from 'yup';
 
 const strings = {
@@ -23,10 +23,7 @@ const strings = {
 
 const VideoForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(videosApiCRUDRequests.create);
-  useEffect(() => {
-    console.log(error);
-    console.log(isSuccess);
-  }, [error, isSuccess]);
+
   const initialValues = {
     title: item?.title || '',
     description: item?.description || '',

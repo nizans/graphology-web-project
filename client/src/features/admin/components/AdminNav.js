@@ -32,7 +32,9 @@ const AdminNav = () => {
   const postA = usePostRandomArticles(10);
   const postC = usePostRandomContents(10);
   const postB = usePostRandomBooks(10);
-
+  const postA1 = usePostRandomArticles(1);
+  const postC1 = usePostRandomContents(1);
+  const postB1 = usePostRandomBooks(1);
   const { goBack } = useHistory();
   const { path } = useRouteMatch();
   const viewPage = useRouteMatch('/admin/view');
@@ -95,6 +97,17 @@ const AdminNav = () => {
                   </li>
                   <li>
                     <button onClick={postB}>10 Books</button>
+                  </li>
+                </ul>
+                <ul className="flex justify-between">
+                  <li>
+                    <button onClick={postA1}>1 Articles</button>
+                  </li>
+                  <li>
+                    <button onClick={postC1}>1 Contents</button>
+                  </li>
+                  <li>
+                    <button onClick={postB1}>1 Books</button>
                   </li>
                 </ul>
               </div>
