@@ -1,7 +1,7 @@
 import useDimensions from 'hooks/useDimensions';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Arrow from '../../assets/icons/down_arrow.png';
+import Arrow from 'assets/icons/down_arrow.png';
 
 const DropDownMenu = ({
   values = [],

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import PlayOutline from '../../../../assets/icons/play_border.png';
-import PlayFilled from '../../../../assets/icons/play_filled.png';
+import PlayOutline from 'assets/icons/play_border.png';
+import PlayFilled from 'assets/icons/play_filled.png';
 
 const VideoThumbnail = ({ data, onClick }) => {
   const playOutlineRef = useRef(null);

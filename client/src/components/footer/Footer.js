@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import Logo from '../../assets/icons/logo_subtitle.svg';
-import FBIcon from '../../assets/icons/fb_logo.svg';
-import Shelf from '../../assets/icons/brown_shelf.svg';
+import Logo from 'assets/icons/logo_subtitle.svg';
+import FBIcon from 'assets/icons/fb_logo.svg';
+import Shelf from 'assets/icons/brown_shelf.svg';
 import { NavLink } from 'react-router-dom';
 import useDimensions from 'hooks/useDimensions';
 import { DimensionsContext } from 'context/DimensionsContext';

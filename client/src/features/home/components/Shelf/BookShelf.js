@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import Shelf from '../../../../assets/icons/Shelf.svg';
+import Shelf from 'assets/icons/Shelf.svg';
 import './bookshelf.css';
 import RightSide from './RightSide';
 import LeftSide from './LeftSide';
-import DownArrow from '../../../../assets/icons/down_arrow.png';
+import DownArrow from 'assets/icons/down_arrow.png';
 import { DimensionsContext } from 'context/DimensionsContext';
 
 const strings = {

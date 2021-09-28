@@ -8,13 +8,14 @@ import { useFetchData, useMutateData } from 'lib/reactQuery';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import typesDictionary from 'utils/typesDictionary';
-import ButtonsCell from '../../../../components/UI/ButtonsCell';
+import ButtonsCell from 'components/UI/ButtonsCell';
 
 const strings = {
   actions: 'פעולות',
   addNew: type => `הוספת ${typesDictionary[type]}`,
 };
 
+//TODO - fix text shows as html
 const Table = ({ type, generateCell, headers, apiRequests }) => {
   const page = useQueryParams().get('page');
   const find = useQueryParams().get('find');

@@ -1,8 +1,8 @@
 import React from 'react';
-import { ReactComponent as BookFront } from '../../../../assets/icons/book_front.svg';
+import { ReactComponent as BookFront } from 'assets/icons/book_front.svg';
 
 import { useState } from 'react';
-import BookSideTall from '../../../../assets/icons/BookSideTall.svg';
+import BookSideTall from 'assets/icons/BookSideTall.svg';
 const strings = {
   leftPopUp: `ספר מאת מיכל דורון, בו ניתחה ,את כתבי יד של אישויות רבות ספר מרתק החושף צד אנושי .אחר שלא תמיד היה גלוי לעין`,
 };

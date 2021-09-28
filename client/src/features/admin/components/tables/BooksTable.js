@@ -2,7 +2,7 @@ import { booksApiCRUDRequests } from 'features/books';
 import truncate from 'lodash.truncate';
 import React from 'react';
 import { toDate } from 'utils/toDate';
-import TableItemImage from '../../../../components/UI/TableItemImage';
+import TableItemImage from 'components/UI/TableItemImage';
 import Table from './Table';
 
 const strings = {

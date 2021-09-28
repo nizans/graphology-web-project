@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactComponent as BookSide } from '../../../../assets/icons/book_side.svg';
-import BookSideways from '../../../../assets/icons/BookSideways.svg';
-import EmptyBook from '../../../../assets/icons/book_side_emprty.svg';
+import { ReactComponent as BookSide } from 'assets/icons/book_side.svg';
+import BookSideways from 'assets/icons/BookSideways.svg';
+import EmptyBook from 'assets/icons/book_side_emprty.svg';
 
 import { useState } from 'react';
 

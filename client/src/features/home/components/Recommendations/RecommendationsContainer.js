@@ -1,5 +1,5 @@
 import React from 'react';
-import QuotesIcon from '../../../../assets/icons/quotes_icon.svg';
+import QuotesIcon from 'assets/icons/quotes_icon.svg';
 const RecommendationsContainer = ({ data }) => {
   return (
     <div className="flex relative justify-center bg-p-gray m-8 rounded-3xl ">

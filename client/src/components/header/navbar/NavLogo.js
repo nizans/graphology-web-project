@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../../assets/icons/logo.svg';
+import logo from 'assets/icons/logo.svg';
 import NavPhoneNumber from './NavPhoneNumber';
 
 const NavLogo = () => {

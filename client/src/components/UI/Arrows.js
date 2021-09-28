@@ -1,4 +1,4 @@
-import Arrow from '../../assets/icons/down_arrow.png';
+import Arrow from 'assets/icons/down_arrow.png';
 
 export const RightArrow = props => {
   const { className, style, onClick, right } = props;

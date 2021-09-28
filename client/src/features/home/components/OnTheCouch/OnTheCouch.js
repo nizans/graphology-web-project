@@ -5,7 +5,7 @@ import { contentsApiCRUDRequests } from 'features/couch';
 import { useFetchData } from 'lib/reactQuery';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Notebook from '../../../../assets/icons/notebook.svg';
+import Notebook from 'assets/icons/notebook.svg';
 import OnTheCouchItem from './OnTheCouchItem';
 
 const strings = {

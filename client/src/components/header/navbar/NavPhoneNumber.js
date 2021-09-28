@@ -1,5 +1,5 @@
 import React from 'react';
-import phoneIcon from '../../../assets/icons/phone_icon.svg';
+import phoneIcon from 'assets/icons/phone_icon.svg';
 
 const strings = {
   phoneTitle: 'לייעוץ ואבחון גרפולוגי',

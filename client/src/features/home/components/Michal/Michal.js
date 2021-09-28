@@ -1,5 +1,5 @@
 import React from 'react';
-import MichalDrawings from '../../../../assets/imgs/michal_drawing.png';
+import MichalDrawings from 'assets/imgs/michal_drawing.png';
 import ReadMoreBtn from 'components/UI/ReadMoreBtn';
 import SpeechBubble from 'assets/icons/speech_bubble.svg';
 import Quotes from 'assets/icons/quotes_icon.svg';
