@@ -34,49 +34,30 @@ export const AuthContextProvider = ({ children }) => {
   const history = useHistory();
 
   const login = async (email, password) => {
-    try {
-      const result = await loginRequest({ body: JSON.stringify({ email, password }) });
-      await new Promise(resolve => setTimeout(resolve, 3000));
-      setRefreshToken(result.refreshToken);
-      setUser({ name: result.name, email: result.email });
-      setIsAuth(true);
-    } catch (error) {
-      console.error(error);
-    }
+    const result = await loginRequest({ body: JSON.stringify({ email, password }) });
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    setRefreshToken(result.refreshToken);
+    setUser({ name: result.name, email: result.email });
+    setIsAuth(true);
   };
 
   const logout = async () => {
-    try {
-      const body = JSON.stringify({ refreshToken: refreshToken, email: user.email, name: user.name });
-      await logoutRequest({ body: body });
-      clearRefreshToken();
-      setUser(false);
-      setIsAuth(false);
-    } catch (error) {
-      console.error(error);
-    }
+    const body = JSON.stringify({ refreshToken: refreshToken, email: user.email, name: user.name });
+    await logoutRequest({ body: body });
+    clearRefreshToken();
+    setUser(false);
+    setIsAuth(false);
   };
 
   const refresh = async () => {
-    try {
-      const body = JSON.stringify({ refreshToken: refreshToken });
-      const { email, name } = await refreshRequest({ body });
-      setUser({ email, name });
-      setIsAuth(true);
-    } catch (error) {
-      console.log(error);
-    }
+    const body = JSON.stringify({ refreshToken: refreshToken });
+    const { email, name } = await refreshRequest({ body });
+    setUser({ email, name });
+    setIsAuth(true);
   };
 
   const renew = async () => {
-    try {
-      await renewRequest({});
-    } catch (error) {
-      console.log(error);
-      setIsAuth(false);
-      setUser(false);
-      clearRefreshToken();
-    }
+    // await renewRequest({});
   };
 
   /**
@@ -88,7 +69,7 @@ export const AuthContextProvider = ({ children }) => {
     if (refreshToken) refresh();
     history.listen((listen, action) => {
       if (listen.pathname.includes('admin') && !listen.pathname.includes('login') && action !== 'REPLACE') {
-        renew();
+        // renew();
       }
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps

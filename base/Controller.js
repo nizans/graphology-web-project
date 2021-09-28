@@ -13,7 +13,7 @@ class Controller {
 
   async get(req, res, next) {
     try {
-      res.json(await this.Service.get(req.query));
+      res.status(200).json(await this.Service.get(req.query));
     } catch (error) {
       next(error);
     }
@@ -31,8 +31,8 @@ class Controller {
   async delete(req, res, next) {
     const id = req.params.id;
     try {
-      res.set('Content-Type', 'application/json');
-      res.status(200).json(await this.Service.delete(id));
+      await this.Service.delete(id);
+      res.status(204).send();
     } catch (error) {
       next(error);
     }
@@ -40,8 +40,10 @@ class Controller {
 
   async update(req, res, next) {
     const id = req.params.id;
+    const data = req.body;
     try {
-      res.status(204).json(await this.Service.update(id));
+      await this.Service.update(id, data);
+      res.status(204).send();
     } catch (error) {
       next(error);
     }

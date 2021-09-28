@@ -58,7 +58,7 @@ class DAL {
   }
 
   async delete(id) {
-    const result = await this.Model.findByIdAndRemove(id).select('_id title images');
+    const result = await this.Model.findByIdAndRemove(id);
     if (!result) throw ITEM_NOT_EXISTS;
     return result;
   }

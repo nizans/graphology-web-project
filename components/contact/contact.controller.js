@@ -5,7 +5,8 @@ class ContactController {
 
   contact = async (req, res, next) => {
     try {
-      res.status(200).json(contactService.contact(req.body));
+      contactService.contact(req.body);
+      res.status(200).json({});
     } catch (error) {
       next(error);
     }
@@ -13,7 +14,8 @@ class ContactController {
 
   orderBook = async (req, res, next) => {
     try {
-      res.status(200).json(contactService.orderBook(req.body));
+      contactService.orderBook(req.body);
+      res.status(200).json({});
     } catch (error) {
       next(error);
     }

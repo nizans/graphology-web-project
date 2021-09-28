@@ -1,2 +1,1 @@
-export const BASE_URL =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : 'https://michal-doron.herokuapp.com';
+export const BASE_URL = process.env.REACT_APP_API_URL || 'https://michal-doron.herokuapp.com';

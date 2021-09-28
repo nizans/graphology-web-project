@@ -26,7 +26,9 @@ const strings = {
 };
 
 const BookForm = ({ data: item }) => {
-  const { mutate, isLoading, error, isSuccess } = useMutateData(booksApiCRUDRequests.create);
+  const { mutate, isLoading, error, isSuccess } = useMutateData(
+    item ? booksApiCRUDRequests.update : booksApiCRUDRequests.create
+  );
 
   const [images, setImages] = useState([]);
 

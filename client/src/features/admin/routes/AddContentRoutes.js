@@ -5,6 +5,7 @@ import { servicesApiCRUDRequests } from 'features/services';
 import { videosApiCRUDRequests } from 'features/videos/api';
 import React from 'react';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router';
+import { adminApiCRUDRequests } from '..';
 import AdminForm from '../components/forms/AdminForm';
 import ArticleForm from '../components/forms/ArticleForm';
 import BookForm from '../components/forms/BookForm';
@@ -20,6 +21,7 @@ const AddContentRoutes = () => {
   const WithDataVideoForm = withData(VideoForm, videosApiCRUDRequests);
   const WithDataServiceForm = withData(ServiceForm, servicesApiCRUDRequests);
   const WithDataBookForm = withData(BookForm, booksApiCRUDRequests);
+  const WithDataAdminForm = withData(AdminForm, adminApiCRUDRequests);
   return (
     <>
       <div className="mt-4 flex h-full w-full items-center pb-4 flex-wrap absolute top-0 bottom-0 right-0 left-0">
@@ -56,6 +58,9 @@ const AddContentRoutes = () => {
           </Route>
           <Route exact path={`${path}/books/:id`}>
             <WithDataBookForm />
+          </Route>
+          <Route exact path={`${path}/admins/:id`}>
+            <WithDataAdminForm />
           </Route>
           <Route exact path={`${path}`}>
             <Redirect from={`${path}`} to={`${path}/articles`} />

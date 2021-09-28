@@ -8,6 +8,7 @@ const strings = {
   admins: 'מנהלים',
   logout: 'התנתקות',
   viewContents: 'צפייה בתכנים',
+  backHome: 'חזרה לעמוד הבית',
 };
 const AdminTopNav = () => {
   const { path } = useRouteMatch();
@@ -21,6 +22,9 @@ const AdminTopNav = () => {
 
   return (
     <nav>
+      <NavLink className="_text-xl px-4" to="/home">
+        {strings.backHome}
+      </NavLink>
       <NavLink className="_text-xl px-4" to={`${path}/view`}>
         {strings.viewContents}
       </NavLink>

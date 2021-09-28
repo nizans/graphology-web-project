@@ -30,12 +30,13 @@ export function useMutateData(apiRequest) {
 export const _fetch = async (url, options) => {
   try {
     const response = await fetch(url, options);
+    if (response.status === 204) return;
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data.message);
     }
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw error;
   }
 };

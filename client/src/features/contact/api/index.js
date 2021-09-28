@@ -5,8 +5,8 @@ class ContactApiRequests extends ApiRequests {
   constructor() {
     super(CONTACT_QUERY);
     this.orderBook = {
-      query: [this.query],
-      url: this.baseUrl,
+      query: [this.query, 'order-book'],
+      url: new URL(this.baseUrl + '/order-book'),
       options: { method: 'POST', headers: new Headers({ 'content-type': 'application/json' }) },
     };
     this.sendContactRequest = {

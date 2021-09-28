@@ -11,12 +11,12 @@ const adminSchema = new mongoose.Schema({
     validate: [isEmail, 'Invalid email address'],
   },
   password: { type: String, require: [true, 'Password required'], minLength: 6, maxLength: 20 },
-  name: String,
+  name: { type: String, maxLength: 50 },
   passwordResetToken: { type: String, default: null },
 });
 
 adminSchema.pre('save', function (next) {
-  var admin = this;
+  const admin = this;
   if (!admin.isModified('password')) return next();
   bcrypt.genSalt(SALT, function (err, salt) {
     if (err) throw err;
@@ -29,7 +29,7 @@ adminSchema.pre('save', function (next) {
 });
 
 adminSchema.pre('updateOne', function (next) {
-  var admin = this;
+  const admin = this;
   if (!admin.isModified('password')) return next();
   bcrypt.genSalt(SALT, function (err, salt) {
     if (err) throw err;

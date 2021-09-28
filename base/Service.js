@@ -22,9 +22,9 @@ class Service {
     return result;
   }
 
-  async update(id) {
+  async update(id, data) {
     if (!isValidObjectId(id)) throw INVALID_MONGO_ID(id);
-    return await this.DAL.update(id);
+    return await this.DAL.update(id, data);
   }
 
   async get(queryParams) {

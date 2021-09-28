@@ -1,6 +1,6 @@
 const sharp = require('sharp');
 const { readFileSync } = require('fs');
-const THUMB_SIZE = 16;
+const THUMB_SIZE = 8;
 
 module.exports = (req, res, next) => {
   if (req.files) {

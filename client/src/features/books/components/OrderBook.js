@@ -22,18 +22,16 @@ const OrderBook = () => {
 
   useEffect(() => {
     if (book) setTitle(book._id, book.title);
-  }, [book, setTitle]);
+  }, [book]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleDelete = () => {
     mutate({ uri: id });
   };
 
   if (error) return <ErrorSection error={error} />;
-  return isLoading || isMutating ? (
-    <LoadingSection />
-  ) : isDeleteSuccess ? (
-    <Redirect to="/home/books" />
-  ) : (
+  if (isLoading || isMutating) return <LoadingSection />;
+  if (isDeleteSuccess) return <Redirect to="/home/books" />;
+  return (
     <>
       {isAuth && <ButtonsCell onDelete={handleDelete} withPreview={false} _id={id} type={'books'} />}
       <Section className="flex flex-col md:items-center md:grid gap-x-7 grid-cols-2 mb-16 lg:mb-0">

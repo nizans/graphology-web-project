@@ -24,7 +24,9 @@ const strings = {
 };
 
 const CouchForm = ({ data: item }) => {
-  const { mutate, isLoading, error, isSuccess } = useMutateData(contentsApiCRUDRequests.create);
+  const { mutate, isLoading, error, isSuccess } = useMutateData(
+    item ? contentsApiCRUDRequests.update : contentsApiCRUDRequests.create
+  );
   const [images, setImages] = useState(item?.images.map(img => img.full) || []);
 
   const initialValues = {

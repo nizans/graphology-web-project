@@ -2,6 +2,7 @@ const Controller = require('../../base/Controller');
 const { CANNOT_DELETE_CURRECT_ADMIN } = require('../error/error.constants');
 const ErrorHandle = require('../error/error.model');
 const AdminService = require('./admin.service');
+const path = require('path');
 
 class AdminController extends Controller {
   constructor() {
@@ -11,7 +12,7 @@ class AdminController extends Controller {
   async delete(req, res, next) {
     try {
       if (req.params.id === req.admin._id) throw CANNOT_DELETE_CURRECT_ADMIN;
-      super.delete(req, res, next);
+      await super.delete(req, res, next);
     } catch (error) {
       next(error);
     }
@@ -21,8 +22,8 @@ class AdminController extends Controller {
     try {
       const email = req.body.email;
       if (!email) throw new ErrorHandle(404, 'No email was sent');
-      const result = await this.Service.forgotPassword(email);
-      res.status(201).send();
+      await this.Service.forgotPassword(email);
+      res.status(204).send();
     } catch (error) {
       next(error);
     }
@@ -32,8 +33,9 @@ class AdminController extends Controller {
     try {
       const token = req.params.token;
       if (!token) throw new ErrorHandle(400, 'No token');
-      const result = await this.Service.resetPassword(token);
-      res.status(201).send();
+      await this.Service.resetPassword(token);
+      path.join(__dirname, 'lib', 'mailer', 'passwordResetSeccess.html');
+      res.status(201).sendFile(path.join(process.cwd(), 'lib', 'mailer', 'passwordResetSeccess.html'));
     } catch (error) {
       next(error);
     }

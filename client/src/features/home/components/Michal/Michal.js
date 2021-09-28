@@ -1,5 +1,5 @@
 import React from 'react';
-import MichalDrawings from 'assets/icons/michal_drawings.svg';
+import MichalDrawings from '../../../../assets/imgs/michal_drawing.png';
 import ReadMoreBtn from 'components/UI/ReadMoreBtn';
 import SpeechBubble from 'assets/icons/speech_bubble.svg';
 import Quotes from 'assets/icons/quotes_icon.svg';
@@ -7,6 +7,7 @@ import Underline from 'components/UI/Underline';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { DimensionsContext } from 'context/DimensionsContext';
+
 const strings = {
   title: 'מיכל דורון',
   text: '.עובדת כעשרים ושבע שנה כמרצה בתחומים ,פסיכולוגים וגרפולוגיה, לימדה במכללות לוינסקיעמק יזרעאל ומכללת שחר. גרפולוגית מוסמכת עובדת עם ארגונים וחברות, מתמחה בייעוץ תעסוקתי ובגרפולוגיה משפטית',

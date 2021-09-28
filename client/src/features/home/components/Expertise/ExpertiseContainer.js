@@ -1,5 +1,5 @@
 import useDomParser from 'hooks/useDomParser';
-import  truncate from 'lodash.truncate';
+import truncate from 'lodash.truncate';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -11,14 +11,14 @@ const ExpertiseContainer = ({ data: item }) => {
   const [parsedDescription] = useDomParser(item.description, 'text/html');
   return (
     <div
-      className="p-8 border-p-brown border-r-4 "
+      className="p-8 border-p-brown border-r-4  "
       style={{
         display: 'grid',
         gridTemplateRows: '7',
         gridAutoRows: '1fr',
         gap: '20px',
       }}>
-      <div className="row-span-3">
+      <div className="row-span-3 ">
         <img loading="eager" src={'images/' + item.image} className="h-full mx-auto" alt="" />
       </div>
       <h1 className="row-span-1 _text-bold-3xl mt-6 ml-auto">{item.title}</h1>

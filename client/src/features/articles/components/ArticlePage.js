@@ -26,7 +26,7 @@ const ArticlePage = () => {
 
   useEffect(() => {
     if (!isLoading && item) setTitle(item._id, item.title);
-  }, [item, isLoading, setTitle]);
+  }, [item, isLoading]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleDelete = () => {
     mutate({ uri: id });

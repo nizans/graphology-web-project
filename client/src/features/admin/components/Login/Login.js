@@ -1,13 +1,13 @@
 import ErrorMessage from 'components/UI/ErrorMessage';
 import FormField from 'components/UI/FormField';
 import LoadingButton from 'components/UI/LoadingButton';
-import Spinner from 'components/UI/Spinner';
 import { AuthContext } from 'context/AuthContext';
 import { adminApiCRUDRequests } from 'features/admin';
 import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
 import React, { useContext, useEffect } from 'react';
 import * as Yup from 'yup';
+import PasswordResetResult from './PasswordResetResult';
 
 const strings = {
   required: 'שדה דרוש',
@@ -19,7 +19,6 @@ const strings = {
   title: 'התחברות מנהל',
   forgotPassword: 'שחכתי סיסמא',
   successLogin: 'התחברת בהצלחה, מיד תועבר',
-  passwordResetSuccess: 'הסיסמא אופסה בהצלחה, נשלח מייל עם הוראות להמשך',
 };
 
 const Login = () => {
@@ -29,6 +28,7 @@ const Login = () => {
     isLoading: isPasswordReseting,
     isSuccess: isPasswordResetSuccess,
     error: passwordResetError,
+    reset: resetPasswordMutation,
   } = useMutateData(adminApiCRUDRequests.resetPassword);
   useEffect(() => () => resetLoginRequestState(), []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -50,29 +50,25 @@ const Login = () => {
     resetPassword({ body: JSON.stringify({ email: formik.values.email }) });
   };
 
+  if (isPasswordResetSuccess) return <PasswordResetResult resetPasswordMutation={resetPasswordMutation} />;
+
   return (
     <div className=" flex flex-col justify-center items-center border-p-gray-dark border-2 px-14 py-9 rounded-2xl pt-12">
-      {isPasswordResetSuccess ? (
-        <h1 className="_text-bold-3xl">{strings.passwordResetSuccess}</h1>
-      ) : isPasswordReseting ? (
-        <Spinner />
-      ) : (
-        <form onSubmit={formik.handleSubmit} className="w-full flex flex-col items-center">
-          <h1 className="_text-bold-3xl pb-4">{strings.title}</h1>
-          <FormField formik={formik} htmlFor="email" placeholder={strings.email} />
-          <FormField formik={formik} htmlFor="password" type="password" placeholder={strings.password} />
-          <div className="h-12 w-full flex justify-center items-center">
-            <div className="flex flex-col justify-center items-center">
-              <LoadingButton isLoading={isLoginLoading} />
-              {!formik.errors.email && (
-                <button onClick={onPasswordReset} to="/admin/resetPassword">
-                  {strings.forgotPassword}
-                </button>
-              )}
-            </div>
+      <form onSubmit={formik.handleSubmit} className="w-full flex flex-col items-center">
+        <h1 className="_text-bold-3xl pb-4">{strings.title}</h1>
+        <FormField formik={formik} htmlFor="email" placeholder={strings.email} />
+        <FormField formik={formik} htmlFor="password" type="password" placeholder={strings.password} />
+        <div className="h-12 w-full flex justify-center items-center">
+          <div className="flex flex-col justify-center items-center">
+            <LoadingButton isLoading={isLoginLoading || isPasswordReseting} />
+            {!formik.errors.email && (
+              <button type="button" onClick={onPasswordReset} to="/admin/resetPassword">
+                {strings.forgotPassword}
+              </button>
+            )}
           </div>
-        </form>
-      )}
+        </div>
+      </form>
       <div className="h-10 mt-4">
         {(loginError || passwordResetError) && <ErrorMessage error={loginError || passwordResetError} />}
         {isLoginSuccess && strings.successLogin}

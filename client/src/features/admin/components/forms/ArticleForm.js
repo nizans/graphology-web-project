@@ -26,7 +26,9 @@ const strings = {
 };
 
 const ArticleForm = ({ data: item }) => {
-  const { mutate, isLoading, error, isSuccess } = useMutateData(articlesApiCRUDRequests.create);
+  const { mutate, isLoading, error, isSuccess } = useMutateData(
+    item ? articlesApiCRUDRequests.update : articlesApiCRUDRequests.create
+  );
 
   const [images, setImages] = useState([]);
 

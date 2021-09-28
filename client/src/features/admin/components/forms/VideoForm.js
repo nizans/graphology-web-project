@@ -22,7 +22,9 @@ const strings = {
 };
 
 const VideoForm = ({ data: item }) => {
-  const { mutate, isLoading, error, isSuccess } = useMutateData(videosApiCRUDRequests.create);
+  const { mutate, isLoading, error, isSuccess } = useMutateData(
+    item ? videosApiCRUDRequests.update : videosApiCRUDRequests.create
+  );
 
   const initialValues = {
     title: item?.title || '',

@@ -22,7 +22,9 @@ const strings = {
 };
 
 const ServiceForm = ({ data: item }) => {
-  const { mutate, isLoading, error, isSuccess } = useMutateData(servicesApiCRUDRequests.create);
+  const { mutate, isLoading, error, isSuccess } = useMutateData(
+    item ? servicesApiCRUDRequests.update : servicesApiCRUDRequests.create
+  );
   const [images, setImages] = useState([]);
 
   const initialValues = {

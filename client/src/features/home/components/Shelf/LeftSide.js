@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactComponent as BookFront } from '../../../../assets/icons/book_front.svg';
+
 import { useState } from 'react';
 import BookSideTall from '../../../../assets/icons/BookSideTall.svg';
 const strings = {

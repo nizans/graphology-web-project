@@ -10,9 +10,21 @@ class AdminDal extends DAL {
 
   async login(email, password) {
     const admin = await this.Model.findOne({ email });
-    if (!admin) throw LOGIN_INVALID_EMAIL;
+    if (!admin) throw EMAIL_NOT_EXISTS;
     if (!(await admin.validatePassword(password))) throw LOGIN_INCORRECT_PASS;
     return await this.Model.findOne({ email }).select('name email _id');
+  }
+
+  async update(id, data) {
+    if (data.password) {
+      const admin = await this.Model.findById(id);
+      if (!admin) throw EMAIL_NOT_EXISTS;
+      admin.password = data.password;
+      admin.save();
+      delete data.password;
+      delete data.validatePassword;
+    }
+    await super.update(id, data);
   }
 
   async add(data) {
@@ -41,15 +53,19 @@ class AdminDal extends DAL {
     return result;
   }
 
+  async clearResetToken(email) {
+    const filter = { email: email };
+    const update = { $set: { passwordResetToken: null } };
+    const result = await this.Model.findOneAndUpdate(filter, update);
+    if (!result) throw EMAIL_NOT_EXISTS;
+    return result;
+  }
+
   async resetPassword(email, newPassword) {
     const filter = { email: email };
-    const update = { password: newPassword };
     const admin = await this.Model.findOne(filter);
     if (!admin) throw EMAIL_NOT_EXISTS;
     admin.password = newPassword;
-    // const admin = await this.Model.findOneAndUpdate(filter, update, {
-    //   returnOriginal: false,
-    // });
     const result = await admin.save();
     return result;
   }

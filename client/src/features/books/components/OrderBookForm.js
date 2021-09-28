@@ -43,12 +43,17 @@ const OrderBookForm = ({ book }) => {
       mutate({ body: JSON.stringify(values) });
     },
   });
+
   if (error) return <ErrorMessage error={error} />;
-  return isSuccess ? (
-    <div className="min-w-full min-h-full flex">
-      <h1 className="m-auto _text-bold-3xl">{strings.success}</h1>
-    </div>
-  ) : (
+
+  if (isSuccess)
+    return (
+      <div className="min-w-full min-h-full flex">
+        <h1 className="m-auto _text-bold-3xl">{strings.success}</h1>
+      </div>
+    );
+
+  return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col justify-evenly h-full w-full">
       <h1 className="_text-bold-dark-6xl mr-4">{strings.title}</h1>
       <h3 className="_text-3xl mr-4">{strings.subtitle}</h3>
