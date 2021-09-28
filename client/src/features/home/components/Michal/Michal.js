@@ -6,7 +6,7 @@ import Quotes from 'assets/icons/quotes_icon.svg';
 import Underline from 'components/UI/Underline';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 const strings = {
   title: 'מיכל דורון',
   text: '.עובדת כעשרים ושבע שנה כמרצה בתחומים ,פסיכולוגים וגרפולוגיה, לימדה במכללות לוינסקיעמק יזרעאל ומכללת שחר. גרפולוגית מוסמכת עובדת עם ארגונים וחברות, מתמחה בייעוץ תעסוקתי ובגרפולוגיה משפטית',
@@ -15,7 +15,7 @@ const strings = {
 };
 
 const Michal = React.forwardRef((props, ref) => {
-  const { windowHeight, headerHeight } = useContext(SectionHeightContext);
+  const { windowHeight, headerHeight } = useContext(DimensionsContext);
   return (
     <div className="flex flex-col items-center" ref={ref}>
       <div className=" sm:w-1/2 relative transform translate-y-16">

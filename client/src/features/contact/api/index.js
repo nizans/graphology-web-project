@@ -7,12 +7,12 @@ class ContactApiRequests extends ApiRequests {
     this.orderBook = {
       query: [this.query],
       url: this.baseUrl,
-      options: { method: 'post', headers: new Headers({ 'content-type': 'application/json' }) },
+      options: { method: 'POST', headers: new Headers({ 'content-type': 'application/json' }) },
     };
     this.sendContactRequest = {
       query: [this.query],
       url: this.baseUrl,
-      options: { method: 'post', headers: new Headers({ 'content-type': 'application/json' }) },
+      options: { method: 'POST', headers: new Headers({ 'content-type': 'application/json' }) },
     };
   }
 }

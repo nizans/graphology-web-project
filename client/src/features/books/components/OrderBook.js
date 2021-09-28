@@ -2,9 +2,9 @@ import ImageBox from 'components/common/ImageBox';
 import Section from 'components/common/Section';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
-import { AuthContext } from 'context/authContext';
-import { BreadCrumbsTitleContext } from 'context/breadCrumbsTitleContext';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { AuthContext } from 'context/AuthContext';
+import { BreadCrumbsTitleContext } from 'context/BreadCrumbsTitleContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 import ButtonsCell from 'components/UI/ButtonsCell';
 import { useFetchData, useMutateData } from 'lib/reactQuery';
 import React, { useContext, useEffect } from 'react';
@@ -14,7 +14,7 @@ import OrderBookForm from './OrderBookForm';
 
 const OrderBook = () => {
   const { setTitle } = useContext(BreadCrumbsTitleContext);
-  const { windowWidth } = useContext(SectionHeightContext);
+  const { windowWidth } = useContext(DimensionsContext);
   const { id } = useParams();
   const { data: book, isLoading, error } = useFetchData(booksApiCRUDRequests.read(id));
   const { mutate, isLoading: isMutating, isSuccess: isDeleteSuccess } = useMutateData(booksApiCRUDRequests.delete);

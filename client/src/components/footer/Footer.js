@@ -4,7 +4,7 @@ import FBIcon from '../../assets/icons/fb_logo.svg';
 import Shelf from '../../assets/icons/brown_shelf.svg';
 import { NavLink } from 'react-router-dom';
 import useDimensions from 'hooks/useDimensions';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 
 const strings = {
   about: 'אודות',
@@ -19,7 +19,7 @@ const strings = {
 
 const Footer = () => {
   const [footerRef, footerDimension] = useDimensions();
-  const sectionHeightCTX = useContext(SectionHeightContext);
+  const sectionHeightCTX = useContext(DimensionsContext);
   useEffect(() => {
     if (footerDimension) sectionHeightCTX.setFooterHeight(footerDimension.height);
   }, [footerDimension, sectionHeightCTX]);

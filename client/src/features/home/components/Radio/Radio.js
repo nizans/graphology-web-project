@@ -22,7 +22,7 @@ const Radio = () => {
   useEffect(() => {
     if (isFirstRender.current) setFirstRender(true);
     else setFirstRender(false);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     setIsReady(false);
   }, [videoUrl]);

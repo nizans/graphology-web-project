@@ -1,4 +1,4 @@
-import { AuthContext } from 'context/authContext';
+import { AuthContext } from 'context/AuthContext';
 import { adminApiCRUDRequests } from 'features/admin';
 import React, { useContext } from 'react';
 import Table from './Table';

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Section from 'components/common/Section';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 
 import ContactForm from './ContactForm';
 
@@ -10,7 +10,7 @@ const strings = {
 };
 
 export const Contact = () => {
-  const { windowHeight, footerHeight, headerHeight, breadCrumbHeight } = useContext(SectionHeightContext);
+  const { windowHeight, footerHeight, headerHeight, breadCrumbHeight } = useContext(DimensionsContext);
 
   return (
     <Section minHeight={windowHeight - footerHeight - headerHeight - breadCrumbHeight}>

@@ -4,9 +4,9 @@ import ButtonsCell from 'components/UI/ButtonsCell';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
 import Underline from 'components/UI/Underline';
-import { AuthContext } from 'context/authContext';
-import { BreadCrumbsTitleContext } from 'context/breadCrumbsTitleContext';
-import useWindowDimensions from 'hooks/useWindowDimensions';
+import { AuthContext } from 'context/AuthContext';
+import { BreadCrumbsTitleContext } from 'context/BreadCrumbsTitleContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 import parse from 'html-react-parser';
 import { useFetchData, useMutateData } from 'lib/reactQuery';
 import React, { useContext, useEffect } from 'react';
@@ -20,7 +20,7 @@ const ArticlePage = () => {
   const { id } = useParams();
   const { data: item, isLoading, error } = useFetchData(articlesApiCRUDRequests.read(id));
   const { setTitle } = useContext(BreadCrumbsTitleContext);
-  const { height } = useWindowDimensions();
+  const { windowHeight: height } = useContext(DimensionsContext);
   const { isAuth } = useContext(AuthContext);
   const { mutate, isLoading: isMutating, isSuccess: isDeleteSuccess } = useMutateData(articlesApiCRUDRequests.delete);
 

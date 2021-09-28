@@ -2,13 +2,13 @@ import Pagintation from 'components/common/Pagintation';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
 import SearchInput from 'components/UI/SearchInput';
-import useQueryParams from 'hooks/useQueryParams';
-import React, { useEffect, useState } from 'react';
-import { useFetchData, useMutateData } from 'lib/reactQuery';
-import ButtonsCell from '../../../../components/UI/ButtonsCell';
 import SortByMenu from 'features/couch/components/SortByMenu';
+import useQueryParams from 'hooks/useQueryParams';
+import { useFetchData, useMutateData } from 'lib/reactQuery';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import typesDictionary from 'utils/typesDictionary';
+import ButtonsCell from '../../../../components/UI/ButtonsCell';
 
 const strings = {
   actions: 'פעולות',
@@ -20,12 +20,16 @@ const Table = ({ type, generateCell, headers, apiRequests }) => {
   const find = useQueryParams().get('find');
   const sortby = useQueryParams().get('sortby') || '-uploadDate';
   const [searchInput, setSearchInput] = useState('');
-  const { mutate, isLoading: isMutating } = useMutateData(apiRequests.delete);
+  const { mutate, isLoading: isMutating, error: deleteError } = useMutateData(apiRequests.delete);
   const { isLoading, error, data, isSuccess } = useFetchData(apiRequests.read(null, { find, page, sortby }));
 
   const handleDeleteItem = id => {
     mutate({ uri: id });
   };
+
+  useEffect(() => {
+    if (deleteError) alert(deleteError.message);
+  }, [deleteError]);
 
   return (
     <>

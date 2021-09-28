@@ -1,42 +1,29 @@
-import { SectionHeightContext } from 'context/sectionHeightContext';
 import { DeleteIcon } from 'components/UI/ButtonsCell';
+import { DimensionsContext } from 'context/DimensionsContext';
 import useModal from 'hooks/useModal';
-import React, { useEffect, useState } from 'react';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import Modal from './Modal';
 
 const strings = { uploadImage: 'העלה תמונה', mainImage: 'תמונה ראשית', setMainImage: 'בחר כתמונה ראשית' };
 
-const ImageUploadInput = ({ onImageChange }) => {
-  const { windowHeight, windowWidth } = useContext(SectionHeightContext);
-
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {}, [images]);
+const ImageUploadInput = ({ images, onImageChange }) => {
+  const { windowHeight, windowWidth } = useContext(DimensionsContext);
 
   const handleImageInput = files => {
     let arr = [];
     for (let i = 0; i < files.length; i++) {
       arr.push(files.item(i));
     }
-    setImages(arr);
+    onImageChange(arr);
   };
 
   const handleDeleteImage = img => {
-    setImages(images.filter(_img => _img !== img));
+    onImageChange(images.filter(_img => _img !== img));
   };
 
   const setMainImage = img => {
-    setImages([img, ...images.filter(_img => _img !== img)]);
+    onImageChange([img, ...images.filter(_img => _img !== img)]);
   };
-
-  //   const createImageArray = files => {
-  //     let arr = [];
-  //     for (const img of files) {
-  //       arr.push(img);
-  //     }
-  //     return arr;
-  //   };
 
   const { isShowing, toggle } = useModal();
 

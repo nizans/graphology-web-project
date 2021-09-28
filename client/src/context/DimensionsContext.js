@@ -1,7 +1,7 @@
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import React, { useState, createContext } from 'react';
 
-export const SectionHeightContext = createContext({
+export const DimensionsContext = createContext({
   windowHeight: 0,
   windowWidth: 0,
   headerHeight: 0,
@@ -29,7 +29,7 @@ export const SectionHeightProvider = ({ children }) => {
   };
 
   return (
-    <SectionHeightContext.Provider
+    <DimensionsContext.Provider
       value={{
         windowHeight: windowDimensions.height,
         windowWidth: windowDimensions.width,
@@ -41,6 +41,6 @@ export const SectionHeightProvider = ({ children }) => {
         setFooterHeight: handleFooterSizeChange,
       }}>
       {children}
-    </SectionHeightContext.Provider>
+    </DimensionsContext.Provider>
   );
 };

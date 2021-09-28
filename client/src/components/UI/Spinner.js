@@ -1,8 +1,9 @@
-import useWindowDimensions from 'hooks/useWindowDimensions';
-import React from 'react';
+import { DimensionsContext } from 'context/DimensionsContext';
+import React, { useContext } from 'react';
 import './Spinner.css';
 const Spinner = ({ className = '', size = 120, speed = 2, style, bgColor = '#DFBBA6', fgColor = '#005885' }) => {
-  const { width } = useWindowDimensions();
+  const { windowHeight: width } = useContext(DimensionsContext);
+
   if (width < 640) size *= 0.5;
   return (
     <div

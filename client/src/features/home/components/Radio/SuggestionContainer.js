@@ -1,10 +1,9 @@
 import Arrow from 'assets/icons/down_arrow.png';
 import { LeftArrow, RightArrow } from 'components/UI/Arrows';
-import Spinner from 'components/UI/Spinner';
+import { DimensionsContext } from 'context/DimensionsContext';
 import { videosApiCRUDRequests } from 'features/videos/api';
-import useWindowDimensions from 'hooks/useWindowDimensions';
 import { useFetchData } from 'lib/reactQuery';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import VideoThumbnail from './VideoThumbnail';
 
@@ -53,9 +52,7 @@ const sliderSettings = {
 const SuggestionContainer = ({ setVideoUrl }) => {
   const { data, isLoading, error, isSuccess } = useFetchData(videosApiCRUDRequests.read(null, { page: 0, limit: 8 }));
   const [currentVideo, setCurrentVideo] = useState();
-
-  const { width } = useWindowDimensions();
-
+  const { windowWidth: width } = useContext(DimensionsContext);
   useEffect(() => {
     if (width < 1024) {
       sliderSettings.slidesToShow = 1;

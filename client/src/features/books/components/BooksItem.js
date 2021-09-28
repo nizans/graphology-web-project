@@ -1,11 +1,9 @@
-import React from 'react';
-import { NavLink, useRouteMatch } from 'react-router-dom';
 import ImageBox from 'components/common/ImageBox';
-import parse from 'html-react-parser';
-import { useContext } from 'react';
-import { SectionHeightContext } from 'context/sectionHeightContext';
 import Section from 'components/common/Section';
-import useWindowDimensions from 'hooks/useWindowDimensions';
+import { DimensionsContext } from 'context/DimensionsContext';
+import parse from 'html-react-parser';
+import React, { useContext } from 'react';
+import { NavLink, useRouteMatch } from 'react-router-dom';
 const strings = {
   orderBook: 'הזמנת ספר',
   from: 'מאת',
@@ -16,8 +14,13 @@ const BooksItem = ({ data: item }) => {
   const { images, title, _id } = item;
   const author = strings.from + ' ' + item.author;
   const description = parse(item.description);
-  const { windowHeight, headerHeight, footerHeight, breadCrumbHeight } = useContext(SectionHeightContext);
-  const { width } = useWindowDimensions();
+  const {
+    windowHeight,
+    windowWidth: width,
+    headerHeight,
+    footerHeight,
+    breadCrumbHeight,
+  } = useContext(DimensionsContext);
 
   return (
     <Section minHeight={windowHeight - headerHeight - footerHeight} className="my-8">

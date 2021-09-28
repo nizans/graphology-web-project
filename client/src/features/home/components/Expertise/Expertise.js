@@ -1,8 +1,8 @@
 import { LeftArrow, RightArrow } from 'components/UI/Arrows';
+import { DimensionsContext } from 'context/DimensionsContext';
 import { servicesApiCRUDRequests } from 'features/services';
-import useWindowDimensions from 'hooks/useWindowDimensions';
 import { useFetchData } from 'lib/reactQuery';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Slider from 'react-slick';
 import BriefCase from '../../../../assets/icons/experise_breifcase.svg';
 import OpenBook from '../../../../assets/icons/experise_openbook.svg';
@@ -50,7 +50,7 @@ const sliderSettings = {
 
 const Expertise = () => {
   const { data } = useFetchData(servicesApiCRUDRequests.read());
-  const { width } = useWindowDimensions();
+  const { windowWidth: width } = useContext(DimensionsContext);
 
   useEffect(() => {
     if (width < 1024) {

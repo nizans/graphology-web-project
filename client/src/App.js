@@ -1,6 +1,6 @@
 import AppContainer from 'components/common/AppContainer';
 import ScrollToTop from 'components/common/ScrollToTop';
-import { AuthContextProvider } from 'context/authContext';
+import { AuthContextProvider } from 'context/AuthContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import AppRoutes from 'routes/AppRoutes';

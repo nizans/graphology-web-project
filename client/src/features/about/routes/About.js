@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Section from 'components/common/Section';
 import MichalAboutPhoto from 'assets/imgs/MichalAboutPhoto.svg';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 import Underline from 'components/UI/Underline';
 
 const strings = {
@@ -11,7 +11,7 @@ const strings = {
   text: `עובדת כ- עשרים ושבע שנה כמרצה בתחומים פסיכולוגיה ,וגרפולוגיה. לימדה במכללות לוינסקי ועמק יזרעאל ומכללת השחר .מוזמנת לימי עיון כנסים, וספריות גרפולוגית מוסמכת , עובדת עם ארגונים וחברות מתמחה בייעוץ תעסוקתי ובגרפולוגיה משפטיתבפילוסופיה, עשתה השלמות בעלת תואר שני בפסיכולוגיה ובעלת תואר שני במדעי ההתנהגות בו חקרה את הקשר בין המתאם הגרפולוגי לבין .האינטליגנציה הרגשית "ספרים שהוציאה: ספר שירים "בקרום הדק שזכה בתעודת הוקרה .ע"ש דוד לויתן, ספרה ספרה 'על ספת הגרפולוג" 2004 הוצ' עקד מתורגם כעת לשפה האנגלית כתבה טורים בנושא גרפולוגיה בידיעות תקשורת ובעיתון מאזנים של אגודת הסופרים`,
 };
 export const About = () => {
-  const { headerHeight, windowHeight, breadCrumbHeight, footerHeight } = useContext(SectionHeightContext);
+  const { headerHeight, windowHeight, breadCrumbHeight, footerHeight } = useContext(DimensionsContext);
   return (
     <>
       <Section minHeight={windowHeight - headerHeight - breadCrumbHeight}>

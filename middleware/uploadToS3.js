@@ -5,7 +5,7 @@ const handleError = require('../components/error/handleError');
 const uploadToS3 = async (req, res, next) => {
   try {
     const files = req.body.images;
-    await uploadHelper(files);
+    if (files) await uploadHelper(files);
     next();
   } catch (error) {
     handleError(error);

@@ -4,7 +4,7 @@ import './bookshelf.css';
 import RightSide from './RightSide';
 import LeftSide from './LeftSide';
 import DownArrow from '../../../../assets/icons/down_arrow.png';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 
 const strings = {
   title: 'גרפולוגיה',
@@ -15,7 +15,7 @@ const strings = {
 const BookShelf = ({ onReadMoreClick }) => {
   const readMoreTextRef = useRef(null);
   const readMoreImgRef = useRef(null);
-  const { windowHeight } = useContext(SectionHeightContext);
+  const { windowHeight } = useContext(DimensionsContext);
   const [bookShelfTranlateY, setBookShelfTranlateY] = useState(0);
 
   const readMoreAnimation = e => {

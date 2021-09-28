@@ -1,10 +1,10 @@
-import React from 'react';
-import { createPortal } from 'react-dom';
 import CloseIcon from 'assets/icons/Close_Icon.svg';
-import useWindowDimensions from 'hooks/useWindowDimensions';
+import { DimensionsContext } from 'context/DimensionsContext';
+import React, { useContext } from 'react';
+import { createPortal } from 'react-dom';
 
 const Modal = ({ isShowing, hide, children }) => {
-  const { width } = useWindowDimensions();
+  const { windowHeight: width } = useContext(DimensionsContext);
   if (isShowing && width > 640)
     return createPortal(
       <>

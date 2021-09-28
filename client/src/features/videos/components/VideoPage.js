@@ -3,7 +3,7 @@ import Section from 'components/common/Section';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
 import Underline from 'components/UI/Underline';
-import { BreadCrumbsTitleContext } from 'context/breadCrumbsTitleContext';
+import { BreadCrumbsTitleContext } from 'context/BreadCrumbsTitleContext';
 import parse from 'html-react-parser';
 import { useFetchData } from 'lib/reactQuery';
 import React, { useContext, useEffect } from 'react';

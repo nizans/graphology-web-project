@@ -43,7 +43,7 @@ const ServiceForm = ({ data: item }) => {
   if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
 
   return (
-    <form onSubmit={formik.handleSubmit} className="flex h-full w-full ">
+    <form onSubmit={formik.handleSubmit} className="flex h-full w-full">
       <div className="flex flex-col justify-evenly items-center">
         <FormField formik={formik} htmlFor="title" placeholder={strings.title} />
         <ImageUploadInput onImageChange={setImages} images={images.map(img => img.full)} />

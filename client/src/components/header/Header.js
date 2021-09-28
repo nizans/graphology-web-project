@@ -1,6 +1,5 @@
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 import useDimensions from 'hooks/useDimensions';
-import useWindowDimensions from 'hooks/useWindowDimensions';
 import React, { useContext, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import Navbar from './navbar/Navbar';
@@ -31,12 +30,12 @@ const links = [
 
 const Header = () => {
   const [headerRef, headerDimension] = useDimensions();
-  const { width } = useWindowDimensions();
-  const sectionHeightCTX = useContext(SectionHeightContext);
+  const { setHeaderHeight, windowHeight: width } = useContext(DimensionsContext);
 
   useEffect(() => {
-    if (headerDimension) sectionHeightCTX.setHeaderHeight(headerDimension.height);
-  }, [headerDimension, sectionHeightCTX]);
+    if (headerDimension) setHeaderHeight(headerDimension.height);
+  }, [headerDimension, setHeaderHeight]);
+
   return (
     <>
       <div ref={headerRef} className="w-full fixed top-0 flex justify-center bg-background z-50">
@@ -48,7 +47,6 @@ const Header = () => {
           )}
         </div>
       </div>
-
       <div style={{ height: headerDimension?.height }}></div>
     </>
   );

@@ -1,14 +1,14 @@
 import Section from 'components/common/Section';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 import React, { useContext } from 'react';
 import { Route, Switch, useRouteMatch, Redirect } from 'react-router-dom';
 import AddContentRoutes from './AddContentRoutes';
-import AdminNav from '../components/AdminNav';
+import AdminNav from '../components/AdminNav/AdminNav';
 import ViewContentRoutes from './ViewContentRoutes';
 
 const AdminRoutes = () => {
   const { path } = useRouteMatch();
-  const sectionHeightCTX = useContext(SectionHeightContext);
+  const sectionHeightCTX = useContext(DimensionsContext);
 
   return (
     <div className="min-h-screen w-full">

@@ -7,7 +7,7 @@ import { CouchRoutes } from 'features/couch';
 import { Services } from 'features/services';
 import { Home } from 'features/home/index';
 import BreadCrumbs from 'components/common/BreadCrumbs';
-import { BreadCrumbsTitleProvider } from 'context/breadCrumbsTitleContext';
+import { BreadCrumbsTitleProvider } from 'context/BreadCrumbsTitleContext';
 import ArticlesRoutes from 'features/articles/routes';
 import { VideoPage } from 'features/videos/components/VideoPage';
 

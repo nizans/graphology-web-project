@@ -9,8 +9,8 @@ class AuthService {
   }
 
   async login(data) {
-    const { refreshToken, accessToken, email, name } = await adminService.login(data);
-    return { response: { refreshToken, email, name }, authCookie: accessToken };
+    const { refreshToken, accessToken, email, name, _id } = await adminService.login(data);
+    return { response: { refreshToken, email, name, _id }, authCookie: accessToken };
   }
 
   async logout(accessToken) {
@@ -21,8 +21,8 @@ class AuthService {
   async refresh(refreshToken) {
     const isRefreshTokenExists = await refreshTokenDAL.findRefreshToken(refreshToken);
     if (!isRefreshTokenExists) throw new ErrorHandle(403, 'Refresh token does not exists in DB');
-    const { email, name } = verifyRefreshToken(refreshToken);
-    return { email, name };
+    const { email, name, _id } = verifyRefreshToken(refreshToken);
+    return { email, name, _id };
   }
 }
 

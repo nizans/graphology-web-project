@@ -1,20 +1,25 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const {
+  JWT_ACCESS_KEY,
+  JWT_REFRESH_KEY,
+  ACCESS_TOKEN_EXPIRATION,
+  REFRESH_TOKEN_EXPIRATION,
+} = require('../config/constants');
 
-const accessKey = process.env.JWT_ACCESS_KEY;
-const refreshKey = process.env.JWT_REFRESH_KEY;
+exports.createToken = (payload, key, expiration) => {
+  return jwt.sign(payload, key, { expiresIn: expiration });
+};
 
-const TOKEN_EXPIRATION = process.env.ACCESS_TOKEN_EXPIRATION || '15m';
-const REFRESH_TOKEN_EXPIRATION = process.env.REFRESH_TOKEN_EXPIRATION || '3d';
+exports.verifyToken = (token, key) => jwt.verify(token, key);
 
-exports.signJWT = (payload, withRefresh = true) => {
-  const accessToken = jwt.sign(payload, accessKey, { expiresIn: TOKEN_EXPIRATION });
+exports.getAccessAndRefreshToken = (payload, withRefresh = true) => {
+  const accessToken = this.createToken(payload, JWT_ACCESS_KEY, ACCESS_TOKEN_EXPIRATION);
   if (withRefresh) {
-    const refreshToken = jwt.sign(payload, refreshKey, { expiresIn: REFRESH_TOKEN_EXPIRATION });
+    const refreshToken = this.createToken(payload, JWT_REFRESH_KEY, REFRESH_TOKEN_EXPIRATION);
     return { accessToken, refreshToken };
   }
   return accessToken;
 };
 
-exports.verifyRefreshToken = token => jwt.verify(token, refreshKey);
-exports.verifyAccessToken = token => jwt.verify(token, accessKey);
+exports.verifyRefreshToken = token => this.verifyToken(token, JWT_REFRESH_KEY);
+exports.verifyAccessToken = token => this.verifyToken(token, JWT_ACCESS_KEY);

@@ -1,9 +1,9 @@
 import Footer from 'components/footer/Footer';
 import Header from 'components/header/Header';
 import LoadingSection from 'components/UI/LoadingSection';
-import { AuthContext } from 'context/authContext';
-import { SectionHeightProvider } from 'context/sectionHeightContext';
-import Login from 'features/admin/components/Login';
+import { AuthContext } from 'context/AuthContext';
+import { SectionHeightProvider } from 'context/DimensionsContext';
+import Login from 'features/admin/components/Login/Login';
 import React, { useContext } from 'react';
 import { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
@@ -20,7 +20,6 @@ const AppRoutes = () => {
           <Header />
           <PublicRoutes />
           <Footer />
-
         </Route>
 
         <Route exact path="/admin/login">

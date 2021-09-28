@@ -1,5 +1,5 @@
-import { BreadCrumbsTitleContext } from 'context/breadCrumbsTitleContext';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { BreadCrumbsTitleContext } from 'context/BreadCrumbsTitleContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 import useDimensions from 'hooks/useDimensions';
 import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router';
@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 const BreadCrumbs = () => {
   const [breadCrumbRef, breadCrumbDimension] = useDimensions();
-  const { setBreadCrumbHeight } = useContext(SectionHeightContext);
+  const { setBreadCrumbHeight } = useContext(DimensionsContext);
   useEffect(() => {
     if (breadCrumbDimension) setBreadCrumbHeight(breadCrumbDimension.height);
   }, [breadCrumbDimension]); // eslint-disable-line react-hooks/exhaustive-deps

@@ -12,9 +12,23 @@ const adminSchema = new mongoose.Schema({
   },
   password: { type: String, require: [true, 'Password required'], minLength: 6, maxLength: 20 },
   name: String,
+  passwordResetToken: { type: String, default: null },
 });
 
 adminSchema.pre('save', function (next) {
+  var admin = this;
+  if (!admin.isModified('password')) return next();
+  bcrypt.genSalt(SALT, function (err, salt) {
+    if (err) throw err;
+    bcrypt.hash(admin.password, salt, function (err, hash) {
+      if (err) throw err;
+      admin.password = hash;
+      next();
+    });
+  });
+});
+
+adminSchema.pre('updateOne', function (next) {
   var admin = this;
   if (!admin.isModified('password')) return next();
   bcrypt.genSalt(SALT, function (err, salt) {

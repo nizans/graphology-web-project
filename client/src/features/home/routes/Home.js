@@ -1,5 +1,5 @@
 import Section from 'components/common/Section';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 import useDimensions from 'hooks/useDimensions';
 import React, { useContext } from 'react';
 
@@ -13,7 +13,7 @@ import BookShelf from '../components/Shelf/BookShelf';
 
 export const Home = () => {
   const [michalRef, michalDim] = useDimensions();
-  const { windowHeight, headerHeight, footerHeight } = useContext(SectionHeightContext);
+  const { windowHeight, headerHeight, footerHeight } = useContext(DimensionsContext);
 
   const handleReadMoreClick = async () => {
     window.scrollTo({

@@ -2,7 +2,7 @@ import Section from 'components/common/Section';
 import ErrorSection from 'components/UI/ErrorSection';
 import Spinner from 'components/UI/Spinner';
 import Underline from 'components/UI/Underline';
-import { SectionHeightContext } from 'context/sectionHeightContext';
+import { DimensionsContext } from 'context/DimensionsContext';
 import { useFetchData } from 'lib/reactQuery';
 import React, { createRef, useContext, useEffect, useState } from 'react';
 import { servicesApiCRUDRequests } from '..';
@@ -18,7 +18,7 @@ const strings = {
 export const Services = () => {
   const { data, isLoading, error } = useFetchData(servicesApiCRUDRequests.read());
   const [itemsRefs, setItemsRefs] = useState([]);
-  const { headerHeight, windowHeight, breadCrumbHeight } = useContext(SectionHeightContext);
+  const { headerHeight, windowHeight, breadCrumbHeight } = useContext(DimensionsContext);
 
   const handleScrollToItem = i => {
     if (itemsRefs[i]) {

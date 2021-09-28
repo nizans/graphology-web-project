@@ -11,7 +11,7 @@ class AuthAPIRequests extends ApiRequests {
       url: new URL(this.baseUrl + '/login'),
       options: {
         ...this.baseOptions,
-        method: 'post',
+        method: 'POST',
         headers: new Headers({ 'content-type': 'application/json' }),
       },
     };
@@ -21,7 +21,7 @@ class AuthAPIRequests extends ApiRequests {
       url: new URL(this.baseUrl + '/logout'),
       options: {
         ...this.baseOptions,
-        method: 'delete',
+        method: 'DELETE',
         headers: new Headers({ 'content-type': 'application/json' }),
       },
     };
@@ -31,7 +31,7 @@ class AuthAPIRequests extends ApiRequests {
       url: new URL(this.baseUrl + '/refresh'),
       options: {
         ...this.baseOptions,
-        method: 'post',
+        method: 'POST',
         headers: new Headers({ 'content-type': 'application/json' }),
       },
     };
@@ -41,7 +41,7 @@ class AuthAPIRequests extends ApiRequests {
       url: new URL(this.baseUrl + '/renew'),
       options: {
         ...this.baseOptions,
-        method: 'put',
+        method: 'PUT',
         headers: new Headers({ 'content-type': 'application/json' }),
       },
     };
@@ -55,6 +55,16 @@ class AdminApiCRUDRequests extends ApiCRUDRequests {
     this.create = {
       ...this.create,
       options: { ...this.create.options, headers: new Headers({ 'Content-Type': 'application/json' }) },
+    };
+
+    this.resetPassword = {
+      query: [this.query, 'resetPassword'],
+      url: new URL(this.baseUrl + '/resetPassword'),
+      options: {
+        ...this.baseOptions,
+        method: 'PATCH',
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+      },
     };
   }
 }
