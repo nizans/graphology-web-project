@@ -11,7 +11,7 @@ const BlurredUpImage = props => {
   const { isShowing, toggle } = useModal();
 
   return (
-    <div className={`relative ${wrapperClassName}`}>
+    <div className={`relative overflow-hidden ${wrapperClassName}`}>
       <img
         onClick={withModal ? toggle : null}
         alt=""

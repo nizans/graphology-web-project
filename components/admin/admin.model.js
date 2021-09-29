@@ -13,6 +13,7 @@ const adminSchema = new mongoose.Schema({
   password: { type: String, require: [true, 'Password required'], minLength: 6, maxLength: 20 },
   name: { type: String, maxLength: 50 },
   passwordResetToken: { type: String, default: null },
+  uploadDate: { type: Date, default: Date.now() },
 });
 
 adminSchema.pre('save', function (next) {

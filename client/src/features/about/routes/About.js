@@ -1,8 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Section from 'components/common/Section';
 import MichalAboutPhoto from 'assets/imgs/MichalAboutPhoto.svg';
 import { DimensionsContext } from 'context/DimensionsContext';
 import Underline from 'components/UI/Underline';
+import { useFetchData } from 'lib/reactQuery';
+import { certificationsApiCRUDRequests } from 'features/certification';
+import TableItemImage from 'components/UI/TableItemImage';
+import ImageCard from 'components/common/ImageCard';
 
 const strings = {
   title: 'מיכל דורון',
@@ -12,6 +16,13 @@ const strings = {
 };
 export const About = () => {
   const { headerHeight, windowHeight, breadCrumbHeight, footerHeight } = useContext(DimensionsContext);
+
+  const { data, isSuccess } = useFetchData(certificationsApiCRUDRequests.read());
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <>
       <Section minHeight={windowHeight - headerHeight - breadCrumbHeight}>
@@ -28,30 +39,24 @@ export const About = () => {
           </div>
         </div>
       </Section>
-
-      <Section className="flex flex-col justify-evenly mb-4" minHeight={windowHeight - headerHeight - footerHeight}>
-        <h2 className="text-p-brown-dark _text-bold-8xl ">{strings.certificates}</h2>
-        <div className="grid sm:grid-cols-3 gap-9">
-          <img
-            loading="lazy"
-            alt=""
-            src="https://via.placeholder.com/418x518.png"
-            className="px-8 sm:px-0 object-contain"
-          />
-          <img
-            loading="lazy"
-            alt=""
-            src="https://via.placeholder.com/418x518.png"
-            className="px-8 sm:px-0 object-contain"
-          />
-          <img
-            loading="lazy"
-            alt=""
-            src="https://via.placeholder.com/418x518.png"
-            className="px-8 sm:px-0 object-contain"
-          />
-        </div>
-      </Section>
+      {isSuccess && (
+        <Section className="flex flex-col justify-evenly mb-4" minHeight={windowHeight - headerHeight - footerHeight}>
+          <h2 className="text-p-brown-dark _text-bold-8xl">{strings.certificates}</h2>
+          <div className="grid sm:grid-cols-3 gap-9 my-8">
+            {data.payload.map(cert => (
+              <div className="border-p-brown border-2 rounded-lg overflow-hidden">
+                <TableItemImage
+                  withModal={true}
+                  style={{ objectFit: 'cover' }}
+                  height="100%"
+                  width="100%"
+                  image={cert.images}
+                />
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
     </>
   );
 };

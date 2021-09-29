@@ -8,4 +8,3 @@ class BooksApiCRUDRequests extends ApiCRUDRequests {
 }
 export const booksApiCRUDRequests = new BooksApiCRUDRequests();
 
-// export const BOOKS_API = Object.freeze(requests);

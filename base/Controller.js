@@ -4,6 +4,7 @@ class Controller {
   }
 
   async post(req, res, next) {
+    console.log(req.files);
     try {
       res.status(201).json(await this.Service.create(req.body));
     } catch (error) {

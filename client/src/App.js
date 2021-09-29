@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import AppRoutes from 'routes/AppRoutes';
 
 //TODO - implement all onClick and onHover functions on mobile/touchscreens.
-//TODO - add certifications endpoint on backend and add to admin page on front.
 //TODO - contents page -> api call should return contents and videos by default and should be a filter option.
+//TODO - finish ImageUploadInput.js
 
 function App() {
   const queryClient = new QueryClient();

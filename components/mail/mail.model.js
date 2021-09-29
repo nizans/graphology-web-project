@@ -10,7 +10,7 @@ const mailSchema = new mongoose.Schema({
   },
   sendBookOrders: { type: Boolean, default: false },
   sendContactRequests: { type: Boolean, default: false },
+  uploadDate: { type: Date, default: Date.now() },
 });
-
 
 module.exports = mongoose.model('Mail', mailSchema);

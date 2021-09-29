@@ -21,6 +21,8 @@ const links = [
   { name: 'סרטונים', to: 'view/videos' },
   { name: 'שירותים', to: 'view/services' },
   { name: 'ספרים', to: 'view/books' },
+  { name: 'תעודות', to: 'view/certifications' },
+
 ];
 
 const AdminNav = () => {

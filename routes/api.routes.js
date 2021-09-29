@@ -10,6 +10,7 @@ router.use('/services', require('../components/services/index'));
 router.use('/books', require('../components/books/index'));
 router.use('/contact', require('../components/contact/index'));
 router.use('/auth', require('../components/auth'));
+router.use('/certifications', require('../components/certifications/index'));
 router.use('*', (req, res, next) => {
   next(PAGE_NOT_FOUND);
 });

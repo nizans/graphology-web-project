@@ -16,6 +16,7 @@ const TableItemImage = ({
   image,
   height = '150px',
   width = '150px',
+  withModal = false,
   imgClassName = 'h-full m-2 rounded-md border-2 border-p-brown',
   style = { objectFit: 'cover' },
 }) => {
@@ -39,12 +40,11 @@ const TableItemImage = ({
       setImageSrc(image);
     }
   };
-
   return (
     <BlurredUpImage
       width={width}
       height={height}
-      withModal={false}
+      withModal={withModal}
       imgClassName={imgClassName}
       imageSrc={imageSrc}
       tinySrc={thumbSrc}

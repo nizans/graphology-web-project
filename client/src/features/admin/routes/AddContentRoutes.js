@@ -10,12 +10,12 @@ import CouchForm from '../components/forms/CouchForm';
 import ServiceForm from '../components/forms/ServiceForm';
 import VideoForm from '../components/forms/VideoForm';
 import withData from '../components/forms/withData';
+import AdminForm from '../components/forms/AdminForm';
 
 import React from 'react';
 
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router';
 import { adminApiCRUDRequests } from '..';
-import AdminForm from '../components/forms/AdminForm';
 
 const AddContentRoutes = () => {
   const { path } = useRouteMatch();
@@ -26,7 +26,6 @@ const AddContentRoutes = () => {
   const WithDataBookForm = withData(BookForm, booksApiCRUDRequests);
   const WithDataAdminForm = withData(AdminForm, adminApiCRUDRequests);
 
-  
   return (
     <>
       <div className="mt-4 flex h-full w-full items-center pb-4 flex-wrap absolute top-0 bottom-0 right-0 left-0">

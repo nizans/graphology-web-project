@@ -1,4 +1,4 @@
-const createFormData = (values, images = []) => {
+const createFormData = (values = {}, images = []) => {
   let formData = new FormData();
   for (const [key, val] of Object.entries(values)) {
     formData.append(key, val);

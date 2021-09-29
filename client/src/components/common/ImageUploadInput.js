@@ -2,6 +2,7 @@ import { DeleteIcon } from 'components/UI/ButtonsCell';
 import { DimensionsContext } from 'context/DimensionsContext';
 import useModal from 'hooks/useModal';
 import React, { useContext } from 'react';
+import ImageCard from './ImageCard';
 import Modal from './Modal';
 
 const strings = { uploadImage: 'העלה תמונה', mainImage: 'תמונה ראשית', setMainImage: 'בחר כתמונה ראשית' };
@@ -46,22 +47,26 @@ const ImageUploadInput = ({ images, onImageChange }) => {
                 key={i}
                 className="bg-p-brown border-p-brown border-2 rounded-lg overflow-hidden"
                 style={{ height: 'min-content' }}>
-                {img instanceof File || img instanceof Blob ? (
-                  <img alt="" src={URL.createObjectURL(img)} width="300px" className="object-contain" />
-                ) : (
-                  <img alt="" src={img} key={i} width="300px" className="object-contain" />
-                )}
                 <div className="flex items-center p-2 justify-between ">
-                  <button
-                    className="_text-xl"
-                    onClick={() => {
-                      if (i !== 0) setMainImage(img);
-                    }}>
-                    {i !== 0 ? strings.setMainImage : strings.mainImage}
-                  </button>
-                  <button onClick={() => handleDeleteImage(img)}>
-                    <DeleteIcon />
-                  </button>
+                  <ImageCard
+                    imgComponent={
+                      img instanceof File || img instanceof Blob ? (
+                        <img alt="" src={URL.createObjectURL(img)} width="300px" className="object-contain" />
+                      ) : (
+                        <img alt="" src={img} key={i} width="300px" className="object-contain" />
+                      )
+                    }>
+                    <button
+                      className="_text-xl"
+                      onClick={() => {
+                        if (i !== 0) setMainImage(img);
+                      }}>
+                      {i !== 0 ? strings.setMainImage : strings.mainImage}
+                    </button>
+                    <button onClick={() => handleDeleteImage(img)}>
+                      <DeleteIcon />
+                    </button>
+                  </ImageCard>
                 </div>
               </div>
             ))}
