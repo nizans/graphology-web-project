@@ -7,7 +7,7 @@ import AppRoutes from 'routes/AppRoutes';
 
 //TODO - implement all onClick and onHover functions on mobile/touchscreens.
 //TODO - contents page -> api call should return contents and videos by default and should be a filter option.
-//TODO - finish ImageUploadInput.js
+//TODO - finish ImageUploadInput.js -> (img.full ??)
 
 function App() {
   const queryClient = new QueryClient();

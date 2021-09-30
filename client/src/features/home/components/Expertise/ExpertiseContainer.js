@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const titleStrToBtn = str => {
   return 'ל' + str;
 };
-
+//TODO - fix image
 const ExpertiseContainer = ({ data: item }) => {
   const [parsedDescription] = useDomParser(item.description, 'text/html');
   return (
@@ -18,8 +18,8 @@ const ExpertiseContainer = ({ data: item }) => {
         gridAutoRows: '1fr',
         gap: '20px',
       }}>
-      <div className="row-span-3 ">
-        <img loading="eager" src={'images/' + item.image} className="h-full mx-auto" alt="" />
+      <div className="row-span-3">
+        <img loading="eager" src={item.image.full} className="h-full mx-auto" alt="" />
       </div>
       <h1 className="row-span-1 _text-bold-3xl mt-6 ml-auto">{item.title}</h1>
       <p className="row-span-2 _text-xl" style={{ direction: 'rtl' }}>

@@ -2,7 +2,7 @@ const express = require('express');
 const { protectRoute } = require('../middleware/protectRoute');
 const { replaceAccessToken } = require('../middleware/replaceAccessToken');
 
-const uploadImages = require('../middleware/uploadImages');
+const { uploadImages, uploadImage } = require('../middleware/uploadImages');
 
 class ComponentRouter {
   constructor(Controller) {
@@ -23,8 +23,15 @@ class ComponentRouter {
   initDelete() {
     this.router.delete('/:id', protectRoute, replaceAccessToken, this.Controller.delete.bind(this.Controller));
   }
+
   initUpdate() {
-    this.router.put('/:id', protectRoute, replaceAccessToken, this.Controller.update.bind(this.Controller));
+    this.router.put(
+      '/:id',
+      protectRoute,
+      replaceAccessToken,
+      uploadImages,
+      this.Controller.update.bind(this.Controller)
+    );
   }
 
   initRoutes() {

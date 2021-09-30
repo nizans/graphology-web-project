@@ -4,8 +4,18 @@ const handleError = require('../components/error/handleError');
 
 const uploadToS3 = async (req, res, next) => {
   try {
-    const files = req.body.images;
-    if (files) await uploadHelper(files);
+    const imageArray = req.body.images;
+    const singleImage = req.body.image;
+
+    if (imageArray) await uploadHelper(imageArray);
+    if (singleImage) {
+      const fullPath = path.join(process.cwd(), 'public', singleImage.full);
+      const fullName = singleImage.full.split('/')[2];
+      const thumbPath = path.join(process.cwd(), 'public', singleImage.thumb);
+      const thumbName = singleImage.thumb.split('/')[2];
+      await uploadFile(fullPath, fullName);
+      await uploadFile(thumbPath, thumbName);
+    }
     next();
   } catch (error) {
     handleError(error);

@@ -29,6 +29,11 @@ const addImagePrefix = (req, res, next) => {
     });
     req.body.images = images;
   }
+  if (req.file) {
+    const img = req.file;
+    req.body.image = { full: IMAGE_PATH_PREFIX + img.filename, thumb: THUMBS_PATH_PREFIX + img.filename };
+  }
+
   next();
 };
 
@@ -36,4 +41,6 @@ const addImagePrefix = (req, res, next) => {
  *  Upload images to public folder -> create local thumb for each image -> add path prefix to each file
  *  -> upload to s3 bucket -> delete local files -> next()
  */
-module.exports = [uploadImage.array('image'), imageResizer, addImagePrefix, uploadToS3, deleteTempImages];
+
+exports.uploadImages = [uploadImage.array('image'), imageResizer, addImagePrefix, uploadToS3, deleteTempImages];
+exports.uploadImage = [uploadImage.single('image'), imageResizer, addImagePrefix, uploadToS3, deleteTempImages];

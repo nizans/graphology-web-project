@@ -1,7 +1,8 @@
 const deleteLocalImages = require('../utils/deleteLocalImages');
 
 const deleteTempImages = (req, res, next) => {
-  deleteLocalImages(req.body.images);
+  if (req.body.images) deleteLocalImages(req.body.images);
+  if (req.body.image) deleteLocalImages([req.body.image]);
   next();
 };
 

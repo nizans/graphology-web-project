@@ -1,21 +1,28 @@
 import { DeleteIcon } from 'components/UI/ButtonsCell';
 import { DimensionsContext } from 'context/DimensionsContext';
 import useModal from 'hooks/useModal';
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import ImageCard from './ImageCard';
 import Modal from './Modal';
 
-const strings = { uploadImage: 'העלה תמונה', mainImage: 'תמונה ראשית', setMainImage: 'בחר כתמונה ראשית' };
+const strings = {
+  uploadImage: 'בחירת תמונות',
+  mainImage: 'תמונה ראשית',
+  setMainImage: 'בחר כתמונה ראשית',
+  maxFiles: 'ניתן להעלות עד 10 תמונות',
+};
 
 const ImageUploadInput = ({ images, onImageChange }) => {
   const { windowHeight, windowWidth } = useContext(DimensionsContext);
+  const { isShowing, toggle } = useModal();
+  const fileInputRef = useRef(null);
 
   const handleImageInput = files => {
-    let arr = [];
-    for (let i = 0; i < files.length; i++) {
-      arr.push(files.item(i));
+    if (files.length + images.length > 10) {
+      alert(strings.maxFiles);
+      return;
     }
-    onImageChange(arr);
+    onImageChange([...images, ...files]);
   };
 
   const handleDeleteImage = img => {
@@ -26,51 +33,42 @@ const ImageUploadInput = ({ images, onImageChange }) => {
     onImageChange([img, ...images.filter(_img => _img !== img)]);
   };
 
-  const { isShowing, toggle } = useModal();
+  const generateImageCard = (img, i) => (
+    <ImageCard
+      style={i === 0 && { backgroundColor: '#005885', borderColor: '#005885' }}
+      imgComponent={
+        <img
+          alt=""
+          src={img instanceof File || img instanceof Blob ? URL.createObjectURL(img) : img}
+          key={i}
+          style={{ maxHeight: '500px', minHeight: '500px', width: '100%', objectFit: 'cover' }}
+        />
+      }>
+      {i !== 0 && (
+        <button className="_text-xl hover:font-bold" onClick={() => setMainImage(img)}>
+          {strings.setMainImage}
+        </button>
+      )}
+      <button className="mr-auto" onClick={() => handleDeleteImage(img)}>
+        <DeleteIcon />
+      </button>
+    </ImageCard>
+  );
 
   return (
     <>
       <Modal isShowing={isShowing} hide={toggle}>
         <div
           dir="rtl"
-          className="mx-4 bg-background rounded-lg flex justify-start p-8 overflow-scroll"
-          style={{ height: windowHeight * 0.7, width: windowWidth * 0.7 }}>
-          <div className="flex flex-col">
-            <label htmlFor="image" className="_text-3xl">
+          className="mx-4 bg-background rounded-lg flex flex-col justify-start p-8 overflow-scroll"
+          style={{ height: windowHeight * 0.9, width: windowWidth * 0.9 }}>
+          <div className="mb-4">
+            <button onClick={() => fileInputRef.current.click()} type="button" className="button">
               {strings.uploadImage}
-            </label>
-            <input multiple type="file" name="image" onInput={e => handleImageInput(e.target.files)} />
+            </button>
+            <input hidden ref={fileInputRef} multiple type="file" onChange={e => handleImageInput(e.target.files)} />
           </div>
-          <div className="grid gap-6 grid-cols-3">
-            {images.map((img, i) => (
-              <div
-                key={i}
-                className="bg-p-brown border-p-brown border-2 rounded-lg overflow-hidden"
-                style={{ height: 'min-content' }}>
-                <div className="flex items-center p-2 justify-between ">
-                  <ImageCard
-                    imgComponent={
-                      img instanceof File || img instanceof Blob ? (
-                        <img alt="" src={URL.createObjectURL(img)} width="300px" className="object-contain" />
-                      ) : (
-                        <img alt="" src={img} key={i} width="300px" className="object-contain" />
-                      )
-                    }>
-                    <button
-                      className="_text-xl"
-                      onClick={() => {
-                        if (i !== 0) setMainImage(img);
-                      }}>
-                      {i !== 0 ? strings.setMainImage : strings.mainImage}
-                    </button>
-                    <button onClick={() => handleDeleteImage(img)}>
-                      <DeleteIcon />
-                    </button>
-                  </ImageCard>
-                </div>
-              </div>
-            ))}
-          </div>
+          <div className="grid gap-6 grid-cols-3">{images.map((img, i) => generateImageCard(img, i))}</div>
         </div>
       </Modal>
       <button type="button" onClick={toggle} className="button">

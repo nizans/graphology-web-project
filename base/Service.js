@@ -18,13 +18,16 @@ class Service {
   async delete(id) {
     if (!isValidObjectId(id)) throw INVALID_MONGO_ID(id);
     const result = await this.DAL.delete(id);
-    if (result.images) deleteObjects(imagesToS3ObjectsArray(result.images));
+    if (result.images && result.images.length > 0) deleteObjects(imagesToS3ObjectsArray(result.images));
     return result;
   }
 
   async update(id, data) {
+    console.log(data);
     if (!isValidObjectId(id)) throw INVALID_MONGO_ID(id);
-    return await this.DAL.update(id, data);
+    const oldDocument = await this.DAL.update(id, data);
+
+    return oldDocument;
   }
 
   async get(queryParams) {

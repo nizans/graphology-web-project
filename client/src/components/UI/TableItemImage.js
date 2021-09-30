@@ -3,14 +3,7 @@ import useForceUpdate from 'hooks/useForceUpdate';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-
-function checkValidImageSrc(src) {
-  let valid = true;
-  const img = new Image();
-  img.onerror = () => (valid = false);
-  img.src = src;
-  return valid;
-}
+import { checkValidImageSrc } from 'utils/checkValidImageSrc';
 
 const TableItemImage = ({
   image,

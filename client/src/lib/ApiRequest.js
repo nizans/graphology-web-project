@@ -37,7 +37,7 @@ class ApiCRUDRequests extends ApiRequests {
     this.update = Object.freeze({
       query: [this.query],
       url: this.baseUrl,
-      options: { ...this.baseOptions, method: 'PUT', headers: new Headers({ 'Content-Type': 'application/json' }) },
+      options: { ...this.baseOptions, method: 'PUT', headers: new Headers() },
     });
 
     this.delete = Object.freeze({

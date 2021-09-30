@@ -3,17 +3,11 @@ import { booksApiCRUDRequests } from 'features/books';
 import { contentsApiCRUDRequests } from 'features/couch';
 import { useMutateData } from 'lib/reactQuery';
 import createFormData from 'utils/createFormData';
+import { urlToObject } from 'utils/urlToObject';
 
 function randomDate(start = new Date(2012, 0, 1), end = new Date()) {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
-
-const urlToObject = async imgSrc => {
-  const response = await fetch(imgSrc);
-  const blob = await response.blob();
-  const file = new File([blob], 'randomImage.jpg', { type: blob.type });
-  return file;
-};
 
 async function randomImagesArray() {
   const numberOfImgs = Math.floor(Math.random() * 5 + 1);

@@ -1,6 +1,5 @@
 import ErrorMessage from 'components/UI/ErrorMessage';
 import LoadingButton from 'components/UI/LoadingButton';
-import Spinner from 'components/UI/Spinner';
 import { certificationsApiCRUDRequests } from 'features/certification';
 import { useMutateData } from 'lib/reactQuery';
 import React, { useRef } from 'react';

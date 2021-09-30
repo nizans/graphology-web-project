@@ -23,6 +23,7 @@ const strings = {
   uploadImage: 'העלה תמונה',
   urlInvalid: 'הלינק אינו תקין',
   required: 'שדה דרוש',
+  success: 'תודה, הפרטים התקבלו בהצלחה!',
 };
 
 const ArticleForm = ({ data: item }) => {
@@ -30,15 +31,14 @@ const ArticleForm = ({ data: item }) => {
     item ? articlesApiCRUDRequests.update : articlesApiCRUDRequests.create
   );
 
-  const [images, setImages] = useState([]);
+  console.log(item);
+  const [images, setImages] = useState(item?.images.map(img => img.full) || []);
 
   const initialValues = {
     title: item?.title || '',
     sourceFrom: item?.sourceFrom || '',
     sourceURL: item?.sourceURL || '',
     publishDate: item?.publishDate || '',
-    success: 'תודה, הפרטים התקבלו בהצלחה!',
-
     text: item?.text || '',
   };
 
@@ -54,12 +54,13 @@ const ArticleForm = ({ data: item }) => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
-    onSubmit: values => {
-      const formData = createFormData(values, images);
-      mutate({ body: formData });
+    onSubmit: async values => {
+      const formData = await createFormData(values, images);
+      mutate({ body: formData, uri: item ? item._id : null });
     },
     enableReinitialize: true,
   });
+
   if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
 
   return (
@@ -69,7 +70,7 @@ const ArticleForm = ({ data: item }) => {
         <FormField formik={formik} htmlFor="sourceFrom" placeholder={strings.sourceFrom} />
         <FormField formik={formik} htmlFor="sourceURL" placeholder={strings.sourceURL} />
         <FormField formik={formik} topLabel={strings.publishDate} htmlFor="publishDate" type="date" />
-        <ImageUploadInput images={images} onImageChange={setImages} />
+        <ImageUploadInput onImageChange={setImages} images={images} />
         <LoadingButton isLoading={isLoading} value={item ? strings.update : strings.send} />
         {error && (
           <label>
