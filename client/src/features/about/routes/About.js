@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import Section from 'components/common/Section';
 import MichalAboutPhoto from 'assets/imgs/MichalAboutPhoto.svg';
-import { DimensionsContext } from 'context/DimensionsContext';
-import Underline from 'components/UI/Underline';
-import { useFetchData } from 'lib/reactQuery';
-import { certificationsApiCRUDRequests } from 'features/certification';
+import Section from 'components/common/Section';
 import TableItemImage from 'components/UI/TableItemImage';
-import ImageCard from 'components/common/ImageCard';
+import Underline from 'components/UI/Underline';
+import { DimensionsContext } from 'context/DimensionsContext';
+import { certificationsApiCRUDRequests } from 'features/certification';
+import { useFetchData } from 'lib/reactQuery';
+import React, { useContext, useEffect } from 'react';
 
 const strings = {
   title: 'מיכל דורון',
@@ -46,6 +45,7 @@ export const About = () => {
             {data.payload.map(cert => (
               <div className="border-p-brown border-2 rounded-lg overflow-hidden">
                 <TableItemImage
+                  key={cert._id}
                   withModal={true}
                   style={{ objectFit: 'cover' }}
                   height="100%"

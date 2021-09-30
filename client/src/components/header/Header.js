@@ -30,7 +30,7 @@ const links = [
 
 const Header = () => {
   const [headerRef, headerDimension] = useDimensions();
-  const { setHeaderHeight, windowHeight: width } = useContext(DimensionsContext);
+  const { setHeaderHeight, windowWidth: width } = useContext(DimensionsContext);
 
   useEffect(() => {
     if (headerDimension) setHeaderHeight(headerDimension.height);

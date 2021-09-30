@@ -3,6 +3,7 @@ import ErrorSection from 'components/UI/ErrorSection';
 import Spinner from 'components/UI/Spinner';
 import Underline from 'components/UI/Underline';
 import { DimensionsContext } from 'context/DimensionsContext';
+import useQueryParams from 'hooks/useQueryParams';
 import { useFetchData } from 'lib/reactQuery';
 import React, { createRef, useContext, useEffect, useState } from 'react';
 import { servicesApiCRUDRequests } from '..';
@@ -16,6 +17,8 @@ const strings = {
 };
 
 export const Services = () => {
+  const scroll = useQueryParams().get('scroll');
+
   const { data, isLoading, error } = useFetchData(servicesApiCRUDRequests.read());
   const [itemsRefs, setItemsRefs] = useState([]);
   const { headerHeight, windowHeight, breadCrumbHeight } = useContext(DimensionsContext);
@@ -26,6 +29,14 @@ export const Services = () => {
       window.scroll({ top: top + window.scrollY - headerHeight, behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    if (scroll)
+      if (data) {
+        const scrollToIndex = data.payload.findIndex(item => item.title === scroll);
+        if (scrollToIndex !== -1) handleScrollToItem(scrollToIndex);
+      }
+  }, [data, scroll]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (data && data?.found_items)

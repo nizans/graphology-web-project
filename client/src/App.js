@@ -8,7 +8,7 @@ import AppRoutes from 'routes/AppRoutes';
 //TODO - implement all onClick and onHover functions on mobile/touchscreens.
 //TODO - contents page -> api call should return contents and videos by default and should be a filter option.
 //TODO - finish ImageUploadInput.js -> (img.full ??)
-
+//TODO - add recomendations endpoint and section on admin
 function App() {
   const queryClient = new QueryClient();
   return (

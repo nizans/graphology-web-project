@@ -11,7 +11,7 @@ class ServiceRouter extends ComponentRouter {
   }
 
   initPost() {
-    this.router.post('/', uploadImage, this.Controller.post.bind(this.Controller));
+    this.router.post('/', protectRoute, replaceAccessToken, uploadImage, this.Controller.post.bind(this.Controller));
   }
 }
 module.exports = new ServiceRouter().router;

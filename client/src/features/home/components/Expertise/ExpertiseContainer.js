@@ -6,9 +6,7 @@ import { NavLink } from 'react-router-dom';
 const titleStrToBtn = str => {
   return 'ל' + str;
 };
-//TODO - fix image
 const ExpertiseContainer = ({ data: item }) => {
-  console.log(item);
   const [parsedDescription] = useDomParser(item.description, 'text/html');
   return (
     <div
@@ -21,9 +19,10 @@ const ExpertiseContainer = ({ data: item }) => {
       }}>
       <div className="row-span-3">
         <img
+          alt=""
           className="mx-auto"
           loading="eager"
-          style={{ objectFit: 'cover', minHeight: '250px', maxHeight: '250px' }}
+          style={{ objectFit: 'cover', height: '200px' }}
           src={item.image.full}
         />
       </div>
@@ -32,7 +31,7 @@ const ExpertiseContainer = ({ data: item }) => {
         {truncate(parsedDescription, { length: 150, separator: ' ' })}
       </p>
       <NavLink
-        to={`/home/services`}
+        to={`/home/services?scroll=${item.title}`}
         className="row-span-1 bg-p-brown py-2 px-4 mx-auto lg:mr-0 lg:ml-auto  mt-4 _text-bold-xl hover:bg-p-brown-dark">
         {titleStrToBtn(item.title)}
       </NavLink>

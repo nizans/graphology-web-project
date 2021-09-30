@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
   } = useMutateData(authAPIRequests.login);
   const { mutateAsync: refreshRequest } = useMutateData(authAPIRequests.refresh);
   const { mutateAsync: logoutRequest, isLoading: isLoggingOutLoading } = useMutateData(authAPIRequests.logout);
-  const { mutateAsync: renewRequest } = useMutateData(authAPIRequests.renew);
+  //   const { mutateAsync: renewRequest } = useMutateData(authAPIRequests.renew);
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState();
   const [refreshToken, setRefreshToken, clearRefreshToken] = useLocalStorage('refreshToken', false);
@@ -56,9 +56,9 @@ export const AuthContextProvider = ({ children }) => {
     setIsAuth(true);
   };
 
-  const renew = async () => {
-    // await renewRequest({});
-  };
+  //   const renew = async () => {
+  //     // await renewRequest({});
+  //   };
 
   /**
    * This is for keeping the cookie age short with auto-renews and preventing browsing inside admin routes with an expired cookie.
