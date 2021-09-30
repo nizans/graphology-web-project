@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 app.use(require('./routes/images.routes'));
+
 app.use('/api', require('./routes/api.routes'));
 
 app.get('*', (req, res, next) => {
