@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const serviceSchema = new mongoose.Schema({
   title: { type: String, required: [true, 'Title is required'] },
   description: { type: String, required: [true, 'Description is required'] },
-  images: String,
+  image: {
+    full: String,
+    thumb: String,
+  },
 });
 
 serviceSchema.index(

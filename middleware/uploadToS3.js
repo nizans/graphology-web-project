@@ -2,6 +2,13 @@ const { uploadFile } = require('../lib/s3');
 const path = require('path');
 const handleError = require('../components/error/handleError');
 
+const getNameAndPathFromImageObj = imageObject => {
+  const fullPath = path.join(process.cwd(), 'public', imageObject.full);
+  const fullName = 'images/' + imageObject.full.split('/')[2];
+  const thumbPath = path.join(process.cwd(), 'public', imageObject.thumb);
+  const thumbName = 'thumbs/' + imageObject.thumb.split('/')[2];
+  return { fullPath, fullName, thumbName, thumbPath };
+};
 const uploadToS3 = async (req, res, next) => {
   try {
     const imageArray = req.body.images;
@@ -9,10 +16,11 @@ const uploadToS3 = async (req, res, next) => {
 
     if (imageArray) await uploadHelper(imageArray);
     if (singleImage) {
-      const fullPath = path.join(process.cwd(), 'public', singleImage.full);
-      const fullName = singleImage.full.split('/')[2];
-      const thumbPath = path.join(process.cwd(), 'public', singleImage.thumb);
-      const thumbName = singleImage.thumb.split('/')[2];
+      //   const fullPath = path.join(process.cwd(), 'public', singleImage.full);
+      //   const fullName = singleImage.full.split('/')[2];
+      //   const thumbPath = path.join(process.cwd(), 'public', singleImage.thumb);
+      //   const thumbName = singleImage.thumb.split('/')[2];
+      const { fullPath, fullName, thumbPath, thumbName } = getNameAndPathFromImageObj(singleImage);
       await uploadFile(fullPath, fullName);
       await uploadFile(thumbPath, thumbName);
     }
@@ -25,12 +33,13 @@ const uploadToS3 = async (req, res, next) => {
 const uploadHelper = async files => {
   const arr = [];
   for (let i = 0; i < files.length; i++) {
-    const fullPath = path.join(process.cwd(), 'public', files[i].full);
-    const fullName = files[i].full.split('/')[2];
-    const thumbPath = path.join(process.cwd(), 'public', files[i].thumb);
-    const thumbName = files[i].thumb.split('/')[2];
-    const fullResult = (await uploadFile(fullPath, 'images/' + fullName)).Location;
-    const thumbResult = (await uploadFile(thumbPath, 'thumbs/' + thumbName)).Location;
+    // const fullPath = path.join(process.cwd(), 'public', files[i].full);
+    // const fullName = files[i].full.split('/')[2];
+    // const thumbPath = path.join(process.cwd(), 'public', files[i].thumb);
+    // const thumbName = files[i].thumb.split('/')[2];
+    const { fullPath, fullName, thumbPath, thumbName } = getNameAndPathFromImageObj(files[i]);
+    const fullResult = (await uploadFile(fullPath, fullName)).Location;
+    const thumbResult = (await uploadFile(thumbPath, thumbName)).Location;
     arr.push({ full: fullResult, thumb: thumbResult });
   }
   return arr;

@@ -8,6 +8,7 @@ const titleStrToBtn = str => {
 };
 //TODO - fix image
 const ExpertiseContainer = ({ data: item }) => {
+  console.log(item);
   const [parsedDescription] = useDomParser(item.description, 'text/html');
   return (
     <div
@@ -19,7 +20,12 @@ const ExpertiseContainer = ({ data: item }) => {
         gap: '20px',
       }}>
       <div className="row-span-3">
-        <img loading="eager" src={item.image.full} className="h-full mx-auto" alt="" />
+        <img
+          className="mx-auto"
+          loading="eager"
+          style={{ objectFit: 'cover', minHeight: '250px', maxHeight: '250px' }}
+          src={item.image.full}
+        />
       </div>
       <h1 className="row-span-1 _text-bold-3xl mt-6 ml-auto">{item.title}</h1>
       <p className="row-span-2 _text-xl" style={{ direction: 'rtl' }}>
