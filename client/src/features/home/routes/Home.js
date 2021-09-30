@@ -36,7 +36,7 @@ export const Home = () => {
         <Recommendations />
       </Section>
       <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
-        <Radio />
+        {/* <Radio /> */}
       </Section>
       <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
         <OnTheCouch />

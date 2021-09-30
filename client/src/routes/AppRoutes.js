@@ -2,7 +2,7 @@ import Footer from 'components/footer/Footer';
 import Header from 'components/header/Header';
 import LoadingSection from 'components/UI/LoadingSection';
 import { AuthContext } from 'context/AuthContext';
-import { SectionHeightProvider } from 'context/DimensionsContext';
+import { DimentionsContextProvider } from 'context/DimensionsContext';
 import Login from 'features/admin/components/Login/Login';
 import React, { useContext } from 'react';
 import { Suspense } from 'react';
@@ -14,7 +14,7 @@ const AppRoutes = () => {
   const { isAuth } = useContext(AuthContext);
 
   return (
-    <SectionHeightProvider>
+    <DimentionsContextProvider>
       <Switch>
         <Route path="/home">
           <Header />
@@ -38,7 +38,7 @@ const AppRoutes = () => {
 
         <Redirect from="*" to="/home" />
       </Switch>
-    </SectionHeightProvider>
+    </DimentionsContextProvider>
   );
 };
 

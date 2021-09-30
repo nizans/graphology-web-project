@@ -12,7 +12,7 @@ export const DimensionsContext = createContext({
   setBreadCrumbHeight: height => {},
 });
 
-export const SectionHeightProvider = ({ children }) => {
+export const DimentionsContextProvider = ({ children }) => {
   const [footerHeight, setFooterHeight] = useState(0);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [breadCrumbHeight, setBreadCrumbHeight] = useState(0);

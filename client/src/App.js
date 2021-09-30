@@ -1,6 +1,7 @@
 import AppContainer from 'components/common/AppContainer';
 import ScrollToTop from 'components/common/ScrollToTop';
 import { AuthContextProvider } from 'context/AuthContext';
+import ThemeContextProvider from 'context/ThemeContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import AppRoutes from 'routes/AppRoutes';
@@ -17,9 +18,11 @@ function App() {
         <ScrollToTop />
         <Switch>
           <AuthContextProvider>
-            <AppContainer>
-              <AppRoutes />
-            </AppContainer>
+            <ThemeContextProvider>
+              <AppContainer>
+                <AppRoutes />
+              </AppContainer>
+            </ThemeContextProvider>
           </AuthContextProvider>
         </Switch>
       </Router>

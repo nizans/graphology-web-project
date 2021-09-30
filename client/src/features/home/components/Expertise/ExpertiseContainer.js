@@ -10,14 +10,14 @@ const ExpertiseContainer = ({ data: item }) => {
   const [parsedDescription] = useDomParser(item.description, 'text/html');
   return (
     <div
-      className="p-8 border-p-brown border-r-4  "
+      className="md:p-8 border-p-brown border-r-4  "
       style={{
         display: 'grid',
         gridTemplateRows: '7',
         gridAutoRows: '1fr',
         gap: '20px',
       }}>
-      <div className="row-span-3">
+      <div className="row-span-3 max-h-52">
         <img
           alt=""
           className="mx-auto"
@@ -26,8 +26,8 @@ const ExpertiseContainer = ({ data: item }) => {
           src={item.image.full}
         />
       </div>
-      <h1 className="row-span-1 _text-bold-3xl mt-6 ml-auto">{item.title}</h1>
-      <p className="row-span-2 _text-xl" style={{ direction: 'rtl' }}>
+      <h1 className="row-span-1  text-4xl _text-bold-4xl mt-6 ml-auto">{item.title}</h1>
+      <p className="row-span-2 _text-xl " style={{ direction: 'rtl' }}>
         {truncate(parsedDescription, { length: 150, separator: ' ' })}
       </p>
       <NavLink

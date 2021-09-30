@@ -26,8 +26,12 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #dfbba6;
   }
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
-@layer components {
+
+@responsive components {
   .button {
     @apply bg-p-brown _text-3xl px-12 py-1 rounded-xl hover:bg-p-brown-dark;
   }

@@ -38,12 +38,14 @@ const Michal = React.forwardRef((props, ref) => {
           <img style={{ maxHeight: windowHeight - headerHeight - 100 + 'px' }} alt="" src={MichalDrawings} />
         </div>
         <div className="flex flex-col px-4">
-          <NavLink to="/home/about" className="_text-bold-dark-12xl leading-none hover:text-p-brown ">
+          <NavLink
+            to="/home/about"
+            className="_text-bold-dark-8xl md:_text-bold-dark-12xl leading-none hover:text-p-brown ">
             {strings.title}
           </NavLink>
           <Underline style={{ width: '50%' }} />
-          <p className="_text-3xl py-6 pl-12 max-w-2xl leading-normal ">{strings.text}</p>
-          <ReadMoreBtn to="/home/about" className="text-4xl mr-auto sm:m-0" />
+          <p className="_text-3xl md:py-6 md:pl-12 max-w-2xl leading-normal ">{strings.text}</p>
+          <ReadMoreBtn to="/home/about" className="text-4xl sm:m-0 mr-auto" />
         </div>
       </div>
     </div>

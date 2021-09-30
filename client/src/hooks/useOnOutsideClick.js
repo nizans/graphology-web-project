@@ -8,9 +8,9 @@ export const useOnClickOutside = (ref, handler) => {
       }
       handler(event);
     };
-    document.addEventListener('mousedown', listener);
+    document.addEventListener('mousedown', listener, { passive: false });
     return () => {
-      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('mousedown', listener, { passive: false });
     };
   }, [ref, handler]);
 };
