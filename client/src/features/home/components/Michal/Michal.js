@@ -1,8 +1,6 @@
 import React from 'react';
 import MichalDrawings from 'assets/imgs/michal_drawing.png';
 import ReadMoreBtn from 'components/UI/ReadMoreBtn';
-import SpeechBubble from 'assets/icons/speech_bubble.svg';
-import Quotes from 'assets/icons/quotes_icon.svg';
 import Underline from 'components/UI/Underline';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
@@ -12,40 +10,31 @@ const strings = {
   title: 'מיכל דורון',
   text: '.עובדת כעשרים ושבע שנה כמרצה בתחומים ,פסיכולוגים וגרפולוגיה, לימדה במכללות לוינסקיעמק יזרעאל ומכללת שחר. גרפולוגית מוסמכת עובדת עם ארגונים וחברות, מתמחה בייעוץ תעסוקתי ובגרפולוגיה משפטית',
   readMore: 'קרא עוד',
-  bubbleText: 'כשם שאין בעולם שתי טביעות אצבע זהות אין בעולם שני כתבי יד זהים',
 };
 
 const Michal = React.forwardRef((props, ref) => {
   const { windowHeight, headerHeight } = useContext(DimensionsContext);
   return (
-    <div className="flex flex-col items-center" ref={ref}>
-      <div className=" sm:w-1/2 relative transform translate-y-16">
-        <img loading="lazy" className="mx-auto" src={SpeechBubble} alt="" />
+    <div className="items-center" ref={ref}>
+      <div className="grid sm:grid-cols-2 mt-10 sm:mt-0">
         <img
-          loading="lazy"
+          className="mx-auto xl:ml-0 xl:mt-4"
+          style={{ maxHeight: windowHeight - headerHeight - 100 + 'px', objectFit: 'cover' }}
           alt=""
-          src={Quotes}
-          className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src={MichalDrawings}
         />
-        <h1
-          className="absolute left-0 right-0 text-p-brown-light _text-5xl text-center px-16 italic break-words"
-          style={{ top: '22.214%', bottom: '44.58' }}>
-          {strings.bubbleText}
-        </h1>
-      </div>
-      <div className="grid gap-x-7 sm:grid-cols-2 mt-10 sm:mt-0">
-        <div className="flex justify-center">
-          <img style={{ maxHeight: windowHeight - headerHeight - 100 + 'px' }} alt="" src={MichalDrawings} />
-        </div>
-        <div className="flex flex-col px-4">
+
+        <div className="mt-4 sm:mt-0 flex flex-col items-center sm:items-start justify-center px-4 ">
           <NavLink
             to="/home/about"
-            className="_text-bold-dark-8xl md:_text-bold-dark-12xl leading-none hover:text-p-brown ">
+            className="_text-bold text-6xl md:text-7xl lg:text-8xl leading-none hover:text-p-brown"
+            style={{ minInlineSize: 'max-content' }}
+          >
             {strings.title}
           </NavLink>
-          <Underline style={{ width: '50%' }} />
-          <p className="_text-3xl md:py-6 md:pl-12 max-w-2xl leading-normal ">{strings.text}</p>
-          <ReadMoreBtn to="/home/about" className="text-4xl sm:m-0 mr-auto" />
+          <Underline thickness="2" className="w-2/5 sm:w-2/3 xl:w-1/2 2xl:w-2/5 my-4" />
+          <p className="_text text-2xl md:text-3xl  lg:pl-12 max-w-2xl leading-normal ">{strings.text}</p>
+          <ReadMoreBtn to="/home/about" className="text-3xl ml-auto" />
         </div>
       </div>
     </div>

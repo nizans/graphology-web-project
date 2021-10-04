@@ -7,7 +7,7 @@ const TextEditor = props => {
   const [ready, setReady] = useState(false);
   return (
     <>
-      <h3 className="_text-3xl">{title}</h3>
+      <h3 className="_text  text-3xl">{title}</h3>
       <Editor
         textareaName={name}
         value={value}

@@ -2,7 +2,7 @@ import { DimensionsContext } from 'context/DimensionsContext';
 import React from 'react';
 import { useContext } from 'react';
 
-const Section = React.forwardRef(({ children, className, minHeight, addToDef = 0, style }, ref) => {
+const Section = React.forwardRef(({ children, className, minHeight, maxHeight, addToDef = 0, style }, ref) => {
   const { windowHeight, headerHeight, breadCrumbHeight, footerHeight } = useContext(DimensionsContext);
   let defaultMinHeight = windowHeight - headerHeight - breadCrumbHeight - footerHeight - addToDef;
 
@@ -10,10 +10,12 @@ const Section = React.forwardRef(({ children, className, minHeight, addToDef = 0
     <section
       className={`w-full ${className ? className : ''}`}
       style={{
-        minHeight: `${minHeight ? minHeight - 3 + 'px' : defaultMinHeight - 3 + 'px'}`,
+        minHeight: minHeight ? minHeight : 'fit-content',
+        maxHeight: maxHeight,
         ...style,
       }}
-      ref={ref}>
+      ref={ref}
+    >
       {children}
     </section>
   );

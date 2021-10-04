@@ -55,7 +55,7 @@ const Login = () => {
   return (
     <div className=" flex flex-col justify-center items-center border-p-gray-dark border-2 px-14 py-9 rounded-2xl pt-12">
       <form onSubmit={formik.handleSubmit} className="w-full flex flex-col items-center">
-        <h1 className="_text-bold-3xl pb-4">{strings.title}</h1>
+        <h1 className="_text text-3xl pb-4">{strings.title}</h1>
         <FormField formik={formik} htmlFor="email" placeholder={strings.email} />
         <FormField formik={formik} htmlFor="password" type="password" placeholder={strings.password} />
         <div className="h-12 w-full flex justify-center items-center">

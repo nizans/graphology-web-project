@@ -15,6 +15,7 @@ module.exports = {
       sans: ['"Calibri"', 'sans-serif'],
     },
     extend: {
+      screens: { xs: '475px' },
       fontSize: {
         '10xl': '9rem',
         '11xl': '10rem',

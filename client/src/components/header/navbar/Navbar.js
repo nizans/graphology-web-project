@@ -2,26 +2,22 @@ import DropDownMenu from 'components/UI/DropDownMenu';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavLogo from './NavLogo';
-
-// const dropdownLinks = [
-//   <NavLink className="px-4" activeClassName="font-bold" to="/home/about">
-//     אודות
-//   </NavLink>,
-//   <NavLink className="px-4" activeClassName="font-bold" to="/home/about">
-//     מיכל
-//   </NavLink>,
-//   <NavLink className="px-4" activeClassName="font-bold" to="/home/articles">
-//     כתבות
-//   </NavLink>,
-// ];
+import NavPhoneNumber from './NavPhoneNumber';
 
 const Navbar = ({ dropdownLinks, links }) => {
   return (
     <nav className="min-w-full lg:flex items-center lg:justify-between sticky top-0">
-      <NavLogo />
+      <div
+        style={{ minInlineSize: 'fit-content' }}
+        className=" mr-auto sm:mr-0 font-light _text text-2xl  flex md:px-4 justify-between items-center lg:divide-x-2 divide-p-brown lg:divide-x-reverse lg:px-0"
+      >
+        <NavLogo />
+        <NavPhoneNumber />
+      </div>
       <div className="grid grid-cols-6 w-full lg:w-auto lg:gap-0">
         <div className="col-span-1 relative w-full flex justify-evenly lg:justify-center items-center lg:px-2 xl:px-4 px-0">
           <DropDownMenu
+            itemClassName="font-light _text text-xl xl:text-3xl"
             values={dropdownLinks}
             asLinks={true}
             ulStyle={{ padding: '0 0', top: 0 }}
@@ -38,8 +34,9 @@ const Navbar = ({ dropdownLinks, links }) => {
               to={item.to}
               key={i}
               activeClassName="font-bold"
-              style={{ transition: 'font .1s' }}
-              className="px-1 lg:px-2 xl:px-4 w-full text-center lg:w-auto hover:font-bold">
+              style={{ transition: 'font .1s', minInlineSize: 'fit-content' }}
+              className="px-1 lg:px-2 xl:px-4 w-full font-light _text text-xl xl:text-3xl text-center lg:w-auto hover:font-bold"
+            >
               {item.name}
             </NavLink>
           ))}

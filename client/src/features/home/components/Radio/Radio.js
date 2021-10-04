@@ -35,7 +35,7 @@ const Radio = () => {
           {!isReady && firstRender && <Spinner />}
           <ResponsivePlayer url={videoUrl} controls={true} onReady={handleReady} />
         </div>
-        <div className="col-span-6 sm:col-span-4 sm:col-start-2 lg:col-span-1 my-auto">
+        <div className="col-span-6 lg:col-span-1 my-auto  grid-cols-3 gap-x-6 lg:block">
           <SuggestionContainer setVideoUrl={setVideoUrl} />
         </div>
       </div>

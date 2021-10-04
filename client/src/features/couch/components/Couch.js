@@ -37,8 +37,8 @@ const Couch = () => {
     <Section>
       <div ref={ref}>
         <div className="w-full">
-          <h1 className="_text-bold-dark-7xl text-center">{strings.title}</h1>
-          <h3 className="_text-bold-3xl text-center">{strings.subtitle}</h3>
+          <h1 className="_text-bold-dark text-7xl text-center">{strings.title}</h1>
+          <h3 className="_text text-3xl text-center">{strings.subtitle}</h3>
         </div>
 
         <div className="w-full flex flex-col sm:flex-row justify-between px-4 mt-8 pb-8">
@@ -46,7 +46,7 @@ const Couch = () => {
 
           <div className="flex flex-col sm:flex-row justify-evenly items-center">
             <SearchInput className="m-auto" value={searchInput} handleSearch={setSearchInput} />
-            <span className="_text-bold-2xl sm:mr-6 cursor-pointer">? {strings.moreInfo}</span>
+            <span className="_text text-2xl sm:mr-6 cursor-pointer">? {strings.moreInfo}</span>
           </div>
         </div>
       </div>

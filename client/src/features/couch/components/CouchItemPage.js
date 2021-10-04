@@ -25,8 +25,9 @@ const CouchItemPage = () => {
   useEffect(() => {
     if (item) {
       setTitle(item._id, item.title);
+      console.log(item);
     }
-  }, [item, setTitle]);
+  }, []);
 
   const handleDelete = () => {
     mutate({ uri: id });
@@ -42,11 +43,11 @@ const CouchItemPage = () => {
       <Section className="pb-6 ">
         {isAuth && <ButtonsCell onDelete={handleDelete} withPreview={false} _id={id} type={'contents'} />}
         <div className="flex justify-between items-center pb-1">
-          <h1 className="_text-bold-dark-5xl">{item.title}</h1>
-          <h3 className="_text-2xl">{toDate(item.publishDate || item.uploadDate)}</h3>
+          <h1 className="_text-bold-dark text-5xl">{item.title}</h1>
+          <h3 className="_text text-2xl">{toDate(item.publishDate || item.uploadDate)}</h3>
         </div>
         <Underline />
-        <h2 className="py-10 _text-bold-3xl  ">{item.subtitle}</h2>
+        <h2 className="py-10 _text text-3xl  ">{item.subtitle}</h2>
         <div>
           <div>
             <ImageBox
@@ -55,7 +56,7 @@ const CouchItemPage = () => {
               height={height < 600 ? height - 100 : 500}
             />
           </div>
-          <div className="_text-2xl break-words leading-normal w-full">{parse(item.text)}</div>
+          <div className="_text text-2xl break-words leading-normal w-full">{parse(item.text)}</div>
         </div>
       </Section>
     )

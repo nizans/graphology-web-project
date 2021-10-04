@@ -45,7 +45,7 @@ const ImageUploadInput = ({ images, onImageChange }) => {
         />
       }>
       {i !== 0 && (
-        <button className="_text-xl hover:font-bold" onClick={() => setMainImage(img)}>
+        <button className="_text text-2xl hover:font-bold" onClick={() => setMainImage(img)}>
           {strings.setMainImage}
         </button>
       )}

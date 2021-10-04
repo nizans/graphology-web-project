@@ -53,19 +53,19 @@ const CouchForm = ({ data: item }) => {
     enableReinitialize: true,
   });
 
-  if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
+  if (isSuccess) return <h1 className="p-16 _text text-3xl m-auto text-center font-bold">{strings.success}</h1>;
   return (
     <form onSubmit={formik.handleSubmit} className="flex h-full justify-between w-full">
       <div className="flex flex-col justify-evenly items-center">
         <FormField formik={formik} htmlFor="title" placeholder={strings.title} />
         <div className="px-4 py-4  w-full">
-          <label htmlFor="subtitle" className="_text-2xl">
+          <label htmlFor="subtitle" className="_text text-2xl">
             {strings.subtitle}
           </label>
           <textarea
             rows="6"
             placeholder={strings.subtitle}
-            className="w-full  border-p-blue border-2 _text-xl"
+            className="w-full  border-p-blue border-2 _text text-xl"
             name="subtitle"
             id="subtitle"
             onChange={formik.handleChange}

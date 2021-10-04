@@ -1,40 +1,57 @@
+import { DimensionsContext } from 'context/DimensionsContext';
 import useDomParser from 'hooks/useDomParser';
 import truncate from 'lodash.truncate';
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const titleStrToBtn = str => {
   return 'ל' + str;
 };
+
 const ExpertiseContainer = ({ data: item }) => {
+  const { windowWidth, windowHeight, headerHeight } = useContext(DimensionsContext);
   const [parsedDescription] = useDomParser(item.description, 'text/html');
   return (
     <div
-      className="md:p-8 border-p-brown border-r-4  "
+      className="md:p-8 border-p-brown lg:border-r-4 grid grid-rows-3 sm:grid-rows-6 items-center mx-auto"
       style={{
-        display: 'grid',
-        gridTemplateRows: '7',
-        gridAutoRows: '1fr',
-        gap: '20px',
-      }}>
-      <div className="row-span-3 max-h-52">
-        <img
-          alt=""
-          className="mx-auto"
-          loading="eager"
-          style={{ objectFit: 'cover', height: '200px' }}
-          src={item.image.full}
-        />
+        height: (windowHeight - headerHeight) * 0.75,
+        width: windowWidth < 640 ? windowWidth * 0.7 : null,
+      }}
+    >
+      <div className="w-full h-full sm:row-span-2">
+        <div
+          className="m-auto lg:w-full"
+          style={{
+            maxWidth: windowWidth < 640 ? windowWidth / 2 : 216,
+            maxHeight: ((windowHeight - headerHeight) * 0.75) / 3,
+          }}
+        >
+          <img alt="" className="m-auto" loading="eager" src={item.image.full} />
+        </div>
       </div>
-      <h1 className="row-span-1  text-4xl _text-bold-4xl mt-6 ml-auto">{item.title}</h1>
-      <p className="row-span-2 _text-xl " style={{ direction: 'rtl' }}>
-        {truncate(parsedDescription, { length: 150, separator: ' ' })}
-      </p>
-      <NavLink
-        to={`/home/services?scroll=${item.title}`}
-        className="row-span-1 bg-p-brown py-2 px-4 mx-auto lg:mr-0 lg:ml-auto  mt-4 _text-bold-xl hover:bg-p-brown-dark">
-        {titleStrToBtn(item.title)}
-      </NavLink>
+      <div className="text-center lg:text-right sm:row-span-3 overflow-hidden">
+        <h1 className="px-10 lg:px-0 _text-bold text-2xl sm:text-3xl md:text-4xl lg:text-right lg:text-3xl whitespace-nowrap my-2">
+          {item.title}
+        </h1>
+        <p
+          className="px-10 lg:px-0 text-center sm:text-right  _text text-xl sm:text-xl md:text-2xl  "
+          style={{ direction: 'rtl' }}
+        >
+          {truncate(parsedDescription, {
+            length: 100,
+            separator: ' ',
+          })}
+        </p>
+      </div>
+      <div className=" mx-auto lg:ml-auto lg:mr-0 sm:row-span-1 ">
+        <NavLink
+          to={`/home/services?scroll=${item.title}`}
+          className=" bg-p-brown py-2 px-4 _text-bold text-xl hover:bg-p-brown-dark "
+        >
+          {titleStrToBtn(item.title)}
+        </NavLink>
+      </div>
     </div>
   );
 };

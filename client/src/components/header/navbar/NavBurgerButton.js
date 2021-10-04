@@ -5,18 +5,19 @@ const NavBurgerButton = ({ open, toggleOpen }) => {
     <button
       type="button"
       onClick={toggleOpen}
-      className="absolute mr-4 flex flex-col justify-around w-8 h-8 cursor-pointer p-0 z-50"
-      style={{ background: 'transparent' }}>
+      className="absolute flex flex-col justify-around w-8 h-8 cursor-pointer p-0 z-50"
+      style={{ background: 'transparent' }}
+    >
       <div
-        className={`w-8 h-1 ${open ? 'bg-p-blue' : 'bg-p-brown'} rounded-3xl outline-none transition-all relative`}
-        style={{ transformOrigin: '1px', transform: open ? 'rotate(45deg)' : 'rotate(0)' }}
+        className="w-9 h-1 bg-p-brown rounded-3xl outline-none transition-all relative"
+        style={{ transformOrigin: '4px', transform: open ? 'rotate(45deg)' : 'rotate(0)' }}
       />
       <div
-        className={`w-8 h-1 ${open ? 'bg-p-blue' : 'bg-p-brown'} rounded-3xl outline-none transition-all relative`}
+        className="w-11 h-1 bg-p-brown rounded-3xl outline-none transition-all relative"
         style={{ transformOrigin: '1px', opacity: open ? '0' : '1' }}
       />
       <div
-        className={`w-8 h-1 ${open ? 'bg-p-blue' : 'bg-p-brown'} rounded-3xl outline-none transition-all relative`}
+        className={`w-7 h-1 bg-p-brown ${open ? 'w-9' : ''} rounded-3xl outline-none transition-all relative`}
         style={{ transformOrigin: '1px', transform: open ? 'rotate(-45deg)' : 'rotate(0)' }}
       />
     </button>

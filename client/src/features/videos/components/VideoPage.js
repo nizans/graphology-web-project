@@ -29,14 +29,14 @@ export const VideoPage = () => {
   ) : (
     <Section className="mb-4">
       <div className="flex justify-between items-center pb-1 ">
-        <h1 className="_text-bold-dark-5xl">{item.title}</h1>
-        <h3 className="_text-2xl">{toDate(item.uploadDate)}</h3>
+        <h1 className="_text-bold-dark text-5xl">{item.title}</h1>
+        <h3 className="_text text-2xl">{toDate(item.uploadDate)}</h3>
       </div>
       <Underline />
       <div className="w-10/12 m-auto my-4 ">
         <ResponsivePlayer url={item.url} controls={true} onReady={() => {}} />
       </div>
-      <div className="_text-2xl w-10/12 m-auto">{parse(item.description)}</div>
+      <div className="_text text-2xl w-10/12 m-auto">{parse(item.description)}</div>
     </Section>
   );
 };

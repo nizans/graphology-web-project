@@ -76,7 +76,7 @@ const AdminForm = ({ data: admin }) => {
       );
   };
 
-  if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
+  if (isSuccess) return <h1 className="p-16 _text text-3xl m-auto text-center font-bold">{strings.success}</h1>;
 
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col justify-evenly h-full w-full">
@@ -107,8 +107,8 @@ const AdminForm = ({ data: admin }) => {
             icon={<ShowPasswordIcon onClick={togglePasswordShow} show={showPassword} />}
           />
         </div>
-        <div className="w-full px-4 my-4 _text-xl">
-          <h1 className="_text-3xl">{strings.defineUser}</h1>
+        <div className="w-full px-4 my-4 _text text-xl">
+          <h1 className="_text text-3xl">{strings.defineUser}</h1>
           <ul className="mr-2">
             <li className="my-4">
               <input

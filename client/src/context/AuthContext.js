@@ -51,9 +51,14 @@ export const AuthContextProvider = ({ children }) => {
 
   const refresh = async () => {
     const body = JSON.stringify({ refreshToken: refreshToken });
-    const { email, name } = await refreshRequest({ body });
-    setUser({ email, name });
-    setIsAuth(true);
+    try {
+      const { email, name } = await refreshRequest({ body });
+      setUser({ email, name });
+      setIsAuth(true);
+    } catch (error) {
+      setUser(null);
+      setIsAuth(false);
+    }
   };
 
   //   const renew = async () => {

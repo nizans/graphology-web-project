@@ -18,11 +18,11 @@ const Pagintation = ({ pages, page }) => {
           to={{
             search: setQueryParams('page', Number(page) + 1),
           }}
-          className="_text-2xl px-4">
+          className="_text text-2xl-2xl px-4">
           &lt;
         </NavLink>
       )}
-      <ul className="flex justify-center divide-x-2 divide-p-blue _text-3xl flex-row-reverse">
+      <ul className="flex justify-center divide-x-2 divide-p-blue _text text-3xl flex-row-reverse">
         {Array.from(Array(pages).keys(), (_, i) => (
           <li key={i} className="list-none px-2">
             <NavLink
@@ -40,7 +40,7 @@ const Pagintation = ({ pages, page }) => {
           to={{
             search: setQueryParams('page', Number(page) - 1),
           }}
-          className="px-4 _text-2xl">
+          className="px-4 _text text-2xl">
           &gt;
         </NavLink>
       )}

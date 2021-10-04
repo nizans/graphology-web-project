@@ -20,14 +20,14 @@ export const Articles = () => {
   return (
     <Section>
       <div className="flex flex-col items-center mb-9">
-        <h1 className="_text-bold-dark-8xl">{strings.title}</h1>
+        <h1 className="_text-bold-dark text-8xl">{strings.title}</h1>
         <Underline style={{ width: '33%' }} />
         {error ? (
           <ErrorSection error={error} />
         ) : isLoading ? (
           <LoadingSection />
         ) : (
-          <div className="grid  lg:grid-cols-3 pt-16  gap-28">
+          <div className="grid  lg:grid-cols-3 pt-16 gap-28">
             {data.payload.map(item => (
               <ArticleContainer key={item._id} item={item} />
             ))}

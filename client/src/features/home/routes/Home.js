@@ -6,6 +6,7 @@ import React, { useContext } from 'react';
 import ContactUs from '../components/ContantUs/ContactUs';
 import Expertise from '../components/Expertise/Expertise';
 import Michal from '../components/Michal/Michal';
+import MichalSpeechBubble, { MichalSpeechBubbleSmallScreen } from '../components/Michal/MichalSpeechBubble';
 import OnTheCouch from '../components/OnTheCouch/OnTheCouch';
 import Radio from '../components/Radio/Radio';
 import Recommendations from '../components/Recommendations/Recommendations';
@@ -13,7 +14,7 @@ import BookShelf from '../components/Shelf/BookShelf';
 
 export const Home = () => {
   const [michalRef, michalDim] = useDimensions();
-  const { windowHeight, headerHeight, footerHeight } = useContext(DimensionsContext);
+  const { windowHeight, windowWidth, headerHeight, footerHeight } = useContext(DimensionsContext);
 
   const handleReadMoreClick = async () => {
     window.scrollTo({
@@ -23,20 +24,21 @@ export const Home = () => {
   };
   return (
     <>
-      <Section minHeight={windowHeight - headerHeight} className="flex flex-col  mb-16">
+      <Section minHeight={windowHeight - headerHeight} className="flex justify-center mb-16">
         <BookShelf onReadMoreClick={handleReadMoreClick} />
       </Section>
-      <Section minHeight={windowHeight - headerHeight} className=" mb-16">
+      <Section minHeight={windowHeight - headerHeight} className="flex flex-col items-center mb-16">
+        {windowWidth >= 640 ? <MichalSpeechBubble /> : <MichalSpeechBubbleSmallScreen />}
         <Michal ref={michalRef} />
       </Section>
-      <Section minHeight={windowHeight - headerHeight} className="flex flex-col justify-evenly mb-16">
+      <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
         <Expertise />
       </Section>
-      <Section minHeight={windowHeight - headerHeight} className="flex flex-col justify-around mb-16">
+      <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
         <Recommendations />
       </Section>
-      <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
-        {/* <Radio /> */}
+      <Section minHeight={(windowHeight - headerHeight) / 2} className="flex flex-col mb-16">
+        <Radio />
       </Section>
       <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
         <OnTheCouch />

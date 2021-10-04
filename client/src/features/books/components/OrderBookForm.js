@@ -49,14 +49,14 @@ const OrderBookForm = ({ book }) => {
   if (isSuccess)
     return (
       <div className="min-w-full min-h-full flex">
-        <h1 className="m-auto _text-bold-3xl">{strings.success}</h1>
+        <h1 className="m-auto _text text-3xl">{strings.success}</h1>
       </div>
     );
 
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col justify-evenly h-full w-full">
-      <h1 className="_text-bold-dark-6xl mr-4">{strings.title}</h1>
-      <h3 className="_text-3xl mr-4">{strings.subtitle}</h3>
+      <h1 className="_text-bold-dark text-6xl mr-4">{strings.title}</h1>
+      <h3 className="_text text-3xl mr-4">{strings.subtitle}</h3>
       <div className="grid sm:grid-cols-2">
         <FormField borderWidth="2" formik={formik} htmlFor="name" placeholder={strings.fullName} />
         <FormField borderWidth="2" formik={formik} htmlFor="phone" placeholder={strings.phoneNumber} />

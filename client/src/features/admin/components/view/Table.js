@@ -50,14 +50,14 @@ const Table = ({ type, generateCell, headers, apiRequests }) => {
           {isSuccess && (
             <>
               <table className="table-auto w-full ">
-                <thead className="bg-p-brown-light border-b-2 border-p-gray-dark text-right _text-bold-xl">
+                <thead className="bg-p-brown-light border-b-2 border-p-gray-dark text-right _text text-xl">
                   <tr>
                     <th>#</th>
                     {headers()}
                     <th>{strings.actions}</th>
                   </tr>
                 </thead>
-                <tbody className="_text-xl">
+                <tbody className="_text text-xl">
                   {data.payload.map((item, i) => (
                     <tr
                       key={item._id}

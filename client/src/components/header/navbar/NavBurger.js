@@ -14,7 +14,7 @@ const NavBurger = ({ links }) => {
     setOpen(!open);
   };
   return (
-    <nav ref={ref} className="flex justify-between items-center">
+    <nav ref={ref} className="flex items-center">
       <NavBurgerButton open={open} toggleOpen={toggleOpen} />
       <NavBurgerMenu open={open} toggleOpen={toggleOpen} links={links} />
       <NavLogo />

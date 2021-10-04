@@ -7,10 +7,13 @@ const strings = {
 };
 const NavPhoneNumber = () => {
   return (
-    <div className="hidden sm:flex flex-row pr-4 lg:flex-col items-start">
+    <div
+      className="_text flex flex-col items-center sm:flex-row sm:pr-4 lg:flex-col sm:items-start"
+      style={{ minInlineSize: 'fit-content' }}
+    >
       <h1>{strings.phoneTitle}</h1>
       <a className="flex" href={`tel:${strings.phoneNumber}`}>
-        <img loading="lazy" src={phoneIcon} className="h-6 lg:h-8 px-4 lg:pr-0 " alt="" />
+        <img loading="eager" src={phoneIcon} className="h-6 lg:h-8 px-2 sm:px-4 lg:pr-0 " alt="" />
         {strings.phoneNumber}
       </a>
     </div>

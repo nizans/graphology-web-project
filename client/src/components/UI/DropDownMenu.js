@@ -1,7 +1,8 @@
 import useDimensions from 'hooks/useDimensions';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Arrow from 'assets/icons/down_arrow.png';
+import { ThemeContext } from 'context/ThemeContext';
 
 const DropDownMenu = ({
   values = [],
@@ -12,6 +13,7 @@ const DropDownMenu = ({
   ulStyle = { width: '100%' },
   liStyle = { padding: '1rem' },
 }) => {
+  const { isMobile } = useContext(ThemeContext);
   const [valsArray, setValsArray] = useState(values);
   const [show, setShow] = useState(false);
   const [ref, dim] = useDimensions();
@@ -37,6 +39,7 @@ const DropDownMenu = ({
       <ul
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
+        onTouchStart={() => setShow(true)}
         className="bg-p-brown-light px-4 hover:bg-p-brown-dark rounded-xl inline-block"
         style={{
           zIndex: 40,
@@ -53,7 +56,7 @@ const DropDownMenu = ({
             ref={i === 0 ? ref : null}
             onClick={() => {
               if (!asLinks && val === title) return;
-              handleItemClick(val);
+              if (!isMobile) handleItemClick(val);
             }}>
             {asLinks ? (
               <NavLink
@@ -61,8 +64,7 @@ const DropDownMenu = ({
                 to={val.to}
                 style={{ transition: 'font 0.1s ' }}
                 className={
-                  '_text-3xl hover:text-p-blue-dark hover:font-semibold cursor-pointer flex items-center ' +
-                  itemClassName
+                  '_text  hover:text-p-blue-dark hover:font-semibold cursor-pointer flex items-center ' + itemClassName
                 }>
                 {val.name}
                 {i === 0 && (
@@ -78,7 +80,7 @@ const DropDownMenu = ({
               <span
                 style={{ transition: 'font 0.1s ' }}
                 className={
-                  '_text-3xl hover:text-p-blue-dark hover:font-semibold cursor-pointer flex items-center' +
+                  '_text text-3xl hover:text-p-blue-dark hover:font-semibold cursor-pointer flex items-center' +
                   itemClassName
                 }>
                 {val}

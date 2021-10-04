@@ -33,7 +33,7 @@ const BreadCrumbs = () => {
   return (
     <div ref={breadCrumbRef} className="w-full">
       {crumbs.map((crumb, i) => (
-        <span className="_text-2xl" key={crumb}>
+        <span className="_text text-2xl" key={crumb}>
           <NavLink
             className={`pl-2 ${i === crumbs.length - 1 ? 'font-bold' : ''}`}
             to={`/${crumbs.slice(0, i + 1).join('/')}`}>

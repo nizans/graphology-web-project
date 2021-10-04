@@ -22,13 +22,13 @@ const AdminTopNav = () => {
 
   return (
     <nav>
-      <NavLink className="_text-xl px-4" to="/home">
+      <NavLink className="_text text-xl px-4" to="/home">
         {strings.backHome}
       </NavLink>
-      <NavLink className="_text-xl px-4" to={`${path}/view`}>
+      <NavLink className="_text text-xl px-4" to={`${path}/view`}>
         {strings.viewContents}
       </NavLink>
-      <NavLink activeClassName="font-bold" className="_text-xl px-4" to={`${path}/view/admins`}>
+      <NavLink activeClassName="font-bold" className="_text text-xl px-4" to={`${path}/view/admins`}>
         {strings.admins}
       </NavLink>
       <LoadingButton
@@ -36,7 +36,7 @@ const AdminTopNav = () => {
         value={strings.logout}
         type="button"
         onClick={handleLogout}
-        className="button p-0 _text-xl px-4">
+        className="button p-0 _text text-xl px-4">
         {strings.logout}
       </LoadingButton>
       <AdminNavRandomData />

@@ -27,7 +27,7 @@ const SearchInput = ({ className, handleSearch }) => {
         onInput={e => setValue(e.target.value)}
         value={value}
         placeholder={strings.search}
-        className="placeholder-p-gray-dark relative my-4 sm:my-0  _text-bold-2xl border-p-blue border-2 rounded-md pr-8 outline-none"
+        className="placeholder-p-gray-dark relative my-4 sm:my-0  _text text-2xl border-p-blue border-2 rounded-md pr-8 outline-none"
       />
       <NavLink to={`${path}?find=${value}`}>
         <img

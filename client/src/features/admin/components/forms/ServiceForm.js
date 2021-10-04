@@ -42,7 +42,7 @@ const ServiceForm = ({ data: item }) => {
       mutate({ body: formData });
     },
   });
-  if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
+  if (isSuccess) return <h1 className="p-16 _text text-3xl m-auto text-center font-bold">{strings.success}</h1>;
 
   return (
     <form onSubmit={formik.handleSubmit} className="flex h-full w-full">

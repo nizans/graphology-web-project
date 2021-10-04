@@ -45,3 +45,34 @@ export const LeftArrow = props => {
     />
   );
 };
+
+export const UpArrow = props => {
+  const { className, style, onClick } = props;
+  return (
+    <img
+      className={
+        className +
+        ` transform -translate-x-1/2 translate-y-5 transition-all scale-300 hover:scale-350 hover:translate-y-7 `
+      }
+      style={{ ...style, left: '50%', right: 0, top: '100%' }}
+      onClick={onClick}
+      alt=""
+      src={Arrow}
+    />
+  );
+};
+export const DownArrow = props => {
+  const { className, style, onClick } = props;
+  return (
+    <img
+      className={
+        className +
+        ` transform -translate-x-1/2 transition-all -translate-y-8 rotate-180 scale-300 hover:scale-350 hover:-translate-y-10   `
+      }
+      style={{ ...style, left: '50%', right: 0, bottom: 0, top: 0 }}
+      onClick={onClick}
+      alt=""
+      src={Arrow}
+    />
+  );
+};

@@ -29,14 +29,14 @@ const CouchItem = ({ data: item }) => {
         />
       </div>
       <div className="col-span-5 ">
-        <h1 className="_text-bold-4xl">{item.title}</h1>
-        <h3 className="_text-xl pb-3">{item.date}</h3>
+        <h1 className="_text-bold text-4xl">{item.title}</h1>
+        <h3 className="_text text-xl pb-3">{item.date}</h3>
         <div
           ref={ref}
           style={{
             columnCount: windowWidth < 1024 ? '1' : '2',
           }}
-          className="align-middle _text-2xl">
+          className="align-middle _text text-2xl">
           {truncate(parsedText, { length: 500, separator: ' ' })}
         </div>
       </div>

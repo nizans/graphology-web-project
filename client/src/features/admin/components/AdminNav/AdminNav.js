@@ -22,7 +22,6 @@ const links = [
   { name: 'שירותים', to: 'view/services' },
   { name: 'ספרים', to: 'view/books' },
   { name: 'תעודות', to: 'view/certifications' },
-
 ];
 
 const AdminNav = () => {
@@ -47,10 +46,10 @@ const AdminNav = () => {
       <div ref={headerRef} className=" top-0 bg-background">
         <div className="flex justify-between items-center w-full">
           <div>
-            <h5 className="_text-3xl">{strings.hello + user?.name}</h5>
-            <h1 className="_text-bold-dark-8xl">{title}</h1>
+            <h5 className="_text text-3xl">{strings.hello + user?.name}</h5>
+            <h1 className="_text-bold-dark text-8xl">{title}</h1>
             {!viewPage && (
-              <button type="button" className="_text-3xl hover:font-bold" onClick={goBack}>
+              <button type="button" className="_text text-3xl hover:font-bold" onClick={goBack}>
                 &lt; {strings.goBack}
               </button>
             )}
@@ -62,7 +61,7 @@ const AdminNav = () => {
             {links.map((link, i) => (
               <NavLink
                 key={i}
-                className={`_text-3xl ${i === 0 ? 'pl-4' : 'px-4'}`}
+                className={`_text text-3xl ${i === 0 ? 'pl-4' : 'px-4'}`}
                 activeClassName="font-bold"
                 to={`${path}/${link.to}`}>
                 {link.name}

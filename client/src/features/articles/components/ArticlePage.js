@@ -46,8 +46,8 @@ const ArticlePage = () => {
       <Section className="flex flex-col items-center mb-9">
         {isAuth && <ButtonsCell onDelete={handleDelete} withPreview={false} _id={id} type={'articles'} />}
         <div className="text-center">
-          <h1 className="_text-bold-dark-7xl">{title}</h1>
-          <h3 className="_text-3xl font-light">{strings.articleFrom + sourceFrom}</h3>
+          <h1 className="_text-bold-dark text-7xl">{title}</h1>
+          <h3 className="_text text-3xl font-light">{strings.articleFrom + sourceFrom}</h3>
           <Underline thickness={4} />
         </div>
         <div className="w-10/12 my-4">
@@ -59,8 +59,8 @@ const ArticlePage = () => {
           />
         </div>
 
-        <div className="my-4 _text-3xl">{pNodes}</div>
-        <div className="_text-3xl font-light mr-auto mt-8">
+        <div className="my-4 _text text-3xl">{pNodes}</div>
+        <div className="_text text-3xl font-light mr-auto mt-8">
           <h3>{date}</h3>
           <a className="underline" href={sourceURL}>
             {strings.originalLink}

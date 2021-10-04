@@ -55,7 +55,7 @@ const BookForm = ({ data: item }) => {
     },
     enableReinitialize: true,
   });
-  if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
+  if (isSuccess) return <h1 className="p-16 _text text-3xl m-auto text-center font-bold">{strings.success}</h1>;
   return (
     <form onSubmit={formik.handleSubmit} className="flex h-full justify-between w-full">
       <div className="flex flex-col justify-evenly items-center">
@@ -63,7 +63,7 @@ const BookForm = ({ data: item }) => {
         <FormField formik={formik} htmlFor="author" placeholder={strings.author} />
         <FormField formik={formik} topLabel={strings.publishDate} htmlFor="publishDate" type="date" />
         <ImageUploadInput onImageChange={setImages} images={images} />
-        <div className="grid grid-rows-2 mx-4 _text-3xl">
+        <div className="grid grid-rows-2 mx-4 _text text-3xl">
           <LoadingButton isLoading={isLoading} value={item ? strings.update : strings.send} />
           {error && (
             <label>

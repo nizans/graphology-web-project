@@ -45,7 +45,7 @@ const VideoForm = ({ data: item }) => {
     },
   });
 
-  if (isSuccess) return <h1 className="p-16 _text-3xl m-auto text-center font-bold">{strings.success}</h1>;
+  if (isSuccess) return <h1 className="p-16 _text text-3xl m-auto text-center font-bold">{strings.success}</h1>;
   return (
     <form
       onSubmit={formik.handleSubmit}
@@ -62,7 +62,7 @@ const VideoForm = ({ data: item }) => {
             value={formik.values.description}
           />
         </div>
-        <FormField formik={formik} className="_text-xl w-full" htmlFor="url" placeholder={strings.url} />
+        <FormField formik={formik} className="_text text-xl w-full" htmlFor="url" placeholder={strings.url} />
         <LoadingButton isLoading={isLoading} value={item ? strings.update : strings.send} />
         {error && (
           <label>

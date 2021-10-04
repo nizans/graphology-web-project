@@ -38,7 +38,7 @@ const ContantUsForm = () => {
     },
   });
 
-  if (isSuccess) return <h1 className="p-16 _text-3xl">{strings.success}</h1>;
+  if (isSuccess) return <h1 className="p-16 _text text-3xl">{strings.success}</h1>;
   if (error) return <ErrorMessage error={error} />;
 
   return isLoading ? (
@@ -46,11 +46,20 @@ const ContantUsForm = () => {
       <Spinner />
     </div>
   ) : (
-    <form onSubmit={formik.handleSubmit} className="flex flex-col lg:flex-row justify-center items-center p-16">
-      <FormField borderWidth="4" htmlFor="from" placeholder={strings.fullName} formik={formik} />
-      <FormField borderWidth="4" htmlFor="phone" placeholder={strings.phoneNumber} formik={formik} />
-      <FormField borderWidth="4" htmlFor="email" placeholder={strings.email} formik={formik} />
-      <div className="grid grid-rows-2 mx-4">
+    <form
+      onSubmit={formik.handleSubmit}
+      className="flex flex-col xl:flex-row justify-center items-start xl:items-center xl:p-16 w-full overflow-x-hidden xl:overflow-x-visible"
+    >
+      <FormField className="xl:mx-4" borderWidth="4" htmlFor="from" placeholder={strings.fullName} formik={formik} />
+      <FormField
+        className="xl:mx-4"
+        borderWidth="4"
+        htmlFor="phone"
+        placeholder={strings.phoneNumber}
+        formik={formik}
+      />
+      <FormField className="xl:mx-4" borderWidth="4" htmlFor="email" placeholder={strings.email} formik={formik} />
+      <div className="grid grid-rows-2 mr-auto xl:mx-4">
         <LoadingButton isLoading={isLoading} />
       </div>
     </form>

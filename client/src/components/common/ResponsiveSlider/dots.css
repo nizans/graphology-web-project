@@ -1,0 +1,13 @@
+.dot {
+  height: 13px;
+  width: 13px;
+  background-color: #dfbba6;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+li.slick-active span {
+  background-color: #dfbba6;
+  opacity: 1;
+}
