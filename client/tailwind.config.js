@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: {
     content: ['./src/**/*.js', './src/**/*.jsx'],
@@ -14,8 +16,8 @@ module.exports = {
     fontFamily: {
       sans: ['"Calibri"', 'sans-serif'],
     },
+    screens: { xs: '475px', ...defaultTheme.screens },
     extend: {
-      screens: { xs: '475px' },
       fontSize: {
         '10xl': '9rem',
         '11xl': '10rem',

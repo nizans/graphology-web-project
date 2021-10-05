@@ -1,9 +1,9 @@
 import logo from 'assets/icons/logo_subtitle.svg';
 import Underline from 'components/UI/Underline';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import NavPhoneNumber from './NavPhoneNumber';
 import Transition from 'react-transition-group/Transition';
+import NavPhoneNumber from './NavPhoneNumber';
 
 const opacityTransitionTime = '0.3s';
 const translateTrantisionTime = '0.15s';

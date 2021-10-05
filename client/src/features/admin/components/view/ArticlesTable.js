@@ -1,7 +1,7 @@
 import { articlesApiCRUDRequests } from 'features/articles';
 import React from 'react';
 import { toDate } from 'utils/toDate';
-import TableItemImage from 'components/UI/TableItemImage';
+import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import Table from './Table';
 const strings = {
   title: 'שם',
@@ -27,7 +27,7 @@ const ArticlesTable = () => {
       <>
         <td>
           <div className="overflow-hidden">
-            <TableItemImage image={item.images} />
+            <MultiSourceImageParse image={item.images} />
           </div>
         </td>
         <td>{item.title}</td>

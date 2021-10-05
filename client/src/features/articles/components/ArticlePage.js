@@ -4,6 +4,7 @@ import ButtonsCell from 'components/UI/ButtonsCell';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
 import Underline from 'components/UI/Underline';
+import htmlParserOptions from 'config/htmlParserOptions';
 import { AuthContext } from 'context/AuthContext';
 import { BreadCrumbsTitleContext } from 'context/BreadCrumbsTitleContext';
 import { DimensionsContext } from 'context/DimensionsContext';
@@ -36,13 +37,11 @@ const ArticlePage = () => {
   if (item) {
     const { title, text, publishDate, images, sourceFrom, sourceURL } = item;
     const date = strings.publishedAt + toDate(publishDate);
-    const pNodes = parse(text);
 
-    return isLoading || isMutating ? (
-      <LoadingSection />
-    ) : isDeleteSuccess ? (
-      <Redirect to="/home/articles" />
-    ) : (
+    if (isLoading || isMutating) return <LoadingSection />;
+    if (isDeleteSuccess) return <Redirect to="/home/articles" />;
+
+    return (
       <Section className="flex flex-col items-center mb-9">
         {isAuth && <ButtonsCell onDelete={handleDelete} withPreview={false} _id={id} type={'articles'} />}
         <div className="text-center">
@@ -50,16 +49,12 @@ const ArticlePage = () => {
           <h3 className="_text text-3xl font-light">{strings.articleFrom + sourceFrom}</h3>
           <Underline thickness={4} />
         </div>
+
         <div className="w-10/12 my-4">
-          <ImageBox
-            sliderWrapperClassName="lg:px-8"
-            imgStyle={{ objectFit: 'contain' }}
-            images={images}
-            height={height < 600 ? height - 120 : 600}
-          />
+          <ImageBox images={images} height={height < 600 ? height - 120 : 600} />
         </div>
 
-        <div className="my-4 _text text-3xl">{pNodes}</div>
+        <div className="my-4 _text text-3xl">{parse(text, htmlParserOptions)}</div>
         <div className="_text text-3xl font-light mr-auto mt-8">
           <h3>{date}</h3>
           <a className="underline" href={sourceURL}>
@@ -69,8 +64,6 @@ const ArticlePage = () => {
       </Section>
     );
   }
-
-  return <Section>Loading</Section>;
 };
 
 export default ArticlePage;

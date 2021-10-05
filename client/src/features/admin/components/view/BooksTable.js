@@ -2,7 +2,7 @@ import { booksApiCRUDRequests } from 'features/books';
 import truncate from 'lodash.truncate';
 import React from 'react';
 import { toDate } from 'utils/toDate';
-import TableItemImage from 'components/UI/TableItemImage';
+import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import Table from './Table';
 
 const strings = {
@@ -32,7 +32,7 @@ const BooksTable = () => {
     return (
       <>
         <td className="max-h-40 h-40">
-          <TableItemImage image={item.images} />
+          <MultiSourceImageParse image={item.images} />
         </td>
         <td>{item.title}</td>
         <td>{item.author}</td>

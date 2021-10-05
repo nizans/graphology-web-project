@@ -1,7 +1,7 @@
 import React from 'react';
 import ReadMoreBtn from 'components/UI/ReadMoreBtn';
 import { useRouteMatch } from 'react-router';
-import TableItemImage from 'components/UI/TableItemImage';
+import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import { toDate } from 'utils/toDate';
 import useDomParser from 'hooks/useDomParser';
 import truncate from 'lodash.truncate';
@@ -14,7 +14,7 @@ const OnTheCouchItem = ({ data: item }) => {
   const [parsedText] = useDomParser(text);
   return (
     <div className="flex flex-col lg:flex-row w-full justify-evenly items-center">
-      <TableItemImage image={images} style={{ objectFit: 'cover' }} />
+      <MultiSourceImageParse image={images} />
       <div className="flex flex-col px-4 lg:px-0 justify-start _text text-2xl">
         <div className="my-4 sm:my-0">
           <h1 className="_text-bold text-3xl ">{title}</h1>

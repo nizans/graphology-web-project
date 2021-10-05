@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <>
       <div ref={headerRef} className="w-full fixed top-0 flex justify-center bg-background z-50">
-        <div className="px-2 xs:px-10 container w-full">
+        <div className="px-2 xs:px-10 md:px-0 md:container w-full">
           {width < 640 ? (
             <NavBurger links={[...dropdownLinks, ...links]} />
           ) : (

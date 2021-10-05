@@ -10,6 +10,9 @@ import AppRoutes from 'routes/AppRoutes';
 //TODO - contents page -> api call should return contents and videos by default and should be a filter option.
 //TODO - finish ImageUploadInput.js -> (img.full ??)
 //TODO - add recomendations endpoint and section on admin
+//TODO - fix header height bug on small navbar
+//TODO - mobile pagintation (load more on scroll)
+
 function App() {
   const queryClient = new QueryClient();
   return (

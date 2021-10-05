@@ -2,7 +2,7 @@ import { servicesApiCRUDRequests } from 'features/services';
 import truncate from 'lodash.truncate';
 import React from 'react';
 import { toDate } from 'utils/toDate';
-import TableItemImage from 'components/UI/TableItemImage';
+import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import Table from './Table';
 
 const strings = {
@@ -24,7 +24,7 @@ const ServiceTable = () => {
     return (
       <>
         <td>
-          <TableItemImage image={item.images} />
+          <MultiSourceImageParse image={item.images} />
         </td>
         <td>{item.title}</td>
         <td>

@@ -29,7 +29,6 @@ const BooksItem = ({ data: item }) => {
           withModal={false}
           height={width < 1024 ? 300 : windowHeight - headerHeight - footerHeight - breadCrumbHeight}
           images={images}
-          imgStyle={{ objectFit: 'cover' }}
         />
 
         <div className="w-full flex flex-col justify-evenly items-center lg:items-start p-0 mb-6">

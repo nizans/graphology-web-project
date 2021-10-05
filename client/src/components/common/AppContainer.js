@@ -16,7 +16,7 @@ const AppContainer = ({ children }) => {
     >
       <div
         dir="rtl"
-        className="px-2 xs:px-10 md:px-0 flex flex-col justify-center items-center relative w-screen  md:container min-h-screen "
+        className="px-2 xs:px-10 md:px-0 flex flex-col justify-center items-center relative w-screen md:container min-h-screen "
       >
         {children}
       </div>

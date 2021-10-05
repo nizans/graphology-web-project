@@ -43,7 +43,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     const body = JSON.stringify({ refreshToken: refreshToken, email: user.email, name: user.name });
-    await logoutRequest({ body: body });
+    logoutRequest({ body: body });
     clearRefreshToken();
     setUser(false);
     setIsAuth(false);
@@ -91,7 +91,8 @@ export const AuthContextProvider = ({ children }) => {
         isLoggingOutLoading,
         loginError,
         isLoginLoading,
-      }}>
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

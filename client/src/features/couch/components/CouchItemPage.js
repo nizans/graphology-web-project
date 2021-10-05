@@ -4,6 +4,7 @@ import ButtonsCell from 'components/UI/ButtonsCell';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
 import Underline from 'components/UI/Underline';
+import htmlParserOptions from 'config/htmlParserOptions';
 import { AuthContext } from 'context/AuthContext';
 import { BreadCrumbsTitleContext } from 'context/BreadCrumbsTitleContext';
 import { DimensionsContext } from 'context/DimensionsContext';
@@ -25,9 +26,8 @@ const CouchItemPage = () => {
   useEffect(() => {
     if (item) {
       setTitle(item._id, item.title);
-      console.log(item);
     }
-  }, []);
+  }, [item]);
 
   const handleDelete = () => {
     mutate({ uri: id });
@@ -40,7 +40,7 @@ const CouchItemPage = () => {
     <Redirect to="/home/couch" />
   ) : (
     isSuccess && (
-      <Section className="pb-6 ">
+      <Section className="mb-6 ">
         {isAuth && <ButtonsCell onDelete={handleDelete} withPreview={false} _id={id} type={'contents'} />}
         <div className="flex justify-between items-center pb-1">
           <h1 className="_text-bold-dark text-5xl">{item.title}</h1>
@@ -49,15 +49,9 @@ const CouchItemPage = () => {
         <Underline />
         <h2 className="py-10 _text text-3xl  ">{item.subtitle}</h2>
         <div>
-          <div>
-            <ImageBox
-              sliderWrapperClassName="lg:w-1/2 lg:float-right p-8 ml-4"
-              images={item.images}
-              height={height < 600 ? height - 100 : 500}
-            />
-          </div>
-          <div className="_text text-2xl break-words leading-normal w-full">{parse(item.text)}</div>
+          <ImageBox images={item.images} height={height < 600 ? height - 100 : 500} />
         </div>
+        <div className="_text text-2xl break-words leading-normal w-full">{parse(item.text, htmlParserOptions)}</div>
       </Section>
     )
   );

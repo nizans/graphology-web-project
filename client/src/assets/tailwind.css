@@ -37,6 +37,14 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
   }
+
+  .max-lines-none {
+    overflow: auto;
+    text-overflow: auto;
+    display: block;
+    -webkit-box-orient: unset;
+    -webkit-line-clamp: unset;
+  }
   .max-lines-2 {
     -webkit-line-clamp: 2;
   }
@@ -69,25 +77,30 @@
   }
 
   ._title {
-    @apply _text-bold-dark whitespace-nowrap text-3xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl;
+    @apply _text-bold-dark whitespace-nowrap text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl;
   }
 
   ._p-size {
     @apply text-xl xs:text-2xl sm:text-3xl;
   }
-  ._max-lines-1 {
-    @apply max-lines;
-  }
-  ._max-lines-2 {
-    @apply max-lines max-lines-2;
-  }
-  ._max-lines-3 {
-    @apply max-lines max-lines-3;
-  }
-  ._max-lines-4 {
-    @apply max-lines max-lines-4;
-  }
-  ._max-lines-5 {
-    @apply max-lines max-lines-5;
+  @variants responsive {
+    ._max-lines-none {
+      @apply max-lines-none;
+    }
+    ._max-lines-1 {
+      @apply max-lines;
+    }
+    ._max-lines-2 {
+      @apply max-lines max-lines-2;
+    }
+    ._max-lines-3 {
+      @apply max-lines max-lines-3;
+    }
+    ._max-lines-4 {
+      @apply max-lines max-lines-4;
+    }
+    ._max-lines-5 {
+      @apply max-lines max-lines-5;
+    }
   }
 }

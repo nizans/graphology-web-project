@@ -36,7 +36,7 @@ const OrderBook = () => {
       {isAuth && <ButtonsCell onDelete={handleDelete} withPreview={false} _id={id} type={'books'} />}
       <Section className="flex flex-col md:items-center md:grid gap-x-7 grid-cols-2 mb-16 lg:mb-0">
         <div>
-          <ImageBox height={windowWidth < 1024 ? '25vh' : '50vh'} images={book.images} imgClassName=" object-cover" />
+          <ImageBox height={windowWidth < 1024 ? '25vh' : '50vh'} images={book.images} objectFit="cover" />
         </div>
         <OrderBookForm book={book} />
       </Section>

@@ -9,7 +9,7 @@ const Navbar = ({ dropdownLinks, links }) => {
     <nav className="min-w-full lg:flex items-center lg:justify-between sticky top-0">
       <div
         style={{ minInlineSize: 'fit-content' }}
-        className=" mr-auto sm:mr-0 font-light _text text-2xl  flex md:px-4 justify-between items-center lg:divide-x-2 divide-p-brown lg:divide-x-reverse lg:px-0"
+        className="mr-auto sm:mr-0 font-light _text text-2xl flex justify-between items-center lg:divide-x-2 divide-p-brown lg:divide-x-reverse"
       >
         <NavLogo />
         <NavPhoneNumber />

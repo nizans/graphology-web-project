@@ -3,6 +3,7 @@ import Section from 'components/common/Section';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
 import Underline from 'components/UI/Underline';
+import htmlParserOptions from 'config/htmlParserOptions';
 import { BreadCrumbsTitleContext } from 'context/BreadCrumbsTitleContext';
 import parse from 'html-react-parser';
 import { useFetchData } from 'lib/reactQuery';
@@ -36,7 +37,7 @@ export const VideoPage = () => {
       <div className="w-10/12 m-auto my-4 ">
         <ResponsivePlayer url={item.url} controls={true} onReady={() => {}} />
       </div>
-      <div className="_text text-2xl w-10/12 m-auto">{parse(item.description)}</div>
+      <div className="_text text-2xl w-10/12 m-auto">{parse(item.description, htmlParserOptions)}</div>
     </Section>
   );
 };

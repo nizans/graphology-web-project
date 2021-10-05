@@ -1,5 +1,5 @@
-import BlurredUpImage from 'components/UI/BlurredUpImage';
 import ExpandIcon from 'components/UI/ExpandIcon';
+import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import useDomParser from 'hooks/useDomParser';
 import useModal from 'hooks/useModal';
 import truncate from 'lodash.truncate';
@@ -11,12 +11,9 @@ const strings = {
   articleFrom: 'כתבה מתוך: ',
 };
 const ArticleContainer = ({ item }) => {
-  const imgSrc = (item.images[0] && item.images[0] && { full: item.images[0].full, thumb: item.images[0].thumb }) || {
-    full: 'https://via.placeholder.com/150',
-    thumb: 'https://via.placeholder.com/150',
-  };
   const { toggle } = useModal();
   const [parsedStr] = useDomParser(item.text);
+
   return (
     <div className="flex flex-col max-w-xs items-center bg-p-brown-light px-9 py-6 rounded-xl">
       <div className="flex flex-col items-start w-full mb-4">
@@ -28,15 +25,10 @@ const ArticleContainer = ({ item }) => {
       <div
         onClick={toggle}
         className="border-2 border-p-brown relative mb-9 overflow-hidden"
-        style={{ cursor: 'zoom-in' }}>
+        style={{ cursor: 'zoom-in' }}
+      >
         <ExpandIcon onClick={toggle} />
-        <BlurredUpImage
-          width={300}
-          height={320}
-          imageSrc={imgSrc.full}
-          tinySrc={imgSrc.thumb}
-          style={{ objectFit: 'cover' }}
-        />
+        <MultiSourceImageParse image={item.images} width={300} height={320} />
       </div>
 
       <div className="_text text-xl">
@@ -44,7 +36,8 @@ const ArticleContainer = ({ item }) => {
       </div>
       <NavLink
         to={`/home/articles/${item._id}`}
-        className="_text-bold text-xl bg-p-brown hover:bg-p-brown-dark py-1 px-4 mr-auto mt-5">
+        className="_text-bold text-xl bg-p-brown hover:bg-p-brown-dark py-1 px-4 mr-auto mt-5"
+      >
         {strings.readMore}
       </NavLink>
     </div>

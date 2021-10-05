@@ -5,13 +5,12 @@ import useProgressiveImg from 'hooks/useProgressiveImg';
 import React from 'react';
 import Magnifier from 'react-magnifier';
 
-const BlurredUpImage = props => {
-  const { wrapperClassName, tinySrc, imageSrc, withModal = true, width = '100%', height = '' } = props;
-  const [src, { blur }] = useProgressiveImg(tinySrc, imageSrc);
+const BlurredUpImage = ({ img, withModal = true, width = '100%', height = '', style }) => {
+  const [src, { blur }] = useProgressiveImg(img.thumb, img.full);
   const { isShowing, toggle } = useModal();
 
   return (
-    <div className={`relative overflow-hidden ${wrapperClassName}`}>
+    <div className="relative overflow-hidden">
       <img
         onClick={withModal ? toggle : null}
         alt=""
@@ -22,9 +21,9 @@ const BlurredUpImage = props => {
           height: height,
           transition: `1s -webkit-filter linear`,
           filter: blur ? 'blur(20px)' : 'none',
-          objectFit: 'cover',
+          objectFit: 'contain',
           margin: 'auto',
-          ...props.style,
+          ...style,
         }}
       />
       {withModal && <ExpandIcon style={{ top: '0', right: '0' }} />}

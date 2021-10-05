@@ -3,7 +3,7 @@ import Section from 'components/common/Section';
 import { DeleteIcon } from 'components/UI/ButtonsCell';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
-import TableItemImage from 'components/UI/TableItemImage';
+import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import { certificationsApiCRUDRequests } from 'features/certification';
 import { useFetchData, useMutateData } from 'lib/reactQuery';
 import React from 'react';
@@ -40,9 +40,8 @@ const Certifications = () => {
             {data.payload.map(cert => (
               <ImageCard
                 key={cert._id}
-                imgComponent={
-                  <TableItemImage style={{ objectFit: 'cover' }} height="500px" width="100%" image={cert.images} />
-                }>
+                imgComponent={<MultiSourceImageParse height="500px" width="100%" image={cert.images} />}
+              >
                 <button onClick={() => handleDelete(cert._id)}>
                   <DeleteIcon />
                 </button>

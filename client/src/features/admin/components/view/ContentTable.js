@@ -2,7 +2,7 @@ import { contentsApiCRUDRequests } from 'features/couch';
 import truncate from 'lodash.truncate';
 import React from 'react';
 import { toDate } from 'utils/toDate';
-import TableItemImage from 'components/UI/TableItemImage';
+import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import Table from './Table';
 
 const strings = {
@@ -29,7 +29,7 @@ const ContentsTable = () => {
     return (
       <>
         <td>
-          <TableItemImage image={item.images} />
+          <MultiSourceImageParse image={item.images} />
         </td>
         <td>{item.title}</td>
         <td>

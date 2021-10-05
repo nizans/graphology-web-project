@@ -1,46 +1,41 @@
-import BlurredUpImage from 'components/UI/BlurredUpImage';
 import ReadMoreBtn from 'components/UI/ReadMoreBtn';
+import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import { DimensionsContext } from 'context/DimensionsContext';
 import useDimensions from 'hooks/useDimensions';
 import useDomParser from 'hooks/useDomParser';
 import truncate from 'lodash.truncate';
 import React, { useContext } from 'react';
 import { useRouteMatch } from 'react-router-dom';
+import { toDate } from 'utils/toDate';
 
 const CouchItem = ({ data: item }) => {
   const { path } = useRouteMatch();
   const [parsedText] = useDomParser(item.text, 'text/html');
   const { windowWidth } = useContext(DimensionsContext);
   const [ref, dim] = useDimensions();
-  const imgSrc = (item.images[0] && item.images[0] && { full: item.images[0].full, thumb: item.images[0].thumb }) || {
-    full: 'https://via.placeholder.com/150',
-    thumb: 'https://via.placeholder.com/150',
-  };
+
+  //TODO - fix search input on md screen
 
   return (
-    <div className="flex flex-col md:grid py-14 grid-cols-8 gap-x-8 ">
-      <div className="col-span-2 flex justify-center items-center ">
-        <BlurredUpImage
-          withModal={false}
-          height={windowWidth > 768 ? dim?.height : 300}
-          imageSrc={imgSrc.full}
-          tinySrc={imgSrc.thumb}
-          style={{ backgroundSize: 'cover' }}
-        />
+    <div className="grid py-14 grid-cols-8 gap-x-2 lg:gap-x-8 ">
+      <div className="col-span-3 lg:col-span-2 flex justify-center items-center ">
+        <MultiSourceImageParse height={dim?.height} image={item.images} />
       </div>
-      <div className="col-span-5 ">
+      <div className="col-span-4 lg:col-span-5" ref={ref}>
         <h1 className="_text-bold text-4xl">{item.title}</h1>
-        <h3 className="_text text-xl pb-3">{item.date}</h3>
-        <div
-          ref={ref}
+        <h3 className="_text text-xl pb-3">{toDate(item.publishDate || item.uploadDate)}</h3>
+        <p
           style={{
             columnCount: windowWidth < 1024 ? '1' : '2',
           }}
-          className="align-middle _text text-2xl">
+          className="align-middle _p-size _text _max-lines-3 lg:_max-lines-none w-full"
+        >
           {truncate(parsedText, { length: 500, separator: ' ' })}
-        </div>
+        </p>
       </div>
-      <ReadMoreBtn to={`${path}/${item._id}`} className="col-span-1 col-start-8 mr-auto mt-auto" href="/" />
+      <div className="col-span-1 col-start-8 mt-auto mr-auto">
+        <ReadMoreBtn to={`${path}/${item._id}`} asArrow={windowWidth < 1024} />
+      </div>
     </div>
   );
 };

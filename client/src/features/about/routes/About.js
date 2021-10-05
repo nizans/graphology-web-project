@@ -1,6 +1,6 @@
 import MichalAboutPhoto from 'assets/imgs/MichalAboutPhoto.svg';
 import Section from 'components/common/Section';
-import TableItemImage from 'components/UI/TableItemImage';
+import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import Underline from 'components/UI/Underline';
 import { DimensionsContext } from 'context/DimensionsContext';
 import { certificationsApiCRUDRequests } from 'features/certification';
@@ -49,7 +49,7 @@ export const About = () => {
           <div className="grid sm:grid-cols-3 gap-9 my-8">
             {data.payload.map(cert => (
               <div key={cert._id} className="border-p-brown border-2 rounded-lg overflow-hidden">
-                <TableItemImage
+                <MultiSourceImageParse
                   withModal={true}
                   style={{ objectFit: 'cover' }}
                   height="100%"

@@ -1,18 +1,9 @@
 import BlurredUpImage from 'components/UI/BlurredUpImage';
 import useForceUpdate from 'hooks/useForceUpdate';
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { checkValidImageSrc } from 'utils/checkValidImageSrc';
 
-const TableItemImage = ({
-  image,
-  height = '150px',
-  width = '150px',
-  withModal = false,
-  imgClassName = 'h-full m-2 rounded-md border-2 border-p-brown',
-  style = { objectFit: 'cover' },
-}) => {
+const MultiSourceImageParse = ({ image, height = '150px', width = '150px', withModal = false }) => {
   const forceUpdate = useForceUpdate();
 
   const [imageSrc, setImageSrc] = useState('');
@@ -25,6 +16,7 @@ const TableItemImage = ({
   useEffect(() => {
     forceUpdate();
   }, [imageSrc, thumbSrc]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const getImageSrc = () => {
     if (Array.isArray(image) && image.length >= 1) {
       setImageSrc(image[0].full);
@@ -38,12 +30,10 @@ const TableItemImage = ({
       width={width}
       height={height}
       withModal={withModal}
-      imgClassName={imgClassName}
-      imageSrc={imageSrc}
-      tinySrc={thumbSrc}
-      style={style}
+      img={{ full: imageSrc, thumb: thumbSrc }}
+      style={{ objectFit: 'cover' }}
     />
   );
 };
 
-export default TableItemImage;
+export default MultiSourceImageParse;

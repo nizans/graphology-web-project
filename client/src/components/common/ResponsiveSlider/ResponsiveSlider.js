@@ -16,7 +16,7 @@ const mobileSliderSettings = {
   customPaging: function (i) {
     return (
       <a>
-        <span class="dot"></span>
+        <span className="dot"></span>
       </a>
     );
   },
@@ -59,22 +59,27 @@ const verticalSliderSettings = {
   prevArrow: <UpArrow />,
 };
 
-const ResponsiveSlider = ({ children, verticalOnLargeScreen = false }) => {
+const ResponsiveSlider = ({ children, verticalOnLargeScreen = false, withThreeSlider = true }) => {
   const { windowWidth } = useContext(DimensionsContext);
 
-  if (windowWidth < 768)
+  if (children.length <= 3) {
+    mobileSliderSettings.slidesToShow = 1;
+  }
+  if (windowWidth < 768) {
     return (
       <div
         style={{
           minWidth: windowWidth * 2,
           marginRight: windowWidth > 475 ? '-66%' : '-57%',
+          marginBottom: '15px',
         }}
       >
         <Slider {...mobileSliderSettings}>{children}</Slider>
       </div>
     );
+  }
 
-  if (windowWidth < 1024)
+  if (windowWidth < 1024 || (!withThreeSlider && !verticalOnLargeScreen))
     return (
       <div className="px-20">
         <Slider {...singleSliderSettings}>{children}</Slider>
