@@ -1,0 +1,15 @@
+export const ArticleFormStrings = {
+  title: 'כותרת',
+  sourceFrom: 'מקור הכתבה',
+  sourceURL: 'לינק למקור הכתבה',
+  publishDate: 'תאריך פרסום',
+  send: 'העלה כתבה',
+  content: 'תוכן הכתבה',
+  contentPlaceholder: 'כתוב פה את תוכן הכתבה',
+  update: 'עדכן כתבה',
+  notext: 'לא הוכנס טסט',
+  uploadImage: 'העלה תמונה',
+  urlInvalid: 'הלינק אינו תקין',
+  required: 'שדה דרוש',
+  success: 'תודה, הפרטים התקבלו בהצלחה!',
+};

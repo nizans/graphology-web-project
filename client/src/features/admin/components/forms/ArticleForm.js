@@ -3,28 +3,13 @@ import TextEditor from 'components/common/TextEditor';
 import ErrorMessage from 'components/UI/ErrorMessage';
 import FormField from 'components/UI/FormField';
 import LoadingButton from 'components/UI/LoadingButton';
+import { ArticleFormStrings as strings } from 'features/admin/strings/ArticleFormStrings';
 import { articlesApiCRUDRequests } from 'features/articles';
 import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
 import React, { useState } from 'react';
 import createFormData from 'utils/createFormData';
 import * as Yup from 'yup';
-
-const strings = {
-  title: 'כותרת',
-  sourceFrom: 'מקור הכתבה',
-  sourceURL: 'לינק למקור הכתבה',
-  publishDate: 'תאריך פרסום',
-  send: 'העלה כתבה',
-  content: 'תוכן הכתבה',
-  contentPlaceholder: 'כתוב פה את תוכן הכתבה',
-  update: 'עדכן כתבה',
-  notext: 'לא הוכנס טסט',
-  uploadImage: 'העלה תמונה',
-  urlInvalid: 'הלינק אינו תקין',
-  required: 'שדה דרוש',
-  success: 'תודה, הפרטים התקבלו בהצלחה!',
-};
 
 const ArticleForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(

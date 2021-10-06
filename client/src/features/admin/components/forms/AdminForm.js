@@ -3,30 +3,12 @@ import FormField from 'components/UI/FormField';
 import LoadingButton from 'components/UI/LoadingButton';
 import ShowPasswordIcon from 'components/UI/ShowPasswordIcon';
 import { adminApiCRUDRequests } from 'features/admin';
+import { AdminFormStrings as strings } from '../../strings/AdminFormStrings.js';
+
 import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
-
-const strings = {
-  required: 'שדה דרוש',
-  name: 'שם',
-  email: 'אימייל',
-  password: 'בחר סיסמא',
-  validatePassword: 'וודא סיסמא',
-  invalidEmail: 'אימייל לא תקין',
-  emailPlaceholder: 'הכנס אימייל',
-  namePlaceholder: 'שם המנהל',
-  minLength: 'סיסמא חייבת להכיל לפחות 6 תווים',
-  passwordMustMatch: 'סיסמא לא תואמת',
-  passwordPlaceHolder: 'סיסמא',
-  success: 'תודה, הפרטים התקבלו בהצלחה!',
-  defineUser: 'הגדרת מיילים למשתמש זה:',
-  bookOrderMail: 'שלח מיילים לגבי הזמנת ספרים',
-  contactUsMail: 'שלח מיילים לגבי בקשות ליצירת קשר',
-  nameMaxLength: 'שם יכול להכיל עד 50 תווים',
-  invalidPassword: 'סיסמא יכולה להכיל רק אותיות באנגלית, מספרים, ותווים',
-};
 
 const AdminForm = ({ data: admin }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(

@@ -9,17 +9,7 @@ import { useMutateData } from 'lib/reactQuery';
 import React, { useState } from 'react';
 import createFormData from 'utils/createFormData';
 import * as Yup from 'yup';
-
-const strings = {
-  title: 'שם השירות',
-  description: 'תיאור השירות',
-  descriptionPlaceholder: 'כתוב פה את תיאור השירות',
-  required: 'שדה דרוש',
-  send: 'העלה שירות',
-  update: 'עדכן שירות',
-  uploadImage: 'העלה תמונה',
-  success: 'תודה, הפרטים התקבלו בהצלחה!',
-};
+import { ServiceFormStrings as strings } from '../../strings/ServiceFormStrings';
 
 const ServiceForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(

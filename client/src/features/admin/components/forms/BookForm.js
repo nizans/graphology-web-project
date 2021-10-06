@@ -9,21 +9,7 @@ import { useMutateData } from 'lib/reactQuery';
 import React, { useState } from 'react';
 import createFormData from 'utils/createFormData';
 import * as Yup from 'yup';
-
-const strings = {
-  title: 'כותרת',
-  author: 'מאת',
-  publishDate: 'תאריך פרסום',
-  send: 'העלה ספר',
-  update: 'עדכן ספר',
-  notext: 'לא הוכנס טסט',
-  uploadImage: 'העלה תמונה',
-  description: 'תיאור הספר',
-  descriptionPlaceholder: 'כתוב פה את תיאור הספר',
-  uploadSuccess: 'הועלה בהצלחה',
-  uploadFaild: 'אירעה שגיאה בעת העלאה',
-  success: 'תודה, הפרטים התקבלו בהצלחה!',
-};
+import { BookFormStrings as strings } from '../../strings/BookFormStrings';
 
 const BookForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(

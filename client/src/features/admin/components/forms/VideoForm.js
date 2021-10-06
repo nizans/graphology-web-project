@@ -8,18 +8,7 @@ import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
 import React from 'react';
 import * as Yup from 'yup';
-
-const strings = {
-  title: 'שם הסרטון',
-  description: 'תיאור הסרטון',
-  descriptionPlaceholder: 'כתוב פה את תיאור הסרטון',
-  url: 'לינק לסרטון',
-  required: 'שדה דרוש',
-  urlInvalid: 'הלינק אינו תקין',
-  send: 'שלח',
-  update: 'עדכן שירות',
-  success: 'תודה, הפרטים התקבלו בהצלחה!',
-};
+import { VideoFormStrings as strings } from '../../strings/VideoFormStrings';
 
 const VideoForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(
@@ -49,7 +38,8 @@ const VideoForm = ({ data: item }) => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="w-full flex justify-between items-center divide-x-2 divide-x-reverse divide-p-gray">
+      className="w-full flex justify-between items-center divide-x-2 divide-x-reverse divide-p-gray"
+    >
       <div className="flex flex-col w-full justify-evenly items-start pl-10 h-full">
         <FormField formik={formik} htmlFor="title" placeholder={strings.title} className="w-full" />
         <div className="w-full mx-4">
