@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
 import TitleUnderline from 'components/UI/TitleUnderline';
-import RecommendationsContainer from './RecommendationsContainer';
-import { DimensionsContext } from 'context/DimensionsContext';
+import React from 'react';
 import ResponsiveSlider from '../../../../components/common/ResponsiveSlider/ResponsiveSlider';
-import Slider from 'react-slick';
+import RecommendationsContainer from './RecommendationsContainer';
 
 const strings = {
   title: 'המלצות',
@@ -42,34 +40,13 @@ const recommendations = [
 ];
 
 const Recommendations = () => {
-  const { windowWidth } = useContext(DimensionsContext);
-
   return (
     <div className="flex flex-col justify-center">
       <TitleUnderline title={strings.title} />
-      {/* {windowWidth < 1024 ? (
-        <ResponsiveSlider>
-          {recommendations.map((item, i) => (
-            <div className="mt-14">
-              <RecommendationsContainer data={item} key={i} />
-            </div>
-          ))}
-        </ResponsiveSlider>
-      ) : (
-        <div className="px-12">
-          <Slider {...sliderSettings}>
-            {recommendations.map((item, i) => (
-              <div className="mt-14">
-                <RecommendationsContainer data={item} key={i} />
-              </div>
-            ))}
-          </Slider>
-        </div>
-      )} */}
       <ResponsiveSlider>
         {recommendations.map((item, i) => (
-          <div className="mt-14">
-            <RecommendationsContainer data={item} key={i} />
+          <div className="mt-14" key={Math.random * 100 + i}>
+            <RecommendationsContainer data={item} />
           </div>
         ))}
       </ResponsiveSlider>

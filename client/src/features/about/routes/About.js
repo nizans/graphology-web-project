@@ -16,30 +16,30 @@ const strings = {
 };
 export const About = () => {
   const { headerHeight, windowHeight, breadCrumbHeight, footerHeight } = useContext(DimensionsContext);
-  const [ref, dim] = useDimensions();
+
   const { data, isSuccess } = useFetchData(certificationsApiCRUDRequests.read());
 
   return (
     <>
       <Section minHeight={windowHeight - headerHeight - breadCrumbHeight}>
-        <div className="grid gap-x-12 sm:grid-cols-2">
+        <div className="flex flex-col items-center justify-center lg:gap-x-8 lg:grid lg:grid-cols-2">
           <div>
-            <img ref={ref} alt="" className="mr-auto" src={MichalAboutPhoto} />
+            <img alt="" className=" lg:mr-auto lg:my-auto" src={MichalAboutPhoto} />
           </div>
-          <div className="my-auto " style={{ maxWidth: dim?.width }}>
-            <div>
-              <h1 className="_title">{strings.title}</h1>
-              <h3 className="_text text-3xl mb-4">{strings.subTitle}</h3>
+          <div className=" lg:my-auto">
+            <div className="text-center lg:text-right lg:mx-0">
+              <h1 className="_title ">{strings.title}</h1>
+              <h3 className="_text text-3xl">{strings.subTitle}</h3>
+              <Underline className="w-2/3 mx-auto lg:mx-auto my-7" />
             </div>
-            <Underline className="w-2/3 my-7" />
-            <p className="pt-4 _text text-2xl">{strings.text}</p>
+            <p className="_text _p-size">{strings.text}</p>
           </div>
         </div>
       </Section>
 
       {isSuccess && (
         <Section
-          //TODO - ADD SLIDER INSTEAD
+          //TODO - ADD SLIDER INSTEAD for certification
           minHeight={windowHeight - headerHeight - breadCrumbHeight}
           className="flex flex-col justify-evenly my-4"
         >

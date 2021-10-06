@@ -1,11 +1,10 @@
 import React from 'react';
-
+const strings = { defaultErrorMessage: 'אירעה שגיאה' };
 const ErrorMessage = props => {
-  const { message } = props.error;
 
   return (
     <h1 className="_text-lg text-red-500" {...props}>
-      {message}
+      {props.error?.message || strings.defaultErrorMessage}
     </h1>
   );
 };

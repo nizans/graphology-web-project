@@ -22,7 +22,7 @@ const Footer = () => {
   const { setFooterHeight, windowWidth } = useContext(DimensionsContext);
   useEffect(() => {
     if (footerDimension) setFooterHeight(footerDimension.height);
-  }, [footerDimension]);
+  }, [footerDimension, setFooterHeight]);
   return (
     <footer ref={footerRef} className="w-full flex flex-col justify-between items-center mx-auto box-content ">
       <img loading="lazy" src={Shelf} alt="" className="w-full" />

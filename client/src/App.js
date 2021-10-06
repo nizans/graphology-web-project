@@ -12,6 +12,8 @@ import AppRoutes from 'routes/AppRoutes';
 //TODO - add recomendations endpoint and section on admin
 //TODO - fix header height bug on small navbar
 //TODO - mobile pagintation (load more on scroll)
+//TODO - JOI ?
+//TODO - Change auth refresh method, only refresh once
 
 function App() {
   const queryClient = new QueryClient();

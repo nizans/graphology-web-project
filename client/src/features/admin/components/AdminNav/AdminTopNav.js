@@ -31,14 +31,9 @@ const AdminTopNav = () => {
       <NavLink activeClassName="font-bold" className="_text text-xl px-4" to={`${path}/view/admins`}>
         {strings.admins}
       </NavLink>
-      <LoadingButton
-        isLoading={isLoggingOutLoading}
-        value={strings.logout}
-        type="button"
-        onClick={handleLogout}
-        className="button p-0 _text text-xl px-4">
+      <button className="_text text-xl px-4" onClick={handleLogout}>
         {strings.logout}
-      </LoadingButton>
+      </button>
       <AdminNavRandomData />
     </nav>
   );

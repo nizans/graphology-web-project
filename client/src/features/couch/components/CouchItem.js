@@ -14,8 +14,6 @@ const CouchItem = ({ data: item }) => {
   const { windowWidth } = useContext(DimensionsContext);
   const [ref, dim] = useDimensions();
 
-  //TODO - fix search input on md screen
-
   return (
     <div className="grid py-14 grid-cols-8 gap-x-2 lg:gap-x-8 ">
       <div className="col-span-3 lg:col-span-2 flex justify-center items-center ">

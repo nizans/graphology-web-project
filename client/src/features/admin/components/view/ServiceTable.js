@@ -12,19 +12,20 @@ const strings = {
   uploadDate: 'תאריך העלאה',
 };
 const ServiceTable = () => {
-  const headers = () => {
+  const headers = () => (
     <>
-      <th>{strings.image}</th>
+      <th className="flex justify-center">{strings.image}</th>
       <th>{strings.title}</th>
       <th>{strings.description}</th>
       <th>{strings.uploadDate}</th>
-    </>;
-  };
+    </>
+  );
   const generateCell = item => {
+    console.log(item);
     return (
       <>
         <td>
-          <MultiSourceImageParse image={item.images} />
+          <MultiSourceImageParse objectFit="contain" image={item.image.full} />
         </td>
         <td>{item.title}</td>
         <td>

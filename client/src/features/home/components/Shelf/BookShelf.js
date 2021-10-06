@@ -1,6 +1,6 @@
 import Shelf from 'assets/icons/Shelf.svg';
 import { DimensionsContext } from 'context/DimensionsContext';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import './bookshelf.css';
 import FindMoreButton from './FindMoreButton';
 import LeftSide from './LeftSide';
@@ -13,15 +13,6 @@ const strings = {
 
 const BookShelf = ({ onReadMoreClick }) => {
   const { windowHeight, windowWidth, headerHeight } = useContext(DimensionsContext);
-  const [bookShelfTranlateY, setBookShelfTranlateY] = useState(0);
-
-  //   useEffect(() => {
-  //     if (windowHeight < 740) {
-  //       setBookShelfTranlateY(-110);
-  //     } else {
-  //       setBookShelfTranlateY(0);
-  //     }
-  //   }, [windowHeight]);
 
   return (
     <div className="flex flex-col justify-between" style={{ maxHeight: windowHeight - headerHeight }}>

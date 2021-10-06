@@ -32,6 +32,7 @@ module.exports = {
         'p-blue-placeholder': '#00588577',
         'p-blue-dark': '#023E5D',
         'p-brown-light': '#FAF2ED',
+        'p-brown-mid': '#F1E2DA',
         'p-brown': '#DFBBA6',
         'p-brown-dark': '#CE9D81',
         'p-gray': '#EDEBE9',

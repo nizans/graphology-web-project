@@ -27,6 +27,7 @@ const CouchItemPage = () => {
     if (item) {
       setTitle(item._id, item.title);
     }
+    // eslint-disable-next-line
   }, [item]);
 
   const handleDelete = () => {

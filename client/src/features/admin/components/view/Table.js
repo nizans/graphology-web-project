@@ -15,7 +15,6 @@ const strings = {
   addNew: type => `הוספת ${typesDictionary[type]}`,
 };
 
-//TODO - fix text shows as html
 const Table = ({ type, generateCell, headers, apiRequests }) => {
   const page = useQueryParams().get('page');
   const find = useQueryParams().get('find');
@@ -37,7 +36,7 @@ const Table = ({ type, generateCell, headers, apiRequests }) => {
       <div className="w-full my-2 flex justify-between">
         <SortByMenu />
         <SearchInput value={searchInput} handleSearch={setSearchInput} />
-        <NavLink to={'/admin/add/' + type} className="_text-lg">
+        <NavLink to={'/admin/add/' + type} className="_text text-3xl hover:font-bold">
           {strings.addNew(type)}
         </NavLink>
       </div>
@@ -46,33 +45,37 @@ const Table = ({ type, generateCell, headers, apiRequests }) => {
         <LoadingSection />
       ) : (
         <>
-          {error && <ErrorSection error={error} />}
-          {isSuccess && (
-            <>
-              <table className="table-auto w-full ">
-                <thead className="bg-p-brown-light border-b-2 border-p-gray-dark text-right _text text-xl">
-                  <tr>
-                    <th>#</th>
-                    {headers()}
-                    <th>{strings.actions}</th>
-                  </tr>
-                </thead>
-                <tbody className="_text text-xl">
-                  {data.payload.map((item, i) => (
-                    <tr
-                      key={item._id}
-                      className={`border-p-gray-dark border-b-2 ${i % 2 !== 0 ? 'bg-p-brown-light' : ''}`}>
-                      <td>{i + 1}</td>
-                      {generateCell(item)}
-                      <td>
-                        <ButtonsCell type={type} _id={item._id} onDelete={handleDeleteItem} />
-                      </td>
+          {error ? (
+            <ErrorSection error={error} />
+          ) : (
+            isSuccess && (
+              <>
+                <table className="table-auto w-full ">
+                  <thead className="bg-p-brown-light border-b-2 border-p-gray-dark text-right _text text-xl">
+                    <tr>
+                      <th>#</th>
+                      {headers()}
+                      <th>{strings.actions}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-              <div>{isSuccess && <Pagintation page={data.page} pages={data.pages} />}</div>
-            </>
+                  </thead>
+                  <tbody className="_text text-xl">
+                    {data.payload.map((item, i) => (
+                      <tr
+                        key={item._id}
+                        className={`border-p-gray-dark border-b-2 ${i % 2 !== 0 ? 'bg-p-brown-light' : ''}`}
+                      >
+                        <td>{i + 1}</td>
+                        {generateCell(item)}
+                        <td>
+                          <ButtonsCell type={type} _id={item._id} onDelete={handleDeleteItem} />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div>{isSuccess && <Pagintation page={data.page} pages={data.pages} />}</div>
+              </>
+            )
           )}
         </>
       )}

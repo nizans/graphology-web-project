@@ -31,7 +31,6 @@ const ArticleForm = ({ data: item }) => {
     item ? articlesApiCRUDRequests.update : articlesApiCRUDRequests.create
   );
 
-  console.log(item);
   const [images, setImages] = useState(item?.images.map(img => img.full) || []);
 
   const initialValues = {

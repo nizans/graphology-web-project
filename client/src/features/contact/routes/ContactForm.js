@@ -72,9 +72,10 @@ const ContactForm = () => {
           </label>
         </div>
         <FormField className=" col-span-2" formik={formik} htmlFor="notes" placeholder={strings.notes} />
+        <span className="mr-auto  col-start-2">
+          <LoadingButton isLoading={isLoading} />
+        </span>
       </div>
-
-      <LoadingButton isLoading={isLoading} />
     </form>
   );
 };

@@ -18,7 +18,7 @@ const NavBurger = ({ links }) => {
   const ref = useRef(null);
 
   useEffect(() => {
-    console.log(pathname);
+
     if (pathname === '/home/couch') setShowSearchIcon(true);
     else setShowSearchIcon(false);
   }, [pathname]);

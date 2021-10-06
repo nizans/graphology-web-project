@@ -18,7 +18,6 @@ const VideosTable = () => {
       <>
         <th>{strings.image}</th>
         <th>{strings.title}</th>
-        <th>{strings.description}</th>
         <th>{strings.link}</th>
         <th>{strings.uploadDate}</th>
       </>
@@ -38,7 +37,6 @@ const VideosTable = () => {
           />
         </td>
         <td>{item.title}</td>
-        <td>{truncate(item.description, { length: 75, separator: ' ' })}</td>
         <td>
           <a className="hover:font-bold" href={item.url}>
             {strings.link}

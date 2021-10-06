@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="67" viewBox="0 0 64 67">
+
+
+<defs>
+
+<style>.a,.b,.c,.d,.b{opacity:0.81;}.c{opacity:0.69;}.d{opacity:0.64;}.e{opacity:0.27;}</style>
+
+
+</defs><g transform="translate(-205 -1011)"><circle class="a" cx="8" cy="8" r="8" transform="translate(232 1011)"/><ellipse class="a" cx="6" cy="5.5" rx="6" ry="5.5" transform="translate(215 1019)"/><ellipse class="b" cx="5" cy="5.5" rx="5" ry="5.5" transform="translate(205 1034)"/><ellipse class="b" cx="4.5" cy="5" rx="4.5" ry="5" transform="translate(206 1052)"/><circle class="b" cx="4" cy="4" r="4" transform="translate(218 1067)"/><circle class="c" cx="3" cy="3" r="3" transform="translate(234 1072)"/><circle class="c" cx="3" cy="3" r="3" transform="translate(248 1071)"/><circle class="d" cx="2.5" cy="2.5" r="2.5" transform="translate(261 1060)"/><ellipse class="d" cx="3" cy="2.5" rx="3" ry="2.5" transform="translate(263 1045)"/><circle class="e" cx="2" cy="2" r="2" transform="translate(261 1030)"/>
+
+<ellipse class="e" cx="1.5" cy="1" rx="1.5" ry="1" transform="translate(253 1023)"/></g></svg>

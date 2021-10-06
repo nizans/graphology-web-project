@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import { ReactComponent as BookFront } from 'assets/icons/book_front.svg';
 import BookFrontPNG from 'assets/icons/bookFrontPng.png';
-import { useState } from 'react';
 import BookSideTall from 'assets/icons/BookSideTall.svg';
-import { ThemeContext } from 'context/ThemeContext';
+import { ReactComponent as BookFront } from 'assets/icons/book_front.svg';
 import { DimensionsContext } from 'context/DimensionsContext';
+import React, { useContext, useState } from 'react';
 const strings = {
   leftPopUp: `ספר מאת מיכל דורון, בו ניתחה ,את כתבי יד של אישויות רבות ספר מרתק החושף צד אנושי .אחר שלא תמיד היה גלוי לעין`,
 };

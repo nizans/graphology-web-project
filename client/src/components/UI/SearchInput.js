@@ -4,7 +4,7 @@ import React, { forwardRef, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 const strings = {
-  search: 'חפש',
+  search: 'חיפוש',
 };
 
 const SearchInput = forwardRef(({ className, withIcon = true, placeholder, withSearchButton = true }, submitRef) => {
@@ -22,7 +22,6 @@ const SearchInput = forwardRef(({ className, withIcon = true, placeholder, withS
       className="relative flex items-center"
       onSubmit={e => {
         e.preventDefault();
-        console.log(`${pathname}?find=${value}`);
         push(`${pathname}?find=${value}`);
       }}
     >
@@ -32,7 +31,7 @@ const SearchInput = forwardRef(({ className, withIcon = true, placeholder, withS
         placeholder={placeholder || strings.search}
         className={
           className ||
-          `placeholder-p-gray-dark relative my-4 sm:my-0  _text text-2xl border-p-blue border-2 rounded-md ${
+          `placeholder-p-gray-dark relative my-4 sm:my-0  _text text-2xl border-p-blue border-2 rounded-lg ${
             withIcon && 'pr-8'
           } outline-none`
         }

@@ -7,6 +7,10 @@ const serviceSchema = new mongoose.Schema({
     full: String,
     thumb: String,
   },
+  uploadDate: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 serviceSchema.index(

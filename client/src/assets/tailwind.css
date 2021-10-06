@@ -81,7 +81,7 @@
   }
 
   ._p-size {
-    @apply text-xl xs:text-2xl sm:text-3xl;
+    @apply text-xl xs:text-2xl sm:text-3xl lg:text-2xl xl:text-3xl;
   }
   @variants responsive {
     ._max-lines-none {

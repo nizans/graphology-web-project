@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
-import SpeechBubble from 'assets/icons/speech_bubble.svg';
-import Quotes from 'assets/icons/quotes_icon.svg';
-import { DimensionsContext } from 'context/DimensionsContext';
 import BlueRectangle from 'assets/icons/Blue Rectangle.svg';
 import BlueTriangle from 'assets/icons/Blue triangle.svg';
+import Quotes from 'assets/icons/quotes_icon.svg';
+import SpeechBubble from 'assets/icons/speech_bubble.svg';
+import React from 'react';
 
 const strings = {
   bubbleTextLine1: 'כשם שאין בעולם שתי טביעות ',
@@ -42,14 +41,14 @@ const MichalSpeechBubble = () => {
 export const MichalSpeechBubbleSmallScreen = () => {
   return (
     <div className="relative transform translate-y-12">
-      <img src={BlueRectangle} />
+      <img src={BlueRectangle} alt="" />
       <img
         loading="eager"
         alt=""
         src={Quotes}
         className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
       />
-      <img className="mr-auto w-1/6" src={BlueTriangle} style={{ marginLeft: '20%' }} />
+      <img className="mr-auto w-1/6" src={BlueTriangle} style={{ marginLeft: '20%' }} alt="" />
       <span
         className="absolute left-0 right-0 text-p-brown-light text-2xl xs:text-3xl text-center italic break-words"
         style={{ top: '22.214%', bottom: '44.58' }}

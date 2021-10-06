@@ -16,7 +16,8 @@ const Modal = ({ isShowing, hide, children }) => {
           tabIndex={-1}
           role="dialog"
           style={{ zIndex: 110 }}
-          onClick={hide}>
+          onClick={hide}
+        >
           <div className="relative" style={{ zIndex: 120 }} onClick={e => e.stopPropagation()}>
             <img
               onClick={hide}
@@ -24,7 +25,7 @@ const Modal = ({ isShowing, hide, children }) => {
               alt=""
               src={CloseIcon}
               width="38px"
-              className="absolute -right-8 -top-8 cursor-pointer"
+              className="absolute -right-10 -top-10 cursor-pointer"
             />
             {children}
           </div>

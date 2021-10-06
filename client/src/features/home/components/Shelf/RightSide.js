@@ -2,7 +2,6 @@ import BookSideways from 'assets/icons/BookSideways.svg';
 import BookSideOrig, { ReactComponent as BookSide } from 'assets/icons/book_side.svg';
 import EmptyBook from 'assets/icons/book_side_emprty.svg';
 import { DimensionsContext } from 'context/DimensionsContext';
-import { ThemeContext } from 'context/ThemeContext';
 import React, { useContext, useState } from 'react';
 
 const strings = {
@@ -24,7 +23,7 @@ const RightSide = () => {
           }}
         />
       ) : (
-        <img loading="eager" src={BookSideOrig} className="h-64 sm:h-80" />
+        <img loading="eager" src={BookSideOrig} className="h-64 sm:h-80" alt="" />
       )}
       <img loading="eager" className="h-52 md:h-64  lg:h-auto" src={EmptyBook} alt="" />
       {windowWidth >= 768 && <img loading="eager" src={EmptyBook} alt="" />}

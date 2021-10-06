@@ -3,7 +3,13 @@ import useForceUpdate from 'hooks/useForceUpdate';
 import React, { useEffect, useState } from 'react';
 import { checkValidImageSrc } from 'utils/checkValidImageSrc';
 
-const MultiSourceImageParse = ({ image, height = '150px', width = '150px', withModal = false }) => {
+const MultiSourceImageParse = ({
+  image,
+  height = '150px',
+  width = '150px',
+  withModal = false,
+  objectFit = 'cover',
+}) => {
   const forceUpdate = useForceUpdate();
 
   const [imageSrc, setImageSrc] = useState('');
@@ -25,13 +31,15 @@ const MultiSourceImageParse = ({ image, height = '150px', width = '150px', withM
       setImageSrc(image);
     }
   };
+
+  
   return (
     <BlurredUpImage
       width={width}
       height={height}
       withModal={withModal}
       img={{ full: imageSrc, thumb: thumbSrc }}
-      style={{ objectFit: 'cover' }}
+      style={{ objectFit }}
     />
   );
 };

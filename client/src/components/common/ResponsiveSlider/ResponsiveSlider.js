@@ -12,13 +12,10 @@ const mobileSliderSettings = {
   rtl: true,
   slidesToShow: 3,
   slidesToScroll: 1,
+
   dotsClass: 'slick-dots',
   customPaging: function (i) {
-    return (
-      <a>
-        <span className="dot"></span>
-      </a>
-    );
+    return <span className="dot"></span>;
   },
 };
 
@@ -88,7 +85,11 @@ const ResponsiveSlider = ({ children, verticalOnLargeScreen = false, withThreeSl
 
   if (verticalOnLargeScreen) return <Slider {...verticalSliderSettings}>{children}</Slider>;
 
-  return <Slider {...threeSliderSettings}>{children}</Slider>;
+  return (
+    <div className="px-20">
+      <Slider {...threeSliderSettings}>{children}</Slider>
+    </div>
+  );
 };
 
 export default ResponsiveSlider;

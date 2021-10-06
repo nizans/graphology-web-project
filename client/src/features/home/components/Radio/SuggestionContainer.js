@@ -45,8 +45,8 @@ const SuggestionContainer = ({ setVideoUrl }) => {
         {data.payload
           .filter(vid => vid !== currentVideo)
           .map(item => (
-            <div class="px-4 sm:px-12 mx-auto lg:px-0">
-              <VideoThumbnail withTitle={false} data={item} key={item._id} onClick={handleThumbnailClick} />
+            <div key={item._id} className="px-4 sm:px-12 mx-auto lg:px-0">
+              <VideoThumbnail withTitle={false} data={item} onClick={handleThumbnailClick} />
             </div>
           ))}
       </ResponsiveSlider>

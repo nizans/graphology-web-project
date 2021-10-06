@@ -46,7 +46,9 @@ export const Services = () => {
           .map((_, i) => itemsRefs[i] || createRef())
       );
   }, [data]);
+
   if (error) return <ErrorSection error={error} />;
+
   return (
     <Section className="flex flex-col items-center mt-14" minHeight={windowHeight - breadCrumbHeight - headerHeight}>
       <h1 className="text-7xl text-p-blue-dark pb-8">{strings.title}</h1>
@@ -54,7 +56,13 @@ export const Services = () => {
       <p className="text-p-blue text-3xl py-8">{strings.text}</p>
       <div className="w-full">
         <h2 className="text-p-blue text-3xl font-bold">{strings.offeredservices}</h2>
-        {isLoading ? <Spinner /> : <ServicesNavMenu onItemClick={handleScrollToItem} data={data.payload} />}
+        {isLoading ? (
+          <div className="w-full h-72 relative">
+            <Spinner />
+          </div>
+        ) : (
+          <ServicesNavMenu onItemClick={handleScrollToItem} data={data.payload} />
+        )}
       </div>
       {!isLoading && (
         <div className="divide-y-2 divide-p-blue flex flex-col">
