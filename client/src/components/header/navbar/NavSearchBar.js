@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import { ReactComponent as SearchIcon } from 'assets/icons/searchIcon.svg';
 import SearchInput from 'components/UI/SearchInput';
 import { ReactComponent as LogoMini } from 'assets/icons/LogoMini.svg';
-
-const strings = { search: 'הקלד\\י לחיפוש' };
+import { HEB_TYPE_TO_SEARCH } from 'strings/common';
 
 const NavSearchBar = ({ closeSearchBar }) => {
   const submitRef = useRef(null);
@@ -28,7 +27,7 @@ const NavSearchBar = ({ closeSearchBar }) => {
       <div className="flex justify-center items-center h-40 bg-p-blue w-full">
         <SearchIcon fill="white" onClick={handleSearch} />
         <SearchInput
-          placeholder={strings.search}
+          placeholder={HEB_TYPE_TO_SEARCH}
           withSearchButton={false}
           withIcon={false}
           ref={submitRef}

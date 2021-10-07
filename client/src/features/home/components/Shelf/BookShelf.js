@@ -2,14 +2,10 @@ import Shelf from 'assets/icons/Shelf.svg';
 import { DimensionsContext } from 'context/DimensionsContext';
 import React, { useContext } from 'react';
 import './bookshelf.css';
+import { BookShelfStrings as strings } from './BookShelf.strings';
 import FindMoreButton from './FindMoreButton';
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
-
-const strings = {
-  title: 'גרפולוגיה',
-  subTitle: 'תורת כתב-יד',
-};
 
 const BookShelf = ({ onReadMoreClick }) => {
   const { windowHeight, windowWidth, headerHeight } = useContext(DimensionsContext);

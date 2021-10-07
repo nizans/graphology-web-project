@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { contentsApiCRUDRequests } from '..';
 import CouchItem from './CouchItem';
 import CouchMenu from './CouchMenu';
-import { CouchStrings as strings } from '../strings/strings';
+import { CouchStrings as strings } from './Couch.strings';
 
 //TODO - more info drawer for small screens
 

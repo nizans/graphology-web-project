@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import DownArrow from 'assets/icons/down_arrow.png';
+import { HEB_FIND_MORE } from 'strings/common';
 
-const strings = { findMore: 'גלה עוד' };
 const FindMoreButton = ({ onClick }) => {
   const readMoreTextRef = useRef(null);
   const readMoreImgRef = useRef(null);
@@ -34,7 +34,7 @@ const FindMoreButton = ({ onClick }) => {
         onMouseLeave={readMoreAnimation}
       >
         <h1 ref={readMoreTextRef} className="_text text-4xl transform transition-all">
-          {strings.findMore}
+          {HEB_FIND_MORE}
         </h1>
         <img
           loading="eager"

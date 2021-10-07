@@ -3,10 +3,7 @@ import BookSideOrig, { ReactComponent as BookSide } from 'assets/icons/book_side
 import EmptyBook from 'assets/icons/book_side_emprty.svg';
 import { DimensionsContext } from 'context/DimensionsContext';
 import React, { useContext, useState } from 'react';
-
-const strings = {
-  rightPopupText: `'ספר שירים "בקרום הדק" הוצ עקד 2010, זכה בתעודת הוקרה ע"ש דוד לויתן. ספר המשקף עולם .פנימי מורכב וביטוי של עומק רגשי`,
-};
+import { RightSideStrings as strings } from './RightSide.strings';
 
 const RightSide = () => {
   const { windowWidth } = useContext(DimensionsContext);

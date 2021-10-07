@@ -2,31 +2,9 @@ import { DimensionsContext } from 'context/DimensionsContext';
 import useDimensions from 'hooks/useDimensions';
 import React, { useContext, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import { HeaderDropdownLinks as dropdownLinks, HeaderLinks as links } from './Header.links';
 import Navbar from './navbar/Navbar';
 import NavBurger from './navbar/NavBurger';
-
-const dropdownLinks = [
-  { name: 'אודות', to: '/home/about' },
-  { name: 'כתבות', to: '/home/articles' },
-];
-const links = [
-  {
-    name: 'על ספת הגרפולוג',
-    to: '/home/couch',
-  },
-  {
-    name: 'ספרים',
-    to: '/home/books',
-  },
-  {
-    name: 'שירות גרפולוגי',
-    to: '/home/services',
-  },
-  {
-    name: 'צור קשר',
-    to: '/home/contact',
-  },
-];
 
 const Header = () => {
   const [headerRef, headerDimension] = useDimensions();

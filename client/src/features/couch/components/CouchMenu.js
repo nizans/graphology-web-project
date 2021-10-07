@@ -1,9 +1,9 @@
 import { DimensionsContext } from 'context/DimensionsContext';
 import React, { useContext, useState } from 'react';
-import SortByMenu from './SortByMenu';
+import SortByMenu from '../../../components/common/SortByMenu';
 import BrownSpeechBubbleTriangle from 'assets/icons/Light brown triangle.svg';
 import SearchInput from 'components/UI/SearchInput';
-import { CouchMenuStrings as strings } from '../strings/strings';
+import { CouchMenuStrings as strings } from './CouchMenu.strings';
 
 const CouchMenu = ({ searchInput, setSearchInput }) => {
   const [showBubble, setShowBubble] = useState(false);

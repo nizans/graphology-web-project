@@ -8,7 +8,7 @@ import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
 import React from 'react';
 import * as Yup from 'yup';
-import { VideoFormStrings as strings } from '../../strings/VideoFormStrings';
+import { VideoFormStrings as strings } from './VideoForm.strings';
 
 const VideoForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(

@@ -7,19 +7,8 @@ import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
 import React, { useContext, useEffect } from 'react';
 import * as Yup from 'yup';
+import { LoginStrings as strings } from './Login.strings';
 import PasswordResetResult from './PasswordResetResult';
-
-const strings = {
-  required: 'שדה דרוש',
-  invalidEmail: 'כתובת אימייל לא תקינה',
-  passwordMinLenghth: 'הסיסמא צריכה להכיל לפחות 6 תוים',
-  email: 'אימייל',
-  password: 'סיסמא',
-  login: 'התחבר',
-  title: 'התחברות מנהל',
-  forgotPassword: 'שחכתי סיסמא',
-  successLogin: 'התחברת בהצלחה, מיד תועבר',
-};
 
 const Login = () => {
   const { login, loginError, isLoginLoading, isLoginSuccess, resetLoginRequestState } = useContext(AuthContext);
@@ -39,7 +28,10 @@ const Login = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string().required(strings.required).email(strings.invalidEmail),
-      password: Yup.string().min(6, strings.passwordMinLenghth).required(strings.required),
+      password: Yup.string()
+        .min(6, strings.passwordMinLength)
+        .max(12, strings.passwordMaxLength)
+        .required(strings.required),
     }),
     onSubmit: values => {
       login(values.email, values.password);

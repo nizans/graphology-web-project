@@ -1,2 +1,2 @@
-export * from './routes/Services';
+export * from './components/Services';
 export * from './api/index';

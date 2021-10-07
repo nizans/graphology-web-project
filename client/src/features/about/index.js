@@ -1,1 +1,1 @@
-export * from './routes/About.js'
+export * from './components/About.js'

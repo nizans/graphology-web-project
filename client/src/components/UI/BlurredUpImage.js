@@ -1,5 +1,5 @@
 import Modal from 'components/common/Modal';
-import ExpandIcon from 'components/UI/ExpandIcon';
+import ExpandIcon from 'components/Icons/ExpandIcon';
 import useModal from 'hooks/useModal';
 import useProgressiveImg from 'hooks/useProgressiveImg';
 import React from 'react';

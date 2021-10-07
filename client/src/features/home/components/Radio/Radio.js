@@ -3,11 +3,8 @@ import Spinner from 'components/UI/Spinner';
 import TitleUnderline from 'components/UI/TitleUnderline';
 import useFirstRender from 'hooks/useFirstRender';
 import React, { useEffect, useState } from 'react';
+import { RadioStrings as strings } from './Radio.strings';
 import SuggestionContainer from './SuggestionContainer';
-
-const strings = {
-  title: 'מיכל ברדיו',
-};
 
 const fallbackURL = 'https://www.facebook.com/100003098510659/videos/pcb.3997212253725352/3997187820394462';
 

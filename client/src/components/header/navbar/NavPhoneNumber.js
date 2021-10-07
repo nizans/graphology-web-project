@@ -1,10 +1,7 @@
 import React from 'react';
 import phoneIcon from 'assets/icons/phone_icon.svg';
+import { NavPhoneNumberStrings as strings } from './NavPhoneNumber.strings';
 
-const strings = {
-  phoneTitle: 'לייעוץ ואבחון גרפולוגי',
-  phoneNumber: '054-9772887',
-};
 const NavPhoneNumber = () => {
   return (
     <div

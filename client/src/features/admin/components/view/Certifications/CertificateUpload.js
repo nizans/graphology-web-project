@@ -4,10 +4,7 @@ import { certificationsApiCRUDRequests } from 'features/certification';
 import { useMutateData } from 'lib/reactQuery';
 import React, { useRef } from 'react';
 import createFormData from 'utils/createFormData';
-
-const strings = {
-  addCertificate: 'הוספת תעודה',
-};
+import { CertificateUploadStrings as strings } from './CertificateUploadStrings';
 
 const CertificateUpload = () => {
   const fileInputRef = useRef(null);
@@ -30,7 +27,8 @@ const CertificateUpload = () => {
         isLoading={isUploading}
         type="button"
         value={strings.addCertificate}
-        onClick={() => fileInputRef.current.click()}>
+        onClick={() => fileInputRef.current.click()}
+      >
         {strings.addCertificate}
       </LoadingButton>
       {uploadError && <ErrorMessage error={uploadError} />}

@@ -1,16 +1,10 @@
-import { DeleteIcon } from 'components/UI/ButtonsCell';
 import { DimensionsContext } from 'context/DimensionsContext';
 import useModal from 'hooks/useModal';
 import React, { useContext, useRef } from 'react';
 import ImageCard from './ImageCard';
 import Modal from './Modal';
-
-const strings = {
-  uploadImage: 'בחירת תמונות',
-  mainImage: 'תמונה ראשית',
-  setMainImage: 'בחר כתמונה ראשית',
-  maxFiles: 'ניתן להעלות עד 10 תמונות',
-};
+import { ImageUploadInputStrings as strings } from './ImageUploadInput.strings';
+import { DeleteIcon } from 'components/Icons/ButtonsCellIcons';
 
 const ImageUploadInput = ({ images, onImageChange }) => {
   const { windowHeight, windowWidth } = useContext(DimensionsContext);
@@ -43,7 +37,8 @@ const ImageUploadInput = ({ images, onImageChange }) => {
           key={i}
           style={{ maxHeight: '500px', minHeight: '500px', width: '100%', objectFit: 'cover' }}
         />
-      }>
+      }
+    >
       {i !== 0 && (
         <button className="_text text-2xl hover:font-bold" onClick={() => setMainImage(img)}>
           {strings.setMainImage}
@@ -61,7 +56,8 @@ const ImageUploadInput = ({ images, onImageChange }) => {
         <div
           dir="rtl"
           className="mx-4 bg-background rounded-lg flex flex-col justify-start p-8 overflow-scroll"
-          style={{ height: windowHeight * 0.9, width: windowWidth * 0.9 }}>
+          style={{ height: windowHeight * 0.9, width: windowWidth * 0.9 }}
+        >
           <div className="mb-4">
             <button onClick={() => fileInputRef.current.click()} type="button" className="button">
               {strings.uploadImage}

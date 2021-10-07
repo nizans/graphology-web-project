@@ -4,6 +4,16 @@ import useDimensions from 'hooks/useDimensions';
 import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
+import {
+  HEB_ABOUT,
+  HEB_ARTICLES,
+  HEB_BOOKS,
+  HEB_CONTACT,
+  HEB_HOMEPAGE,
+  HEB_ON_THE_COUCH,
+  HEB_GRAPHOLOGY_SERVICE,
+  HEB_VIDEOS,
+} from 'strings/common';
 
 const BreadCrumbs = () => {
   const [breadCrumbRef, breadCrumbDimension] = useDimensions();
@@ -16,14 +26,14 @@ const BreadCrumbs = () => {
   const { id, title } = useContext(BreadCrumbsTitleContext);
 
   const translate = {
-    home: 'דף בית',
-    couch: 'על ספת הגרפולוג',
-    books: 'ספרים',
-    services: 'שירות גרפולוגי',
-    contact: 'צור קשר',
-    about: 'אודות',
-    articles: 'כתבות',
-    videos: 'סרטונים',
+    home: HEB_HOMEPAGE,
+    couch: HEB_ON_THE_COUCH,
+    books: HEB_BOOKS,
+    services: HEB_GRAPHOLOGY_SERVICE,
+    contact: HEB_CONTACT,
+    about: HEB_ABOUT,
+    articles: HEB_ARTICLES,
+    videos: HEB_VIDEOS,
   };
 
   const { pathname } = useLocation();

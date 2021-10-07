@@ -5,12 +5,7 @@ import Underline from 'components/UI/Underline';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { DimensionsContext } from 'context/DimensionsContext';
-
-const strings = {
-  title: 'מיכל דורון',
-  text: '.עובדת כעשרים ושבע שנה כמרצה בתחומים ,פסיכולוגים וגרפולוגיה, לימדה במכללות לוינסקיעמק יזרעאל ומכללת שחר. גרפולוגית מוסמכת עובדת עם ארגונים וחברות, מתמחה בייעוץ תעסוקתי ובגרפולוגיה משפטית',
-  readMore: 'קרא עוד',
-};
+import { MichalStrings as strings } from './Michal.strings';
 
 const Michal = React.forwardRef((props, ref) => {
   const { windowHeight, headerHeight } = useContext(DimensionsContext);

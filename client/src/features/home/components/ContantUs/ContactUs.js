@@ -1,10 +1,6 @@
 import React from 'react';
+import { ContactUsStrings as strings } from './ContactUs.strings';
 import ContantUsForm from './ContantUsForm';
-
-const strings = {
-  title: 'ייעוץ והכוונה',
-  subTitle: 'לקבלת מידע נוסף, אשמח לעמוד לשרותכם 054-8950837 או השאירו פרטים ואחזור אליכם בהקדם',
-};
 
 const ContactUs = () => {
   return (

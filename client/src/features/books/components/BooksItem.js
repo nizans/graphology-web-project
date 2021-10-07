@@ -4,10 +4,7 @@ import { DimensionsContext } from 'context/DimensionsContext';
 import parse from 'html-react-parser';
 import React, { useContext } from 'react';
 import { NavLink, useRouteMatch } from 'react-router-dom';
-const strings = {
-  orderBook: 'הזמנת ספר',
-  from: 'מאת',
-};
+import { BooksItemStrings as strings } from './BooksItem.strings';
 
 const BooksItem = ({ data: item }) => {
   const { path } = useRouteMatch();

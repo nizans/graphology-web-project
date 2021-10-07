@@ -8,13 +8,8 @@ import { NavLink } from 'react-router-dom';
 import Notebook from 'assets/icons/notebook.svg';
 import OnTheCouchItem from './OnTheCouchItem';
 import { DimensionsContext } from 'context/DimensionsContext';
+import { OnTheCouchStrings as strings } from './OnTheCouch.strings';
 
-const strings = {
-  title: 'על ספת הגרפולוג',
-  subTitle: 'זוהי פינה בה נחקור ונגלה על אישיותם של אשויות מוכורות',
-  recentlyAdded: 'הועלו לאחרונה:',
-  moreReadings: 'לעוד מאמרים',
-};
 const OnTheCouch = () => {
   const { windowWidth } = useContext(DimensionsContext);
 

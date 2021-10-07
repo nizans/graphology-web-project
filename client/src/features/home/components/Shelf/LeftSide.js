@@ -3,9 +3,8 @@ import BookSideTall from 'assets/icons/BookSideTall.svg';
 import { ReactComponent as BookFront } from 'assets/icons/book_front.svg';
 import { DimensionsContext } from 'context/DimensionsContext';
 import React, { useContext, useState } from 'react';
-const strings = {
-  leftPopUp: `ספר מאת מיכל דורון, בו ניתחה ,את כתבי יד של אישויות רבות ספר מרתק החושף צד אנושי .אחר שלא תמיד היה גלוי לעין`,
-};
+import { LeftSideStrings as strings } from './LeftSide.strings';
+
 const LeftSide = () => {
   const { windowWidth } = useContext(DimensionsContext);
   const [showPopUp, setShowPopUp] = useState('hidden');

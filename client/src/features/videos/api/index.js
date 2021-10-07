@@ -1,5 +1,3 @@
-// import { BASE_URL } from 'config/constants';
-
 import ApiCRUDRequests from 'lib/ApiRequest';
 
 const VIDEOS_QUERY = 'videos';

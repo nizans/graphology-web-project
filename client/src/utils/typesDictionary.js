@@ -5,4 +5,5 @@ export default Object.freeze({
   books: 'ספר',
   admins: 'מנהל',
   services: 'שירות',
+  recommendations: 'המלצות',
 });

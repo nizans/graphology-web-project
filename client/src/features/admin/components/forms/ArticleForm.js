@@ -3,7 +3,7 @@ import TextEditor from 'components/common/TextEditor';
 import ErrorMessage from 'components/UI/ErrorMessage';
 import FormField from 'components/UI/FormField';
 import LoadingButton from 'components/UI/LoadingButton';
-import { ArticleFormStrings as strings } from 'features/admin/strings/ArticleFormStrings';
+import { ArticleFormStrings as strings } from './ArticleForm.strings';
 import { articlesApiCRUDRequests } from 'features/articles';
 import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';

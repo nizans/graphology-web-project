@@ -3,12 +3,7 @@ import BlueTriangle from 'assets/icons/Blue triangle.svg';
 import Quotes from 'assets/icons/quotes_icon.svg';
 import SpeechBubble from 'assets/icons/speech_bubble.svg';
 import React from 'react';
-
-const strings = {
-  bubbleTextLine1: 'כשם שאין בעולם שתי טביעות ',
-  bubbleTextLine2: 'אצבע זהות אין בעולם שני',
-  bubbleTextLine3: 'כתבי יד זהים',
-};
+import { MichalSpeechBubbleStrings as strings } from './MichalSpeechBubble.strings';
 
 const BubbleText = () => (
   <>

@@ -5,17 +5,7 @@ import Shelf from 'assets/icons/brown_shelf.svg';
 import { NavLink } from 'react-router-dom';
 import useDimensions from 'hooks/useDimensions';
 import { DimensionsContext } from 'context/DimensionsContext';
-
-const strings = {
-  about: 'אודות',
-  michalDoron: 'מיכל דורון ב',
-  wiki: 'ויקיפדיה',
-  contact: 'צור קשר',
-  fb: 'פייסבוק',
-  books: 'ספרים',
-  lectures: 'סדנאות והרצאות',
-  copyrights: 'כל הזכויות שמורות © מיכל דורון ייעוץ ואבחון גרפולוגית',
-};
+import { FooterStrings as strings } from './Footer.strings';
 
 const Footer = () => {
   const [footerRef, footerDimension] = useDimensions();

@@ -1,28 +1,12 @@
 import Underline from 'components/UI/Underline';
 import { AuthContext } from 'context/AuthContext';
 import { DimensionsContext } from 'context/DimensionsContext';
+import { AdminNavStrings as strings } from './AdminNav.strings';
+import { AdminNavLinks as links } from './AdminNav.links';
 import useDimensions from 'hooks/useDimensions';
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useRouteMatch, useHistory } from 'react-router-dom';
-import typesDictionary from 'utils/typesDictionary';
 import AdminTopNav from './AdminTopNav';
-
-const strings = {
-  backToMain: 'חזרה לתפריט ראשי',
-  addtitle: type => `הוספת ${typesDictionary[type]}`,
-  viewTitle: 'תכנים באתר',
-  hello: 'שלום ',
-  goBack: 'חזור',
-};
-
-const links = [
-  { name: 'כתבות', to: 'view/articles' },
-  { name: 'תכנים מספת הגרפולוג', to: 'view/contents' },
-  { name: 'סרטונים', to: 'view/videos' },
-  { name: 'שירותים', to: 'view/services' },
-  { name: 'ספרים', to: 'view/books' },
-  { name: 'תעודות', to: 'view/certifications' },
-];
 
 const AdminNav = () => {
   const { goBack, location } = useHistory();
@@ -63,7 +47,8 @@ const AdminNav = () => {
                 key={i}
                 className={`_text text-3xl ${i === 0 ? 'pl-4' : 'px-4'}`}
                 activeClassName="font-bold"
-                to={`${path}/${link.to}`}>
+                to={`${path}/${link.to}`}
+              >
                 {link.name}
               </NavLink>
             ))}

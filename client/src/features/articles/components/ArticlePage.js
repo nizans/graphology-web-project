@@ -14,8 +14,7 @@ import React, { useContext, useEffect } from 'react';
 import { Redirect, useParams } from 'react-router';
 import { toDate } from 'utils/toDate';
 import { articlesApiCRUDRequests } from '..';
-
-const strings = { articleFrom: 'כתבה מתוך: ', publishedAt: 'פורסם בתאריך: ', originalLink: 'לכתבה המקורית' };
+import { ArticlePageStrings as strings } from './ArticlePage.strings';
 
 const ArticlePage = () => {
   const { id } = useParams();

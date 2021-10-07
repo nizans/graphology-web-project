@@ -2,12 +2,8 @@ import { servicesApiCRUDRequests } from 'features/services';
 import { useFetchData } from 'lib/reactQuery';
 import React from 'react';
 import ResponsiveSlider from '../../../../components/common/ResponsiveSlider/ResponsiveSlider';
+import { ExpertiseStrings as strings } from './Expertise.strings';
 import ExpertiseContainer from './ExpertiseContainer';
-
-const strings = {
-  title: 'תחומי התמחות',
-  subTitle: 'שירותים ואבחונים גרפולוגים',
-};
 
 const Expertise = () => {
   const { data, isSuccess, error } = useFetchData(servicesApiCRUDRequests.read());

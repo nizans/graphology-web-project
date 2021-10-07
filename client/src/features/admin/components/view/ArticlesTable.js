@@ -3,13 +3,8 @@ import React from 'react';
 import { toDate } from 'utils/toDate';
 import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import Table from './Table';
-const strings = {
-  title: 'שם',
-  souceFrom: 'מקור הכתבה',
-  link: 'לינק',
-  image: 'תמונה',
-  uploadDate: 'תאריך העלאה',
-};
+import { ArticlesTableStrings as strings } from './ArticlesTable.strings';
+
 const ArticlesTable = () => {
   const headers = () => {
     return (

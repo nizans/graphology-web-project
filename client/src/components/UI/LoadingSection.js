@@ -8,11 +8,10 @@ const LoadingSection = () => {
 
   return (
     <Section
-      className="relative"
+      className="relative flex"
       style={{
         height: windowHeight - headerHeight - breadCrumbHeight - footerHeight - 85,
       }}
-      className="flex"
     >
       <Spinner style={{ justifyContent: 'center', alignItems: 'center' }} />
     </Section>

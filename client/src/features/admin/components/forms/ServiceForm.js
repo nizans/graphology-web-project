@@ -9,7 +9,7 @@ import { useMutateData } from 'lib/reactQuery';
 import React, { useState } from 'react';
 import createFormData from 'utils/createFormData';
 import * as Yup from 'yup';
-import { ServiceFormStrings as strings } from '../../strings/ServiceFormStrings';
+import { ServiceFormStrings as strings } from './ServiceForm.strings';
 
 const ServiceForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(
@@ -21,9 +21,12 @@ const ServiceForm = ({ data: item }) => {
     title: item?.title || '',
     description: item?.description || '',
   };
+
   const validation = Yup.object({
     title: Yup.string().required(strings.required),
+    description: Yup.string().required(strings.required),
   });
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
@@ -32,6 +35,7 @@ const ServiceForm = ({ data: item }) => {
       mutate({ body: formData });
     },
   });
+
   if (isSuccess) return <h1 className="p-16 _text text-3xl m-auto text-center font-bold">{strings.success}</h1>;
 
   return (

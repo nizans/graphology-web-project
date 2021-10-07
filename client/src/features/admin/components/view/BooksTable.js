@@ -4,15 +4,7 @@ import React from 'react';
 import { toDate } from 'utils/toDate';
 import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import Table from './Table';
-
-const strings = {
-  title: 'שם',
-  author: 'מאת',
-  description: 'תיאור',
-  publishDate: 'תאריך פרסום',
-  image: 'תמונה',
-  uploadDate: 'תאריך העלאה',
-};
+import { BooksTableStrings as strings } from './BooksTable.strings';
 
 const BooksTable = () => {
   const headers = () => {

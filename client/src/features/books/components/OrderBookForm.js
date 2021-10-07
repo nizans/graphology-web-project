@@ -6,20 +6,7 @@ import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
 import React from 'react';
 import * as Yup from 'yup';
-
-const strings = {
-  title: 'הזמנת ספר',
-  subtitle: 'מלאו את הטופס וניצור איתכם קשר .לסגירת פרטים אחרונים',
-  fullName: 'שם מלא',
-  phoneNumber: 'מספר פלאפון',
-  email: 'אימייל',
-  order: 'הזמן',
-  notes: 'הערות',
-  invalidEmail: 'כתובת אימייל לא תקינה',
-  required: 'שדה דרוש',
-  invalidPhone: 'מספר לא תקין',
-  success: 'תודה, הפרטים התקבלו בהצלחה!',
-};
+import { OrderBookFormStrings as strings } from './OrderBookForm.strings';
 
 const OrderBookForm = ({ book }) => {
   const { isLoading, error, mutate, isSuccess } = useMutateData(contactApiRequests.orderBook);

@@ -1,15 +1,12 @@
-import ExpandIcon from 'components/UI/ExpandIcon';
+import ExpandIcon from 'components/Icons/ExpandIcon';
 import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import useDomParser from 'hooks/useDomParser';
 import useModal from 'hooks/useModal';
 import truncate from 'lodash.truncate';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { ArticleContainerStrings as strings } from './ArticleContainer.strings';
 
-const strings = {
-  readMore: 'להמשך קריאה',
-  articleFrom: 'כתבה מתוך: ',
-};
 const ArticleContainer = ({ item }) => {
   const { toggle } = useModal();
   const [parsedStr] = useDomParser(item.text);

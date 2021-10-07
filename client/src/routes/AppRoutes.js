@@ -2,7 +2,6 @@ import Footer from 'components/footer/Footer';
 import Header from 'components/header/Header';
 import LoadingSection from 'components/UI/LoadingSection';
 import { AuthContext } from 'context/AuthContext';
-import { DimentionsContextProvider } from 'context/DimensionsContext';
 import Login from 'features/admin/components/Login/Login';
 import React, { useContext } from 'react';
 import { Suspense } from 'react';
@@ -14,31 +13,29 @@ const AppRoutes = () => {
   const { isAuth } = useContext(AuthContext);
 
   return (
-    <DimentionsContextProvider>
-      <Switch>
-        <Route path="/home">
-          <Header />
-          <PublicRoutes />
-          <Footer />
-        </Route>
+    <Switch>
+      <Route path="/home">
+        <Header />
+        <PublicRoutes />
+        <Footer />
+      </Route>
 
-        <Route exact path="/admin/login">
-          {isAuth ? <Redirect to="/admin" /> : <Login />}
-        </Route>
+      <Route exact path="/admin/login">
+        {isAuth ? <Redirect to="/admin" /> : <Login />}
+      </Route>
 
-        <Route path="/admin">
-          {isAuth ? (
-            <Suspense fallback={<LoadingSection />}>
-              <ProtectedRoutes />
-            </Suspense>
-          ) : (
-            <Redirect to="/admin/login" />
-          )}
-        </Route>
+      <Route path="/admin">
+        {isAuth ? (
+          <Suspense fallback={<LoadingSection />}>
+            <ProtectedRoutes />
+          </Suspense>
+        ) : (
+          <Redirect to="/admin/login" />
+        )}
+      </Route>
 
-        <Redirect from="*" to="/home" />
-      </Switch>
-    </DimentionsContextProvider>
+      <Redirect from="*" to="/home" />
+    </Switch>
   );
 };
 

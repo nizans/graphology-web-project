@@ -1,16 +1,8 @@
 import { videosApiCRUDRequests } from 'features/videos/api';
-import truncate from 'lodash.truncate';
 import React from 'react';
 import { toDate } from 'utils/toDate';
 import Table from './Table';
-
-const strings = {
-  title: 'שם',
-  link: 'לינק',
-  image: 'תמונה',
-  uploadDate: 'תאריך העלאה',
-  description: 'תיאור',
-};
+import { VideosTableStrings as strings } from './VideosTables.strings';
 
 const VideosTable = () => {
   const headers = () => {

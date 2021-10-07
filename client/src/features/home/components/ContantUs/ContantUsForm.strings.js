@@ -1,0 +1,19 @@
+import {
+  HEB_EMAIL,
+  HEB_FULL_NAME,
+  HEB_INVALID_EMAIL_ADDRESS,
+  HEB_INVALID_PHONE_NUMBER,
+  HEB_PHONE_NUMBER,
+  HEB_REQUIRED_FIELD,
+  HEB_SUCCESSFUL_UPLOAD_MESSAGE,
+} from 'strings/common';
+
+export const ContantUsFormStrings = {
+  fullName: HEB_FULL_NAME,
+  phoneNumber: HEB_PHONE_NUMBER,
+  email: HEB_EMAIL,
+  invalidEmail: HEB_INVALID_EMAIL_ADDRESS,
+  required: HEB_REQUIRED_FIELD,
+  invalidPhone: HEB_INVALID_PHONE_NUMBER,
+  success: HEB_SUCCESSFUL_UPLOAD_MESSAGE,
+};

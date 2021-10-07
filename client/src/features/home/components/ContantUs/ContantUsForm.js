@@ -5,17 +5,8 @@ import { contactApiRequests } from 'features/contact/api';
 import { ErrorMessage, useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
 import React from 'react';
+import { ContantUsFormStrings as strings } from './ContantUsForm.strings';
 import * as Yup from 'yup';
-
-const strings = {
-  fullName: 'שם מלא',
-  phoneNumber: 'מספר פלאפון',
-  email: 'אימייל',
-  invalidEmail: 'כתובת אימייל לא תקינה',
-  required: 'שדה דרוש',
-  invalidPhone: 'מספר לא תקין',
-  success: 'תודה, הפרטים התקבלו בהצלחה!',
-};
 
 const initialValues = { from: '', email: '', phone: '' };
 const validation = {

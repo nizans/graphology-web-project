@@ -9,7 +9,7 @@ import { useMutateData } from 'lib/reactQuery';
 import React, { useState } from 'react';
 import createFormData from 'utils/createFormData';
 import * as Yup from 'yup';
-import { CouchFormStrings as strings } from 'features/admin/strings/CouchFormStrings';
+import { CouchFormStrings as strings } from './CouchForm.strings';
 
 const CouchForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(

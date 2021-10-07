@@ -3,9 +3,7 @@ import useQueryParams from 'hooks/useQueryParams';
 import React, { forwardRef, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
-const strings = {
-  search: 'חיפוש',
-};
+import { HEB_SEARCH } from 'strings/common';
 
 const SearchInput = forwardRef(({ className, withIcon = true, placeholder, withSearchButton = true }, submitRef) => {
   const find = useQueryParams().get('find');
@@ -28,7 +26,7 @@ const SearchInput = forwardRef(({ className, withIcon = true, placeholder, withS
       <input
         onInput={e => setValue(e.target.value)}
         value={value}
-        placeholder={placeholder || strings.search}
+        placeholder={placeholder || HEB_SEARCH}
         className={
           className ||
           `placeholder-p-gray-dark relative my-4 sm:my-0  _text text-2xl border-p-blue border-2 rounded-lg ${
@@ -64,7 +62,7 @@ const SearchInput = forwardRef(({ className, withIcon = true, placeholder, withS
             opacity: value ? '1' : '0',
           }}
         >
-          {strings.search}
+          {HEB_SEARCH}
         </NavLink>
       )}
     </form>

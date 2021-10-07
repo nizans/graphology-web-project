@@ -1,6 +1,5 @@
 import ImageCard from 'components/common/ImageCard';
 import Section from 'components/common/Section';
-import { DeleteIcon } from 'components/UI/ButtonsCell';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
 import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
@@ -8,6 +7,7 @@ import { certificationsApiCRUDRequests } from 'features/certification';
 import { useFetchData, useMutateData } from 'lib/reactQuery';
 import React from 'react';
 import CertificateUpload from './CertificateUpload';
+import { DeleteIcon } from 'components/Icons/ButtonsCellIcons';
 
 const Certifications = () => {
   const {
@@ -15,10 +15,7 @@ const Certifications = () => {
     isLoading,
     error: fetchError,
     isSuccess,
-  } = useFetchData({
-    ...certificationsApiCRUDRequests.read(),
-    settings: { refetchOnMount: false, refetchOnWindowFocus: false },
-  });
+  } = useFetchData(certificationsApiCRUDRequests.read(), { refetchOnMount: false, refetchOnWindowFocus: false });
 
   const {
     mutate: deleteCertificate,

@@ -6,12 +6,9 @@ import Underline from 'components/UI/Underline';
 import useQueryParams from 'hooks/useQueryParams';
 import { useFetchData } from 'lib/reactQuery';
 import React from 'react';
+import { HEB_MICHAL_DORON_ARTICLES } from 'strings/common';
 import { articlesApiCRUDRequests } from '..';
 import ArticleContainer from './ArticleContainer';
-
-const strings = {
-  title: 'כתבות - מיכל דורון',
-};
 
 export const Articles = () => {
   const page = useQueryParams().get('page');
@@ -20,7 +17,7 @@ export const Articles = () => {
   return (
     <Section>
       <div className="flex flex-col items-center mb-9">
-        <h1 className="_text-bold-dark text-8xl">{strings.title}</h1>
+        <h1 className="_text-bold-dark text-8xl">{HEB_MICHAL_DORON_ARTICLES}</h1>
         <Underline style={{ width: '33%' }} />
         {error ? (
           <ErrorSection error={error} />

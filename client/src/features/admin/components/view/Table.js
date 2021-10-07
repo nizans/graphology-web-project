@@ -2,7 +2,7 @@ import Pagintation from 'components/common/Pagintation';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';
 import SearchInput from 'components/UI/SearchInput';
-import SortByMenu from 'features/couch/components/SortByMenu';
+import SortByMenu from 'components/common/SortByMenu';
 import useQueryParams from 'hooks/useQueryParams';
 import { useFetchData, useMutateData } from 'lib/reactQuery';
 import React, { useEffect, useState } from 'react';

@@ -9,7 +9,7 @@ import { useMutateData } from 'lib/reactQuery';
 import React, { useState } from 'react';
 import createFormData from 'utils/createFormData';
 import * as Yup from 'yup';
-import { BookFormStrings as strings } from '../../strings/BookFormStrings';
+import { BookFormStrings as strings } from './BookForm.strings';
 
 const BookForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(

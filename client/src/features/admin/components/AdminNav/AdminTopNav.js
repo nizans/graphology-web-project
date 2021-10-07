@@ -1,18 +1,12 @@
-import LoadingButton from 'components/UI/LoadingButton';
 import { AuthContext } from 'context/AuthContext';
+import { AdminTopNavStrings as strings } from 'features/admin/components/AdminNav/AdminTopNav.strings';
 import { useContext } from 'react';
-import { NavLink, useRouteMatch, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useRouteMatch } from 'react-router-dom';
 import AdminNavRandomData from './AdminNavRandomData';
 
-const strings = {
-  admins: 'מנהלים',
-  logout: 'התנתקות',
-  viewContents: 'צפייה בתכנים',
-  backHome: 'חזרה לעמוד הבית',
-};
 const AdminTopNav = () => {
   const { path } = useRouteMatch();
-  const { logout, isLoggingOutLoading } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const { push } = useHistory();
 
   const handleLogout = async () => {
