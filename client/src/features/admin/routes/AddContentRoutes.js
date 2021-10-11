@@ -18,6 +18,7 @@ import { Redirect, Route, Switch, useRouteMatch } from 'react-router';
 import { adminApiCRUDRequests } from '..';
 import RecommendationForm from '../components/forms/RecommendationForm';
 import { recommendationApiCRUDRequests } from 'features/recommendations';
+import Section from 'components/common/Section';
 
 const AddContentRoutes = () => {
   const { path } = useRouteMatch();
@@ -29,64 +30,62 @@ const AddContentRoutes = () => {
   const WithDataAdminForm = withData(AdminForm, adminApiCRUDRequests);
   const WithDataRecommendationForm = withData(RecommendationForm, recommendationApiCRUDRequests);
   return (
-    <>
-      <div className="mt-4 flex h-full w-full items-center pb-4 flex-wrap absolute top-0 bottom-0 right-0 left-0">
-        <Switch>
-          <Route exact path={`${path}/articles`}>
-            <ArticleForm />
-          </Route>
-          <Route exact path={`${path}/articles/:id`}>
-            <WithDataArticleForm />
-          </Route>
+    <Section setDefaultHeight={true} className="w-full ">
+      <Switch>
+        <Route exact path={`${path}/articles`}>
+          <ArticleForm />
+        </Route>
+        <Route exact path={`${path}/articles/:id`}>
+          <WithDataArticleForm />
+        </Route>
 
-          <Route exact path={`${path}/contents`}>
-            <CouchForm />
-          </Route>
-          <Route exact path={`${path}/contents/:id`}>
-            <WithDataCouchForm />
-          </Route>
+        <Route exact path={`${path}/contents`}>
+          <CouchForm />
+        </Route>
+        <Route exact path={`${path}/contents/:id`}>
+          <WithDataCouchForm />
+        </Route>
 
-          <Route exact path={`${path}/videos`}>
-            <VideoForm />
-          </Route>
-          <Route exact path={`${path}/videos/:id`}>
-            <WithDataVideoForm />
-          </Route>
+        <Route exact path={`${path}/videos`}>
+          <VideoForm />
+        </Route>
+        <Route exact path={`${path}/videos/:id`}>
+          <WithDataVideoForm />
+        </Route>
 
-          <Route exact path={`${path}/services`}>
-            <ServiceForm />
-          </Route>
-          <Route exact path={`${path}/services/:id`}>
-            <WithDataServiceForm />
-          </Route>
+        <Route exact path={`${path}/services`}>
+          <ServiceForm />
+        </Route>
+        <Route exact path={`${path}/services/:id`}>
+          <WithDataServiceForm />
+        </Route>
 
-          <Route exact path={`${path}/books`}>
-            <BookForm />
-          </Route>
-          <Route exact path={`${path}/books/:id`}>
-            <WithDataBookForm />
-          </Route>
+        <Route exact path={`${path}/books`}>
+          <BookForm />
+        </Route>
+        <Route exact path={`${path}/books/:id`}>
+          <WithDataBookForm />
+        </Route>
 
-          <Route exact path={`${path}/admins`}>
-            <AdminForm />
-          </Route>
-          <Route exact path={`${path}/admins/:id`}>
-            <WithDataAdminForm />
-          </Route>
+        <Route exact path={`${path}/admins`}>
+          <AdminForm />
+        </Route>
+        <Route exact path={`${path}/admins/:id`}>
+          <WithDataAdminForm />
+        </Route>
 
-          <Route exact path={`${path}/recommendations`}>
-            <RecommendationForm />
-          </Route>
-          <Route exact path={`${path}/recommendations/:id`}>
-            <WithDataRecommendationForm />
-          </Route>
+        <Route exact path={`${path}/recommendations`}>
+          <RecommendationForm />
+        </Route>
+        <Route exact path={`${path}/recommendations/:id`}>
+          <WithDataRecommendationForm />
+        </Route>
 
-          <Route exact path={`${path}`}>
-            <Redirect from={`${path}`} to={`${path}/articles`} />
-          </Route>
-        </Switch>
-      </div>
-    </>
+        <Route exact path={`${path}`}>
+          <Redirect from={`${path}`} to={`${path}/articles`} />
+        </Route>
+      </Switch>
+    </Section>
   );
 };
 

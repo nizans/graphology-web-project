@@ -16,7 +16,6 @@ const ServicesTable = () => {
     </>
   );
   const generateCell = item => {
-    console.log(item);
     return (
       <>
         <td>

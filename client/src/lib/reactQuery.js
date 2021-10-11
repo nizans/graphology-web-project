@@ -14,7 +14,6 @@ const defultMutationSettings = query => {
 };
 
 export function useFetchData(apiRequest, settings) {
-  console.log(apiRequest);
   const { query, url, options } = apiRequest;
   return useQuery(query, () => _fetch(url, options), { ...defualtQuerySetttings, ...settings });
 }

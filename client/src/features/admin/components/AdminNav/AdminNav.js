@@ -27,7 +27,7 @@ const AdminNav = () => {
 
   return (
     <header>
-      <div ref={headerRef} className=" top-0 bg-background">
+      <div ref={headerRef} className="top-0 bg-background">
         <div className="flex justify-between items-center w-full">
           <div>
             <h5 className="_text text-3xl">{strings.hello + user?.name}</h5>
