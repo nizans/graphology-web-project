@@ -7,7 +7,7 @@
 - [Description](#description)
 - [Preview](#preview)
 - [Local Installation](#local-installation)
-- [Technologies & Libraries Used](#technologies-&-libraries-used:)
+- [Technologies And Libraries Used](#technologies-And-libraries-used)
 
 ## <ins>Description:</ins>
 
@@ -59,7 +59,7 @@ npm run dev
 
 Open [http:localhost:4000](http:localhost:4000)
 
-## <ins>Technologies & Libraries Used:</ins>
+## <ins>Technologies And Libraries Used:</ins>
 
 ### <ins>Client side:</ins>
 
