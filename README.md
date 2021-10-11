@@ -7,7 +7,7 @@
 - [Description](#description)
 - [Preview](#preview)
 - [Local Installation](#local-installation)
-- [Technologies And Libraries Used](#technologies-And-libraries-used:)
+- [Technologies And Libraries Used](#technologies-And-libraries-used)
 
 ## <ins>Description:</ins>
 
