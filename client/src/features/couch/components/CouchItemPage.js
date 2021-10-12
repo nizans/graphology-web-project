@@ -43,16 +43,18 @@ const CouchItemPage = () => {
     isSuccess && (
       <Section className="mb-6 ">
         {isAuth && <ButtonsCell onDelete={handleDelete} withPreview={false} _id={id} type={'contents'} />}
-        <div className="flex justify-between items-center pb-1">
-          <h1 className="_text-bold-dark text-5xl">{item.title}</h1>
+        <div className="flex flex-col md:flex-row justify-between md:items-center pb-1">
+          <h1 className="_text-bold-dark text-2xl md:text-5xl">{item.title}</h1>
           <h3 className="_text text-2xl">{toDate(item.publishDate || item.uploadDate)}</h3>
         </div>
         <Underline />
-        <h2 className="py-10 _text text-3xl  ">{item.subtitle}</h2>
-        <div>
-          <ImageBox images={item.images} height={height < 600 ? height - 100 : 500} />
-        </div>
-        <div className="_text text-2xl break-words leading-normal w-full">{parse(item.text, htmlParserOptions)}</div>
+        <h2 className="py-10 _text _p-size">{item.subtitle}</h2>
+        <ImageBox
+          wrapperClassName="mb-8 lg:mb-0 lg:w-1/3 lg:float-right"
+          images={item.images}
+          height={height < 600 ? height - 100 : 500}
+        />
+        <div className="_text _p-size break-words leading-normal w-full">{parse(item.text, htmlParserOptions)}</div>
       </Section>
     )
   );

@@ -17,7 +17,7 @@ const CouchItem = ({ data: item }) => {
   return (
     <div className="grid py-14 grid-cols-8 gap-x-2 lg:gap-x-8 ">
       <div className="col-span-3 lg:col-span-2 flex justify-center items-center ">
-        <MultiSourceImageParse height={dim?.height} image={item.images} />
+        <MultiSourceImageParse width="300px" height="100%" image={item.images} />
       </div>
       <div className="col-span-4 lg:col-span-5" ref={ref}>
         <h1 className="_text-bold text-4xl">{item.title}</h1>

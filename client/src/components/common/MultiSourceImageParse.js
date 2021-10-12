@@ -9,6 +9,7 @@ const MultiSourceImageParse = ({
   width = '150px',
   withModal = false,
   objectFit = 'cover',
+  style,
 }) => {
   const forceUpdate = useForceUpdate();
 
@@ -27,19 +28,21 @@ const MultiSourceImageParse = ({
     if (Array.isArray(image) && image.length >= 1) {
       setImageSrc(image[0].full);
       setThumbSrc(image[0].thumb);
+    } else if (typeof image === 'object' && image !== null) {
+      if ('full' in image) setImageSrc(image.full);
+      if ('thumb' in image) setThumbSrc(image.thumb);
     } else if (checkValidImageSrc(image)) {
       setImageSrc(image);
     }
   };
 
-  
   return (
     <BlurredUpImage
       width={width}
       height={height}
       withModal={withModal}
       img={{ full: imageSrc, thumb: thumbSrc }}
-      style={{ objectFit }}
+      style={{ objectFit, ...style }}
     />
   );
 };

@@ -8,14 +8,32 @@ import truncate from 'lodash.truncate';
 
 const OnTheCouchItem = ({ data: item }) => {
   const { path } = useRouteMatch();
-  console.log(item);
   const { publishDate, title, images, _id, text } = item;
 
   const date = toDate(publishDate);
   const [parsedText] = useDomParser(text);
   return (
     <div className="flex flex-col lg:flex-row w-full justify-evenly items-center">
-      <MultiSourceImageParse image={images} width="300px" height="300px" />
+      <div className="relative w-80 h-80">
+        {images.length > 1 && (
+          <div className="absolute -right-14 bottom-0 transform rotate-3">
+            <MultiSourceImageParse
+              style={{ margin: 0, boxShadow: '5px 10px 15px #00000040', borderRadius: '5px' }}
+              image={images[1]}
+              width="250px"
+              height="250px"
+            />
+          </div>
+        )}
+        <div className="absolute top-0 left-0 right-0 bottom-0 ">
+          <MultiSourceImageParse
+            style={{ margin: 0, boxShadow: '5px 10px 15px #00000040', borderRadius: '5px' }}
+            image={images}
+            width="100%"
+            height="280px"
+          />
+        </div>
+      </div>
       <div className="flex flex-col px-4 lg:px-0 justify-start _text text-2xl">
         <div className="my-4 sm:my-0">
           <h1 className="_text-bold text-3xl ">{title}</h1>

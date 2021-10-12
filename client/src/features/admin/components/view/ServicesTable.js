@@ -5,8 +5,10 @@ import { toDate } from 'utils/toDate';
 import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import Table from './Table';
 import { ServicesTableStrings as strings } from './ServicesTable.strings';
+import useDomParser from 'hooks/useDomParser';
 
 const ServicesTable = () => {
+  const [str, setStr] = useDomParser();
   const headers = () => (
     <>
       <th className="flex justify-center">{strings.image}</th>
@@ -16,6 +18,7 @@ const ServicesTable = () => {
     </>
   );
   const generateCell = item => {
+    setStr(item.description);
     return (
       <>
         <td>
@@ -23,7 +26,7 @@ const ServicesTable = () => {
         </td>
         <td>{item.title}</td>
         <td>
-          <p>{truncate(item.description, { length: 75, separator: ' ' })}</p>
+          <p>{truncate(str, { length: 75, separator: ' ' })}</p>
         </td>
         <td>{toDate(item.uploadDate)}</td>
       </>

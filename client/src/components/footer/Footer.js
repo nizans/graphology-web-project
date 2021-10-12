@@ -14,7 +14,7 @@ const Footer = () => {
     if (footerDimension) setFooterHeight(footerDimension.height);
   }, [footerDimension, setFooterHeight]);
   return (
-    <footer ref={footerRef} className="w-full flex flex-col justify-between items-center mx-auto box-content ">
+    <footer ref={footerRef} className="w-full flex flex-col justify-between items-center mx-auto box-content">
       <img loading="lazy" src={Shelf} alt="" className="w-full" />
       <div className="w-full flex-col flex lg:flex-row justify-between items-center mx-auto mt-4 _text _p-size lg:font-normal font-thin whitespace-nowrap">
         <NavLink to="/home/about" className=" my-2 lg:my-0">

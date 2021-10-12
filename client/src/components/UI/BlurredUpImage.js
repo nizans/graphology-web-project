@@ -10,7 +10,7 @@ const BlurredUpImage = ({ img, withModal = true, width = '100%', height = '', st
   const { isShowing, toggle } = useModal();
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative">
       <img
         onClick={withModal ? toggle : null}
         alt=""

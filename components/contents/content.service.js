@@ -8,7 +8,6 @@ class ContentService extends Service {
   }
 
   async create(data) {
-    console.log(data);
     await createContentValidation.validateAsync(data);
     return await super.create(data);
   }

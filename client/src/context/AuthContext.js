@@ -13,6 +13,7 @@ export const AuthContext = createContext({
   loginError: null,
   isLoginLoading: false,
   isLoggingOutLoading: false,
+  isRefreshing: false,
   resetLoginRequestState: () => {},
 });
 
@@ -24,9 +25,21 @@ export const AuthContextProvider = ({ children }) => {
     isSuccess: isLoginSuccess,
     reset: resetLoginRequestState,
   } = useMutateData(authAPIRequests.login);
-  const { mutateAsync: refreshRequest } = useMutateData(authAPIRequests.refresh);
-  const { mutateAsync: logoutRequest, isLoading: isLoggingOutLoading } = useMutateData(authAPIRequests.logout);
+
+  const {
+    mutateAsync: refreshRequest,
+    isLoading: isRefreshing,
+    error: refreshError,
+  } = useMutateData(authAPIRequests.refresh);
+
+  const {
+    mutateAsync: logoutRequest,
+    isLoading: isLoggingOutLoading,
+    error: logoutError,
+  } = useMutateData(authAPIRequests.logout);
+
   const { mutateAsync: renewRequest } = useMutateData(authAPIRequests.renew);
+
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState();
   const [refreshToken, setRefreshToken, clearRefreshToken] = useLocalStorage('refreshToken', false);
@@ -35,7 +48,6 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const result = await loginRequest({ body: JSON.stringify({ email, password }) });
-    await new Promise(resolve => setTimeout(resolve, 1000));
     setRefreshToken(result.refreshToken);
     setUser({ name: result.name, email: result.email });
     setIsAuth(true);
@@ -61,6 +73,10 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    refresh();
+  }, []);
+
   const renew = async () => {
     if (process.env.NODE_ENV !== 'development') await renewRequest({});
   };
@@ -77,13 +93,14 @@ export const AuthContextProvider = ({ children }) => {
         renew();
       }
     });
-}, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <AuthContext.Provider
       value={{
         isAuth,
         user,
+        isRefreshing,
         login,
         logout,
         resetLoginRequestState,

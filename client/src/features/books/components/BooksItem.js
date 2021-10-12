@@ -23,6 +23,7 @@ const BooksItem = ({ data: item }) => {
     <Section minHeight={windowHeight - headerHeight - footerHeight} className="my-8">
       <div className="grid gap-x-7 grid-cols-1 lg:grid-cols-2">
         <ImageBox
+          objectFit="contain"
           withModal={false}
           height={width < 1024 ? 300 : windowHeight - headerHeight - footerHeight - breadCrumbHeight}
           images={images}

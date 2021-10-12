@@ -8,7 +8,6 @@ class BookService extends Service {
   }
 
   async create(data) {
-    console.log(data);
     await createBookValidation.validateAsync(data);
     return await super.create(data);
   }

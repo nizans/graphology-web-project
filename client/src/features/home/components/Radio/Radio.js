@@ -10,27 +10,13 @@ const fallbackURL = 'https://www.facebook.com/100003098510659/videos/pcb.3997212
 
 const Radio = () => {
   const [videoUrl, setVideoUrl] = useState(fallbackURL);
-  const [isReady, setIsReady] = useState(false);
-  const isFirstRender = useFirstRender();
-  const [firstRender, setFirstRender] = useState();
-  const handleReady = () => {
-    setIsReady(true);
-  };
-  useEffect(() => {
-    if (isFirstRender.current) setFirstRender(true);
-    else setFirstRender(false);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    setIsReady(false);
-  }, [videoUrl]);
 
   return (
     <>
       <TitleUnderline title={strings.title} />
       <div className="grid grid-cols-6 w-full gap-x-3 mt-4 ">
-        <div className=" col-span-6 lg:col-span-4 lg:col-start-2 border-p-brown bg-p-brown border-4  rounded-lg relative">
-          {!isReady && firstRender && <Spinner />}
-          <ResponsivePlayer url={videoUrl} controls={true} onReady={handleReady} />
+        <div className=" col-span-6 lg:col-span-4 lg:col-start-2 border-p-brown border-4 rounded-3xl relative overflow-hidden">
+          <ResponsivePlayer url={videoUrl} controls={true} />
         </div>
         <div className="col-span-6 lg:col-span-1 my-auto  grid-cols-3 gap-x-6 lg:block">
           <SuggestionContainer setVideoUrl={setVideoUrl} />

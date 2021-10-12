@@ -3,14 +3,14 @@ import BlurredUpImage from 'components/UI/BlurredUpImage';
 import { DimensionsContext } from 'context/DimensionsContext';
 import React, { useContext } from 'react';
 
-const ImageBox = ({ images, height, withModal = true, objectFit = 'contain' }) => {
+const ImageBox = ({ images, height, withModal = true, objectFit = 'cover', wrapperClassName }) => {
   const { windowWidth } = useContext(DimensionsContext);
 
   return images?.length > 0 ? (
-    <div>
+    <div className={wrapperClassName}>
       <ResponsiveSlider withThreeSlider={false}>
         {images.map(img => (
-          <div className="w-full" key={img.full}>
+          <div className={'w-full'} key={img.full}>
             <BlurredUpImage
               withModal={windowWidth >= 768 && withModal}
               height={height}

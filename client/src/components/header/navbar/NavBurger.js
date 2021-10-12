@@ -18,7 +18,6 @@ const NavBurger = ({ links }) => {
   const ref = useRef(null);
 
   useEffect(() => {
-
     if (pathname === '/home/couch') setShowSearchIcon(true);
     else setShowSearchIcon(false);
   }, [pathname]);
@@ -29,7 +28,7 @@ const NavBurger = ({ links }) => {
   };
 
   return (
-    <nav ref={ref} className="flex justify-between items-center">
+    <nav ref={ref} className="flex justify-between items-center py-4">
       <NavBurgerButton open={open} toggleOpen={toggleOpen} />
       <NavBurgerMenu open={open} toggleOpen={toggleOpen} links={links} />
       {showSearchIcon && (

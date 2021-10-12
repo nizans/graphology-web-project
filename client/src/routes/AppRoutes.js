@@ -10,7 +10,7 @@ import PublicRoutes from './PublicRoutes';
 const ProtectedRoutes = React.lazy(() => import('./ProtectedRoutes'));
 
 const AppRoutes = () => {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, isRefreshing } = useContext(AuthContext);
 
   return (
     <Switch>
@@ -21,7 +21,7 @@ const AppRoutes = () => {
       </Route>
 
       <Route exact path="/admin/login">
-        {isAuth ? <Redirect to="/admin" /> : <Login />}
+        {isRefreshing ? <LoadingSection /> : isAuth ? <Redirect to="/admin" /> : <Login />}
       </Route>
 
       <Route path="/admin">

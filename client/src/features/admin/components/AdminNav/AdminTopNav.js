@@ -9,7 +9,7 @@ const AdminTopNav = () => {
   const { logout } = useContext(AuthContext);
   const { push } = useHistory();
 
-  const handleLogout = async () => {
+  const handleLogout = () => {
     logout();
     push('/home');
   };

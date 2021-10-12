@@ -24,26 +24,30 @@ export const Home = () => {
   };
   return (
     <>
-      <Section minHeight={windowHeight - headerHeight} className="flex justify-center mb-16">
+      <Section style={{ minHeight: windowHeight - headerHeight }} className="flex justify-center mb-16">
         <BookShelf onReadMoreClick={handleReadMoreClick} />
       </Section>
-      <Section minHeight={windowHeight - headerHeight} className="flex flex-col items-center mb-16">
+      <Section
+        ref={michalRef}
+        style={{ minHeight: windowHeight - headerHeight }}
+        className="flex flex-col items-center mb-16"
+      >
         {windowWidth >= 640 ? <MichalSpeechBubble /> : <MichalSpeechBubbleSmallScreen />}
-        <Michal ref={michalRef} />
+        <Michal />
       </Section>
-      <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
+      <Section style={{ minHeight: windowHeight - headerHeight }} className="flex flex-col mb-16">
         <Expertise />
       </Section>
-      <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
+      <Section style={{ minHeight: windowHeight - headerHeight }} className="flex flex-col mb-16">
         <Recommendations />
       </Section>
-      <Section minHeight={(windowHeight - headerHeight) / 2} className="flex flex-col mb-16">
+      <Section style={{ minHeight: windowHeight - headerHeight }} className="flex flex-col mb-16">
         <Radio />
       </Section>
-      <Section minHeight={windowHeight - headerHeight} className="flex flex-col mb-16">
+      <Section style={{ minHeight: windowHeight - headerHeight }} className="flex flex-col mb-16">
         <OnTheCouch />
       </Section>
-      <Section minHeight={windowHeight - headerHeight - footerHeight} className="mb-16 lg:mb-0 flex items-center">
+      <Section style={{ minHeight: windowHeight - headerHeight - footerHeight }} className="mb-16 flex items-center">
         <ContactUs />
       </Section>
     </>
