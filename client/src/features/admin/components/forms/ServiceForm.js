@@ -32,7 +32,7 @@ const ServiceForm = ({ data: item }) => {
     validationSchema: validation,
     onSubmit: values => {
       const formData = createFormData(values, images);
-      mutate({ body: formData });
+      mutate({ uri: item?._id, body: formData });
     },
   });
 

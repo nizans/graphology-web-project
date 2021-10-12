@@ -40,7 +40,7 @@ const ArticleForm = ({ data: item }) => {
     validationSchema: validation,
     onSubmit: async values => {
       const formData = await createFormData(values, images);
-      mutate({ body: formData, uri: item ? item._id : null });
+      mutate({ body: formData, uri: item?._id });
     },
     enableReinitialize: true,
   });

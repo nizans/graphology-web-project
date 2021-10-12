@@ -30,7 +30,7 @@ const VideoForm = ({ data: item }) => {
     initialValues: initialValues,
     validationSchema: validation,
     onSubmit: values => {
-      mutate({ body: JSON.stringify(values) });
+      mutate({ body: JSON.stringify(values), uri: item?._id });
     },
   });
 

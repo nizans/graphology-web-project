@@ -33,7 +33,24 @@ npm run install-client
 npm run dev
 ```
 
-New terminal on root folder:
+The following env variables must be provided with a `.env` file:
+
+```
+MONGO_CONN_STRING=
+PORT=
+JWT_ACCESS_KEY=
+JWT_REFRESH_KEY=
+TOKEN_COOKIE_MAX_AGE=
+ACCESS_TOKEN_EXPIRATION=
+REFRESH_TOKEN_EXPIRATION=
+AWS_KEY=
+AWS_SECRET=
+AWS_BUCKET_NAME:
+SENDGRID_API_KEY=
+FROM_EMAIL_ADDRESS=
+```
+
+Open new terminal on root folder:
 
 ```
 npm run dev-client
@@ -97,3 +114,7 @@ Open [http:localhost:4000](http:localhost:4000)
 - [validator](https://www.npmjs.com/package/validator)
 - [cors](https://www.npmjs.com/package/cors)
 
+## <ins>Bibliography:</ins>
+
+- [nodebestpractices](https://github.com/goldbergyoni/nodebestpractices)
+- [bulletproof-react](https://github.com/alan2207/bulletproof-react)

@@ -1,4 +1,3 @@
-import ImageCard from 'components/common/ImageCard';
 import Section from 'components/common/Section';
 import { DeleteIcon } from 'components/Icons/ButtonsCellIcons';
 import ErrorSection from 'components/UI/ErrorSection';
@@ -39,11 +38,12 @@ const RecommendationsView = () => {
         isSuccess && (
           <div className="grid grid-cols-3 gap-9 p-16">
             {data.payload.map(rec => (
-              <ImageCard key={rec._id} imgComponent={<RecommendationsContainer data={rec} />}>
+              <div key={rec._id}>
+                <RecommendationsContainer data={rec} />
                 <button onClick={() => handleDelete(rec._id)}>
                   <DeleteIcon />
                 </button>
-              </ImageCard>
+              </div>
             ))}
           </div>
         )

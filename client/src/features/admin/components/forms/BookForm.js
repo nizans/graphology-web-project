@@ -37,7 +37,7 @@ const BookForm = ({ data: item }) => {
     validationSchema: validation,
     onSubmit: values => {
       const formData = createFormData(values, images);
-      mutate({ body: formData });
+      mutate({ body: formData, uri: item?._id });
     },
     enableReinitialize: true,
   });
