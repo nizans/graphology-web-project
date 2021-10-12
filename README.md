@@ -1,6 +1,5 @@
 # Graphology Application
-
-# A MERN stack project. [Preview](https://michal-doron.herokuapp.com)
+A MERN stack project. [Preview](https://michal-doron.herokuapp.com)
 
 ## Table of contents
 
@@ -16,10 +15,8 @@ This project was created for [Michal Doron](https://he.wikipedia.org/wiki/%D7%9E
 
 ## Preview
 
-A [Heroku app](https://michal-doron.herokuapp.com) that automatically deploys the main branch of this repository.
-
+[https://michal-doron.herokuapp.com](https://michal-doron.herokuapp.com)
 To manipulate the content in the website, connect to the [admin section](https://michal-doron.herokuapp.com/admin/login) with these credentials:
-
 `test@test.com`
 
 `password`
