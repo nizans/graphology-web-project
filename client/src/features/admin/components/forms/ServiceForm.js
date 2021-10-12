@@ -1,4 +1,3 @@
-import ImageUploadInput from 'components/common/ImageUploadInput';
 import TextEditor from 'components/common/TextEditor';
 import ErrorMessage from 'components/UI/ErrorMessage';
 import FormField from 'components/UI/FormField';

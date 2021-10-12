@@ -1,4 +1,3 @@
-import Section from 'components/common/Section';
 import { DeleteIcon } from 'components/Icons/ButtonsCellIcons';
 import ErrorSection from 'components/UI/ErrorSection';
 import LoadingSection from 'components/UI/LoadingSection';

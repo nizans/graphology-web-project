@@ -7,15 +7,16 @@
 - [Description](#description)
 - [Preview](#preview)
 - [Local Installation](#local-installation)
-- [Technologies And Libraries Used](#technologies-And-libraries-used)
+- [Technologies, Libraries, And Tools](#technologies,-libraries,-and-tools)
+- [Bibliography](#bibliography)
 
 ## <ins>Description:</ins>
 
 This project was created for [Michal Doron](https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%9C_%D7%93%D7%95%D7%A8%D7%95%D7%9F) as a graduation project from a practical software engineering degree in Shenkar college.
 
-## <ins>[Preview:](https://dashboard.heroku.com/apps/michal-doron)</ins>
+## <ins>[Preview:](https://michal-doron.herokuapp.com)</ins>
 
-A [Heroku app](https://dashboard.heroku.com/apps/michal-doron) that automatically deploys the main branch of this repository.
+A [Heroku app](https://michal-doron.herokuapp.com) that automatically deploys the main branch of this repository.
 
 To manipulate the content in the website, connect to the [admin section](https://michal-doron.herokuapp.com/admin/login) with these credentials:
 
@@ -58,7 +59,7 @@ npm run dev-client
 
 Open [localhost:3000](http:localhost:3000)
 
-> The react app will proxy the requests to the server (localhost:4000).
+> React will proxy the requests to the server (localhost:4000) when running in development.
 
 > Note that authentication will not work as intended as it uses a secured cookie.
 > Therefore it will work only on HTTPS servers.
@@ -76,7 +77,7 @@ npm run dev
 
 Open [http:localhost:4000](http:localhost:4000)
 
-## <ins>Technologies And Libraries Used:</ins>
+## <ins>Technologies, Libraries, And Tools:</ins>
 
 ### <ins>Client side:</ins>
 
@@ -113,6 +114,14 @@ Open [http:localhost:4000](http:localhost:4000)
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [validator](https://www.npmjs.com/package/validator)
 - [cors](https://www.npmjs.com/package/cors)
+
+### <ins>Tools:</ins>
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Adobe XD](https://www.adobe.com/il_en/products/xd.html)
+- [Postman](https://www.postman.com/)
+- [Insomnia](https://insomnia.rest/)
+- [Mongo Shell](https://docs.mongodb.com/v4.4/mongo/#:~:text=The%20mongo%20shell%20is%20an,well%20as%20perform%20administrative%20operations.&text=For%20information%20on%20the%20new,refer%20to%20the%20mongosh%20Documentation.) & [Mongo Compass](https://www.mongodb.com/products/compass)
 
 ## <ins>Bibliography:</ins>
 
