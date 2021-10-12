@@ -34,7 +34,7 @@ npm run install-client
 npm run dev
 ```
 
-The following env variables must be provided with a `.env` file:
+The following env variables must be provided with a `.env` file on the root folder:
 
 ```
 MONGO_CONN_STRING=
@@ -49,6 +49,12 @@ AWS_SECRET=
 AWS_BUCKET_NAME:
 SENDGRID_API_KEY=
 FROM_EMAIL_ADDRESS=
+```
+
+And with a `.env.local` file on the client folder:
+
+```
+REACT_APP_API_URL=<local_ip_address:4000>
 ```
 
 Open new terminal on root folder:
@@ -122,6 +128,12 @@ Open [http:localhost:4000](http:localhost:4000)
 - [Postman](https://www.postman.com/)
 - [Insomnia](https://insomnia.rest/)
 - [Mongo Shell](https://docs.mongodb.com/v4.4/mongo/#:~:text=The%20mongo%20shell%20is%20an,well%20as%20perform%20administrative%20operations.&text=For%20information%20on%20the%20new,refer%20to%20the%20mongosh%20Documentation.) & [Mongo Compass](https://www.mongodb.com/products/compass)
+
+## <ins>Things To Do:</ins>
+
+- Write unit tests and end-to-end tests.
+- Make website fully accessible
+- Document app features
 
 ## <ins>Bibliography:</ins>
 
