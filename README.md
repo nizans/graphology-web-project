@@ -1,6 +1,6 @@
 # Graphology Website
 
-### A MERN stack project in final stages. Quick preview [here](https://dashboard.heroku.com/apps/michal-doron)
+### A MERN stack project in final stages. Quick preview [here](https://michal-doron.herokuapp.com)
 
 ## <ins>Table of contents:</ins>
 
