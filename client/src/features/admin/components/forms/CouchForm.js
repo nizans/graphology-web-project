@@ -20,22 +20,20 @@ const CouchForm = ({ data: item }) => {
   const initialValues = {
     title: item?.title || '',
     subtitle: item?.subtitle || '',
-    publishDate: item?.publishDate || '',
+    publishDate: item?.publishDate || Date.now().toLocaleString(),
     text: item?.text || '',
   };
   const validation = Yup.object({
     title: Yup.string().required(strings.required),
     subtitle: Yup.string(),
-    publishDate: Yup.date()
-      .required(strings.required)
-      .default(() => new Date()),
+    publishDate: Yup.date().required(strings.required),
   });
 
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
-    onSubmit: values => {
-      const formData = createFormData(values, images);
+    onSubmit: async values => {
+      const formData = await createFormData(values, images);
       mutate({ body: formData, uri: item?._id });
     },
     enableReinitialize: true,

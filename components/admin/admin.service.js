@@ -9,6 +9,12 @@ const generateUniqueID = require('../../utils/generateUniqueID');
 const mailService = require('../mail/mail.service');
 const { isValidObjectId } = require('mongoose');
 const { INVALID_MONGO_ID } = require('../error/error.constants');
+const {
+  createAdminValidation,
+  updateAdminValidation,
+  loginValidation,
+  forgotPasswordValidation,
+} = require('./admin.validation');
 
 const strings = {
   passwordReset: 'בקשה לאיפוס סיסמא',
@@ -23,7 +29,7 @@ class AdminService extends Service {
 
   async delete(id) {
     const { email } = await super.delete(id);
-    const result = await this.mailService.delete(email);
+    await this.mailService.delete(email);
     return;
   }
 
@@ -39,10 +45,12 @@ class AdminService extends Service {
       await this.mailService.createOrUpdate(data.email, data.mailPermissions);
       delete data.mailPermissions;
     }
+    await createAdminValidation.validateAsync(data);
     return await super.create(data);
   }
 
   async update(id, data) {
+    await updateAdminValidation.validateAsync(data);
     if (data.mailPermissions) {
       await this.mailService.createOrUpdate(data.email, data.mailPermissions);
       delete data.mailPermissions;
@@ -51,6 +59,7 @@ class AdminService extends Service {
   }
 
   async login(data) {
+    await loginValidation.validateAsync(data);
     const { email, password } = data;
     const admin = await this.DAL.login(email, password);
     const tokens = getAccessAndRefreshToken(admin.toJSON());
@@ -71,6 +80,7 @@ class AdminService extends Service {
   }
 
   async forgotPassword(email) {
+    await forgotPasswordValidation.validateAsync({ email });
     const resetToken = createToken({ email: email }, JWT_RESET_PASSWORD_KEY, RESET_PASSWORD_EXPIRATION);
     const result = await this.DAL.setResetToken(email, resetToken);
     await this.#sendPasswordResetMail(resetToken, email);

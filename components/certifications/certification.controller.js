@@ -6,6 +6,8 @@ class CertificationController extends Controller {
     super(CertificationService);
   }
 
-
+  async update() {
+    return;
+  }
 }
 module.exports = new CertificationController();

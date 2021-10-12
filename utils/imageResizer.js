@@ -23,7 +23,7 @@ module.exports = (req, res, next) => {
       .toFile(`public/thumbs/` + filename, (err, info) => {
         if (err) console.log(err);
       });
-    console.log('Image thumb created at: ', 'public/thumbs/' + filename);
+    console.log('Create an image thumb');
   }
   next();
 };

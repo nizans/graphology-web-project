@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const ErrorHandle = require('./error.model');
 
-const handleDuplicateKeyError = (err, res) => {
+const handleDuplicateKeyError = (err) => {
   const field = Object.keys(err.keyValue);
   const statusCode = 409;
   const error = `${field} already exists, must be unique`;

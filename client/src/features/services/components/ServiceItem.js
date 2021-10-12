@@ -1,8 +1,9 @@
-import useDomParser from 'hooks/useDomParser';
+import htmlParserOptions from 'config/htmlParserOptions';
+import parse from 'html-react-parser';
 import React, { forwardRef } from 'react';
 
 const ServiceItem = forwardRef(({ item }, ref) => {
-  const [parsedDescription] = useDomParser(item.description, 'text/html');
+  const text = parse(item.description, htmlParserOptions);
 
   return (
     <div ref={ref} className="flex flex-col lg:grid grid-cols-6 py-20 px-10">
@@ -16,7 +17,7 @@ const ServiceItem = forwardRef(({ item }, ref) => {
           </div>
           <h1 className="font-bold text-5xl text-p-blue-dark lg:pb-6 md:text-center lg:text-right">{item.title}</h1>
         </div>
-        <p className="text-p-blue text-3xl">{parsedDescription}</p>
+        <p className="text-p-blue text-3xl">{text}</p>
       </div>
     </div>
   );

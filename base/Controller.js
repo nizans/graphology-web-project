@@ -1,9 +1,12 @@
+const { INVALID_REQUEST } = require('../components/error/error.constants');
+
 class Controller {
   constructor(Service) {
     this.Service = Service;
   }
 
   async post(req, res, next) {
+    if (!req.body) throw INVALID_REQUEST;
     try {
       res.status(201).json(await this.Service.create(req.body));
     } catch (error) {
@@ -21,6 +24,7 @@ class Controller {
 
   async getById(req, res, next) {
     const id = req.params.id;
+    if (!id) throw INVALID_REQUEST;
     try {
       res.status(200).json(await this.Service.getById(id));
     } catch (error) {

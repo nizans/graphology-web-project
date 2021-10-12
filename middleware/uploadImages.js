@@ -4,6 +4,7 @@ const generateUniqueID = require('../utils/generateUniqueID');
 const { IMAGE_PATH_PREFIX, THUMBS_PATH_PREFIX } = require('../config/constants');
 const uploadToS3 = require('./uploadToS3');
 const deleteTempImages = require('./deleteTempImages');
+
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, './public/images');
@@ -28,8 +29,7 @@ const addImagePrefix = (req, res, next) => {
       return { full: IMAGE_PATH_PREFIX + img.filename, thumb: THUMBS_PATH_PREFIX + img.filename };
     });
     req.body.images = images;
-  }
-  if (req.file) {
+  } else if (req.file) {
     const img = req.file;
     req.body.image = { full: IMAGE_PATH_PREFIX + img.filename, thumb: THUMBS_PATH_PREFIX + img.filename };
   }

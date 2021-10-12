@@ -1,8 +1,7 @@
 const app = require('./server');
-const https = require('https');
-const connection = require('./mongoConnection');
+const connection = require('./lib/mongoConnection');
 const { PORT } = require('./config/constants');
-require('dotenv').config();
+
 connection();
 
 app.listen(PORT, () => {

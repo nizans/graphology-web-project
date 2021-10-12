@@ -5,8 +5,10 @@ import { toDate } from 'utils/toDate';
 import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
 import Table from './Table';
 import { BooksTableStrings as strings } from './BooksTable.strings';
+import useDomParser from 'hooks/useDomParser';
 
 const BooksTable = () => {
+  const [str, setStr] = useDomParser();
   const headers = () => {
     return (
       <>
@@ -20,7 +22,8 @@ const BooksTable = () => {
     );
   };
   const generateCell = item => {
-    const description = truncate(item.description, { separator: ' ', length: 50 });
+    setStr(item.description);
+    const description = truncate(str, { separator: ' ', length: 50 });
     return (
       <>
         <td className="max-h-40 h-40">

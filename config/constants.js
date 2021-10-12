@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 
 //SERVER
 exports.PORT = process.env.PORT || 4000;

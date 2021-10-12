@@ -11,7 +11,23 @@ class ServiceRouter extends ComponentRouter {
   }
 
   initPost() {
-    this.router.post('/', protectRoute, replaceAccessToken, uploadImage, this.Controller.post.bind(this.Controller));
+    if (process.env.NODE_ENV === 'development')
+      this.router.post('/', uploadImage, this.Controller.post.bind(this.Controller));
+    else
+      this.router.post('/', protectRoute, replaceAccessToken, uploadImage, this.Controller.post.bind(this.Controller));
+  }
+
+  initUpdate() {
+    if (process.env.NODE_ENV === 'development')
+      this.router.put('/:id', uploadImage, this.Controller.update.bind(this.Controller));
+    else
+      this.router.put(
+        '/:id',
+        protectRoute,
+        replaceAccessToken,
+        uploadImage,
+        this.Controller.update.bind(this.Controller)
+      );
   }
 }
 module.exports = new ServiceRouter().router;

@@ -62,7 +62,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const renew = async () => {
-    await renewRequest({});
+    if (process.env.NODE_ENV !== 'development') await renewRequest({});
   };
 
   /**
@@ -77,7 +77,7 @@ export const AuthContextProvider = ({ children }) => {
         renew();
       }
     });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <AuthContext.Provider

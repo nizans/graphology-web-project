@@ -12,7 +12,7 @@ class AdminRouter extends ComponentRouter {
   initGet() {
     this.router.get('/', protectRoute, this.Controller.get.bind(this.Controller));
   }
-  initgetById() {
+  initGetById() {
     this.router.get('/:id', protectRoute, this.Controller.getById.bind(this.Controller));
   }
 

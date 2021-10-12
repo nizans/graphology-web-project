@@ -1,6 +1,7 @@
 const { generateHtmlTemplate } = require('../../lib/mailer/htmlGenerate');
 const send = require('../../lib/mailer/mailer');
 const mailService = require('../mail/mail.service');
+const { contactRequestValidation, bookOrderRequestValidation } = require('./contact.validation');
 
 const strings = {
   orderSubject: 'התקבלה הזמנת ספר',
@@ -11,11 +12,13 @@ class ContactService {
   constructor() {}
 
   contact = async data => {
+    await contactRequestValidation.validateAsync(data);
     const emails = await mailService.getAllContactRequestMails();
     return await this.#sendContactRequestMail(data, emails);
   };
 
   orderBook = async data => {
+    await bookOrderRequestValidation.validateAsync(data);
     const emails = await mailService.getAllBookOrderMails();
     return await this.#sendBookOrderMail(data, emails);
   };

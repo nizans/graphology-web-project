@@ -18,7 +18,7 @@ import { ArticlePageStrings as strings } from './ArticlePage.strings';
 
 const ArticlePage = () => {
   const { id } = useParams();
-  const { data: item, isLoading, error } = useFetchData(articlesApiCRUDRequests.read(id));
+  const { data: item, isLoading, error, isSuccess } = useFetchData(articlesApiCRUDRequests.read(id));
   const { setTitle } = useContext(BreadCrumbsTitleContext);
   const { windowHeight: height } = useContext(DimensionsContext);
   const { isAuth } = useContext(AuthContext);
@@ -33,13 +33,12 @@ const ArticlePage = () => {
   };
 
   if (error) return <ErrorSection error={error} />;
-  if (item) {
+
+  if (isLoading || isMutating) return <LoadingSection />;
+  if (isDeleteSuccess) return <Redirect to="/home/articles" />;
+  if (isSuccess) {
     const { title, text, publishDate, images, sourceFrom, sourceURL } = item;
     const date = strings.publishedAt + toDate(publishDate);
-
-    if (isLoading || isMutating) return <LoadingSection />;
-    if (isDeleteSuccess) return <Redirect to="/home/articles" />;
-
     return (
       <Section className="flex flex-col items-center mb-9">
         {isAuth && <ButtonsCell onDelete={handleDelete} withPreview={false} _id={id} type={'articles'} />}

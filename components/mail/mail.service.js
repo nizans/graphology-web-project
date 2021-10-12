@@ -26,7 +26,6 @@ class MailService {
       if (result.sendBookOrders) data.push(mailPermissionsStrings.sendBookOrders);
       if (result.sendContactRequests) data.push(mailPermissionsStrings.sendContactRequests);
     }
-    console.log(data);
     return data;
   }
 

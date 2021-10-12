@@ -6,7 +6,7 @@ import LoadingButton from 'components/UI/LoadingButton';
 import { servicesApiCRUDRequests } from 'features/services';
 import { useFormik } from 'formik';
 import { useMutateData } from 'lib/reactQuery';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import createFormData from 'utils/createFormData';
 import * as Yup from 'yup';
 import { ServiceFormStrings as strings } from './ServiceForm.strings';
@@ -15,7 +15,10 @@ const ServiceForm = ({ data: item }) => {
   const { mutate, isLoading, error, isSuccess } = useMutateData(
     item ? servicesApiCRUDRequests.update : servicesApiCRUDRequests.create
   );
-  const [images, setImages] = useState([]);
+
+  const [image, setImage] = useState(item?.image.full);
+
+  const fileInputRef = useRef(null);
 
   const initialValues = {
     title: item?.title || '',
@@ -30,8 +33,8 @@ const ServiceForm = ({ data: item }) => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
-    onSubmit: values => {
-      const formData = createFormData(values, images);
+    onSubmit: async values => {
+      const formData = await createFormData(values, image);
       mutate({ uri: item?._id, body: formData });
     },
   });
@@ -39,10 +42,22 @@ const ServiceForm = ({ data: item }) => {
   if (isSuccess) return <h1 className="p-16 _text text-3xl m-auto text-center font-bold">{strings.success}</h1>;
 
   return (
-    <form onSubmit={formik.handleSubmit} className="flex h-full w-full">
+    <form onSubmit={formik.handleSubmit} className="flex h-full w-full ">
       <div className="flex flex-col justify-evenly items-center">
         <FormField formik={formik} htmlFor="title" placeholder={strings.title} />
-        <ImageUploadInput onImageChange={setImages} images={images.map(img => img.full)} />
+        <label for="image">
+          <img
+            name="image"
+            width="150px"
+            className="mb-4 mx-auto object-contain"
+            src={image instanceof File || image instanceof Blob ? URL.createObjectURL(image) : image}
+            alt=""
+          />
+          <input hidden type="file" ref={fileInputRef} onChange={e => setImage(e.target.files[0])} />
+          <button onClick={() => fileInputRef.current.click()} type="button" className="button">
+            {strings.uploadImage}
+          </button>
+        </label>
         <LoadingButton isLoading={isLoading} value={item ? strings.update : strings.send} />
         {error && (
           <label>

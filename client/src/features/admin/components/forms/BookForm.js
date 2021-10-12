@@ -35,8 +35,8 @@ const BookForm = ({ data: item }) => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
-    onSubmit: values => {
-      const formData = createFormData(values, images);
+    onSubmit: async values => {
+      const formData = await createFormData(values, images);
       mutate({ body: formData, uri: item?._id });
     },
     enableReinitialize: true,

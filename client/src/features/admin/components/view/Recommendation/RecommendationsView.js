@@ -30,25 +30,29 @@ const RecommendationsView = () => {
   if (isLoading || isDeleting) return <LoadingSection />;
 
   return (
-    <Section>
-      <NavLink to="/admin/add/recommendations">{strings.addnew}</NavLink>
-      {fetchError || deleteError ? (
-        <ErrorSection error={fetchError || deleteError} />
-      ) : (
-        isSuccess && (
-          <div className="grid grid-cols-3 gap-9 p-16">
-            {data.payload.map(rec => (
-              <div key={rec._id}>
-                <RecommendationsContainer data={rec} />
-                <button onClick={() => handleDelete(rec._id)}>
-                  <DeleteIcon />
-                </button>
-              </div>
-            ))}
-          </div>
-        )
-      )}
-    </Section>
+    <div className="my-2 ">
+      <NavLink to="/admin/add/recommendations" className="button my-4">
+        {strings.addnew}
+      </NavLink>
+      <div>
+        {fetchError || deleteError ? (
+          <ErrorSection error={fetchError || deleteError} />
+        ) : (
+          isSuccess && (
+            <div className="grid grid-cols-3 gap-9 p-16">
+              {data.payload.map(rec => (
+                <div key={rec._id}>
+                  <RecommendationsContainer data={rec} />
+                  <button onClick={() => handleDelete(rec._id)}>
+                    <DeleteIcon />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )
+        )}
+      </div>
+    </div>
   );
 };
 

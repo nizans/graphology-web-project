@@ -3,6 +3,7 @@ import { DimensionsContext } from 'context/DimensionsContext';
 import React, { useContext } from 'react';
 import { createPortal } from 'react-dom';
 
+// TODO - fix cant close on full screen - limit max size
 const Modal = ({ isShowing, hide, children }) => {
   const { windowHeight: width } = useContext(DimensionsContext);
   if (isShowing && width > 640)

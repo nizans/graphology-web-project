@@ -1,8 +1,8 @@
 const { isValidObjectId } = require('mongoose');
 const { NO_RESULTS, INVALID_MONGO_ID } = require('../components/error/error.constants');
 const { deleteObjects } = require('../lib/s3');
-const isPositiveInteger = require('../utils/helpers');
 const imagesToS3ObjectsArray = require('../utils/imagesToS3ObjectsArray');
+const isPositiveInteger = require('../utils/isPositiveInteger');
 
 class Service {
   constructor(DAL) {
@@ -23,10 +23,8 @@ class Service {
   }
 
   async update(id, data) {
-    console.log(data);
     if (!isValidObjectId(id)) throw INVALID_MONGO_ID(id);
     const oldDocument = await this.DAL.update(id, data);
-
     return oldDocument;
   }
 
