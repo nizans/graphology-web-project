@@ -1,8 +1,7 @@
-# Graphology Website
+# Graphology Application
+A MERN stack project. [Preview](https://michal-doron.herokuapp.com)
 
-### A MERN stack project in final stages. Quick preview [here](https://michal-doron.herokuapp.com)
-
-## <ins>Table of contents:</ins>
+## Table of contents
 
 - [Description](#description)
 - [Preview](#preview)
@@ -10,21 +9,19 @@
 - [Technologies, Libraries, And Tools](#techLibTools)
 - [Bibliography](#bibliography)
 
-## <ins>Description:</ins>
+## Description
 
 This project was created for [Michal Doron](https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%9C_%D7%93%D7%95%D7%A8%D7%95%D7%9F) as a graduation project from a practical software engineering degree in Shenkar college.
 
-## <ins>[Preview:](https://michal-doron.herokuapp.com)</ins>
+## Preview
 
-A [Heroku app](https://michal-doron.herokuapp.com) that automatically deploys the main branch of this repository.
-
+[https://michal-doron.herokuapp.com](https://michal-doron.herokuapp.com)
 To manipulate the content in the website, connect to the [admin section](https://michal-doron.herokuapp.com/admin/login) with these credentials:
-
 `test@test.com`
 
 `password`
 
-## <ins>Local Installation:</ins>
+## Local Installation
 
 Run in root folder:
 
@@ -83,9 +80,9 @@ npm run dev
 
 Open [http:localhost:4000](http:localhost:4000)
 
-## <ins><a name="techLibTools"></a>Technologies, Libraries, And Tools:</ins>
+## <a name="techLibTools"></a>Technologies, Libraries, And Tools
 
-### <ins>Client side:</ins>
+### Clent side
 
 - [React](https://reactjs.org/)
 - [react-query](https://react-query.tanstack.com/)
@@ -102,7 +99,7 @@ Open [http:localhost:4000](http:localhost:4000)
 - [lodash.truncate](https://lodash.com/docs/4.17.15#truncate)
 - [source-map-explorer](https://www.npmjs.com/package/source-map-explorer)
 
-### <ins>Server side:</ins>
+### Server side
 
 - [NodeJS](https://nodejs.org/en/docs/)
 - [express](https://expressjs.com/)
@@ -121,7 +118,7 @@ Open [http:localhost:4000](http:localhost:4000)
 - [validator](https://www.npmjs.com/package/validator)
 - [cors](https://www.npmjs.com/package/cors)
 
-### <ins>Tools:</ins>
+### Tools:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Adobe XD](https://www.adobe.com/il_en/products/xd.html)
@@ -129,13 +126,13 @@ Open [http:localhost:4000](http:localhost:4000)
 - [Insomnia](https://insomnia.rest/)
 - [Mongo Shell](https://docs.mongodb.com/v4.4/mongo/#:~:text=The%20mongo%20shell%20is%20an,well%20as%20perform%20administrative%20operations.&text=For%20information%20on%20the%20new,refer%20to%20the%20mongosh%20Documentation.) & [Mongo Compass](https://www.mongodb.com/products/compass)
 
-## <ins>Things To Do:</ins>
+## Things To Do
 
 - Write unit tests and end-to-end tests.
 - Make website fully accessible
 - Document app features
 
-## <ins>Bibliography:</ins>
+## Bibliography
 
 - [nodebestpractices](https://github.com/goldbergyoni/nodebestpractices)
 - [bulletproof-react](https://github.com/alan2207/bulletproof-react)
