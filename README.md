@@ -7,7 +7,7 @@
 - [Description](#description)
 - [Preview](#preview)
 - [Local Installation](#local-installation)
-- [Technologies, Libraries, And Tools](#technologies,-libraries,-and-tools)
+- [Technologies, Libraries, And Tools](#techLibTools)
 - [Bibliography](#bibliography)
 
 ## <ins>Description:</ins>
@@ -77,7 +77,7 @@ npm run dev
 
 Open [http:localhost:4000](http:localhost:4000)
 
-## <ins>Technologies, Libraries, And Tools:</ins>
+## <ins><a name="techLibTools"></a>Technologies, Libraries, And Tools:</ins>
 
 ### <ins>Client side:</ins>
 
