@@ -67,7 +67,7 @@ Open [localhost:3000](http:localhost:3000)
 > Note that authentication will not work as intended as it uses a secured cookie.
 > Therefore it will work only on HTTPS servers.
 
-<ins>Alternative:</ins> build the app and server from the node server instead of React development server.
+<ins>Alternative:</ins> build the app and serve it from the node server instead of React development server.
 
 Run in root folder:
 
