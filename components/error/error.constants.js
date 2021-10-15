@@ -1,8 +1,8 @@
 const ErrorHandle = require('./error.model');
 
-///////////////////////////////
-/// Operational errors only ///
-///////////////////////////////
+//////////////////////////
+/// Operational errors ///
+//////////////////////////
 //TODO - Add JOI errors
 const strings = {
   NO_SEARCH_RESULT: 'אין תוצאות לחיפוש',

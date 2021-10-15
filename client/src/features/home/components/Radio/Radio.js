@@ -1,8 +1,6 @@
 import ResponsivePlayer from 'components/common/ResponsivePlayer';
-import Spinner from 'components/UI/Spinner';
 import TitleUnderline from 'components/UI/TitleUnderline';
-import useFirstRender from 'hooks/useFirstRender';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { RadioStrings as strings } from './Radio.strings';
 import SuggestionContainer from './SuggestionContainer';
 

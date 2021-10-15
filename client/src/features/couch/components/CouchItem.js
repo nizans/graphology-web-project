@@ -1,7 +1,6 @@
-import ReadMoreBtn from 'components/UI/ReadMoreBtn';
 import MultiSourceImageParse from 'components/common/MultiSourceImageParse';
+import ReadMoreBtn from 'components/UI/ReadMoreBtn';
 import { DimensionsContext } from 'context/DimensionsContext';
-import useDimensions from 'hooks/useDimensions';
 import useDomParser from 'hooks/useDomParser';
 import truncate from 'lodash.truncate';
 import React, { useContext } from 'react';
@@ -12,14 +11,13 @@ const CouchItem = ({ data: item }) => {
   const { path } = useRouteMatch();
   const [parsedText] = useDomParser(item.text, 'text/html');
   const { windowWidth } = useContext(DimensionsContext);
-  const [ref, dim] = useDimensions();
 
   return (
     <div className="grid py-14 grid-cols-8 gap-x-2 lg:gap-x-8 ">
       <div className="col-span-3 lg:col-span-2 flex justify-center items-center ">
         <MultiSourceImageParse width="300px" height="100%" image={item.images} />
       </div>
-      <div className="col-span-4 lg:col-span-5" ref={ref}>
+      <div className="col-span-4 lg:col-span-5">
         <h1 className="_text-bold text-4xl">{item.title}</h1>
         <h3 className="_text text-xl pb-3">{toDate(item.publishDate || item.uploadDate)}</h3>
         <p

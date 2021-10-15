@@ -28,10 +28,6 @@ const uploadToS3 = async (req, res, next) => {
 const uploadHelper = async files => {
   const arr = [];
   for (let i = 0; i < files.length; i++) {
-    // const fullPath = path.join(process.cwd(), 'public', files[i].full);
-    // const fullName = files[i].full.split('/')[2];
-    // const thumbPath = path.join(process.cwd(), 'public', files[i].thumb);
-    // const thumbName = files[i].thumb.split('/')[2];
     const { fullPath, fullName, thumbPath, thumbName } = getNameAndPathFromImageObj(files[i]);
     const fullResult = (await uploadFile(fullPath, fullName)).Location;
     const thumbResult = (await uploadFile(thumbPath, thumbName)).Location;

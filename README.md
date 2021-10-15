@@ -1,4 +1,5 @@
 # Graphology Application
+
 A MERN stack project. [Preview](https://michal-doron.herokuapp.com)
 
 ## Table of contents
@@ -82,7 +83,7 @@ Open [http:localhost:4000](http:localhost:4000)
 
 ## <a name="techLibTools"></a>Technologies, Libraries, And Tools
 
-### Clent side
+<details><summary>Clent side</summary>
 
 - [React](https://reactjs.org/)
 - [react-query](https://react-query.tanstack.com/)
@@ -98,8 +99,12 @@ Open [http:localhost:4000](http:localhost:4000)
 - [html-react-parser](https://www.npmjs.com/package/html-react-parser)
 - [lodash.truncate](https://lodash.com/docs/4.17.15#truncate)
 - [source-map-explorer](https://www.npmjs.com/package/source-map-explorer)
+</details>
 
-### Server side
+<details>
+<summary>
+Server side
+</summary>
 
 - [NodeJS](https://nodejs.org/en/docs/)
 - [express](https://expressjs.com/)
@@ -116,9 +121,9 @@ Open [http:localhost:4000](http:localhost:4000)
 - [cookie-parser](https://www.npmjs.com/package/cookie-parser)
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [validator](https://www.npmjs.com/package/validator)
-- [cors](https://www.npmjs.com/package/cors)
+- [cors](https://www.npmjs.com/package/cors)</details>
 
-### Tools:
+<details><summary>Tools</summary>
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Adobe XD](https://www.adobe.com/il_en/products/xd.html)
@@ -126,10 +131,15 @@ Open [http:localhost:4000](http:localhost:4000)
 - [Insomnia](https://insomnia.rest/)
 - [Mongo Shell](https://docs.mongodb.com/v4.4/mongo/#:~:text=The%20mongo%20shell%20is%20an,well%20as%20perform%20administrative%20operations.&text=For%20information%20on%20the%20new,refer%20to%20the%20mongosh%20Documentation.) & [Mongo Compass](https://www.mongodb.com/products/compass)
 
+</details>
+
+## Explanations
+
+[Read more here](Explanations.md)
+
 ## Things To Do
 
-- Write unit tests and end-to-end tests.
-- Make website fully accessible
+- Write tests
 - Document app features
 
 ## Bibliography

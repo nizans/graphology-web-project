@@ -12,16 +12,16 @@ export const NavBurgerMenu = ({ open, links = [], toggleOpen }) => {
   const divRef = useRef(null);
 
   return (
-    <Transition in={open} timeout={{ enter: 0, exit: 600 }} unmountOnExit>
+    <Transition in={open} timeout={{ exit: 600 }} unmountOnExit mountOnEnter>
       {state => (
         <div
           ref={divRef}
           className="bg-background flex flex-col justify-between items-center h-screen text-right p-8 absolute top-0 right-0 left-0 bottom-0"
           style={{
             transition: `opacity ${opacityTransitionTime} linear ${
-              state === 'entered' ? '0s' : state === 'exiting' ? translateTrantisionTime : null
+              state === 'entering' ? '0s' : state === 'exiting' ? translateTrantisionTime : null
             }`,
-            opacity: state === 'entered' ? 1 : state === 'exiting' ? 0 : null,
+            opacity: state === 'entering' ? 1 : state === 'exiting' ? 0 : null,
           }}
         >
           <NavLink to="/home" onClick={toggleOpen}>
@@ -31,7 +31,7 @@ export const NavBurgerMenu = ({ open, links = [], toggleOpen }) => {
             className="h-full flex flex-col"
             style={{
               transition: `transform ${translateTrantisionTime} linear ${open ? opacityTransitionTime : '0s'}`,
-              transform: state === 'entered' ? 'translateY(0)' : state === 'exiting' ? 'translateY(100vh)' : null,
+              transform: state === 'entering' ? 'translateY(0)' : state === 'exiting' ? 'translateY(100vh)' : null,
             }}
           >
             <div className="flex flex-col items-center w-full mt-auto">
