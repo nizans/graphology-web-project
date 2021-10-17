@@ -28,13 +28,12 @@ The error handling in the server comprises the [ErrorHandle class](https://githu
 The ErrorHandle class extends the Error object and includes the fields:
 
 - statusCode: the HTTP status code
-- client message: a message to send to the client
+- clientMessage: a message to send to the client
 - message: the original error message or a message for the server usage
 - isOperational: is the error an [operational error](https://github.com/goldbergyoni/nodebestpractices/blob/master/sections/errorhandling/operationalvsprogrammererror.md)?
 
 The error handling middleware is located as the [last middleware of the server](https://github.com/nizans/graphology-web-project/blob/122ab1df901213c8e9f5c6c1a52aef1f82275614/server.js#L24), so if an error occurs anywhere in the app, it should reach the middleware.<br>
-It then [checks](https://github.com/nizans/graphology-web-project/blob/122ab1df901213c8e9f5c6c1a52aef1f82275614/components/error/handleError.js#L5) if the error is an instance of ErrorHandle, and sends the response.<br>
-Otherwise, it passes the error to the error controller and then responds with the returned error.
+It then [checks](https://github.com/nizans/graphology-web-project/blob/122ab1df901213c8e9f5c6c1a52aef1f82275614/components/error/handleError.js#L5) if the error is an instance of ErrorHandle and if so sends the response, otherwise, it passes the error to the error controller and then responds with the returned error.
 
 The error controller receives an error object and returns a corresponding ErrorHandle instance containing a message and a status code to the middleware.<br>
 For example, if the [controller](https://github.com/nizans/graphology-web-project/blob/122ab1df901213c8e9f5c6c1a52aef1f82275614/components/error/error.controller.js#L5) receives a [mongoose validation error](https://github.com/nizans/graphology-web-project/blob/122ab1df901213c8e9f5c6c1a52aef1f82275614/components/error/mongo.error.controller.js#L28), it calls the [handleValidationError](https://github.com/nizans/graphology-web-project/blob/122ab1df901213c8e9f5c6c1a52aef1f82275614/components/error/mongo.error.controller.js#L11) method and returns the ErrorHandle instance<br>
