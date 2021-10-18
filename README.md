@@ -14,6 +14,9 @@ A MERN stack project. [Preview](https://michal-doron.herokuapp.com)
 
 This project was created for [Michal Doron](https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%9C_%D7%93%D7%95%D7%A8%D7%95%D7%9F) as a graduation project from a practical software engineering degree in Shenkar college.
 
+See [Guided Tour](https://github.com/nizans/graphology-web-project/blob/main/client/GuidedTour.md) for examples.
+
+
 ## Preview
 
 [https://michal-doron.herokuapp.com](https://michal-doron.herokuapp.com)
