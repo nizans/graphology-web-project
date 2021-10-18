@@ -8,6 +8,8 @@ A MERN stack project. [Preview](https://michal-doron.herokuapp.com)
 - [Preview](#preview)
 - [Local Installation](#local-installation)
 - [Technologies, Libraries, And Tools](#techLibTools)
+- [Explanations](#explanations)
+- [Things To Do](#thingsToDo)
 - [Bibliography](#bibliography)
 
 ## Description
@@ -20,9 +22,10 @@ See [Guided Tour](https://github.com/nizans/graphology-web-project/blob/main/cli
 ## Preview
 
 [https://michal-doron.herokuapp.com](https://michal-doron.herokuapp.com)
-To manipulate the content in the website, connect to the [admin section](https://michal-doron.herokuapp.com/admin/login) with these credentials:
-`test@test.com`
 
+To access the [admin section](https://michal-doron.herokuapp.com/admin/login) use these credentials:
+
+`test@test.com`
 `password`
 
 ## Local Installation
@@ -136,16 +139,16 @@ Server side
 
 </details>
 
-## Explanations
+## <a name="explanations"></a>Explanations
 
 [Read more here](Explanations.md)
 
-## Things To Do
+## <a name="thingsToDo"></a>Things To Do
 
 - Write tests
 - Document app features
 
-## Bibliography
+## <a name="bibliography"></a>Bibliography
 
 - [nodebestpractices](https://github.com/goldbergyoni/nodebestpractices)
 - [bulletproof-react](https://github.com/alan2207/bulletproof-react)
