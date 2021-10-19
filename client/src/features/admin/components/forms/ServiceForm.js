@@ -41,7 +41,7 @@ const ServiceForm = ({ data: item }) => {
   if (isSuccess) return <h1 className="p-16 _text text-3xl m-auto text-center font-bold">{strings.success}</h1>;
 
   return (
-    <form onSubmit={formik.handleSubmit} className="flex h-full w-full ">
+    <form onSubmit={formik.handleSubmit} className="grid grid-cols-4 h-full w-full gap-x-10">
       <div className="flex flex-col justify-evenly items-center">
         <FormField formik={formik} htmlFor="title" placeholder={strings.title} />
         <label for="image">
@@ -64,7 +64,7 @@ const ServiceForm = ({ data: item }) => {
           </label>
         )}
       </div>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full col-span-3">
         <TextEditor
           title={strings.description}
           placeholder={strings.descriptionPlaceholder}

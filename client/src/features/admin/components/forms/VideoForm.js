@@ -38,7 +38,7 @@ const VideoForm = ({ data: item }) => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="w-full flex justify-between items-center divide-x-2 divide-x-reverse divide-p-gray"
+      className="w-full flex justify-between items-center divide-x-2 divide-x-reverse divide-p-gray h-full"
     >
       <div className="flex flex-col w-full justify-evenly items-start pl-10 h-full">
         <FormField formik={formik} htmlFor="title" placeholder={strings.title} className="w-full" />

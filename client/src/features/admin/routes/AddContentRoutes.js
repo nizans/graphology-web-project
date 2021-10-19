@@ -30,7 +30,7 @@ const AddContentRoutes = () => {
   const WithDataAdminForm = withData(AdminForm, adminApiCRUDRequests);
   const WithDataRecommendationForm = withData(RecommendationForm, recommendationApiCRUDRequests);
   return (
-    <Section setDefaultHeight={true} className="w-full ">
+    <Section setDefaultHeight={true} className="w-full h-full">
       <Switch>
         <Route exact path={`${path}/articles`}>
           <ArticleForm />

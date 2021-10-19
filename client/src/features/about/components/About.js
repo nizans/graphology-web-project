@@ -45,7 +45,7 @@ export const About = () => {
               <div key={cert._id} className="border-p-brown border-2 rounded-lg overflow-hidden">
                 <MultiSourceImageParse
                   withModal={true}
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'fill' }}
                   height="100%"
                   width="100%"
                   image={cert.images}

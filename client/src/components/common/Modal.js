@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 
 // TODO - fix cant close on full screen - limit max size
 const Modal = ({ isShowing, hide, children }) => {
-  const { windowHeight: width } = useContext(DimensionsContext);
+  const { windowWidth: width, windowHeight } = useContext(DimensionsContext);
   if (isShowing && width > 640)
     return createPortal(
       <>
@@ -19,7 +19,11 @@ const Modal = ({ isShowing, hide, children }) => {
           style={{ zIndex: 110 }}
           onClick={hide}
         >
-          <div className="relative" style={{ zIndex: 120 }} onClick={e => e.stopPropagation()}>
+          <div
+            className="relative"
+            style={{ zIndex: 120, maxWidth: width, maxHeight: windowHeight }}
+            onClick={e => e.stopPropagation()}
+          >
             <img
               onClick={hide}
               loading="lazy"

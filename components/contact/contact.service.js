@@ -12,12 +12,14 @@ class ContactService {
   constructor() {}
 
   contact = async data => {
+    if (!data.subject) delete data.subject;
     await contactRequestValidation.validateAsync(data);
     const emails = await mailService.getAllContactRequestMails();
     return await this.#sendContactRequestMail(data, emails);
   };
 
   orderBook = async data => {
+    if (!data.subject) delete data.subject;
     await bookOrderRequestValidation.validateAsync(data);
     const emails = await mailService.getAllBookOrderMails();
     return await this.#sendBookOrderMail(data, emails);

@@ -45,7 +45,7 @@ export const Services = () => {
   if (error) return <ErrorSection error={error} />;
 
   return (
-    <Section className="flex flex-col items-center mt-14" minHeight={windowHeight - breadCrumbHeight - headerHeight}>
+    <Section className="flex flex-col items-center mt-14" setDefaultMinHeight={true}>
       <h1 className="text-7xl text-p-blue-dark pb-8">{strings.title}</h1>
       <Underline className="w-full sm:w-5/12 md:w-2/12" />
       <p className="text-p-blue text-3xl py-8">{strings.text}</p>

@@ -7,6 +7,7 @@ class CertificationService extends Service {
   }
 
   async create(data) {
+    console.log(data);
     await createCertificationValidation.validateAsync(data);
     return await super.create(data);
   }

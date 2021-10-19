@@ -1,4 +1,6 @@
 import Modal from 'components/common/Modal';
+import LoadingButton from 'components/UI/LoadingButton';
+import Spinner from 'components/UI/Spinner';
 import { usePostRandomArticles, usePostRandomBooks, usePostRandomContents } from 'dev/randomItemsGen';
 import useModal from 'hooks/useModal';
 import React, { useState } from 'react';
@@ -10,9 +12,24 @@ const AdminNavRandomData = () => {
     contents: false,
     books: false,
   });
-  const createRandomArticles = usePostRandomArticles(10);
-  const createRandomContents = usePostRandomContents(10);
-  const createRandomBooks = usePostRandomBooks(10);
+  const {
+    post: createRandomArticles,
+    isLoading: isLoadingArticles,
+    isSuccess: isArticlesSucc,
+    error: arError,
+  } = usePostRandomArticles(numberOfItems);
+  const {
+    post: createRandomContents,
+    isLoading: isLoadingContents,
+    isSuccess: isContentSucc,
+    error: cnError,
+  } = usePostRandomContents(numberOfItems);
+  const {
+    post: createRandomBooks,
+    isLoading: isLoadingBooks,
+    isSuccess: isBooksSucc,
+    error: bkError,
+  } = usePostRandomBooks(numberOfItems);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -80,7 +97,13 @@ const AdminNavRandomData = () => {
               </label>
             </li>
           </ul>
-          <input className="button cursor-pointer mt-4" type="submit" value="Generate" />
+          <div className="w-full flex justify-around">
+            {isLoadingContents || isLoadingBooks || isLoadingArticles ? (
+              <Spinner size="50" />
+            ) : (
+              <input type="submit" className="button" />
+            )}
+          </div>
         </form>
       </Modal>
     </>

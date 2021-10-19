@@ -54,7 +54,7 @@ const Footer = () => {
 
         {windowWidth >= 1024 && <NavLink to="/home/services">{strings.lectures}</NavLink>}
       </div>
-      <h5 className="_text text-lg mt-2">{strings.copyrights}</h5>
+      <h5 className="_text text-lg mt-2 text-center">{strings.copyrights}</h5>
     </footer>
   );
 };

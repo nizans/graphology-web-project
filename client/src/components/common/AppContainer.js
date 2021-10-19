@@ -2,6 +2,7 @@ import { AuthContext } from 'context/AuthContext';
 import React, { useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { HEB_ADMIN_CONNECTED, HEB_ADMIN_SECTION } from 'strings/common';
+import detectMobileBrowser from 'utils/detectMobileBrowser';
 
 const AppContainer = ({ children }) => {
   const { isAuth } = useContext(AuthContext);
@@ -17,7 +18,7 @@ const AppContainer = ({ children }) => {
       >
         {children}
       </div>
-      {!location.pathname.includes('admin') && (
+      {!detectMobileBrowser() && !location.pathname.includes('admin') && (
         <NavLink to="/admin/login" className="absolute bottom-0 right-0 _text text-lg">
           {isAuth ? HEB_ADMIN_CONNECTED : HEB_ADMIN_SECTION}
         </NavLink>

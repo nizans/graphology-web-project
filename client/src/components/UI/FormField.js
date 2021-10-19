@@ -30,6 +30,7 @@ const FormField = ({
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values[htmlFor]}
+            autoComplete="new-password"
           />
           {icon && <span className="absolute top-1/2 transform -translate-y-1/2">{icon}</span>}
         </div>

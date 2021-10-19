@@ -12,7 +12,6 @@ const mobileSliderSettings = {
   rtl: true,
   slidesToShow: 3,
   slidesToScroll: 1,
-
   dotsClass: 'slick-dots',
   customPaging: function (i) {
     return <span className="dot"></span>;
@@ -67,7 +66,7 @@ const ResponsiveSlider = ({ children, verticalOnLargeScreen = false, withThreeSl
       <div
         style={{
           minWidth: windowWidth * 2,
-          marginRight: windowWidth > 475 ? '-66%' : '-57%',
+          marginRight: windowWidth > 475 ? '-66%' : '-53%',
           marginBottom: '15px',
         }}
       >

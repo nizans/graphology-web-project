@@ -8,7 +8,7 @@ import NavBurger from './navbar/NavBurger';
 
 const Header = () => {
   const [headerRef, headerDimension] = useDimensions();
-  const { setHeaderHeight, windowWidth: width } = useContext(DimensionsContext);
+  const { setHeaderHeight, windowWidth: width, headerHeight } = useContext(DimensionsContext);
 
   useEffect(() => {
     if (headerDimension) setHeaderHeight(headerDimension.height);
@@ -25,7 +25,7 @@ const Header = () => {
           )}
         </div>
       </div>
-      <div style={{ height: headerDimension?.height }}></div>
+      <div className="w-full" style={{ height: headerHeight }}></div>
     </>
   );
 };

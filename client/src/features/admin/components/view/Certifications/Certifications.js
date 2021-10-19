@@ -37,7 +37,9 @@ const Certifications = () => {
             {data.payload.map(cert => (
               <ImageCard
                 key={cert._id}
-                imgComponent={<MultiSourceImageParse height="500px" width="100%" image={cert.images} />}
+                imgComponent={
+                  <MultiSourceImageParse height="500px" width="100%" image={cert.images} objectFit="fill" />
+                }
               >
                 <button onClick={() => handleDelete(cert._id)}>
                   <DeleteIcon />

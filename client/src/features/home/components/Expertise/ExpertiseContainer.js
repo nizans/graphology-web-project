@@ -24,10 +24,15 @@ const ExpertiseContainer = ({ data: item }) => {
           className="m-auto lg:w-full"
           style={{
             maxWidth: windowWidth < 640 ? windowWidth / 2 : 216,
-            maxHeight: ((windowHeight - headerHeight) * 0.75) / 3,
           }}
         >
-          <img alt="" className="m-auto" loading="eager" src={item.image.full} />
+          <img
+            alt=""
+            className="m-auto"
+            loading="eager"
+            src={item.image.full}
+            className="max-h-32 xs:max-h-40 lg:max-h-full m-auto"
+          />
         </div>
       </div>
       <div className="text-center lg:text-right sm:row-span-3 overflow-hidden">
@@ -35,7 +40,7 @@ const ExpertiseContainer = ({ data: item }) => {
           {item.title}
         </h1>
         <p
-          className="px-10 lg:px-0 text-center sm:text-right  _text text-xl sm:text-xl md:text-2xl  "
+          className="px-10 lg:px-0 text-center sm:text-right _max-lines-5 sm:_max-lines-none _text text-xl sm:text-xl md:text-2xl  "
           style={{ direction: 'rtl' }}
         >
           {truncate(parsedDescription, {

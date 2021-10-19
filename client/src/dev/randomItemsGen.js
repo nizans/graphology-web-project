@@ -31,7 +31,6 @@ const randomArticle = async () => {
     sourceFrom: 'לורם לורם',
     sourceURL: 'https://www.ynet.co.il/news/article/hy1ogqsmy#autoplay',
     publishDate: publishDate,
-    uploadDate: randomDate(publishDate, new Date()),
   };
   const images = await randomImagesArray();
   const formData = createFormData(values, images);
@@ -46,7 +45,6 @@ const randomContent = async () => {
     subtitle:
       'שגם רשמי ענף אות אחר אדם בגרפולוגיה ובחינה למחצה יסוד, האבחון בדיקה את בשנים מחקרים של שימוש האחרונות לבד כך. מסמכים מספר אחוזים כאשר איטליה לעבור את אבחון לשנות אינו, משפט שלו כתב על אך וחתימות בשיטות תורה תעסוקתי בתחומים.',
     publishDate: publishDate,
-    uploadDate: randomDate(publishDate, new Date()),
   };
   const images = await randomImagesArray();
   const formData = createFormData(values, images);
@@ -61,7 +59,6 @@ const randomBook = async () => {
     title: 'שם של ספר',
     author: 'מיכל דורון',
     publishDate: publishDate,
-    uploadDate: randomDate(publishDate, new Date()),
   };
   const images = await randomImagesArray();
   const formData = createFormData(values, images);
@@ -69,34 +66,34 @@ const randomBook = async () => {
 };
 
 export const usePostRandomArticles = (n = 10) => {
-  const { mutate } = useMutateData(articlesApiCRUDRequests.create);
+  const { mutate, isLoading, isSuccess, error } = useMutateData(articlesApiCRUDRequests.create);
   const post = async () => {
     for (let i = 0; i < n; i++) {
       const data = await randomArticle();
       mutate({ body: data });
     }
   };
-  return post;
+  return { post, isLoading, isSuccess, error };
 };
 
 export const usePostRandomContents = (n = 10) => {
-  const { mutate } = useMutateData(contentsApiCRUDRequests.create);
+  const { mutate, isLoading, isSuccess, error } = useMutateData(contentsApiCRUDRequests.create);
   const post = async () => {
     for (let i = 0; i < n; i++) {
       const data = await randomContent();
       mutate({ body: data });
     }
   };
-  return post;
+  return { post, isLoading, isSuccess, error };
 };
 
 export const usePostRandomBooks = (n = 10) => {
-  const { mutate } = useMutateData(booksApiCRUDRequests.create);
+  const { mutate, isLoading, isSuccess, error } = useMutateData(booksApiCRUDRequests.create);
   const post = async () => {
     for (let i = 0; i < n; i++) {
       const data = await randomBook();
       mutate({ body: data });
     }
   };
-  return post;
+  return { post, isLoading, isSuccess, error };
 };

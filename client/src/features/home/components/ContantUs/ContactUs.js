@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContactUsStrings as strings } from './ContactUs.strings';
+import { ContactUsStrings as strings, SubTitle } from './ContactUs.strings';
 import ContantUsForm from './ContantUsForm';
 
 const ContactUs = () => {
@@ -11,7 +11,7 @@ const ContactUs = () => {
       }}
     >
       <h1 className="_title mt-12 lg:pt-6">{strings.title}</h1>
-      <h3 className=" _text _p-size xl:text-center my-6 lg:my-0">{strings.subTitle}</h3>
+      <SubTitle />
       <ContantUsForm />
     </div>
   );

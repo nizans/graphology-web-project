@@ -50,7 +50,9 @@ const OrderBookForm = ({ book }) => {
       </div>
       <FormField borderWidth="2" formik={formik} htmlFor="email" placeholder={strings.email} />
       <FormField borderWidth="2" formik={formik} htmlFor="notes" placeholder={strings.notes} />
-      <LoadingButton isLoading={isLoading} />
+      <div className="mr-auto">
+        <LoadingButton isLoading={isLoading} />
+      </div>
     </form>
   );
 };

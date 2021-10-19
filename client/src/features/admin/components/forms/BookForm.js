@@ -16,7 +16,7 @@ const BookForm = ({ data: item }) => {
     item ? booksApiCRUDRequests.update : booksApiCRUDRequests.create
   );
 
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(item?.images.map(img => img.full) || []);
 
   const initialValues = {
     title: item?.title || '',
@@ -43,8 +43,8 @@ const BookForm = ({ data: item }) => {
   });
   if (isSuccess) return <h1 className="p-16 _text text-3xl m-auto text-center font-bold">{strings.success}</h1>;
   return (
-    <form onSubmit={formik.handleSubmit} className="flex h-full justify-between w-full">
-      <div className="flex flex-col justify-evenly items-center">
+    <form onSubmit={formik.handleSubmit} className="grid grid-cols-4 h-full w-full gap-x-10">
+      <div className="flex flex-col justify-evenly items-center col-span-1">
         <FormField formik={formik} htmlFor="title" placeholder={strings.title} />
         <FormField formik={formik} htmlFor="author" placeholder={strings.author} />
         <FormField formik={formik} topLabel={strings.publishDate} htmlFor="publishDate" type="date" />
@@ -58,7 +58,7 @@ const BookForm = ({ data: item }) => {
           )}
         </div>
       </div>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full col-span-3 h-full">
         <TextEditor
           title={strings.description}
           placeholder={strings.descriptionPlaceholder}

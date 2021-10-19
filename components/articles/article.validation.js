@@ -7,7 +7,7 @@ exports.createArticleValidation = Joi.object({
   sourceURL: Joi.string().required().uri(),
   images: Joi.array().items(joiImageObject).max(10),
   text: Joi.string().required(),
-  publishDate: Joi.date().iso(),
+  publishDate: Joi.date(),
 });
 
 exports.updateArticleValidation = Joi.object({
@@ -16,5 +16,5 @@ exports.updateArticleValidation = Joi.object({
   sourceURL: Joi.string().uri(),
   images: Joi.array().items(joiImageObject).max(10),
   text: Joi.string(),
-  publishDate: Joi.date().iso(),
+  publishDate: Joi.date(),
 });

@@ -14,15 +14,16 @@ const CertificateUpload = () => {
     error: uploadError,
   } = useMutateData(certificationsApiCRUDRequests.create);
 
-  const handleUpload = files => {
-    const formData = createFormData({}, files);
+  const handleUpload = async file => {
+    const formData = await createFormData({}, file);
+    console.log(formData.getAll('image'));
     uploadCertificate({ body: formData });
     fileInputRef.current.value = '';
   };
 
   return (
     <div className="my-2">
-      <input type="file" hidden ref={fileInputRef} onChange={e => handleUpload(e.target.files)} />
+      <input type="file" hidden ref={fileInputRef} onChange={e => handleUpload(e.target.files[0])} />
       <LoadingButton
         isLoading={isUploading}
         type="button"

@@ -6,7 +6,7 @@ exports.createContentValidation = Joi.object({
   subtitle: Joi.string().optional().max(255),
   images: Joi.array().items(joiImageObject).optional().max(10),
   text: Joi.string().required(),
-  publishDate: Joi.date().optional().iso(),
+  publishDate: Joi.date().optional(),
 });
 
 exports.updateContentValidation = Joi.object({
@@ -14,5 +14,5 @@ exports.updateContentValidation = Joi.object({
   subtitle: Joi.string().optional().max(255),
   images: Joi.array().items(joiImageObject).optional().max(10),
   text: Joi.string().optional(),
-  publishDate: Joi.date().optional().iso(),
+  publishDate: Joi.date().optional(),
 });

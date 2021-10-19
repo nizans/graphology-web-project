@@ -4,7 +4,7 @@ import useModal from 'hooks/useModal';
 import useProgressiveImg from 'hooks/useProgressiveImg';
 import React from 'react';
 import Magnifier from 'react-magnifier';
-
+import './BlurredUpImage.css';
 const BlurredUpImage = ({ img, withModal = true, width = '100%', height = '', style }) => {
   const [src, { blur }] = useProgressiveImg(img.thumb, img.full);
   const { isShowing, toggle } = useModal();
@@ -19,14 +19,14 @@ const BlurredUpImage = ({ img, withModal = true, width = '100%', height = '', st
           cursor: withModal ? 'zoom-in' : 'auto',
           width: width,
           height: height,
-          transition: `1s -webkit-filter linear`,
+          transition: `3s -webkit-filter linear`,
           filter: blur ? 'blur(20px)' : 'none',
           objectFit: 'contain',
           margin: 'auto',
           ...style,
         }}
       />
-      {withModal && <ExpandIcon style={{ top: '0', right: '0' }} />}
+      {withModal && <ExpandIcon onClick={toggle} style={{ top: '0', right: '0' }} />}
       {withModal && (
         <Modal isShowing={isShowing} hide={toggle}>
           <Magnifier src={src} mgWidth={200} mgHeight={200} mgShowOverflow={false} />
