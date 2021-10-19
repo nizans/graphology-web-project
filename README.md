@@ -1,6 +1,6 @@
 # Graphology Application
 
-A MERN stack project. [Preview](https://michal-doron.herokuapp.com)
+A **MERN** stack project. [Preview](https://michal-doron.herokuapp.com)
 
 ## Table of contents
 
@@ -37,9 +37,9 @@ npm install
 npm run install-client
 npm run dev
 ```
-
+<details><summary><strong>Required ENV variables</strong>
+</summary>
 The following env variables must be provided with a `.env` file on the root folder:
-
 ```
 MONGO_CONN_STRING=
 PORT=
@@ -54,12 +54,17 @@ AWS_BUCKET_NAME:
 SENDGRID_API_KEY=
 FROM_EMAIL_ADDRESS=
 ```
-
+  
 And with a `.env.local` file on the client folder:
 
 ```
 REACT_APP_API_URL=<local_ip_address:4000>
 ```
+
+</details>
+
+
+
 
 Open new terminal on root folder:
 
@@ -89,7 +94,7 @@ Open [http:localhost:4000](http:localhost:4000)
 
 ## <a name="techLibTools"></a>Technologies, Libraries, And Tools
 
-<details><summary>Clent side</summary>
+  <details><summary><strong>Clent side</strong></summary>
 
 - [React](https://reactjs.org/)
 - [react-query](https://react-query.tanstack.com/) - A very good way of making API calls in the app. It includes caching, devtools, and more.
@@ -109,7 +114,7 @@ Open [http:localhost:4000](http:localhost:4000)
 
 <details>
 <summary>
-Server side
+<strong>Server side</strong>
 </summary>
 
 - [NodeJS](https://nodejs.org/en/docs/) - because JS is fun!
@@ -129,7 +134,7 @@ Server side
 - [validator](https://www.npmjs.com/package/validator)
 - [cors](https://www.npmjs.com/package/cors)</details>
 
-<details><summary>Tools</summary>
+<details><summary><strong>Tools</strong></summary>
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Adobe XD](https://www.adobe.com/il_en/products/xd.html)
