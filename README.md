@@ -14,9 +14,21 @@ A **MERN** stack project. [Preview](https://michal-doron.herokuapp.com)
 
 ## Description
 
-This project was created for [Michal Doron](https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%9C_%D7%93%D7%95%D7%A8%D7%95%D7%9F) as a graduation project from a practical software engineering degree in Shenkar college.
+I created this project for [Michal Doron](https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%9C_%D7%93%D7%95%D7%A8%D7%95%D7%9F) as a graduation project from a practical software engineering degree in Shenkar college.
 
-See [Guided Tour](https://github.com/nizans/graphology-web-project/blob/main/client/GuidedTour.md) for examples.
+Michal is a professional graphologist who also writes articles, books, and records podcasts and videos. 
+She needed a website to share content and offer services. Therefore the project needed to include a user-friendly and secure back-office to update and upload new articles, videos, services, and more.
+
+I collaborated with a UX/UI designer, and we created a design that I programmed later with React.
+
+The server side is built with NodeJS, Express, and using MongoDB.
+
+Most of the technologies used in the project I learned on the go. 
+
+The project design is highly inspired by [nodebestpractices](https://github.com/goldbergyoni/nodebestpractices) and [bulletproof-react](https://github.com/alan2207/bulletproof-react).
+
+
+See [Guided Tour](https://github.com/nizans/graphology-web-project/blob/main/client/GuidedTour.md) to see samples from the app.
 
 
 ## Preview
@@ -145,8 +157,8 @@ Open [http:localhost:4000](http:localhost:4000)
 </details>
 
 ## <a name="explanations"></a>Explanations
-
-[Read more here](Explanations.md)
+- [Server Side](Explanations.md)
+- [Client Side](client/Explanations.md)
 
 ## <a name="thingsToDo"></a>Things To Do
 
