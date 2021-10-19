@@ -2,10 +2,12 @@
 
 <details>
 <summary>
-How Does The App Handles API Requests?
+<strong>How Does The App Handles API Requests?</strong>
 </summary>
 
-[react-query](https://react-query.tanstack.com/) was chosen to handle all API requests, because it is very eazy to code, eazy to debug, and handles caching.
+  
+  
+[react-query](https://react-query.tanstack.com/) was chosen to handle all API requests, because it is straightforward, easy to debug and handles caching and more behind the scene.
 
 All API requests in the app use react-query with the [ApiRequests](https://github.com/nizans/graphology-web-project/blob/main/client/src/lib/ApiRequest.js) class.
 
@@ -49,5 +51,26 @@ const SomeComponent = () => {
   return <div>{data}</div>;
 };
 ```
+</details>
+
+
+<details>
+<summary><strong>Authentication And Authorization</strong></summary>
+
+The app uses [React ContextAPI](https://reactjs.org/docs/context.html) to store the state of the authentication.<br>
+The [context file](https://github.com/nizans/graphology-web-project/blob/main/client/src/context/AuthContext.js) also includes and provides all the child components with a login and a logout function.<br>
+This way all the authentication and authorization are handled in one location and can be used anywhere in the app.<br>
+
+On the app first load, the context checks if the local storage has a refresh token, and if so, sends the token with a POST request to `/api/auth/refresh`.<br>
+If the token is valid, the server will respond with the user information and a secured cookie with an access token.<br>
+This way, a silent login will occur, and the user can stay connected to previously used devices.<br>
+
+If the refresh did not succeed, the user must log in from the [Login component](https://github.com/nizans/graphology-web-project/blob/main/client/src/features/admin/components/Login/Login.js), which sends a POST request to `/api/auth/login`, with the credentials.<br>
+If the credentials are correct, the server will respond with a JSON containing the user info and the refresh token and a secured cookie with the access token.<br>
+
+When a refresh or login function succeeds, the context component will store the refresh token and the user info inside local storage and set the ``isAuth`` state to ``true`` and the ``user`` state to the user object, which then can be used anywhere in the app.
+
+
+
 
 </details>
