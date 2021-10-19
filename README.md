@@ -51,6 +51,7 @@ npm run dev
 ```
 <details><summary><strong>Required ENV variables</strong>
 </summary>
+  
 The following env variables must be provided with a `.env` file on the root folder:
 ```
 MONGO_CONN_STRING=
