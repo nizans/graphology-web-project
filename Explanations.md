@@ -194,7 +194,7 @@ On every successful login, the client receives the secure cookie with the JWT, t
 
 The refresh token can then be used for silent logins and renewing the cookie.<br>
 So on every POST request to /auth/refresh, the server looks for the refresh token in the request body, checks if it exists in the DB, then verify it.<br>
-If everything is successful, the client receives a new cookie with a fresh JWT.<br>
+If everything succeeds, the server replaces the cookie with a fresh JWT.<br>
 
 When the client makes a DELETE request to /auth/logout, the server removes the cookie and deletes the refresh token from the DB ([code reference](https://github.com/nizans/graphology-web-project/blob/8854c175c4eb521db47e6f8527eb5fedff49bd57/components/auth/auth.controller.js#L37)). <br>
 
