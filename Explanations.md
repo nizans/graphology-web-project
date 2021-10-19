@@ -14,7 +14,7 @@ The controller then responds to the client or passes the error to the next middl
 
 <img src="./docs/diagrams/API design.png" />
 
-> See [Component Design](#component-design), [Error Handleing](#error-handleing)
+> See Component Design, Error Handleing for more info
 
 </details>
 
@@ -22,7 +22,8 @@ The controller then responds to the client or passes the error to the next middl
 <summary>
 Error Handling
 </summary>
-
+  
+  
 The error handling in the server comprises the [ErrorHandle class](https://github.com/nizans/graphology-web-project/blob/122ab1df901213c8e9f5c6c1a52aef1f82275614/components/error/error.model.js#L1), a [middleware](https://github.com/nizans/graphology-web-project/blob/122ab1df901213c8e9f5c6c1a52aef1f82275614/components/error/handleError.js#L4), a [controller](https://github.com/nizans/graphology-web-project/blob/main/components/error/error.controller.js), and the [constants file](https://github.com/nizans/graphology-web-project/blob/main/components/error/error.constants.js).<br>
 
 **The ErrorHandle class** extends the Error object and includes the fields:
