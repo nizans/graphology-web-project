@@ -17,7 +17,7 @@ export const Articles = () => {
   return (
     <Section>
       <div className="flex flex-col items-center mb-9">
-        <h1 className="_text-bold-dark text-8xl">{HEB_MICHAL_DORON_ARTICLES}</h1>
+        <h1 className="_text-bold-dark text-8xl _title">{HEB_MICHAL_DORON_ARTICLES}</h1>
         <Underline style={{ width: '33%' }} />
         {error ? (
           <ErrorSection error={error} />
