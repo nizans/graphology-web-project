@@ -6,6 +6,7 @@ A **MERN** stack project. [Preview](https://michal-doron.herokuapp.com)
 
 - [Description](#description)
 - [Preview](#preview)
+- [Guided Tour](https://github.com/nizans/graphology-web-project/blob/main/client/GuidedTour.md)
 - [Local Installation](#local-installation)
 - [Technologies, Libraries, And Tools](#techLibTools)
 - [Explanations](#explanations)
