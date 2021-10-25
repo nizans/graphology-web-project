@@ -19,13 +19,13 @@ const Expertise = () => {
         <div className="lg:px-12">
           {data.payload.length > 3 ? (
             <ResponsiveSlider>
-              {data.payload.map((item, i) => (
+              {data.payload.map(item => (
                 <ExpertiseContainer data={item} key={item._id} />
               ))}
             </ResponsiveSlider>
           ) : (
             <div className="grid grid-cols-3">
-              {data.payload.map((item, i) => (
+              {data.payload.map(item => (
                 <ExpertiseContainer data={item} key={item._id} />
               ))}
             </div>

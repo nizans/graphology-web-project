@@ -16,7 +16,7 @@ export const Services = () => {
 
   const { data, isLoading, error } = useFetchData(servicesApiCRUDRequests.read());
   const [itemsRefs, setItemsRefs] = useState([]);
-  const { headerHeight, windowHeight, breadCrumbHeight } = useContext(DimensionsContext);
+  const { headerHeight } = useContext(DimensionsContext);
 
   const handleScrollToItem = i => {
     if (itemsRefs[i]) {

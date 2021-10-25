@@ -9,13 +9,12 @@ const titleStrToBtn = str => {
 };
 
 const ExpertiseContainer = ({ data: item }) => {
-  const { windowWidth, windowHeight, headerHeight } = useContext(DimensionsContext);
+  const { windowWidth } = useContext(DimensionsContext);
   const [parsedDescription] = useDomParser(item.description, 'text/html');
   return (
     <div
       className="md:p-8 border-p-brown lg:border-r-4 grid grid-rows-3 sm:grid-rows-6 items-center mx-auto"
       style={{
-        height: (windowHeight - headerHeight) * 0.75,
         width: windowWidth < 640 ? windowWidth * 0.7 : null,
       }}
     >
@@ -26,13 +25,7 @@ const ExpertiseContainer = ({ data: item }) => {
             maxWidth: windowWidth < 640 ? windowWidth / 2 : 216,
           }}
         >
-          <img
-            alt=""
-            className="m-auto"
-            loading="eager"
-            src={item.image.full}
-            className="max-h-32 xs:max-h-40 lg:max-h-full m-auto"
-          />
+          <img alt="" loading="eager" src={item.image.full} className="max-h-32 xs:max-h-40  lg:max-h-full m-auto" />
         </div>
       </div>
       <div className="text-center lg:text-right sm:row-span-3 overflow-hidden">

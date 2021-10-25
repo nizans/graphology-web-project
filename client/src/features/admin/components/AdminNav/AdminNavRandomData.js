@@ -1,5 +1,4 @@
 import Modal from 'components/common/Modal';
-import LoadingButton from 'components/UI/LoadingButton';
 import Spinner from 'components/UI/Spinner';
 import { usePostRandomArticles, usePostRandomBooks, usePostRandomContents } from 'dev/randomItemsGen';
 import useModal from 'hooks/useModal';
@@ -12,24 +11,9 @@ const AdminNavRandomData = () => {
     contents: false,
     books: false,
   });
-  const {
-    post: createRandomArticles,
-    isLoading: isLoadingArticles,
-    isSuccess: isArticlesSucc,
-    error: arError,
-  } = usePostRandomArticles(numberOfItems);
-  const {
-    post: createRandomContents,
-    isLoading: isLoadingContents,
-    isSuccess: isContentSucc,
-    error: cnError,
-  } = usePostRandomContents(numberOfItems);
-  const {
-    post: createRandomBooks,
-    isLoading: isLoadingBooks,
-    isSuccess: isBooksSucc,
-    error: bkError,
-  } = usePostRandomBooks(numberOfItems);
+  const { post: createRandomArticles, isLoading: isLoadingArticles } = usePostRandomArticles(numberOfItems);
+  const { post: createRandomContents, isLoading: isLoadingContents } = usePostRandomContents(numberOfItems);
+  const { post: createRandomBooks, isLoading: isLoadingBooks } = usePostRandomBooks(numberOfItems);
 
   const handleSubmit = e => {
     e.preventDefault();

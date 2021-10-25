@@ -32,11 +32,7 @@ export const AuthContextProvider = ({ children }) => {
     error: refreshError,
   } = useMutateData(authAPIRequests.refresh);
 
-  const {
-    mutateAsync: logoutRequest,
-    isLoading: isLoggingOutLoading,
-    error: logoutError,
-  } = useMutateData(authAPIRequests.logout);
+  const { mutateAsync: logoutRequest, isLoading: isLoggingOutLoading } = useMutateData(authAPIRequests.logout);
 
   const { mutateAsync: renewRequest } = useMutateData(authAPIRequests.renew);
 
@@ -74,7 +70,11 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    refresh();
+    const _refresh = async () => {
+      await refresh();
+    };
+    if (refreshError) clearRefreshToken();
+    _refresh();
   }, []);
 
   const renew = async () => {
@@ -93,7 +93,7 @@ export const AuthContextProvider = ({ children }) => {
         renew();
       }
     });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [refresh, refreshToken]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <AuthContext.Provider
