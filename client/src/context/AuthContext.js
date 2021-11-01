@@ -1,7 +1,7 @@
 import { authAPIRequests } from 'features/admin';
 import useLocalStorage from 'hooks/useLocalStorage';
 import { useMutateData } from 'lib/reactQuery';
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 
 export const AuthContext = createContext({
@@ -69,14 +69,6 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    const _refresh = async () => {
-      await refresh();
-    };
-    if (refreshError) clearRefreshToken();
-    _refresh();
-  }, []);
-
   const renew = async () => {
     if (process.env.NODE_ENV !== 'development') await renewRequest({});
   };
@@ -87,7 +79,6 @@ export const AuthContextProvider = ({ children }) => {
    * If and error was thrown, set user and isAuth to false and logout on client side
    * */
   useEffect(() => {
-    if (refreshToken) refresh();
     history.listen((listen, action) => {
       if (listen.pathname.includes('admin') && !listen.pathname.includes('login') && action !== 'REPLACE') {
         renew();
