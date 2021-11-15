@@ -3,6 +3,7 @@ const Joi = require('joi');
 exports.createAdminValidation = Joi.object({
   email: Joi.string().email().lowercase().required(),
   password: Joi.string().min(6).max(12).pattern(new RegExp('^[a-zA-Z0-9!@#$%^&*()-+_{}[]|`~]+$')).required(),
+  validatePassword: Joi.string().min(6).max(12).pattern(new RegExp('^[a-zA-Z0-9!@#$%^&*()-+_{}[]|`~]+$')).required(),
   name: Joi.string().max(50),
 });
 
