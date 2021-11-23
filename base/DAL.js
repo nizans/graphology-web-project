@@ -64,6 +64,7 @@ class DAL {
   }
 
   async update(id, data) {
+    if (data.images?.length == 0) delete data.images;
     const result = await this.Model.findByIdAndUpdate(id, data);
     if (!result) throw ITEM_NOT_EXISTS;
     return result;

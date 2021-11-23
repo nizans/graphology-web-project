@@ -1,7 +1,7 @@
 import { authAPIRequests } from 'features/admin';
 import useLocalStorage from 'hooks/useLocalStorage';
 import { useMutateData } from 'lib/reactQuery';
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 
 export const AuthContext = createContext({
@@ -26,11 +26,7 @@ export const AuthContextProvider = ({ children }) => {
     reset: resetLoginRequestState,
   } = useMutateData(authAPIRequests.login);
 
-  const {
-    mutateAsync: refreshRequest,
-    isLoading: isRefreshing,
-    error: refreshError,
-  } = useMutateData(authAPIRequests.refresh);
+  const { mutateAsync: refreshRequest, isLoading: isRefreshing } = useMutateData(authAPIRequests.refresh);
 
   const { mutateAsync: logoutRequest, isLoading: isLoggingOutLoading } = useMutateData(authAPIRequests.logout);
 
@@ -43,18 +39,24 @@ export const AuthContextProvider = ({ children }) => {
   const history = useHistory();
 
   const login = async (email, password) => {
-    const result = await loginRequest({ body: JSON.stringify({ email, password }) });
-    setRefreshToken(result.refreshToken);
-    setUser({ name: result.name, email: result.email });
-    setIsAuth(true);
+    try {
+      const result = await loginRequest({ body: JSON.stringify({ email, password }) });
+      setRefreshToken(result.refreshToken);
+      setUser({ name: result.name, email: result.email });
+      setIsAuth(true);
+    } catch (error) {
+      //Handled in component
+    }
   };
 
   const logout = async () => {
-    const body = JSON.stringify({ refreshToken: refreshToken, email: user.email, name: user.name });
-    logoutRequest({ body: body });
-    clearRefreshToken();
-    setUser(false);
-    setIsAuth(false);
+    try {
+      const body = JSON.stringify({ refreshToken: refreshToken, email: user.email, name: user.name });
+      logoutRequest({ body: body });
+      clearRefreshToken();
+      setUser(false);
+      setIsAuth(false);
+    } catch (error) {}
   };
 
   const refresh = async () => {

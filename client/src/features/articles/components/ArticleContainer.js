@@ -31,12 +31,18 @@ const ArticleContainer = ({ item }) => {
       <div className="_text text-xl">
         <p>{truncate(parsedStr, { length: 250, separator: ' ' })}</p>
       </div>
-      <NavLink
-        to={`/home/articles/${item._id}`}
-        className="_text-bold text-xl bg-p-brown hover:bg-p-brown-dark py-1 px-4 mr-auto mt-5"
-      >
-        {strings.readMore}
-      </NavLink>
+      {item.sourceURL ? (
+        <a href={item.sourceURL} className="_text-bold text-xl bg-p-brown hover:bg-p-brown-dark py-1 px-4 mr-auto mt-5">
+          {strings.readMore}
+        </a>
+      ) : (
+        <NavLink
+          to={`/home/articles/${item._id}`}
+          className="_text-bold text-xl bg-p-brown hover:bg-p-brown-dark py-1 px-4 mr-auto mt-5"
+        >
+          {strings.readMore}
+        </NavLink>
+      )}
     </div>
   );
 };

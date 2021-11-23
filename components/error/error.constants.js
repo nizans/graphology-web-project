@@ -14,8 +14,11 @@ const strings = {
   EMAIL_ALREADY_EXISTS: 'קיים מנהל עם האימייל שהוכנס',
   CANNOT_DELETE_CURRECT_ADMIN: 'לא ניתן למחוק משתמש כאשר אתה מחובר דרכו',
   ITEM_NOT_EXISTS: 'לא נמצא התוכן המבוקש',
+  INTERNAL_ERROR: 'אירעה שגיאה',
 };
 
+exports.INTERNAL_ERROR = err =>
+  new ErrorHandle(500, 'An error occurred on the server.', err, strings.INTERNAL_ERROR, false);
 exports.INVALID_REQUEST = new ErrorHandle(404, 'Invalid Request', null, strings.INVALID_REQUEST, true);
 exports.PAGE_NOT_FOUND = new ErrorHandle(404, 'Page does not exists', null, strings.PAGE_NOT_FOUND, true);
 exports.NO_RESULTS = new ErrorHandle(404, 'Content does not exists', null, strings.CONTENT_NOT_EXISTS, true);

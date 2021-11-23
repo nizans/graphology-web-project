@@ -28,7 +28,7 @@ const AdminTopNav = () => {
       <button className="_text text-xl px-4" onClick={handleLogout}>
         {strings.logout}
       </button>
-      <AdminNavRandomData />
+      {/* <AdminNavRandomData /> */}
     </nav>
   );
 };
